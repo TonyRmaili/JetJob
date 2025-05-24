@@ -6,26 +6,34 @@ import json
 from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
 
+# start command 
+# py -m frontend.gui
+
 class JetJob:
     def __init__(self, screen_width:float, screen_height:float):
         self.root = tk.Tk()
         self.root.title("JetJob")
 
-    
+        # paths
+        self.profiles_path = "./profiles"
+        os.makedirs(self.profiles_path,exist_ok=True)
+
+
         # Create frames
-        self.profile_frame = tk.Frame(self.root)
-        self.main_gui_frame = tk.Frame(self.root)
+        # self.profile_frame = tk.Frame(self.root)
+        # self.main_gui_frame = tk.Frame(self.root)
 
         
     
-        for frame in (self.profile_frame, self.main_gui_frame):
-            frame.grid(row=0, column=0, sticky="nsew")
+        # for frame in (self.profile_frame, self.main_gui_frame,self.create_profile_frame):
+        #     frame.grid(row=0, column=0, sticky="nsew")
 
-        self.test_profile_frame()
-        self.test_main_frame()  # Optional pre-setup
+        # self.test_profile_frame()
+        # self.test_main_frame()
+        self.init_create_profile_frame()  
 
-        # Show profile screen first
-        self.show_frame(self.profile_frame)
+        # # Show profile screen first
+        # self.show_frame(self.create_profile_frame)
 
 
         # Set window size to 50% of screen
@@ -72,6 +80,9 @@ class JetJob:
         #     with open(config_path, "w") as f:
         #         json.dump(self.config_data,f,indent=4)
 
+        self.adjust_window()
+
+    def adjust_window(self):
         self.center_window(self.root, self.width, self.height)
 
         # adjust size to fit all widgets
@@ -90,6 +101,88 @@ class JetJob:
 
     def show_frame(self,frame):
         frame.tkraise()
+
+    def init_create_profile_frame(self):
+        def refresh_profile_list():
+            for widget in self.profile_list_frame.winfo_children():
+                widget.destroy()
+
+            profile_folders = [
+                name for name in os.listdir(self.profiles_path)
+                if os.path.isdir(os.path.join(self.profiles_path, name))
+            ]
+
+            if profile_folders and not self.selected_profile_var.get():
+                self.selected_profile_var.set(profile_folders[0])
+
+            if not profile_folders:
+                empty_label = tk.Label(self.profile_list_frame, text="(No profiles found)", fg="gray")
+                empty_label.grid(row=0, column=0, padx=10, pady=5)
+            else:
+                for i, prof in enumerate(profile_folders):
+                    rb = tk.Radiobutton(
+                        self.profile_list_frame,
+                        text=prof,
+                        variable=self.selected_profile_var,
+                        value=prof
+                    )
+                    rb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
+
+
+        def on_click():
+            name = name_var.get().strip()
+            if not name:
+                print("❌ Profile name is empty")
+                return
+
+            profile_dir = os.path.join(self.profiles_path, name)
+            if os.path.exists(profile_dir):
+                print("❌ Profile already exists")
+                return
+
+            os.makedirs(profile_dir)
+            with open(os.path.join(profile_dir, "config.json"), "w") as f:
+                json.dump({"name": name}, f, indent=4)
+            with open(os.path.join(profile_dir, ".env"), "w") as f:
+                f.write(f"PROFILE_NAME={name}\n")
+
+            print(f"✅ Created profile: {name}")
+            refresh_profile_list()
+
+        self.selected_profile_var = tk.StringVar()
+
+        self.create_profile_frame = tk.Frame(self.root)
+        self.create_profile_frame.grid(row=0, column=0, sticky="nsew")
+
+        # Left frame: Create profile
+        left_frame = tk.Frame(self.create_profile_frame)
+        left_frame.grid(row=1, column=0, padx=10, sticky="n")
+
+        left_label = tk.Label(left_frame, text="Create a new profile", font=("Arial", 14))
+        left_label.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
+
+        name_var = tk.StringVar()
+        name_label = tk.Label(left_frame, text="Name: ")
+        name_label.grid(row=1, column=0, padx=5, pady=20)
+        name_entry = tk.Entry(left_frame, textvariable=name_var)
+        name_entry.grid(row=1, column=1, padx=5, pady=20)
+
+        btn = tk.Button(left_frame, text="Add profile", command=on_click)
+        btn.grid(row=2, column=1, padx=5, pady=20)
+
+        # Right frame: Select profile
+        right_frame = tk.Frame(self.create_profile_frame)
+        right_frame.grid(row=1, column=1, padx=20, sticky="n")
+
+        right_label = tk.Label(right_frame, text="Select Profile", font=("Arial", 14))
+        right_label.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
+
+        self.profile_list_frame = tk.Frame(right_frame)
+        self.profile_list_frame.grid(row=1, column=0)
+
+        refresh_profile_list()
+
+
 
 
     def test_profile_frame(self):
@@ -116,7 +209,7 @@ class JetJob:
 
         self.show_frame(self.main_gui_frame)
 
-    
+
     def center_window(self,window, width, height):
         # Get screen width and height
         screen_width = window.winfo_screenwidth()
