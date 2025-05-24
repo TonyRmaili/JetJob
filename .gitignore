@@ -1,0 +1,85 @@
+# Ignore node_modules and environment folders
+node_modules/
+**/*.env
+.env
+.DS_Store
+
+.env copy
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.sqlite3
+*.db
+*.log
+
+# Virtual environments
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Images and generated media
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Temporary files
+*.tmp
+*.temp
+
+# JavaScript
+*.js.map
+*.ts.map
+
+# Compiled binary files
+*.dll
+*.exe
+*.so
+*.dylib
+
+# Coverage reports
+coverage/
+*.cover
+*.coverprofile
+*.gcov
+.nyc_output/
+
+# Docker
+docker-compose.override.yml
+Dockerfile.*
+
+# Python Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Temporary files from testing
+*.coverage
+.tox/
+.pytest_cache/
+
+# If you use macOS and have hidden files
+.AppleDouble
+.LSOverride
