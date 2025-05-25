@@ -42,11 +42,10 @@ def send_email(
 
 
 send_email(
-    subject="Multi file",
+    subject="new key",
     body="Here is my CV .",
     to_email="torm8078@gmail.com",
     from_email="tony.rmaili@gmail.com",
     password=os.getenv("GMAIL_APP_PASSWORD"),  # Use an app password, not your regular one!
-    smtp_server="smtp.gmail.com",
-    attachments=["first_job_ad.json","tony_cv_2025.pdf"]  # You can include multiple files
+    smtp_server="smtp.gmail.com"  
 )

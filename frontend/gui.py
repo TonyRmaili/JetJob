@@ -14,33 +14,25 @@ class JetJob:
         self.root = tk.Tk()
         self.root.title("JetJob")
 
+        self.screen_width = screen_width
+        self.screen_height = screen_height
+
         # paths
         self.profiles_path = "./profiles"
         os.makedirs(self.profiles_path,exist_ok=True)
 
+        if not self.has_valid_profiles():
+            self.selected_profile = None
+            self.init_create_profile_frame()
+            self.show_frame(self.create_profile_frame)
 
-        # Create frames
-        # self.profile_frame = tk.Frame(self.root)
-        # self.main_gui_frame = tk.Frame(self.root)
+        else:
+            self.selected_profile = self.get_last_used_profile()
+            self.init_main_frame()
+            self.show_frame(self.main_frame)
 
+                
         
-    
-        # for frame in (self.profile_frame, self.main_gui_frame,self.create_profile_frame):
-        #     frame.grid(row=0, column=0, sticky="nsew")
-
-        # self.test_profile_frame()
-        # self.test_main_frame()
-        self.init_create_profile_frame()  
-
-        # # Show profile screen first
-        # self.show_frame(self.create_profile_frame)
-
-
-        # Set window size to 50% of screen
-        self.width = int(self.root.winfo_screenwidth() *screen_width)
-        self.height = int(self.root.winfo_screenheight() * screen_height)
-        self.root.geometry(f"{self.width}x{self.height}")
-
         # gpt models
         self.default_models = ["gpt-4o", "gpt-4o-mini","gpt-4.1"]
         self.models = self.default_models.copy()
@@ -52,55 +44,30 @@ class JetJob:
         self.output_folder = None
         self.output_filename = None
 
-        self.selected_profile = None
-
+    
         self.config_data = {
             "name":None,
         }
 
-
-
-        # Menu and UI
-        # self.create_menu()
-        # self.create_labelframes()
-
-        # variable file validations 
-        # if self.scan_for_env():
-        #    pass
-
-        # if self.scan_for_profile_config():
-        #     pass
-
-        # paths 
-        # self.profiles_path = "./profiles"
-        # os.makedirs(self.profiles_path,exist_ok=True)
-
-        # config_path = os.path.join(self.profiles_path, "config.json")
-        # if not os.path.exists(config_path):
-        #     with open(config_path, "w") as f:
-        #         json.dump(self.config_data,f,indent=4)
-
         self.adjust_window()
 
-    def adjust_window(self):
-        self.center_window(self.root, self.width, self.height)
 
-        # adjust size to fit all widgets
-        self.root.update_idletasks()      
+    def init_main_frame(self):
 
-        req_w = self.root.winfo_reqwidth()
-        req_h = self.root.winfo_reqheight()
-        scr_w = self.root.winfo_screenwidth()
-        scr_h = self.root.winfo_screenheight()
-        margin = 20                               
+        def on_return_btn():
+            self.init_create_profile_frame()
+            self.show_frame(self.create_profile_frame)
     
-        win_w = min(max(self.width,  req_w + margin), scr_w)
-        win_h = min(max(self.height, req_h + margin), scr_h)
+        self.main_frame = tk.Frame(self.root)
+        self.main_frame.grid(row=0, column=0, sticky="nsew")
 
-        self.root.geometry(f"{win_w}x{win_h}")
+        label = tk.Label(self.main_frame, text="✅ Main GUI Loaded", font=("Arial", 16))
+        label.pack(pady=20)
 
-    def show_frame(self,frame):
-        frame.tkraise()
+        btn_back = tk.Button(self.main_frame, text="← Back to Profile Menu", command=on_return_btn)
+        btn_back.pack(pady=10)
+
+        self.show_frame(self.main_frame)
 
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -128,8 +95,11 @@ class JetJob:
                     )
                     rb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
 
+            if self.has_valid_profiles():
+                return_btn = tk.Button(left_frame, text="Go to main", width=20 ,command=on_return_click)
+                return_btn.grid(row=3, column=0, padx=5, pady=20, sticky="ne")
 
-        def on_click():
+        def on_add_click():
             name = name_var.get().strip()
             if not name:
                 print("❌ Profile name is empty")
@@ -143,11 +113,21 @@ class JetJob:
             os.makedirs(profile_dir)
             with open(os.path.join(profile_dir, "config.json"), "w") as f:
                 json.dump({"name": name}, f, indent=4)
-            with open(os.path.join(profile_dir, ".env"), "w") as f:
-                f.write(f"PROFILE_NAME={name}\n")
+            self.create_env_file(profile_dir=profile_dir)
 
             print(f"✅ Created profile: {name}")
             refresh_profile_list()
+
+        def on_return_click():
+            selected = self.selected_profile_var.get()
+            if not selected:
+                messagebox.showwarning("No Selection", "Please select a profile before continuing.")
+                return
+
+            self.selected_profile = selected
+            self.set_last_used_profile(selected)
+            self.init_main_frame()
+            self.show_frame(self.main_frame)
 
         self.selected_profile_var = tk.StringVar()
 
@@ -167,8 +147,10 @@ class JetJob:
         name_entry = tk.Entry(left_frame, textvariable=name_var)
         name_entry.grid(row=1, column=1, padx=5, pady=20)
 
-        btn = tk.Button(left_frame, text="Add profile", command=on_click)
-        btn.grid(row=2, column=1, padx=5, pady=20)
+        add_btn = tk.Button(left_frame, text="Add profile", command=on_add_click)
+        add_btn.grid(row=2, column=1, padx=5, pady=20)
+
+        
 
         # Right frame: Select profile
         right_frame = tk.Frame(self.create_profile_frame)
@@ -183,32 +165,59 @@ class JetJob:
         refresh_profile_list()
 
 
+    def get_last_used_profile(self):
+        path = os.path.join(self.profiles_path, "last_used.json")
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                data = json.load(f)
+                return data.get("last")
+        return None
+
+    def set_last_used_profile(self, profile_name):
+        path = os.path.join(self.profiles_path, "last_used.json")
+        with open(path, "w") as f:
+            json.dump({"last": profile_name}, f)
 
 
-    def test_profile_frame(self):
-        label = tk.Label(self.profile_frame, text="👤 Select or Create Profile", font=("Arial", 16))
-        label.pack(pady=20)
+    def has_valid_profiles(self):
+        for name in os.listdir(self.profiles_path):
+            profile_path = os.path.join(self.profiles_path, name)
+            if os.path.isdir(profile_path):
+                has_config = os.path.isfile(os.path.join(profile_path, "config.json"))
+                has_env = os.path.isfile(os.path.join(profile_path, ".env"))
+                if has_config and has_env:
+                    return True  # At least one valid profile found
+        return False  # No valid profiles found
 
-        btn_select = tk.Button(self.profile_frame, text="Select Profile", width=20, command=self.test_main_frame)
-        btn_create = tk.Button(self.profile_frame, text="Create New Profile", width=20, command=self.test_main_frame)
+    def create_env_file(self, profile_dir):
+        with open(os.path.join(profile_dir, ".env"), "w") as f:
+                f.write(f"OPENAI_API_KEY=\n")
+                f.write(f"GMAIL_APP_PASSWORD=\n")
 
-        btn_select.pack(pady=10)
-        btn_create.pack(pady=10)
+    def adjust_window(self):
+        # Set window size to 50% of screen
+        self.width = int(self.root.winfo_screenwidth() *self.screen_width)
+        self.height = int(self.root.winfo_screenheight() *self.screen_height)
+        self.root.geometry(f"{self.width}x{self.height}")
 
+        self.center_window(self.root, self.width, self.height)
 
-    def test_main_frame(self):
-        # You can clear the frame here if needed, for repeated calls
-        for widget in self.main_gui_frame.winfo_children():
-            widget.destroy()
+        # adjust size to fit all widgets
+        self.root.update_idletasks()      
 
-        label = tk.Label(self.main_gui_frame, text="✅ Main GUI Loaded", font=("Arial", 16))
-        label.pack(pady=20)
+        req_w = self.root.winfo_reqwidth()
+        req_h = self.root.winfo_reqheight()
+        scr_w = self.root.winfo_screenwidth()
+        scr_h = self.root.winfo_screenheight()
+        margin = 20                               
+    
+        win_w = min(max(self.width,  req_w + margin), scr_w)
+        win_h = min(max(self.height, req_h + margin), scr_h)
 
-        btn_back = tk.Button(self.main_gui_frame, text="← Back to Profile Menu", command=lambda: self.show_frame(self.profile_frame))
-        btn_back.pack(pady=10)
+        self.root.geometry(f"{win_w}x{win_h}")
 
-        self.show_frame(self.main_gui_frame)
-
+    def show_frame(self,frame):
+        frame.tkraise()
 
     def center_window(self,window, width, height):
         # Get screen width and height
