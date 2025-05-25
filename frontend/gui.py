@@ -63,22 +63,16 @@ class JetJob:
 
 
     def init_main_frame(self):
-        def on_return_btn():
-            self.init_create_profile_frame()
-            self.show_frame(self.create_profile_frame)
-        
-    
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
-
-       
 
         label = tk.Label(self.main_frame, text="✅ Main GUI Loaded", font=("Arial", 16))
         label.pack(pady=20)
 
-        self.show_frame(self.main_frame)
         
 
+        self.show_frame(self.main_frame)
+        
     def init_create_profile_frame(self):
         def refresh_profile_list():
             for widget in self.profile_list_frame.winfo_children():
@@ -226,6 +220,7 @@ class JetJob:
         openai_frame.grid(row=0, column=0, sticky="news", padx=10, pady=5)
         add_input(openai_frame, "API Key:", "OPENAI_API_KEY", masked=True)
 
+        # gmail
         gmail_app_pass_frame = tk.LabelFrame(self.config_env_frame, text="Gmail")
         gmail_app_pass_frame.grid(row=1,column=0,sticky="news",padx=10,pady=5)
         add_input(gmail_app_pass_frame,"App Password:" ,"GMAIL_APP_PASSWORD",masked=True)
@@ -243,7 +238,7 @@ class JetJob:
             with open(env_path, "w") as f:
                 f.write("\n".join(lines))
 
-            self.init_create_profile_frame()
+            # self.init_create_profile_frame()
             self.show_frame(self.main_frame)
 
         
@@ -251,14 +246,105 @@ class JetJob:
         save_button = tk.Button(self.config_env_frame, text="Done", command=on_done_click,width=20)
         save_button.grid(row=4, column=0, pady=10, padx=10,sticky="ns")
 
-
         self.show_frame(self.config_env_frame)
 
+    def init_config_search_param_frame(self):
+        self.config_search_param_frame = tk.Frame(self.root)
+        self.config_search_param_frame.grid(row=0, column=0, sticky="nsew")
 
-    def init_config_param_frame(self):
-        self.config_param_frame = tk.Label(self.root)
+        config_path = os.path.join(self.profiles_path, self.selected_profile, "config.json")
+
+        if os.path.exists(config_path):
+            with open(config_path) as f:
+                config_values = json.load(f)
+        else:
+            config_values = {}
+
+        print(config_values)
+
+        # URL row
+        url_label = tk.Label(self.config_search_param_frame, text="URL")
+        url_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
+
+        url_var = tk.StringVar(value=config_values.get("url", ""))
+        url_entry = tk.Entry(self.config_search_param_frame, textvariable=url_var, width=40)
+        url_entry.grid(row=0, column=1, padx=10, pady=10, sticky="w")
+
+        # Keyword entry
+        keywords_label = tk.Label(self.config_search_param_frame, text="Keywords")
+        keywords_label.grid(row=1, column=0, padx=10, pady=5, sticky="nw")
+
+        keyword_var = tk.StringVar()
+        keyword_entry = tk.Entry(self.config_search_param_frame, textvariable=keyword_var, width=30)
+        keyword_entry.grid(row=1, column=1, padx=10, pady=(5, 0), sticky="w")
+
+        # Keyword Listbox
+        keyword_listbox = tk.Listbox(self.config_search_param_frame, height=6, width=30, selectmode="multiple")
+        keyword_listbox.grid(row=2, column=1, padx=10, pady=5, sticky="w")
+        for kw in config_values.get("keywords", []):
+            keyword_listbox.insert("end", kw)
 
 
+         # Add + Delete keyword buttons
+        def add_keyword():
+            word = keyword_var.get().strip()
+            if word and word not in keyword_listbox.get(0, "end"):
+                keyword_listbox.insert("end", word)
+            keyword_var.set("")
+
+        def delete_selected():
+            for i in reversed(keyword_listbox.curselection()):
+                keyword_listbox.delete(i)
+
+        
+        add_btn = tk.Button(self.config_search_param_frame, text="Add", command=add_keyword)
+        add_btn.grid(row=1, column=2, padx=5, pady=(5, 0))
+
+        del_btn = tk.Button(self.config_search_param_frame, text="Delete", command=delete_selected)
+        del_btn.grid(row=2, column=2, padx=5, pady=5)
+
+        # LIMIT Slider (1–100)
+        limit_label = tk.Label(self.config_search_param_frame, text="Limit")
+        limit_label.grid(row=3, column=0, padx=10, pady=10, sticky="w")
+
+        limit_var = tk.IntVar(value=config_values.get("limit", 10))  # default = 10
+        limit_slider = tk.Scale(
+            self.config_search_param_frame, from_=1, to=100,
+            orient="horizontal", variable=limit_var, resolution=1
+        )
+        limit_slider.grid(row=3, column=1, padx=10, pady=10, sticky="w")
+
+        # OFFSET Slider (0–500 default range)
+        offset_label = tk.Label(self.config_search_param_frame, text="Offset")
+        offset_label.grid(row=4, column=0, padx=10, pady=10, sticky="w")
+
+        offset_var = tk.IntVar(value=config_values.get("offset", 0))  # default = 0
+        offset_slider = tk.Scale(
+            self.config_search_param_frame, from_=0, to=500,
+            orient="horizontal", variable=offset_var, resolution=1
+        )
+        offset_slider.grid(row=4, column=1, padx=10, pady=10, sticky="w")
+
+
+        def on_done_click():
+            data = {
+                "url": url_var.get(),
+                "keywords": keyword_listbox.get(0, "end"),
+                "limit": limit_var.get(),
+                "offset": offset_var.get()
+            }
+            with open(config_path, "w") as f:
+                json.dump(data, f, indent=4)
+            print("✅ Config saved")
+
+            self.show_frame(self.main_frame)
+
+        
+        # Save Button
+        save_button = tk.Button(self.config_search_param_frame, text="Done", command=on_done_click)
+        save_button.grid(row=5,column=0,pady=10, padx=10,sticky="we")
+
+        self.show_frame(self.config_search_param_frame)
 
     def create_menu(self):
         self.menubar = tk.Menu(self.root)
@@ -267,6 +353,9 @@ class JetJob:
 
         # env file creation and config
         self.menubar.add_command(label=".env config", command=self.init_config_env_frame)
+
+        # search param config
+        self.menubar.add_command(label="Search Parameter config", command=self.init_config_search_param_frame)
 
     def show_frame(self, frame):
         frame.tkraise()
@@ -326,7 +415,6 @@ class JetJob:
 
         self.root.geometry(f"{win_w}x{win_h}")
 
-    
     def center_window(self,window, width, height):
         # Get screen width and height
         screen_width = window.winfo_screenwidth()
@@ -337,6 +425,22 @@ class JetJob:
         y = (screen_height // 2) - (height // 2)
 
         window.geometry(f"{width}x{height}+{x}+{y}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     # def scan_for_profile_config(self) -> bool:

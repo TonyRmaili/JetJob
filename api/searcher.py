@@ -5,11 +5,13 @@ import os
 def search_ads(BASE_URL:str ,keywords:str,limit:int, offset:int,
             output_savepath:str, output_filename:str):
     # Search parameters
-    params = {
-        "q": keywords,      # Keyword search
-        "limit": limit,        # Number of results to return
-        "offset": offset    # Starting point of results
-    }
+    params = [
+        
+        ("q", "machine learning"),
+        ("q", "AI"),
+        ("limit", limit),
+        ("offset", offset)
+    ]
 
     # Make the GET request
     response = requests.get(BASE_URL , params= params)
@@ -25,14 +27,14 @@ def search_ads(BASE_URL:str ,keywords:str,limit:int, offset:int,
             #     municipality = job.get("workplace_address", {}).get("municipality", "No municipality provided")
             #     employer = job.get("employer", {}).get("name", "No employer provided")
             #     print(f"Job Title: {headline}\nLocation: {municipality}\nEmployer: {employer}\n")
-            first_hit = hits[0]
+            # first_hit = hits[10]
 
             # Save all parameters from the first hit to a file (pretty JSON format)
 
             save_path = os.path.join(output_savepath,output_filename)
 
             with open(save_path, "w", encoding="utf-8") as f:
-                json.dump(first_hit, f, ensure_ascii=False, indent=4)
+                json.dump(hits, f, ensure_ascii=False, indent=4)
 
         else:
             print("No job listings found for the given search parameters.")
@@ -48,7 +50,7 @@ if __name__ == "__main__":
     search_ads(
         BASE_URL=BASE_URL,
         keywords="python",
-        limit=1,
+        limit=10,
         offset=0,
         output_savepath= "./outputs",
         output_filename="test.json"
