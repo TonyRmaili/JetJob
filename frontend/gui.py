@@ -5,6 +5,9 @@ import os
 import json
 from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
+from api.send_email import send_email
+from api.searcher import search_ads
+
 
 # start command 
 # py -m frontend.gui
@@ -12,14 +15,22 @@ from backend.message_builder import MessageBuilder
 class JetJob:
     def __init__(self, screen_width:float, screen_height:float):
         self.root = tk.Tk()
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
         self.root.title("JetJob")
 
         self.screen_width = screen_width
         self.screen_height = screen_height
 
+        self.create_menu()
+
         # paths
         self.profiles_path = "./profiles"
         os.makedirs(self.profiles_path,exist_ok=True)
+
+        self.prompts_path = "./prompts"
+        os.makedirs(self.prompts_path,exist_ok=True)
+
 
         if not self.has_valid_profiles():
             self.selected_profile = None
@@ -30,12 +41,10 @@ class JetJob:
             self.selected_profile = self.get_last_used_profile()
             self.init_main_frame()
             self.show_frame(self.main_frame)
+           
 
-                
-        
         # gpt models
-        self.default_models = ["gpt-4o", "gpt-4o-mini","gpt-4.1"]
-        self.models = self.default_models.copy()
+        self.models = ["gpt-4o", "gpt-4o-mini","gpt-4.1"]
 
 
         # selected variables
@@ -44,30 +53,31 @@ class JetJob:
         self.output_folder = None
         self.output_filename = None
 
-    
+        # config parameters
         self.config_data = {
             "name":None,
         }
 
+        
         self.adjust_window()
 
 
     def init_main_frame(self):
-
         def on_return_btn():
             self.init_create_profile_frame()
             self.show_frame(self.create_profile_frame)
+        
     
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
 
+       
+
         label = tk.Label(self.main_frame, text="✅ Main GUI Loaded", font=("Arial", 16))
         label.pack(pady=20)
 
-        btn_back = tk.Button(self.main_frame, text="← Back to Profile Menu", command=on_return_btn)
-        btn_back.pack(pady=10)
-
         self.show_frame(self.main_frame)
+        
 
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -78,9 +88,9 @@ class JetJob:
                 name for name in os.listdir(self.profiles_path)
                 if os.path.isdir(os.path.join(self.profiles_path, name))
             ]
-
+            
             if profile_folders and not self.selected_profile_var.get():
-                self.selected_profile_var.set(profile_folders[0])
+                self.selected_profile_var.set(self.get_last_used_profile())
 
             if not profile_folders:
                 empty_label = tk.Label(self.profile_list_frame, text="(No profiles found)", fg="gray")
@@ -116,6 +126,9 @@ class JetJob:
             self.create_env_file(profile_dir=profile_dir)
 
             print(f"✅ Created profile: {name}")
+            self.set_last_used_profile(profile_name=name)
+            self.selected_profile_var.set(name)
+            name_var.set("")  
             refresh_profile_list()
 
         def on_return_click():
@@ -129,6 +142,7 @@ class JetJob:
             self.init_main_frame()
             self.show_frame(self.main_frame)
 
+    
         self.selected_profile_var = tk.StringVar()
 
         self.create_profile_frame = tk.Frame(self.root)
@@ -150,8 +164,6 @@ class JetJob:
         add_btn = tk.Button(left_frame, text="Add profile", command=on_add_click)
         add_btn.grid(row=2, column=1, padx=5, pady=20)
 
-        
-
         # Right frame: Select profile
         right_frame = tk.Frame(self.create_profile_frame)
         right_frame.grid(row=1, column=1, padx=20, sticky="n")
@@ -163,7 +175,106 @@ class JetJob:
         self.profile_list_frame.grid(row=1, column=0)
 
         refresh_profile_list()
+        self.show_frame(self.create_profile_frame)
 
+    def init_config_env_frame(self):
+        self.config_env_frame = tk.Frame(self.root)
+        self.config_env_frame.grid(row=0, column=0, sticky="nsew")
+
+        entries = {}
+        env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
+        
+        # # Load existing .env values (if file exists)
+        env_values = {}
+        if os.path.exists(env_path):
+            with open(env_path, "r") as f:
+                for line in f:
+                    if "=" in line:
+                        key, value = line.strip().split("=", 1)
+                        env_values[key] = value.strip('"')
+        
+        def add_input(frame, label_text, var_name, masked=False):
+            container = tk.Frame(frame)
+            container.pack(fill="x", padx=5, pady=2)
+
+            label = tk.Label(container, text=label_text)
+            label.pack(side="left")
+
+            var = tk.StringVar(value=env_values.get(var_name, ""))  # store value in StringVar
+            entry = tk.Entry(container, width=40, textvariable=var)
+            if masked:
+                entry.config(show="*")
+            entry.pack(side="left", padx=5)
+
+            def toggle_visibility():
+                if entry.cget("show") == "":
+                    entry.config(show="*")
+                    toggle_button.config(text="Show")
+                else:
+                    entry.config(show="")
+                    toggle_button.config(text="Hide")
+
+            if masked:
+                toggle_button = tk.Button(container, text="Show", command=toggle_visibility, width=5)
+                toggle_button.pack(side="left")
+
+            entries[var_name] = entry
+
+       
+        # OpenAI
+        openai_frame = tk.LabelFrame(self.config_env_frame, text="OpenAI")
+        openai_frame.grid(row=0, column=0, sticky="news", padx=10, pady=5)
+        add_input(openai_frame, "API Key:", "OPENAI_API_KEY", masked=True)
+
+        gmail_app_pass_frame = tk.LabelFrame(self.config_env_frame, text="Gmail")
+        gmail_app_pass_frame.grid(row=1,column=0,sticky="news",padx=10,pady=5)
+        add_input(gmail_app_pass_frame,"App Password:" ,"GMAIL_APP_PASSWORD",masked=True)
+
+
+        def on_done_click():
+            lines = []
+            for key, entry in entries.items():
+                val = entry.get().strip()
+                if " " in val:
+                    val = f'"{val}"'
+                lines.append(f"{key}={val}")
+
+            
+            with open(env_path, "w") as f:
+                f.write("\n".join(lines))
+
+            self.init_create_profile_frame()
+            self.show_frame(self.main_frame)
+
+        
+        # Save Button
+        save_button = tk.Button(self.config_env_frame, text="Done", command=on_done_click,width=20)
+        save_button.grid(row=4, column=0, pady=10, padx=10,sticky="ns")
+
+
+        self.show_frame(self.config_env_frame)
+
+
+    def init_config_param_frame(self):
+        self.config_param_frame = tk.Label(self.root)
+
+
+
+    def create_menu(self):
+        self.menubar = tk.Menu(self.root)
+
+        self.menubar.add_command(label="Profiles", command=self.init_create_profile_frame)
+
+        # env file creation and config
+        self.menubar.add_command(label=".env config", command=self.init_config_env_frame)
+
+    def show_frame(self, frame):
+        frame.tkraise()
+
+        if frame == self.main_frame:
+            self.root.config(menu=self.menubar)
+        else:
+            self.root.config(menu="")
 
     def get_last_used_profile(self):
         path = os.path.join(self.profiles_path, "last_used.json")
@@ -177,7 +288,6 @@ class JetJob:
         path = os.path.join(self.profiles_path, "last_used.json")
         with open(path, "w") as f:
             json.dump({"last": profile_name}, f)
-
 
     def has_valid_profiles(self):
         for name in os.listdir(self.profiles_path):
@@ -216,9 +326,7 @@ class JetJob:
 
         self.root.geometry(f"{win_w}x{win_h}")
 
-    def show_frame(self,frame):
-        frame.tkraise()
-
+    
     def center_window(self,window, width, height):
         # Get screen width and height
         screen_width = window.winfo_screenwidth()
@@ -247,132 +355,7 @@ class JetJob:
     #         self.configure_env_file()
     #         return False
     
-    # def configure_env_file(self):
-    #     popup = tk.Toplevel(self.root)
-    #     popup.title("Configure .env")
-    #     popup.geometry(f"{self.width}x{self.height}")
-
-    #     entries = {}
-
-       
-    #     # Load existing .env values (if file exists)
-    #     env_values = {}
-    #     if os.path.exists(".env"):
-    #         with open(".env", "r") as f:
-    #             for line in f:
-    #                 if "=" in line:
-    #                     key, value = line.strip().split("=", 1)
-    #                     env_values[key] = value.strip('"')
-        
-    #     # Filter out defaults when loading from .env
-    #     env_llms = env_values.get("LLM_MODELS", "")
-    #     llm_models = [m.strip() for m in env_llms.split(",") if m and m not in self.default_models]
-
-
-    #     def add_input(frame, label_text, var_name, masked=False):
-    #         container = tk.Frame(frame)
-    #         container.pack(fill="x", padx=5, pady=2)
-
-    #         label = tk.Label(container, text=label_text)
-    #         label.pack(side="left")
-
-    #         var = tk.StringVar(value=env_values.get(var_name, ""))  # store value in StringVar
-    #         entry = tk.Entry(container, width=40, textvariable=var)
-    #         if masked:
-    #             entry.config(show="*")
-    #         entry.pack(side="left", padx=5)
-
-    #         def toggle_visibility():
-    #             if entry.cget("show") == "":
-    #                 entry.config(show="*")
-    #                 toggle_button.config(text="Show")
-    #             else:
-    #                 entry.config(show="")
-    #                 toggle_button.config(text="Hide")
-
-    #         if masked:
-    #             toggle_button = tk.Button(container, text="Show", command=toggle_visibility, width=5)
-    #             toggle_button.pack(side="left")
-
-    #         entries[var_name] = entry
-
-       
-    #     # OpenAI
-    #     openai_frame = tk.LabelFrame(popup, text="OpenAI")
-    #     openai_frame.grid(row=0, column=0, sticky="news", padx=10, pady=5)
-    #     add_input(openai_frame, "API Key:", "OPENAI_API_KEY", masked=True)
-
-    #     gmail_app_pass_frame = tk.LabelFrame(popup, text="Gmail")
-    #     gmail_app_pass_frame.grid(row=1,column=0,sticky="news",padx=10,pady=5)
-    #     add_input(gmail_app_pass_frame,"App Password:" ,"GMAIL_APP_PASSWORD",masked=True)
-
-    #     # LLM Models input
-    #     llm_frame = tk.LabelFrame(popup, text="LLM Models")
-    #     llm_frame.grid(row=2, column=0, sticky="news", padx=10, pady=5)
-
-    #     llm_models = []
-    #     models_var = tk.StringVar()
-
-    #     # Load from .env if available
-    #     env_llms = env_values.get("LLM_MODELS", "")
-    #     if env_llms:
-    #         llm_models = [m.strip() for m in env_llms.split(",") if m]
-
-    #     models_display = tk.Label(llm_frame, text=", ".join(llm_models), wraplength=400, anchor="w", justify="left")
-    #     models_display.pack(padx=5, pady=(0, 5), fill="x")
-
-    #     def refresh_llm_display():
-    #         models_display.config(text=", ".join(llm_models))
-
-    #     def add_model():
-    #         model = models_var.get().strip()
-    #         if model and model not in llm_models:
-    #             llm_models.append(model)
-    #             refresh_llm_display()
-    #         models_var.set("")
-
-    #     def remove_last_model():
-    #         if llm_models:
-    #             llm_models.pop()
-    #             refresh_llm_display()
-
-    #     input_row = tk.Frame(llm_frame)
-    #     input_row.pack(fill="x", padx=5)
-
-    #     model_entry = tk.Entry(input_row, textvariable=models_var, width=30)
-    #     model_entry.pack(side="left")
-
-    #     add_btn = tk.Button(input_row, text="Add", command=add_model)
-    #     add_btn.pack(side="left", padx=5)
-
-    #     remove_btn = tk.Button(input_row, text="Remove Last", command=remove_last_model)
-    #     remove_btn.pack(side="left")
-
-       
-    #     def save_env():
-    #         lines = []
-    #         for key, entry in entries.items():
-    #             val = entry.get().strip()
-    #             if " " in val:
-    #                 val = f'"{val}"'
-    #             lines.append(f"{key}={val}")
-
-    #         if llm_models:
-    #             lines.append(f'LLM_MODELS="{",".join(llm_models)}"')
-    #         else:
-    #             lines.append('LLM_MODELS=""')
-
-    #         with open(".env", "w") as f:
-    #             f.write("\n".join(lines))
-
-            
-    #         popup.destroy()
-    #         self.models = list(dict.fromkeys(self.default_models + llm_models))  # deduplicated and ordered
-    #         self.refresh_model_dropdown()
-
-    #     # Save Button
-    #     save_button = tk.Button(popup, text="Save .env", command=save_env)
-    #     save_button.grid(row=4, column=0, pady=10)
+    
 
     # def create_labelframes(self):
     #     # base frame config
@@ -520,39 +503,7 @@ class JetJob:
 
     #     tk.Button(popup, text="Create Folder", command=submit).pack(pady=10)
 
-    # def create_menu(self):
-    #     menubar = tk.Menu(self.root)
-
-    #     # System Prompt - single file
-    #     profile_bar = tk.Menu(menubar, tearoff=0)
-    #     profile_bar.add_command(label="Select", command=self.select_profile)
-    #     profile_bar.add_command(label="Create new", command=self.create_profile)
-    #     menubar.add_cascade(label="Profiles",menu=profile_bar)
-
-    #     system_prompt_bar = tk.Menu(menubar, tearoff=0)
-    #     system_prompt_bar.add_command(label="Select Prompt", command=self.select_system_prompt)
-    #     system_prompt_bar.add_command(label="Reset Prompt", command=self.reset_system_prompt)
-    #     menubar.add_cascade(label="System Prompt",menu=system_prompt_bar)
-
-    #     # Data Files - multiple files
-    #     data_files_menu = tk.Menu(menubar,tearoff=0)
-    #     data_files_menu.add_command(label="Add Data Files", command=self.select_data_files)
-    #     data_files_menu.add_command(label="Reset Files", command=self.reset_data_files)
-    #     menubar.add_cascade(label="Data Files", menu=data_files_menu)
-
-    #     # Output folder
-    #     output_menu = tk.Menu(menubar, tearoff=0)
-    #     output_menu.add_command(label="Create folder", command=self.create_folder)
-    #     output_menu.add_command(label="Select folder", command=self.select_folder)
-    #     output_menu.add_command(label="Enter output filename" , command=self.create_output_filename)
-    #     menubar.add_cascade(label="Output", menu=output_menu)
-
-    #     self.root.config(menu=menubar)
-
-    #     # env file creation and config
-    #     menubar.add_command(label=".env config", command=self.configure_env_file)
-
-    #     self.root.config(menu=menubar)
+    
 
     # def create_output_filename(self):
     #     popup = tk.Toplevel(self.root)

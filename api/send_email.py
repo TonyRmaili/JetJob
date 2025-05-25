@@ -7,7 +7,6 @@ import os
 load_dotenv(override=True)
 # load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'), override=True)
 
-
 def send_email(
     subject,
     body,
@@ -41,11 +40,14 @@ def send_email(
     print("Email sent successfully.")
 
 
-send_email(
-    subject="new key",
-    body="Here is my CV .",
-    to_email="torm8078@gmail.com",
-    from_email="tony.rmaili@gmail.com",
-    password=os.getenv("GMAIL_APP_PASSWORD"),  # Use an app password, not your regular one!
-    smtp_server="smtp.gmail.com"  
-)
+
+
+if __name__ == "__main__":
+    send_email(
+        subject="new key",
+        body="Here is my CV .",
+        to_email="torm8078@gmail.com",
+        from_email="tony.rmaili@gmail.com",
+        password=os.getenv("GMAIL_APP_PASSWORD"),  # Use an app password, not your regular one!
+        smtp_server="smtp.gmail.com"  
+    )
