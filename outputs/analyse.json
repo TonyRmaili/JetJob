@@ -1,0 +1,123 @@
+ {
+        "relevance": 1.0,
+        "id": "29708965",
+        
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29708965",
+        
+        "headline": "IT Python Developer",
+        "application_deadline": "2025-06-15T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Role: IT Python Developer\n Seniority Level: Senior\n Location: Sundbyberg, Sweden\nWorkload: 80–100% full-time\n Remote Work: 25%\nApplication Deadline: 20 May 2025\nResponsibilities:\nDesign architecture and ensure system security\nFull-stack development (Frontend & Backend)\nAutomate and execute testing (manual and automated)\nManage incidents and perform operational support\nConfigure and maintain CI/CD pipelines\nCreate and update system documentation\nCollaborate with users such as data scientists and power system analysts\nInteract with stakeholders like domain architects, solution architects, and project managers\nOther relevant tasks as needed\n\n\n\nTechnologies & Tools:\nPython 3\nFastAPI\nSQLAlchemy\nAzure DevOps\nPyInstaller\nRHEL\nOpenShift",
+            "text_formatted": "<p><strong>Role:</strong> IT Python Developer</p><p> <strong>Seniority Level:</strong> Senior</p><p> <strong>Location:</strong> Sundbyberg, Sweden</p><p><strong>Workload:</strong> 80–100% full-time</p><p> <strong>Remote Work:</strong> 25%</p><p><strong>Application Deadline:</strong> 20 May 2025</p><p><strong>Responsibilities:</strong></p><ul><li>Design architecture and ensure system security</li><li>Full-stack development (Frontend &amp; Backend)</li><li>Automate and execute testing (manual and automated)</li><li>Manage incidents and perform operational support</li><li>Configure and maintain CI/CD pipelines</li><li>Create and update system documentation</li><li>Collaborate with users such as data scientists and power system analysts</li><li>Interact with stakeholders like domain architects, solution architects, and project managers</li><li>Other relevant tasks as needed</li></ul><p><br></p><p><strong>Technologies &amp; Tools:</strong></p><ul><li>Python 3</li><li>FastAPI</li><li>SQLAlchemy</li><li>Azure DevOps</li><li>PyInstaller</li><li>RHEL</li><li>OpenShift</li></ul>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        
+        "duration": {
+            "concept_id": "qQUd_4qe_NDT",
+            "label": "6 månader eller längre",
+            "legacy_ams_taxonomy_id": "2"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+       
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5591986913",
+            "name": "Semicon Service Nordic AB",
+            "workplace": "Sundbyberg, Sweden"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": "hr@semiconservicenordic.com",
+            "via_af": false,
+            "url": null,
+            "other": null
+        },
+       
+        "occupation": {
+            "concept_id": "fg7B_yov_smw",
+            "label": "Systemutvecklare/Programmerare",
+            "legacy_ams_taxonomy_id": "2419"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": null,
+            "municipality_code": null,
+            "municipality_concept_id": null,
+            "region": null,
+            "region_code": null,
+            "region_concept_id": null,
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "fg7B_yov_smw",
+                    "label": "Systemutvecklare/Programmerare",
+                    "legacy_ams_taxonomy_id": "2419"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-16T13:11:19",
+        "last_publication_date": "2025-06-15T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1747393879116
+    }
+

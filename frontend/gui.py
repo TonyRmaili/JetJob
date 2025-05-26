@@ -28,12 +28,10 @@ class JetJob:
         self.profiles_path = "./profiles"
         os.makedirs(self.profiles_path,exist_ok=True)
 
-        self.prompts_path = "./prompts"
-        os.makedirs(self.prompts_path,exist_ok=True)
-
 
         if not self.has_valid_profiles():
             self.selected_profile = None
+            self.main_frame = None
             self.init_create_profile_frame()
             self.show_frame(self.create_profile_frame)
 
@@ -46,6 +44,29 @@ class JetJob:
         # gpt models
         self.models = ["gpt-4o", "gpt-4o-mini","gpt-4.1"]
 
+        self.regions = ["Blekinge",
+                        "Dalarnas",
+                        "Gotlands", 
+                        "Gävleborgs", 
+                        "Hallands", 
+                        "Jämtlands", 
+                        "Jönköpings", 
+                        "Kalmar", 
+                        "Kronobergs", 
+                        "Norrbottens", 
+                        "Skåne", 
+                        "Stockholms", 
+                        "Södermanlands", 
+                        "Uppsala", 
+                        "Värmlands", 
+                        "Västerbottens", 
+                        "Västernorrlands", 
+                        "Västmanlands",
+                        "Västra Götalands", 
+                        "Örebro", 
+                        "Östergötlands" 
+                    ]
+
 
         # selected variables
         self.selected_system_prompt_file = None
@@ -53,25 +74,81 @@ class JetJob:
         self.output_folder = None
         self.output_filename = None
 
-        # config parameters
-        self.config_data = {
-            "name":None,
-        }
-
-        
         self.adjust_window()
 
 
     def init_main_frame(self):
+        valid_folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses/valid")
+
+        def on_search():
+            pass  
+
+        def refresh_file_list():
+            # Clear previous widgets in right_frame
+            for widget in right_frame.winfo_children():
+                widget.destroy()
+
+            if not os.path.exists(valid_folder_path):
+                os.makedirs(valid_folder_path)
+
+            files = [f for f in os.listdir(valid_folder_path) if os.path.isfile(os.path.join(valid_folder_path, f))]
+
+            if not files:
+                no_files_label = tk.Label(right_frame, text="No files found.", fg="gray")
+                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+                return
+
+            for idx, filename in enumerate(files):
+                full_path = os.path.join(valid_folder_path, filename)
+
+                # File label
+                file_label = tk.Label(right_frame, text=filename, anchor="w")
+                file_label.grid(row=idx, column=0, sticky="w", padx=5, pady=2)
+
+                # View button
+                view_btn = tk.Button(right_frame, text="View", width=8,
+                                    command=lambda f=full_path: view_file(f))
+                view_btn.grid(row=idx, column=1, padx=5)
+
+                # Delete button
+                delete_btn = tk.Button(right_frame, text="Delete", width=8,
+                                    command=lambda f=full_path: delete_file(f))
+                delete_btn.grid(row=idx, column=2, padx=5)
+
+        def view_file(filepath):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            popup = tk.Toplevel(self.root)
+            popup.title(f"Viewing: {os.path.basename(filepath)}")
+            text_area = tk.Text(popup, wrap="word")
+            text_area.insert("1.0", content)
+            text_area.pack(expand=True, fill="both")
+            text_area.config(state="disabled")
+
+        def delete_file(filepath):
+            confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
+            if confirm:
+                os.remove(filepath)
+                refresh_file_list()
+
+        # Main UI setup
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
 
-        label = tk.Label(self.main_frame, text="✅ Main GUI Loaded", font=("Arial", 16))
-        label.pack(pady=20)
+        left_frame = tk.LabelFrame(self.main_frame, text="Buttons")
+        left_frame.grid(row=0, column=0, sticky="nsw")
 
-        
+        right_frame = tk.LabelFrame(self.main_frame, text="Responses")
+        right_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+        right_frame.columnconfigure(0, weight=1)
+
+        search_btn = tk.Button(left_frame, text="Search", command=on_search, width=10)
+        search_btn.grid(row=0, column=0, padx=10, pady=10)
 
         self.show_frame(self.main_frame)
+        refresh_file_list()
+
         
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -114,15 +191,28 @@ class JetJob:
                 print("❌ Profile already exists")
                 return
 
+            # config parameters
+            default_config_data = {
+                "url":"https://jobsearch.api.jobtechdev.se/search",
+                "keywords":[
+                    "python"
+                ],
+                "limit":10,
+                "offset":0
+            }
+
             os.makedirs(profile_dir)
             with open(os.path.join(profile_dir, "config.json"), "w") as f:
-                json.dump({"name": name}, f, indent=4)
+                json.dump(default_config_data, f, indent=4)
             self.create_env_file(profile_dir=profile_dir)
 
             print(f"✅ Created profile: {name}")
             self.set_last_used_profile(profile_name=name)
             self.selected_profile_var.set(name)
-            name_var.set("")  
+            name_var.set("")
+
+            self.create_profile_subfolders(name)
+
             refresh_profile_list()
 
         def on_return_click():
@@ -136,7 +226,7 @@ class JetJob:
             self.init_main_frame()
             self.show_frame(self.main_frame)
 
-    
+
         self.selected_profile_var = tk.StringVar()
 
         self.create_profile_frame = tk.Frame(self.root)
@@ -346,6 +436,10 @@ class JetJob:
 
         self.show_frame(self.config_search_param_frame)
 
+    def init_data_files_frame(self):
+        pass
+
+
     def create_menu(self):
         self.menubar = tk.Menu(self.root)
 
@@ -356,6 +450,9 @@ class JetJob:
 
         # search param config
         self.menubar.add_command(label="Search Parameter config", command=self.init_config_search_param_frame)
+
+        self.menubar.add_command(label="Data files",command=self.init_data_files_frame)
+
 
     def show_frame(self, frame):
         frame.tkraise()
@@ -427,10 +524,22 @@ class JetJob:
         window.geometry(f"{width}x{height}+{x}+{y}")
 
 
+    def create_profile_subfolders(self,name):
+        # make subfolder
+        prompts_path = os.path.join(self.profiles_path,name,"prompts")
+        os.makedirs(prompts_path,exist_ok=True)
 
+        responses_path = os.path.join(self.profiles_path,name,"responses")
+        os.makedirs(responses_path,exist_ok=True)
 
+        valid_responses_path = os.path.join(responses_path,"valid")
+        os.makedirs(valid_responses_path,exist_ok=True)
 
+        rest_responses_path = os.path.join(responses_path,"rest")
+        os.makedirs(rest_responses_path,exist_ok=True)
 
+        attachement_files_path = os.path.join(self.profiles_path,name,"attachement_files")
+        os.makedirs(attachement_files_path,exist_ok=True)
 
 
 

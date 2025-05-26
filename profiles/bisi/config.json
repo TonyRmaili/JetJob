@@ -1,7 +1,6 @@
 {
     "url": "https://jobsearch.api.jobtechdev.se/search",
     "keywords": [
-        "machine learning",
         "python"
     ],
     "limit": 10,

@@ -1,0 +1,1269 @@
+[
+    {
+        "relevance": 1.0,
+        "id": "29708965",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29708965",
+        "logo_url": null,
+        "headline": "IT Python Developer",
+        "application_deadline": "2025-06-15T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Role: IT Python Developer\n Seniority Level: Senior\n Location: Sundbyberg, Sweden\nWorkload: 80–100% full-time\n Remote Work: 25%\nApplication Deadline: 20 May 2025\nResponsibilities:\nDesign architecture and ensure system security\nFull-stack development (Frontend & Backend)\nAutomate and execute testing (manual and automated)\nManage incidents and perform operational support\nConfigure and maintain CI/CD pipelines\nCreate and update system documentation\nCollaborate with users such as data scientists and power system analysts\nInteract with stakeholders like domain architects, solution architects, and project managers\nOther relevant tasks as needed\n\n\n\nTechnologies & Tools:\nPython 3\nFastAPI\nSQLAlchemy\nAzure DevOps\nPyInstaller\nRHEL\nOpenShift",
+            "text_formatted": "<p><strong>Role:</strong> IT Python Developer</p><p> <strong>Seniority Level:</strong> Senior</p><p> <strong>Location:</strong> Sundbyberg, Sweden</p><p><strong>Workload:</strong> 80–100% full-time</p><p> <strong>Remote Work:</strong> 25%</p><p><strong>Application Deadline:</strong> 20 May 2025</p><p><strong>Responsibilities:</strong></p><ul><li>Design architecture and ensure system security</li><li>Full-stack development (Frontend &amp; Backend)</li><li>Automate and execute testing (manual and automated)</li><li>Manage incidents and perform operational support</li><li>Configure and maintain CI/CD pipelines</li><li>Create and update system documentation</li><li>Collaborate with users such as data scientists and power system analysts</li><li>Interact with stakeholders like domain architects, solution architects, and project managers</li><li>Other relevant tasks as needed</li></ul><p><br></p><p><strong>Technologies &amp; Tools:</strong></p><ul><li>Python 3</li><li>FastAPI</li><li>SQLAlchemy</li><li>Azure DevOps</li><li>PyInstaller</li><li>RHEL</li><li>OpenShift</li></ul>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "qQUd_4qe_NDT",
+            "label": "6 månader eller längre",
+            "legacy_ams_taxonomy_id": "2"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5591986913",
+            "name": "Semicon Service Nordic AB",
+            "workplace": "Sundbyberg, Sweden"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": "hr@semiconservicenordic.com",
+            "via_af": false,
+            "url": null,
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "fg7B_yov_smw",
+            "label": "Systemutvecklare/Programmerare",
+            "legacy_ams_taxonomy_id": "2419"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": null,
+            "municipality_code": null,
+            "municipality_concept_id": null,
+            "region": null,
+            "region_code": null,
+            "region_concept_id": null,
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "fg7B_yov_smw",
+                    "label": "Systemutvecklare/Programmerare",
+                    "legacy_ams_taxonomy_id": "2419"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-16T13:11:19",
+        "last_publication_date": "2025-06-15T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1747393879116
+    },
+    {
+        "relevance": 1.0,
+        "id": "29391304",
+        "external_id": "46-559022-1916-909858-1",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29391304",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/organisation/5590221916/logotyper/logo.png",
+        "headline": "Python Software Developer",
+        "application_deadline": "2025-07-06T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Are you tired of working in monotonous environments? Seeking to level up with cutting-edge technologies and top-tier enterprises? Look no further! SwedQ puts its people first, prioritizing your career journey. We're all ears when it comes to your career aspirations. Want AWS certification? We've got you. Want to lead a team? Do it. Dreaming of becoming an Architect? Let's make it happen together by carving out a role that aligns with your goals.\nSwedQ is a consulting company that works towards becoming the first choice within development and digitalization through delivering tangible results based on our clients conditions and business objectives. How do we do it? By harnessing our unparalleled Know-how, extensive experience, and laser-focused competence. We're the go-to team for turning your wildest digital dreams into a reality.\nWhat's in it for you? \nAt SwedQ, we're looking for a python developerwho's always pushing the envelope. We're not just offering a job—we're opening up a world of opportunity. Get ready to tackle the latest and greatest tech, tackle unique challenges every single day, and experience a diverse array of environments. And get this: we're not waiting for an assignment to land on our lap. We're designing the role together with you, based on your experience and passions. Our assignments span across various industries, but our IT focus is razor-sharp. Our dynamic consultants are currently rocking out everything from implementing new cloud architectures to setting up back-end systems for self-driving vehicles. Are you ready to join the elite SwedQ crew and take on the digital world?\nOur clients\nWe're partnering with fintech upstarts and big-name giants alike. Our talented consultants are currently flexing their skills at titans like Spotify, H&M, Scania, Ericsson, Schibsted — among many others. The digital world is our playground, and we're constantly on the hunt for new partners to push the boundaries of innovation.\nYou will bring: \n Minimum 7 years of experience in Software engineering\n Strong analytical / problem solving skills\n Good communicator\n Fluentin English\n Swedish is meritorious\n JavaScript (React, AngularJS or similar)\n  AWS, GCP, Azure \n  CI/CD - Jenkins, TeamCity, Octups deploy or similar \n  Architectures - Microservices, serverless, N-Tier, REST, SOAP, GraphQL\n  Other - Elasticserach. Dynamodb, Databases\n Python (Django, Flask, Bottle or similar)\n Different services within the cloud providers\n Setting up deployment pipelines towards the cloud\n \nSwedQ culture\nThe culture is very very important to us. We're all about smashing hierarchies, embracing independence and accountability, and driving value-creating work—all while having a blast. Diversity and equal opportunity aren't just buzzwords to us—they're baked into our DNA. So go ahead, come to the office in flip-flops or high heels, as long as you're comfortable and true to yourself. And when it comes to blowing off steam, we take fun seriously. From epic football tourneys to unforgettable trips and dinners, we're all about creating memories that last a lifetime.\nPerks & Benefits \n Competitive salary \n Flexible working hours \n Budget to spend on health and gym\n Generous developers budget\n Monthly payments into you additional pension fund \n Private health insurance\n Office in the City – Stone's throw from public transport and lunch restaurants\n Support for open source projects and community engagements \n Developers time, to use during work hours for your personal growth \n Kick-ass colleagues and mentors at every corner\n \nOther information about the employment\n Start - Flexible starting date\n Employment - Full time\n Location - Stockholm",
+            "text_formatted": "<p><strong>Are you tired of working in monotonous environments? Seeking to level up with cutting-edge technologies and top-tier enterprises? Look no further! SwedQ puts its people first, prioritizing your career journey. We're all ears when it comes to your career aspirations. Want AWS certification? We've got you. Want to lead a team? Do it. Dreaming of becoming an Architect? Let's make it happen together by carving out a role that aligns with your goals.</strong></p><p>SwedQ is a consulting company that works towards becoming the first choice within development and digitalization through delivering tangible results based on our clients conditions and business objectives. How do we do it? By harnessing our unparalleled Know-how, extensive experience, and laser-focused competence. We're the go-to team for turning your wildest digital dreams into a reality.</p><p><strong>What's in it for you? </strong></p><p>At SwedQ, we're looking for a python developerwho's always pushing the envelope. We're not just offering a job—we're opening up a world of opportunity. Get ready to tackle the latest and greatest tech, tackle unique challenges every single day, and experience a diverse array of environments. And get this: we're not waiting for an assignment to land on our lap. We're designing the role together with you, based on your experience and passions. Our assignments span across various industries, but our IT focus is razor-sharp. Our dynamic consultants are currently rocking out everything from implementing new cloud architectures to setting up back-end systems for self-driving vehicles. Are you ready to join the elite SwedQ crew and take on the digital world?</p><p><strong>Our clients</strong></p><p>We're partnering with fintech upstarts and big-name giants alike. Our talented consultants are currently flexing their skills at titans like Spotify, H&amp;M, Scania, Ericsson, Schibsted — among many others. The digital world is our playground, and we're constantly on the hunt for new partners to push the boundaries of innovation.</p><p><strong>You will bring: </strong></p><ul> <li>Minimum 7 years of experience in Software engineering</li> <li>Strong analytical / problem solving skills</li> <li>Good communicator</li> <li>Fluentin English</li> <li>Swedish is meritorious</li> <li>JavaScript (React, AngularJS or similar)</li> <li> AWS, GCP, Azure </li> <li> CI/CD - Jenkins, TeamCity, Octups deploy or similar </li> <li> Architectures - Microservices, serverless, N-Tier, REST, SOAP, GraphQL</li> <li> Other - Elasticserach. Dynamodb, Databases</li> <li>Python (Django, Flask, Bottle or similar)</li> <li>Different services within the cloud providers</li> <li>Setting up deployment pipelines towards the cloud</li> </ul><p><strong>SwedQ culture</strong></p><p>The culture is very very important to us. We're all about smashing hierarchies, embracing independence and accountability, and driving value-creating work—all while having a blast. Diversity and equal opportunity aren't just buzzwords to us—they're baked into our DNA. So go ahead, come to the office in flip-flops or high heels, as long as you're comfortable and true to yourself. And when it comes to blowing off steam, we take fun seriously. From epic football tourneys to unforgettable trips and dinners, we're all about creating memories that last a lifetime.</p><p><strong>Perks &amp; Benefits </strong></p><ul> <li>Competitive salary </li> <li>Flexible working hours </li> <li>Budget to spend on health and gym</li> <li>Generous developers budget</li> <li>Monthly payments into you additional pension fund </li> <li>Private health insurance</li> <li>Office in the City – Stone's throw from public transport and lunch restaurants</li> <li>Support for open source projects and community engagements </li> <li>Developers time, to use during work hours for your personal growth </li> <li>Kick-ass colleagues and mentors at every corner</li> </ul><p><strong>Other information about the employment</strong></p><ul> <li>Start - Flexible starting date</li> <li>Employment - Full time</li> <li>Location - Stockholm</li> </ul><ul></ul>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Heltid\r\nAnställningstid enligt överenskommelse"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Lön enligt överenskommelse",
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "http://www.swedq.se",
+            "organization_number": "5590221916",
+            "name": "SwedQ AB",
+            "workplace": "SwedQ"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://career.swedq.se/jobs/909858-python-software-developer?promotion=1304946-arbetsformedlingen",
+            "other": null
+        },
+        "experience_required": false,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "rQds_YGd_quU",
+            "label": "Mjukvaruutvecklare",
+            "legacy_ams_taxonomy_id": "80"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                18.06858,
+                59.329323
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Victor Lagervall",
+                "email": "victor.lagervall@swedq.se",
+                "telephone": "0763097757",
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-01-17T16:44:24",
+        "last_publication_date": "2025-07-06T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1737128664651
+    },
+    {
+        "relevance": 0.9574788149370846,
+        "id": "29700637",
+        "external_id": "46-559051-4393-5926370-1",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29700637",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/organisation/5590514393/logotyper/logo.png",
+        "headline": "Senior IT Python Developer",
+        "application_deadline": "2025-10-30T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Om uppdraget\nVår kund är en stor samhällskritisk aktör inom energisektorn. De söker nu en senior Pythonutvecklare (nivå 3) till ett långsiktigt uppdrag i ett affärskritiskt och säkerhetsklassat område. Du kommer att ingå i ett tvärfunktionellt agilt team som ansvarar för både nyutveckling och förvaltning av avancerade system för planering och analys av det svenska transmissionsnätet – en central funktion för Sveriges elförsörjning.\nSystemen utvecklas i Python och React, och hanterar stora datamängder. All utveckling sker on-premises, vilket ställer höga krav på säkerhet, kvalitet och samarbete.\nDin rollSom systemutvecklare kommer du att:\n Delta i utveckling av både frontend och backend\n Ansvara för systemdesign, arkitektur och säkerhetslösningar\n Bygga och förbättra CI/CD-flöden\n Arbeta med testautomatisering och manuell testning\n Hantera incidenter och driftfrågor\n Arbeta nära andra utvecklare, testare, produktägare, data scientists, kraftsystemanalytiker och arkitekter\n Bidra till dokumentation och kontinuerlig förbättring av systemlösningar\n  Teknikstack & verktyg\nBackend: Python 3, FastAPI, SQLAlchemy, PyInstaller DevOps: Azure DevOps, CI/CD Miljö: RHEL, OpenShift Frontend (mindre del): React Arbetsmiljö: On-premises, säkerhetsklassad, agilt arbetssätt\n\n Kvalifikationer Senior erfarenhet som Pythonutvecklare i komplexa systemmiljöer\n Van vid att arbeta agilt i tvärfunktionella team\n God förståelse för arkitektur, säkerhet och CI/CD\n Erfarenhet av att arbeta nära verksamhet, t.ex. med data scientists eller tekniska analytiker\n Flytande i svenska och engelska\n Säkerhetskrav\nEftersom vår kund är en samhällsviktig aktör krävs det att du kan säkerhetsprövas och godkännas enligt svensk säkerhetsskyddslag.\nPraktisk informationOmfattning: 80–100 % Start: 11 augusti 2025 Plats: Sundbyberg, Stockholm (onsite ca 75%) Uppdragets längd: 2 år, med möjlighet till förlängning (1 + 1 år)",
+            "text_formatted": "Om uppdraget<p>Vår kund är en stor samhällskritisk aktör inom energisektorn. De&nbsp;söker nu en <strong>senior Pythonutvecklare (nivå 3)</strong> till ett långsiktigt uppdrag i ett affärskritiskt och säkerhetsklassat område. Du kommer att ingå i ett <strong>tvärfunktionellt agilt team</strong> som ansvarar för både nyutveckling och förvaltning av avancerade system för planering och analys av det svenska transmissionsnätet – en central funktion för Sveriges elförsörjning.</p><p>Systemen utvecklas i <strong>Python och React</strong>, och hanterar stora datamängder. All utveckling sker <strong>on-premises</strong>, vilket ställer höga krav på <strong>säkerhet, kvalitet och samarbete</strong>.</p>Din roll<p>Som systemutvecklare kommer du att:</p><ul> <li>Delta i utveckling av både frontend och backend</li> <li>Ansvara för systemdesign, arkitektur och säkerhetslösningar</li> <li>Bygga och förbättra CI/CD-flöden</li> <li>Arbeta med testautomatisering och manuell testning</li> <li>Hantera incidenter och driftfrågor</li> <li>Arbeta nära andra utvecklare, testare, produktägare, data scientists, kraftsystemanalytiker och arkitekter</li> <li>Bidra till dokumentation och kontinuerlig förbättring av systemlösningar</li> </ul> Teknikstack &amp; verktyg<p><strong>Backend:</strong> Python 3, FastAPI, SQLAlchemy, PyInstaller <strong>DevOps:</strong> Azure DevOps, CI/CD <strong>Miljö:</strong> RHEL, OpenShift <strong>Frontend (mindre del):</strong> React <strong>Arbetsmiljö:</strong> On-premises, säkerhetsklassad, agilt arbetssätt</p><p></p><ul> </ul>Kvalifikationer<ul> <li>Senior erfarenhet som Pythonutvecklare i komplexa systemmiljöer</li> <li>Van vid att arbeta agilt i tvärfunktionella team</li> <li>God förståelse för arkitektur, säkerhet och CI/CD</li> <li>Erfarenhet av att arbeta nära verksamhet, t.ex. med data scientists eller tekniska analytiker</li> <li>Flytande i svenska och engelska</li> </ul>Säkerhetskrav<p>Eftersom vår kund&nbsp;är en samhällsviktig aktör krävs det att du kan <strong>säkerhetsprövas och godkännas</strong> enligt svensk säkerhetsskyddslag.</p>Praktisk information<p><strong>Omfattning:</strong> 80–100 % <strong>Start:</strong> 11 augusti 2025 <strong>Plats:</strong> Sundbyberg, Stockholm (onsite ca 75%) <strong>Uppdragets längd:</strong> 2 år, med möjlighet till <strong>förlängning (1 + 1 år)</strong></p> <ul> </ul>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Heltid\r\nAnställningstid enligt överenskommelse"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Lön enligt överenskommelse",
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://www.eeze.nu/",
+            "organization_number": "5590514393",
+            "name": "Eeze Consulting AB",
+            "workplace": "EEZE"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://eeze.teamtailor.com/jobs/5926370-senior-it-python-developer?promotion=1468470-arbetsformedlingen",
+            "other": null
+        },
+        "experience_required": false,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "fg7B_yov_smw",
+            "label": "Systemutvecklare/Programmerare",
+            "legacy_ams_taxonomy_id": "2419"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                18.06858,
+                59.329323
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Paulina Erlandson",
+                "email": "paulina@eeze.nu",
+                "telephone": null,
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-05-13T18:15:25",
+        "last_publication_date": "2025-10-30T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1747152925238
+    },
+    {
+        "relevance": 0.9220271094432001,
+        "id": "29702525",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29702525",
+        "logo_url": null,
+        "headline": "Backend Engineer, Python / Go",
+        "application_deadline": "2025-06-13T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Payments product team\nAt the heart of Wolt’s evolution from a food delivery service to an expansive super app, the Payment Products Team drives user-centric payment solutions that reshape how customers engage with our platform. You can work at the forefront of Wolt’s growth, where your contributions directly influence the future of payments and unlock new possibilities for customers worldwide.\n\n\nOur humble expectations \nWe are looking for experienced software engineers who can develop production-level microservices in Python & Go. In this role, you will play a key role in designing, developing, and maintaining high-quality software systems. You will work closely with cross-functional teams to deliver robust solutions while leveraging cutting-edge technologies and best practices.\nKey Responsibilities\nDevelop and maintain scalable backend applications, primarily in Python, with increasing use of Go expected in the coming years.\nDesign and optimize database schemas, queries, and indexes using SQL databases like PostgreSQL\nFamiliarity with asynchronous event processing (Kafka or others)\nWork with containerization technologies like Docker and orchestration platforms like Kubernetes\nUtilize cloud platforms such as AWS for deploying and scaling applications\nExperience in Kotlin is useful\n\nWhat We Value\nLeadership by Example: Active participation in code reviews, mentoring, and onboarding.\nAutonomy & Ownership: Our engineers have end-to-end responsibility for their services, from implementation to production.\nProactive Problem Solving: Ability to identify, own, and resolve challenges with minimal guidance.\nKnowledge Sharing: A passion for fostering a culture of collaboration and excellence.\n\n\n\nFluency in English language is mandatory.\n🌍 Where You’ll Work\nThe role is based in Stockholm, with the option to work from Helsinki. We maintain a remote-friendly setup to foster innovation and teamwork.",
+            "text_formatted": "<p>Payments product team</p><p>At the heart of Wolt’s evolution from a food delivery service to an expansive super app, the Payment Products Team drives user-centric payment solutions that reshape how customers engage with our platform. You can work at the forefront of Wolt’s growth, where your contributions directly influence the future of payments and unlock new possibilities for customers worldwide.</p><p><br></p><p>Our humble expectations </p><p>We are looking for experienced software engineers who can develop production-level microservices in Python &amp; Go. In this role, you will play a key role in designing, developing, and maintaining high-quality software systems. You will work closely with cross-functional teams to deliver robust solutions while leveraging cutting-edge technologies and best practices.</p><p>Key Responsibilities</p><ul><li>Develop and maintain scalable backend applications, primarily in Python, with increasing use of Go expected in the coming years.</li><li>Design and optimize database schemas, queries, and indexes using SQL databases like PostgreSQL</li><li>Familiarity with asynchronous event processing (Kafka or others)</li><li>Work with containerization technologies like Docker and orchestration platforms like Kubernetes</li><li>Utilize cloud platforms such as AWS for deploying and scaling applications</li><li>Experience in Kotlin is useful</li></ul><p>What We Value</p><ul><li>Leadership by Example: Active participation in code reviews, mentoring, and onboarding.</li><li>Autonomy &amp; Ownership: Our engineers have end-to-end responsibility for their services, from implementation to production.</li><li>Proactive Problem Solving: Ability to identify, own, and resolve challenges with minimal guidance.</li><li>Knowledge Sharing: A passion for fostering a culture of collaboration and excellence.</li></ul><p><br></p><p>Fluency in English language is mandatory.</p><p>🌍 Where You’ll Work</p><p>The role is based in Stockholm, with the option to work from Helsinki. We maintain a remote-friendly setup to foster innovation and teamwork.</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "http://www.wolt.com",
+            "organization_number": "5593892309",
+            "name": "Wolt Development Sverige AB",
+            "workplace": "Wolt Development Sverige AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://careers.wolt.com/en/jobs/3141774",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "7wdX_4rv_33z",
+            "label": "Backend-utvecklare",
+            "legacy_ams_taxonomy_id": "7632"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": "Solnavägen 3 H",
+            "postcode": "11363",
+            "city": "Stockholm",
+            "coordinates": [
+                18.0307250985521,
+                59.3472636884668
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "7wdX_4rv_33z",
+                    "label": "Backend-utvecklare",
+                    "legacy_ams_taxonomy_id": "7632"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-14T13:27:00",
+        "last_publication_date": "2025-06-13T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1747222020690
+    },
+    {
+        "relevance": 0.9220271094432001,
+        "id": "29603127",
+        "external_id": "46-556674-5484-4627339-1",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29603127",
+        "logo_url": null,
+        "headline": "Mjukvaruutvecklare / C++ / Python",
+        "application_deadline": "2025-09-21T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Om tjänsten På Combine befinner vi oss i en viktig tillväxtfas och söker nu erfarna och seniora utvecklare till vårt kontor i Linköping. Den ökande efterfrågan från både kunder och partners driver vår expansion. Vi är passionerade för ny teknik och uppskattar en gemensam utvecklingsanda. Tillsammans formar vi framtidens innovationer och löser tekniska utmaningar med expertis. Vi söker nu mjukvaruutvecklare inom C++, Python och/eller Linux för att stärka vårt Control Systems Solutions team i Linköping. Du kommer att ingå i ett växande team och spela en viktig roll i att ta kontoret till nästa nivå. Hos oss blir du en del av ett inspirerande arbetsklimat där din kunskap och kreativitet uppmuntras Om Combine Combine är en ledande leverantör av högkvalitativa ingenjörstjänster inom data science, mjukvaruutveckling och styrsystem. Det som förenar våra ingenjörer är ett genuint intresse för att lösa problem med en matematisk och teoretisk metod. Vi hjälper våra kunder att få ut sina produkter på marknaden i tid och med hög kvalitet. Vi erbjuder varierande utmaningar i en teknisk miljö, en inspirerande arbetsmiljö och entusiastiska kollegor. Vi har kontor i Göteborg, Lund och Linköping.\nArbetsbeskrivning Som konsult på Combine får du möjlighet att arbeta med spännande uppdrag, med avancerade produkter och teknik tillsammans med duktiga kollegor. Våra kunder är några av Sveriges mest framträdande produktbolag med utmaningar i den absoluta tekniska framkanten. Arbetet i detta uppdrag fokuserar på utveckling i C++, Python och i Linuxmiljöer för inbyggda mjukvarusystem. \nKvalifikationer\n M.Sc. inom relevant område\n Erfarenhet av att arbeta med mjukvaruutveckling i C/C++, Python och Linuxkod för inbyggda system.\n Flerårig relevant arbetslivserfarenhet\n Du har mycket god förmåga att uttrycka dig i tal och skrift på både svenska och engelska \n \nVi söker dig som har minst tre års erfarenhet av mjukvaruutveckling, där en del av den tiden gärna har varit i en konsultroll. Du trivs med att arbeta agilt och drivs av att leverera hög kvalitet samtidigt som du är beredd att dela dina kunskaper med kollegor och våra kunder. Du har en förmåga att föra ditt arbete framåt, samtidigt som du kan dra nytta av andras kunskap för att utvecklas.\nVälkommen med din ansökan!",
+            "text_formatted": "<p><strong><strong>Om tjänsten</strong> </strong>På Combine befinner vi oss i en viktig tillväxtfas och söker nu erfarna och seniora utvecklare till vårt kontor i Linköping. Den ökande efterfrågan från både kunder och partners driver vår expansion. Vi är passionerade för ny teknik och uppskattar en gemensam utvecklingsanda. Tillsammans formar vi framtidens innovationer och löser tekniska utmaningar med expertis. Vi söker nu mjukvaruutvecklare inom C++, Python och/eller Linux för att stärka vårt Control Systems Solutions team i Linköping. Du kommer att ingå i ett växande team och spela en viktig roll i att ta kontoret till nästa nivå. Hos oss blir du en del av ett inspirerande arbetsklimat där din kunskap och kreativitet uppmuntras <strong><strong><strong>Om Combine</strong></strong></strong> Combine är en ledande leverantör av högkvalitativa ingenjörstjänster inom data science, mjukvaruutveckling och styrsystem. Det som förenar våra ingenjörer är ett genuint intresse för att lösa problem med en matematisk och teoretisk metod. Vi hjälper våra kunder att få ut sina produkter på marknaden i tid och med hög kvalitet. Vi erbjuder varierande utmaningar i en teknisk miljö, en inspirerande arbetsmiljö och entusiastiska kollegor. Vi har kontor i Göteborg, Lund och Linköping.</p><p><strong>Arbetsbeskrivning</strong> Som konsult på Combine får du möjlighet att arbeta med spännande uppdrag, med avancerade produkter och teknik tillsammans med duktiga kollegor. Våra kunder är några av Sveriges mest framträdande produktbolag med utmaningar i den absoluta tekniska framkanten. Arbetet i detta uppdrag fokuserar på utveckling i C++, Python och i Linuxmiljöer för inbyggda mjukvarusystem. </p><p><strong>Kvalifikationer</strong></p><ul> <li>M.Sc. inom relevant område</li> <li>Erfarenhet av att arbeta med mjukvaruutveckling i C/C++, Python och Linuxkod för inbyggda system.</li> <li>Flerårig relevant arbetslivserfarenhet</li> <li>Du har mycket god förmåga att uttrycka dig i tal och skrift på både svenska och engelska </li> </ul><p>Vi söker dig som har minst tre års erfarenhet av mjukvaruutveckling, där en del av den tiden gärna har varit i en konsultroll. Du trivs med att arbeta agilt och drivs av att leverera hög kvalitet samtidigt som du är beredd att dela dina kunskaper med kollegor och våra kunder. Du har en förmåga att föra ditt arbete framåt, samtidigt som du kan dra nytta av andras kunskap för att utvecklas.</p><p>Välkommen med din ansökan!</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Heltid\r\nAnställningstid enligt överenskommelse"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Lön enligt överenskommelse",
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://combine.se/",
+            "organization_number": "5566745484",
+            "name": "Combine Control Systems AB",
+            "workplace": "Combine"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://combine.teamtailor.com/jobs/4627339-mjukvaruutvecklare-c-python?promotion=1413927-arbetsformedlingen",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "rQds_YGd_quU",
+            "label": "Mjukvaruutvecklare",
+            "legacy_ams_taxonomy_id": "80"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Linköping",
+            "municipality_code": "0580",
+            "municipality_concept_id": "bm2x_1mr_Qhx",
+            "region": "Östergötlands län",
+            "region_code": "05",
+            "region_concept_id": "oLT3_Q9p_3nn",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                15.621373,
+                58.41081
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "rQds_YGd_quU",
+                    "label": "Mjukvaruutvecklare",
+                    "legacy_ams_taxonomy_id": "80"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Camilla Collins",
+                "email": "camilla.collins@combine.se",
+                "telephone": null,
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-04-04T08:58:35",
+        "last_publication_date": "2025-09-21T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1743749915349
+    },
+    {
+        "relevance": 0.8920172549790113,
+        "id": "29730343",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29730343",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/84362651/logotyper/logo.png",
+        "headline": "Junior Python Systemutvecklare – Stockholm heltid",
+        "application_deadline": "2025-06-09T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Modernera är ett modernt rekryterings- och bemanningsföretag. www.modernera.se\nFör en kunds räkning söker vi nu en junior Python systemutvecklare. Vår kund levererar lösningar som gör att deras kunder kan öka förändringstakt och kvalitet i sina digitala tjänster. Företagets kunder finns främst bland teleoperatörer, offentlig sektor, bank och försäkring i Sverige och Norge. Företaget har funnits sedan 1999 och består idag av ett 50-tal medarbetare.\nDu kommer att jobba i trevliga lokaler i centrala Stockholm. Det finns möjlighet att arbeta hemifrån.\nDu kommer att arbeta i varierande projekt och stå inför intressanta utmaningar för att effektivisera företagets kunders tekniska vardag.\nDu har:\nUtbildning på kandidatnivå\nUpp till 3 års erfarenhet inom utveckling\nBackend programmering\nCI/CD pipeline (som Jenkins, Bamboo, Tekton)\nVersionshantering (som Git, SVN, BitBucket)\nMeriterande:\nFrontend programering (som TypeScript, react.js, Node.js, angular.js)\nArkitektur baserad på mikrotjänster\nDocker\nKubernetes\nTerraform\nOpenShift Cloud (som AWS, Azure)\nPython\nShell\nC++\nConfiguration as code\nInfrastructure as code\nDu får:\nArbeta i utmanande projekt med teknik i framkant\nKontinuerlig kompetensutveckling där certifieringar är en självklarhet\nVara en del av en stimulerande arbetsmiljö med högt i tak\nÅka på spännande konferensresor med roliga aktiviteter\nPrivat sjukvårdsförsäkring, pensionsersättning, ett ordentligt friskvårdsbidrag och andra generösa förmåner\nDu kommer att bli anställd hos vår kund. Heltid. Provanställning som övergår i en tillsvidareanställning efter sex månader. Tillträde: omgående.\nAnsök genom att skicka ditt CV och personligt brev till info@modernera.se. Skriv ”Junior Python Systemutvecklare – Stockholm heltid” i ärenderaden.",
+            "text_formatted": "<p>Modernera är ett modernt rekryterings- och bemanningsföretag. www.modernera.se</p><p>För en kunds räkning söker vi nu en junior Python systemutvecklare. Vår kund levererar lösningar som gör att deras kunder kan öka förändringstakt och kvalitet i sina digitala tjänster. Företagets kunder finns främst bland teleoperatörer, offentlig sektor, bank och försäkring i Sverige och Norge. Företaget har funnits sedan 1999 och består idag av ett 50-tal medarbetare.</p><p>Du kommer att jobba i trevliga lokaler i centrala Stockholm. Det finns möjlighet att arbeta hemifrån.</p><p>Du kommer att arbeta i varierande projekt och stå inför intressanta utmaningar för att effektivisera företagets kunders tekniska vardag.</p><p>Du har:</p><p>Utbildning på kandidatnivå</p><p>Upp till 3 års erfarenhet inom utveckling</p><p>Backend programmering</p><p>CI/CD pipeline (som Jenkins, Bamboo, Tekton)</p><p>Versionshantering (som Git, SVN, BitBucket)</p><p>Meriterande:</p><p>Frontend programering (som TypeScript, react.js, Node.js, angular.js)</p><p>Arkitektur baserad på mikrotjänster</p><p>Docker</p><p>Kubernetes</p><p>Terraform</p><p>OpenShift Cloud (som AWS, Azure)</p><p>Python</p><p>Shell</p><p>C++</p><p>Configuration as code</p><p>Infrastructure as code</p><p>Du får:</p><p>Arbeta i utmanande projekt med teknik i framkant</p><p>Kontinuerlig kompetensutveckling där certifieringar är en självklarhet</p><p>Vara en del av en stimulerande arbetsmiljö med högt i tak</p><p>Åka på spännande konferensresor med roliga aktiviteter</p><p>Privat sjukvårdsförsäkring, pensionsersättning, ett ordentligt friskvårdsbidrag och andra generösa förmåner</p><p>Du kommer att bli anställd hos vår kund. Heltid. Provanställning som övergår i en tillsvidareanställning efter sex månader. Tillträde: omgående.</p><p>Ansök genom att skicka ditt CV och personligt brev till info@modernera.se. Skriv ”Junior Python Systemutvecklare – Stockholm heltid” i ärenderaden.</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5568441124",
+            "name": "Modernera AB",
+            "workplace": "MODERNERA AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": "info@modernera.se",
+            "via_af": false,
+            "url": null,
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "fg7B_yov_smw",
+            "label": "Systemutvecklare/Programmerare",
+            "legacy_ams_taxonomy_id": "2419"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": "Hammarby kaj 10d",
+            "postcode": "12032",
+            "city": "Stockholm",
+            "coordinates": [
+                18.0835743842141,
+                59.3035850917195
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-26T12:34:13",
+        "last_publication_date": "2025-06-09T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1748255653355
+    },
+    {
+        "relevance": 0.8920172549790113,
+        "id": "29687720",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29687720",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/87967126/logotyper/logo.png",
+        "headline": "Senior Python Test Engineer – 12406",
+        "application_deadline": "2025-06-07T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Veritaz is a leading IT staffing solutions provider in Sweden, committed to advancing individual careers and aiding employers in securing the perfect talent fit. With a proven track record of successful partnerships with top companies, we have rapidly grown our presence in the USA, Europe, and Sweden as a dependable and trusted resource within the IT industry.\nAssignment Description:\nWe are looking for a Senior Python Test Engineer to join our dynamic team.\nWhat you will work on:\nMigrate test cases from Robot Framework to Pytest across both component and domain integration levels\nValidate all migrated test cases in collaboration with the owning teams to ensure full functionality and alignment\nDevelop parameterized and auto-generated test cases as needed, supporting ongoing feature development\nContribute to the testing of integrated vehicle functionalities including infotainment, connectivity, diagnostics, power modes, Bluetooth pairing, mobile network access, Wi-Fi hotspots, OTA updates, media playback, voice control, navigation, and smartphone platform integration (Android Auto, Apple CarPlay)\nLead or support stakeholder collaboration, test governance meetings, request prioritization, and ensure seamless daily test execution\n\nWhat you bring:\nMandatory on-site availability in Gothenburg; remote work is not permitted\nProven experience with Robot Framework and Python for test development and automation\nPrior work experience in Sweden and with an automotive customer\nFor senior test engineer role: minimum 5 years of experience, with ability to lead test coordination and contribute to test strategy and planning\nFor test engineer roles: minimum 3 years of hands-on testing experience in relevant domains\nStrong communication and organizational skills with the ability to manage priorities and cross-team dependencies\nProficiency in English, both spoken and written, sufficient for all aspects of the assignment",
+            "text_formatted": "<p>Veritaz is a leading IT staffing solutions provider in Sweden, committed to advancing individual careers and aiding employers in securing the perfect talent fit. With a proven track record of successful partnerships with top companies, we have rapidly grown our presence in the USA, Europe, and Sweden as a dependable and trusted resource within the IT industry.</p><p><strong>Assignment Description:</strong></p><p>We are looking for a Senior Python Test Engineer to join our dynamic team.</p><p><strong>What you will work on:</strong></p><ul><li>Migrate test cases from Robot Framework to Pytest across both component and domain integration levels</li><li>Validate all migrated test cases in collaboration with the owning teams to ensure full functionality and alignment</li><li>Develop parameterized and auto-generated test cases as needed, supporting ongoing feature development</li><li>Contribute to the testing of integrated vehicle functionalities including infotainment, connectivity, diagnostics, power modes, Bluetooth pairing, mobile network access, Wi-Fi hotspots, OTA updates, media playback, voice control, navigation, and smartphone platform integration (Android Auto, Apple CarPlay)</li><li>Lead or support stakeholder collaboration, test governance meetings, request prioritization, and ensure seamless daily test execution</li></ul><p><strong>What you bring:</strong></p><ul><li>Mandatory on-site availability in Gothenburg; remote work is not permitted</li><li>Proven experience with Robot Framework and Python for test development and automation</li><li>Prior work experience in Sweden and with an automotive customer</li><li>For senior test engineer role: minimum 5 years of experience, with ability to lead test coordination and contribute to test strategy and planning</li><li>For test engineer roles: minimum 3 years of hands-on testing experience in relevant domains</li><li>Strong communication and organizational skills with the ability to manage priorities and cross-team dependencies</li><li>Proficiency in English, both spoken and written, sufficient for all aspects of the assignment</li></ul>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "http://www.veritaz.se",
+            "organization_number": "5592500705",
+            "name": "Veritaz AB",
+            "workplace": "Gothenburg"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://veritaz.se/jobs/senior-python-test-engineer-12406",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "TT8h_qKk_1iu",
+            "label": "Affärskonsult, IT",
+            "legacy_ams_taxonomy_id": "7579"
+        },
+        "occupation_group": {
+            "concept_id": "UXKZ_3zZ_ipB",
+            "label": "Systemanalytiker och IT-arkitekter m.fl.",
+            "legacy_ams_taxonomy_id": "2511"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": null,
+            "municipality_code": null,
+            "municipality_concept_id": null,
+            "region": null,
+            "region_code": null,
+            "region_concept_id": null,
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "TT8h_qKk_1iu",
+                    "label": "Affärskonsult, IT",
+                    "legacy_ams_taxonomy_id": "7579"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-08T11:59:44",
+        "last_publication_date": "2025-06-07T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1746698384298
+    },
+    {
+        "relevance": 0.8439779214860158,
+        "id": "29728772",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29728772",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/82353272/logotyper/logo.png",
+        "headline": "Älskar du Python & Django? Ansök via SSH!",
+        "application_deadline": "2025-05-29T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Vill du jobba med Python och Django? Älskar du open source? Då vill vi gärna jobba med dig.\nAnsök direkt i terminalen genom att SSH:a till join.5monkeys.se!\nFrån våra kontor i Stockholm, Göteborg och från våra distanskontor (remote!) tar vi fram storskaliga digitala tjänster åt våra kunder.\nVi har utvecklat några av Sveriges allra största Python/Django-baserade digitala tjänster. Genom att all utveckling sker tillsammans i team kan vi upprätthålla en mycket hög gemensam kunskaps- och kvalitetsnivå där vi lär oss av varandra.\nVi gillar modern testdriven utveckling med byggstenar såsom Docker, CI-verktyg och hög coverage.\nVi bidrar aktivt till flera open source-projekt. Du hittar några av våra projekt på GitHub: https://github.com/5monkeys\nDu ansöker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. Välkommen!",
+            "text_formatted": "<p>Vill du jobba med Python och Django? Älskar du open source? Då vill vi gärna jobba med dig.</p><p>Ansök direkt i terminalen genom att SSH:a till join.5monkeys.se!</p><p>Från våra kontor i Stockholm, Göteborg och från våra distanskontor (remote!) tar vi fram storskaliga digitala tjänster åt våra kunder.</p><p>Vi har utvecklat några av Sveriges allra största Python/Django-baserade digitala tjänster. Genom att all utveckling sker tillsammans i team kan vi upprätthålla en mycket hög gemensam kunskaps- och kvalitetsnivå där vi lär oss av varandra.</p><p>Vi gillar modern testdriven utveckling med byggstenar såsom Docker, CI-verktyg och hög coverage.</p><p>Vi bidrar aktivt till flera open source-projekt. Du hittar några av våra projekt på GitHub: https://github.com/5monkeys</p><p>Du ansöker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. Välkommen!</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://www.5monkeys.se/",
+            "organization_number": "5567124143",
+            "name": "5 Monkeys Agency AB",
+            "workplace": "5 Monkeys Agency AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": null,
+            "other": "Anslut med SSH till join.5monkeys.se för att göra din ansökan"
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "fg7B_yov_smw",
+            "label": "Systemutvecklare/Programmerare",
+            "legacy_ams_taxonomy_id": "2419"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-26T02:55:38",
+        "last_publication_date": "2025-05-29T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1748220938366
+    },
+    {
+        "relevance": 0.8439779214860158,
+        "id": "29724954",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29724954",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/82353272/logotyper/logo.png",
+        "headline": "Älskar du Python & Django? Ansök via SSH!",
+        "application_deadline": "2025-05-26T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Vill du jobba med Python och Django? Älskar du open source? Då vill vi gärna jobba med dig.\nAnsök direkt i terminalen genom att SSH:a till join.5monkeys.se!\nFrån våra kontor i Stockholm, Göteborg och från våra distanskontor (remote!) tar vi fram storskaliga digitala tjänster åt våra kunder.\nVi har utvecklat några av Sveriges allra största Python/Django-baserade digitala tjänster. Genom att all utveckling sker tillsammans i team kan vi upprätthålla en mycket hög gemensam kunskaps- och kvalitetsnivå där vi lär oss av varandra.\nVi gillar modern testdriven utveckling med byggstenar såsom Docker, CI-verktyg och hög coverage.\nVi bidrar aktivt till flera open source-projekt. Du hittar några av våra projekt på GitHub: https://github.com/5monkeys\nDu ansöker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. Välkommen!",
+            "text_formatted": "<p>Vill du jobba med Python och Django? Älskar du open source? Då vill vi gärna jobba med dig.</p><p>Ansök direkt i terminalen genom att SSH:a till join.5monkeys.se!</p><p>Från våra kontor i Stockholm, Göteborg och från våra distanskontor (remote!) tar vi fram storskaliga digitala tjänster åt våra kunder.</p><p>Vi har utvecklat några av Sveriges allra största Python/Django-baserade digitala tjänster. Genom att all utveckling sker tillsammans i team kan vi upprätthålla en mycket hög gemensam kunskaps- och kvalitetsnivå där vi lär oss av varandra.</p><p>Vi gillar modern testdriven utveckling med byggstenar såsom Docker, CI-verktyg och hög coverage.</p><p>Vi bidrar aktivt till flera open source-projekt. Du hittar några av våra projekt på GitHub: https://github.com/5monkeys</p><p>Du ansöker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. Välkommen!</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://www.5monkeys.se/",
+            "organization_number": "5567124143",
+            "name": "5 Monkeys Agency AB",
+            "workplace": "5 Monkeys Agency AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": null,
+            "other": "Anslut med SSH till join.5monkeys.se för att göra din ansökan"
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "fg7B_yov_smw",
+            "label": "Systemutvecklare/Programmerare",
+            "legacy_ams_taxonomy_id": "2419"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-23T02:54:33",
+        "last_publication_date": "2025-05-26T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1747961673376
+    },
+    {
+        "relevance": 0.5310163733222181,
+        "id": "29731968",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29731968",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/88288273/logotyper/logo.png",
+        "headline": "Machine Learning Engineer",
+        "application_deadline": "2025-05-30T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Assignment: Machine Learning Engineer – Onsite in Stockholm\nWe are seeking an experienced Machine Learning Engineer who combines strong software engineering skills with a deep understanding of data-driven systems. This role is ideal for professionals with 5–10 years of total industry experience, including at least 3 years of hands-on software development, who have transitioned into machine learning and enjoy creating scalable, real-world ML solutions.\n\n\nResponsibilities:\nDesign and implement intelligent software systems powered by ML and AI, working with large-scale datasets and applying techniques such as feature engineering, model selection, evaluation, deployment, and monitoring.\nDevelop and manage scalable infrastructure for data processing and machine learning workflows, supporting robust pipelines and full model lifecycle operations.\nApply engineering best practices to ML development, ensuring code is modular, efficient, and maintainable.\nBuild internal tools, services, and reusable components to accelerate ML delivery—such as feature stores, model registries, monitoring systems, and experiment tracking.\nCollaborate within cross-functional agile teams, working closely with data scientists, software developers, and stakeholders to turn data insights into production-ready systems.\n\nProfile Requirements:\nAcademic background in Computer Science, Engineering, or a related discipline—or equivalent professional experience.\n5–10 years of experience in tech, including 3+ years as a software engineer.\nAdvanced Python programming skills and experience building production-grade systems.\nProven track record of deploying machine learning models into live environments and maintaining them using modern MLOps approaches (e.g., containerization, CI/CD, testing).\nSolid understanding of cloud services, ideally Google Cloud Platform (GCP) and Vertex AI, but other platforms (AWS, Azure) are also relevant.\nComfort working with high-volume structured and unstructured data, including both streaming and batch processing.\nFamiliarity with popular machine learning libraries such as TensorFlow, PyTorch, and Scikit-learn, with a pragmatic mindset for tool selection.\nStrong collaboration skills and experience contributing to agile team environments.\n\nPreferred Qualifications:\nExperience building internal ML tools or platforms.\nKnowledge of experimentation frameworks and statistical evaluation methods.\nFamiliarity with DevOps tools and infrastructure-as-code solutions like Docker, Kubernetes, or Terraform.\n\nAdditional Details:\nCloud certification (GCP, AWS, or Azure) is required. If not already certified, the consultant must obtain certification within one month of starting.\nLocation: 100% onsite in Stockholm (remote work is not an option for this role).\n\n\n\nAbout Rasulson Consulting\nRasulson Consulting is a specialized staffing and recruitment firm focused on the IT sector. We collaborate with leading tech companies and innovative startups to provide exciting career opportunities for individuals passionate about digital development. With our deep technical expertise and extensive network, we efficiently match the right talents with the right assignments. At Rasulson Consulting, you’ll receive personalized guidance, regular feedback, and the chance to take the next step in your IT career.",
+            "text_formatted": "<p>Assignment: Machine Learning Engineer – Onsite in Stockholm</p><p>We are seeking an experienced Machine Learning Engineer who combines strong software engineering skills with a deep understanding of data-driven systems. This role is ideal for professionals with 5–10 years of total industry experience, including at least 3 years of hands-on software development, who have transitioned into machine learning and enjoy creating scalable, real-world ML solutions.</p><p><br></p><p><strong>Responsibilities:</strong></p><ul><li>Design and implement intelligent software systems powered by ML and AI, working with large-scale datasets and applying techniques such as feature engineering, model selection, evaluation, deployment, and monitoring.</li><li>Develop and manage scalable infrastructure for data processing and machine learning workflows, supporting robust pipelines and full model lifecycle operations.</li><li>Apply engineering best practices to ML development, ensuring code is modular, efficient, and maintainable.</li><li>Build internal tools, services, and reusable components to accelerate ML delivery—such as feature stores, model registries, monitoring systems, and experiment tracking.</li><li>Collaborate within cross-functional agile teams, working closely with data scientists, software developers, and stakeholders to turn data insights into production-ready systems.</li></ul><p><strong>Profile Requirements:</strong></p><ul><li>Academic background in Computer Science, Engineering, or a related discipline—or equivalent professional experience.</li><li>5–10 years of experience in tech, including 3+ years as a software engineer.</li><li>Advanced Python programming skills and experience building production-grade systems.</li><li>Proven track record of deploying machine learning models into live environments and maintaining them using modern MLOps approaches (e.g., containerization, CI/CD, testing).</li><li>Solid understanding of cloud services, ideally Google Cloud Platform (GCP) and Vertex AI, but other platforms (AWS, Azure) are also relevant.</li><li>Comfort working with high-volume structured and unstructured data, including both streaming and batch processing.</li><li>Familiarity with popular machine learning libraries such as TensorFlow, PyTorch, and Scikit-learn, with a pragmatic mindset for tool selection.</li><li>Strong collaboration skills and experience contributing to agile team environments.</li></ul><p><strong>Preferred Qualifications:</strong></p><ul><li>Experience building internal ML tools or platforms.</li><li>Knowledge of experimentation frameworks and statistical evaluation methods.</li><li>Familiarity with DevOps tools and infrastructure-as-code solutions like Docker, Kubernetes, or Terraform.</li></ul><p><strong>Additional Details:</strong></p><ul><li>Cloud certification (GCP, AWS, or Azure) is required. If not already certified, the consultant must obtain certification within one month of starting.</li><li>Location: 100% onsite in Stockholm (remote work is not an option for this role).</li></ul><p><br></p><p><strong>About Rasulson Consulting</strong></p><ul><li>Rasulson Consulting is a specialized staffing and recruitment firm focused on the IT sector. We collaborate with leading tech companies and innovative startups to provide exciting career opportunities for individuals passionate about digital development. With our deep technical expertise and extensive network, we efficiently match the right talents with the right assignments. At Rasulson Consulting, you’ll receive personalized guidance, regular feedback, and the chance to take the next step in your IT career.</li></ul><p><br></p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "qQUd_4qe_NDT",
+            "label": "6 månader eller längre",
+            "legacy_ams_taxonomy_id": "2"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5593220733",
+            "name": "Rasulson Consulting AB",
+            "workplace": "Rasulson Consulting AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": "yahyo.said@rasulson.com",
+            "via_af": false,
+            "url": "https://jobb.rasulson.com/jobs/5977356-machine-learning-engineer",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "tdCZ_6Pn_VzT",
+            "label": "IT-tekniker/Datatekniker",
+            "legacy_ams_taxonomy_id": "6625"
+        },
+        "occupation_group": {
+            "concept_id": "13md_uyV_BNG",
+            "label": "Drifttekniker, IT",
+            "legacy_ams_taxonomy_id": "3511"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": "11164",
+            "city": "STOCKHOLM",
+            "coordinates": [
+                18.054570204117024,
+                59.33081052812522
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "tdCZ_6Pn_VzT",
+                    "label": "IT-tekniker/Datatekniker",
+                    "legacy_ams_taxonomy_id": "6625"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": "Yahyo Said",
+                "description": null,
+                "email": "yahyo.said@rasulson.com",
+                "telephone": "0142-150 00",
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-05-26T17:34:23",
+        "last_publication_date": "2025-05-30T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1748273663354
+    }
+]

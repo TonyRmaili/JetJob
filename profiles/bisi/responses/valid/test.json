@@ -1,0 +1,1387 @@
+[
+    {
+        "relevance": 1.0,
+        "id": "29694957",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29694957",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/25007718/logotyper/logo.png",
+        "headline": "Machine Learning Engineer",
+        "application_deadline": "2025-11-03T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "More independence, freedom, and better pay\nCoody believes in combining the freedom and flexibility of freelancing with the security of traditional employment.\nIt's not rocket science.\nOverpaid managers, fancy offices, and heavily burdened organizations are history.\nThe tech talent of tomorrow deserves a new, independent, and well-paid standard.\nWelcome to what we call Gravity Free Consulting.\n\n\nWhy Coody\nAt Coody, we cut out everything unnecessary to give more back to you as a consultant. And we have done it in the package of a slimmed and efficient organization, meaning no overpaid managers, no fancy offices and no luxurious conferences. But, what does this mean in practice?\nMaximized Compensation - Typically a +40% salary increase.\nFreedom & Flexibility - No bosses. All digital. Fully remote for those who prefer.\nEmployment Security - Fixed salary, pension, insurance, paid vacation and a big educational fund.\nShaping the Future - Projects and assignments for digital game changes like Mojang, Spotify, Volumental, Volvo Cars, Varjo, Toca Boca, Hemnet, and exciting startups and scaleups.\n\n\nThis is Coody\nWe’re a diverse community of ambitious tech people from more than 14 nationalities working on exciting challenges with customers across Sweden, Finland, USA, and the UK in industries ranging from gaming, AR, EV, AI, Medtech and Fintech.\nCoody is more of a platform than a traditional consultancy. Everything we do, we do to make sure individuals working here can live according to their own priorities and unique ambitions. A consultant-first environment where you have better control over your career.\nExplore our Employee Handbook and discover a company that actually puts consultants first.\n\n\nWhat you’ll be doing\nAs a Machine Learning Engineer at Coody, you’ll dive into exciting and challenging AI projects to build and optimize machine learning models for production use cases, ensuring they are highly efficient and scalable. You’ll also design and build machine learning infrastructure, often in cloud environments, to support large-scale deployments for our customers. Here’s what your day-to-day will look like:\nDesign, develop, and deploy scalable machine learning products\nBuild and maintain infrastructure and tooling as a platform for data scientists\nCollaborate with cross-functional teams to integrate ML solutions into production systems\nMonitor and maintain the performance and reliability of ML models post-deployment\nStay current with the latest advancements in machine learning and related technologies\nCollaborate with clients, support colleagues, contribute to knowledge sharing\n\n\n\nWho you are\nWe’re looking for Machine Learning Engineers with at least 3-4 years of experience and a proven track record of delivering real results. If you’ve got the following, you’re probably a great fit:\nA track-record of delivering machine learning models in production\nCloud experience (e.g. AWS, Google Cloud, Kubernetes)\nExperience with distributed data tools (e.g., Spark, Dask, PySpark, Apache Beam)\nExpertise in Python and modern ML/AI libraries (PyTorch/TensorFlow, Transformers, LangChain, LangGraph, Vertex AI)\nStrong understanding of ML infrastructure: deployment, monitoring, debugging, optimization\nA degree in Computer Science, Engineering, Mathematics, Statistics, or something related\nBased in Sweden - You must have Swedish citizenship, a valid work visa, or permanent residency\nFluent in English (spoken and written)\n\n\n\nHow to apply\nAre you excited to take your career to the next level and meet the criterias? Apply now, and we'll be in touch shortly.",
+            "text_formatted": "<p><strong><u>More independence, freedom, and better pay</u></strong></p><p>Coody believes in combining the freedom and flexibility of freelancing with the security of traditional employment.</p><p>It's not rocket science.</p><p>Overpaid managers, fancy offices, and heavily burdened organizations are history.</p><p>The tech talent of tomorrow deserves a new, independent, and well-paid standard.</p><p>Welcome to what we call Gravity Free Consulting.</p><p><br></p><p><strong><u>Why Coody</u></strong></p><p>At Coody, we cut out everything unnecessary to give more back to you as a consultant. And we have done it in the package of a slimmed and efficient organization, meaning no overpaid managers, no fancy offices and no luxurious conferences. But, what does this mean in practice?</p><p><strong>Maximized Compensation </strong>- Typically a +40% salary increase.</p><p><strong>Freedom &amp; Flexibility </strong>- No bosses. All digital. Fully remote for those who prefer.</p><p><strong>Employment Security </strong>- Fixed salary, pension, insurance, paid vacation and a big educational fund.</p><p><strong>Shaping the Future </strong>- Projects and assignments for digital game changes like Mojang, Spotify, Volumental, Volvo Cars, Varjo, Toca Boca, Hemnet, and exciting startups and scaleups.</p><p><br></p><p><strong><u>This is Coody</u></strong></p><p>We’re a diverse community of ambitious tech people from more than 14 nationalities working on exciting challenges with customers across Sweden, Finland, USA, and the UK in industries ranging from gaming, AR, EV, AI, Medtech and Fintech.</p><p>Coody is more of a platform than a traditional consultancy. Everything we do, we do to make sure individuals working here can live according to their own priorities and unique ambitions. A consultant-first environment where you have better control over your career.</p><p>Explore our Employee Handbook and discover a company that actually puts consultants first.</p><p><br></p><p><strong><u>What you’ll be doing</u></strong></p><p>As a Machine Learning Engineer at Coody, you’ll dive into exciting and challenging AI projects to build and optimize machine learning models for production use cases, ensuring they are highly efficient and scalable. You’ll also design and build machine learning infrastructure, often in cloud environments, to support large-scale deployments for our customers. Here’s what your day-to-day will look like:</p><ul><li>Design, develop, and deploy scalable machine learning products</li><li>Build and maintain infrastructure and tooling as a platform for data scientists</li><li>Collaborate with cross-functional teams to integrate ML solutions into production systems</li><li>Monitor and maintain the performance and reliability of ML models post-deployment</li><li>Stay current with the latest advancements in machine learning and related technologies</li><li>Collaborate with clients, support colleagues, contribute to knowledge sharing</li></ul><p><br></p><p><strong><u>Who you are</u></strong></p><p>We’re looking for Machine Learning Engineers with at least 3-4 years of experience and a proven track record of delivering real results. If you’ve got the following, you’re probably a great fit:</p><ul><li>A track-record of delivering machine learning models in production</li><li>Cloud experience (e.g. AWS, Google Cloud, Kubernetes)</li><li>Experience with distributed data tools (e.g., Spark, Dask, PySpark, Apache Beam)</li><li>Expertise in Python and modern ML/AI libraries (PyTorch/TensorFlow, Transformers, LangChain, LangGraph, Vertex AI)</li><li>Strong understanding of ML infrastructure: deployment, monitoring, debugging, optimization</li><li>A degree in Computer Science, Engineering, Mathematics, Statistics, or something related</li><li>Based in Sweden - You must have Swedish citizenship, a valid work visa, or permanent residency</li><li>Fluent in English (spoken and written)</li></ul><p><br></p><p><strong><u>How to apply</u></strong></p><p>Are you excited to take your career to the next level and meet the criterias? Apply now, and we'll be in touch shortly.</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "coody.com",
+            "organization_number": "5593549313",
+            "name": "Coody AB",
+            "workplace": "Coody's kontor"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://www.linkedin.com/company/coody/jobs/",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "rQds_YGd_quU",
+            "label": "Mjukvaruutvecklare",
+            "legacy_ams_taxonomy_id": "80"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [
+                {
+                    "weight": 10,
+                    "concept_id": "NVxJ_hLg_TYS",
+                    "label": "Engelska",
+                    "legacy_ams_taxonomy_id": "283"
+                }
+            ],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "rQds_YGd_quU",
+                    "label": "Mjukvaruutvecklare",
+                    "legacy_ams_taxonomy_id": "80"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-12T10:56:39",
+        "last_publication_date": "2025-11-03T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1747040199127
+    },
+    {
+        "relevance": 1.0,
+        "id": "29687879",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29687879",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/10005292/logotyper/logo.png",
+        "headline": "Machine Learning Engineer",
+        "application_deadline": "2025-06-07T23:59:59",
+        "number_of_vacancies": 5,
+        "description": {
+            "text": "At Rillion, we're looking for a hands-on Machine Learning Engineer to join our AI product team. You'll help us improve and expand the machine learning components that power our Accounts Payable (AP) automation. From idea to deployment, you'll work closely with others across the company to bring smart, ML-driven features into our product. If you enjoy solving real problems with data and want to be part of a collaborative, fast-moving team, we’d love to have you on board! \nResponsibilities: \nYou’ll play a key role in building and integrating custom Machine Learning functionalities into our SaaS products, with a focus on developing our ML platform and creating data-driven solutions tailored to our needs: \nDevelop and scale our machine learning platform using Databricks. \nDesign and implement custom ML models tailored to real-world AP automation challenges. \nCollaborate with cross-functional teams to identify user needs and integrate ML solutions seamlessly into our SaaS platform. \nStay informed on the latest ML advancements and contribute to shaping our ML strategy and solution design. \n\nWhat You'll Bring: \nProven experience delivering ML solutions in SaaS or digital product environments. \nSolid experience with ML / Data frameworks such as PyTorch, PySpark or similar. \nHands-on experience in production ML pipelines, including batch and real-time inference. \nExperience working with both generic and customer tailored models. \nA problem-solving mindset with a collaborative, proactive approach, and a curiosity to explore new solutions while staying up to date. \nM.Sc. in Computer Science, Engineering, or a related field. \n\nBonus skills: \nExperience working with Databricks in a production environment. \nExperience with software development and microservices.\n\nWhat we offer: \nOpportunity to work in a dynamic growth company.\nJoin a collaborative and supportive product team that will be responsible for the entire product lifecycle, from ideation to production. \nTalented colleagues ready to support the success in your career path.\nSocial events with your colleagues (breakfast, candy-time, afterwork etc.) \nA collection of different benefits, including a generous pension and insurance package.\nHybrid working model, 2 days per week in the office.\nCome and enjoy our beautiful office in central Stockholm (on the 14th floor, with amazing views).\n\nThe recruitment process: \nWe review applications and invite for interviews continuously. A background check will be conducted on final candidates, pre-employment. If you have any questions regarding the role, please contact recruiter Victoria Stjernström at victoria.stjernstrom@rillion.com \nAbout Rillion: \nWe are a global company founded in Sweden with 30 years’ experience in the AP Automation industry. We help finance professionals transform how they manage invoices by digitalizing and automating the entire process. \nBy removing the manual steps of invoice handling, we enable finance teams to save time and effort, reducing the possibility of human error. Because we’re AP professionals ourselves, we understand how to give our customers everything they need, and nothing they don’t.  \nTogether with our owners at Altor, we´re on a journey to expand in our home markets, while entering new territories. To complete our mission, we need more talented people! \nRillion is an equal opportunity employer. We believe that diversity is integral to our success, and do not discriminate based on race, color, religion, age, or any other basis protected by law.",
+            "text_formatted": "<p>At Rillion, we're looking for a hands-on Machine Learning Engineer to join our AI product team. You'll help us improve and expand the machine learning components that power our Accounts Payable (AP) automation. From idea to deployment, you'll work closely with others across the company to bring smart, ML-driven features into our product. If you enjoy solving real problems with data and want to be part of a collaborative, fast-moving team, we’d love to have you on board! </p><p>Responsibilities: </p><p>You’ll play a key role in building and integrating custom Machine Learning functionalities into our SaaS products, with a focus on developing our ML platform and creating data-driven solutions tailored to our needs: </p><ul><li>Develop and scale our machine learning platform using Databricks. </li><li>Design and implement custom ML models tailored to real-world AP automation challenges. </li><li>Collaborate with cross-functional teams to identify user needs and integrate ML solutions seamlessly into our SaaS platform. </li><li>Stay informed on the latest ML advancements and contribute to shaping our ML strategy and solution design. </li></ul><p>What You'll Bring: </p><ul><li>Proven experience delivering ML solutions in SaaS or digital product environments. </li><li>Solid experience with ML / Data frameworks such as PyTorch, PySpark or similar. </li><li>Hands-on experience in production ML pipelines, including batch and real-time inference. </li><li>Experience working with both generic and customer tailored models. </li><li>A problem-solving mindset with a collaborative, proactive approach, and a curiosity to explore new solutions while staying up to date. </li><li>M.Sc. in Computer Science, Engineering, or a related field. </li></ul><p>Bonus skills: </p><ul><li>Experience working with Databricks in a production environment. </li><li>Experience with software development and microservices.</li></ul><p>What we offer: </p><ul><li>Opportunity to work in a dynamic growth company.</li><li>Join a collaborative and supportive product team that will be responsible for the entire product lifecycle, from ideation to production. </li><li>Talented colleagues ready to support the success in your career path.</li><li>Social events with your colleagues (breakfast, candy-time, afterwork etc.) </li><li>A collection of different benefits, including a generous pension and insurance package.</li><li>Hybrid working model, 2 days per week in the office.</li><li>Come and enjoy our beautiful office in central Stockholm (on the 14th floor, with amazing views).</li></ul><p>The recruitment process: </p><p>We review applications and invite for interviews continuously. A background check will be conducted on final candidates, pre-employment. If you have any questions regarding the role, please contact recruiter Victoria Stjernström at victoria.stjernstrom@rillion.com </p><p>About Rillion: </p><p><em>We are a global company founded in Sweden with 30 years’ experience in the AP Automation industry. We help finance professionals transform how they manage invoices by digitalizing and automating the entire process.</em> </p><p><em>By removing the manual steps of invoice handling, we enable finance teams to save time and effort, reducing the possibility of human error. Because </em>we’re AP professionals ourselves, we understand how to give our customers everything they need, and nothing they don’t.  </p><p><em>Together with our owners at Altor, we´re on a journey to expand in our home markets, while entering new territories. To complete our mission, we need more talented people!</em> </p><p><em>Rillion is an equal opportunity employer. We believe that diversity is integral to our success, and do not discriminate based on race, color, religion, age, or any other basis protected by law.</em>  </p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5563419182",
+            "name": "Rillion AB",
+            "workplace": "Rillion AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://jobb.ants.se/jobs/5878711-machine-learning-engineer-to-rillion",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "rQds_YGd_quU",
+            "label": "Mjukvaruutvecklare",
+            "legacy_ams_taxonomy_id": "80"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": "Torsgatan 26 2TR",
+            "postcode": "11321",
+            "city": "Stockholm",
+            "coordinates": [
+                18.04101552804361,
+                59.3373579193162
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "rQds_YGd_quU",
+                    "label": "Mjukvaruutvecklare",
+                    "legacy_ams_taxonomy_id": "80"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-08T12:50:29",
+        "last_publication_date": "2025-06-07T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1746701429135
+    },
+    {
+        "relevance": 1.0,
+        "id": "29682189",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29682189",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/88288273/logotyper/logo.png",
+        "headline": "Machine Learning Engineer",
+        "application_deadline": "2025-05-25T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "The primary tasks for a Machine Learning Engineer in MLE area are:\nDevelop AI/ML software products including but not limited to explore large data set, try out new algorithms, feature engineering, test and evaluate model output, deploy the solution for production usage and scale out to the comprehensive fashion network of the company\nDesign, develop and maintain the large-scale data infrastructure required for the AI/ML projects.\nLeverage on understanding of software architecture and software design patterns to write scalable, maintainable, well-designed, and future-proof code.\nDevelop solutions, components, services and frameworks to address common needs in AI/ML projects, like feature reuse, model traceability, A/B test, etc.\nWork in cross-functional agile team of highly skilled engineers, data scientists, business stakeholders to build the AI ecosystem within the company.\nRequired skills and experiences:\nHave a BSc or MSc degree in computer science, engineering or related field, or equivalent practical experience.\nHave 4+ years’ professional experience working in relevant role(s) for a Machine Learning Engineer.\nA hands-on person who loves coding, and like applying software engineering practices to machine learning projects.\nHave experience in developing software products that have been successfully deployed to production.\nHave several years of coding experience in modern programming languages, and strong background in Python programming, i.e. 3+ years.\nHave great experience with cloud technologies for ML development, preferably Google Cloud and Vertex AI.\nHave solid experience in MLOps practices, developing ML pipelines, and deploying ML applications to production.\nHave a strong working knowledge of a variety of AI/ML techniques and experience working with different frameworks.\nHave experience handling high volume heterogeneous data (both batch and stream) and a solid understanding of data structures, databases, and data storage technologies.\nFamiliar with agile ways of working, team collaboration, data-driven development, reliable and responsible experimentation\n\n\nAbout Rasulson Consulting\nRasulson Consulting is a specialized staffing and recruitment firm focused on the IT sector. We collaborate with leading tech companies and innovative startups to provide exciting career opportunities for individuals passionate about digital development. With our deep technical expertise and extensive network, we efficiently match the right talents with the right assignments. At Rasulson Consulting, you’ll receive personalized guidance, regular feedback, and the chance to take the next step in your IT career.",
+            "text_formatted": "<p>The primary tasks for a Machine Learning Engineer in MLE area are:</p><p>Develop AI/ML software products including but not limited to explore large data set, try out new algorithms, feature engineering, test and evaluate model output, deploy the solution for production usage and scale out to the comprehensive fashion network of the company</p><p>Design, develop and maintain the large-scale data infrastructure required for the AI/ML projects.</p><p>Leverage on understanding of software architecture and software design patterns to write scalable, maintainable, well-designed, and future-proof code.</p><p>Develop solutions, components, services and frameworks to address common needs in AI/ML projects, like feature reuse, model traceability, A/B test, etc.</p><p>Work in cross-functional agile team of highly skilled engineers, data scientists, business stakeholders to build the AI ecosystem within the company.</p><p>Required skills and experiences:</p><p>Have a BSc or MSc degree in computer science, engineering or related field, or equivalent practical experience.</p><p>Have 4+ years’ professional experience working in relevant role(s) for a Machine Learning Engineer.</p><p>A hands-on person who loves coding, and like applying software engineering practices to machine learning projects.</p><p>Have experience in developing software products that have been successfully deployed to production.</p><p>Have several years of coding experience in modern programming languages, and strong background in Python programming, i.e. 3+ years.</p><p>Have great experience with cloud technologies for ML development, preferably Google Cloud and Vertex AI.</p><p>Have solid experience in MLOps practices, developing ML pipelines, and deploying ML applications to production.</p><p>Have a strong working knowledge of a variety of AI/ML techniques and experience working with different frameworks.</p><p>Have experience handling high volume heterogeneous data (both batch and stream) and a solid understanding of data structures, databases, and data storage technologies.</p><p>Familiar with agile ways of working, team collaboration, data-driven development, reliable and responsible experimentation</p><p><br></p><p><strong>About Rasulson Consulting</strong></p><p>Rasulson Consulting is a specialized staffing and recruitment firm focused on the IT sector. We collaborate with leading tech companies and innovative startups to provide exciting career opportunities for individuals passionate about digital development. With our deep technical expertise and extensive network, we efficiently match the right talents with the right assignments. At Rasulson Consulting, you’ll receive personalized guidance, regular feedback, and the chance to take the next step in your IT career.</p><p><br></p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "qQUd_4qe_NDT",
+            "label": "6 månader eller längre",
+            "legacy_ams_taxonomy_id": "2"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5593220733",
+            "name": "Rasulson Consulting AB",
+            "workplace": "Rasulson Consulting AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": "yahyo.said@rasulson.com",
+            "via_af": false,
+            "url": "https://jobb.rasulson.com/jobs/5897965-machine-learning-engineer",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "ZtTD_4VC_f4i",
+            "label": "Systemtestare/Funktionstestare",
+            "legacy_ams_taxonomy_id": "5422"
+        },
+        "occupation_group": {
+            "concept_id": "D9SL_mtn_vGM",
+            "label": "Systemtestare och testledare",
+            "legacy_ams_taxonomy_id": "2514"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": "11848",
+            "city": "STOCKHOLM",
+            "coordinates": [
+                18.06252209213423,
+                59.31737688439916
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "ZtTD_4VC_f4i",
+                    "label": "Systemtestare/Funktionstestare",
+                    "legacy_ams_taxonomy_id": "5422"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": "Yahyo Said",
+                "description": null,
+                "email": "yahyo.said@rasulson.com",
+                "telephone": "0142-150 00",
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-05-06T17:17:34",
+        "last_publication_date": "2025-05-25T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1746544654139
+    },
+    {
+        "relevance": 1.0,
+        "id": "29589603",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29589603",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/87296626/logotyper/logo.png",
+        "headline": "Machine Learning Engineer ",
+        "application_deadline": "2025-10-01T23:59:59",
+        "number_of_vacancies": 4,
+        "description": {
+            "text": "Modulai works with fish, trains, clothes, money, pets, office spaces, sound sensors and much more. If there is data, we do ML (Machine Learning) on it. \nOur team consists of devoted ML engineers with strong track records from some of Sweden’s most successful startups. We work on project basis and take end-to-end responsibility. We love ML and we think that the best way for us to expand our knowledge is to be exposed to a diversified set of challenging and fun projects. \nMACHINE LEARNING ENGINEER \nAs a member of the ML-team you will be working with a broad range of problems with one common denominator – ML will be the key ingredient. The projects could be external as well as internal – and in all cases – delivery is central. \nYou will have to analyze the problem at hand, come up with a solution strategy and execute on it. This typically entails gaining an in-depth understanding of the challenge, understanding the available data and then re-formulating it as a ML problem. It requires openness, creativity and an eagerness to learn new methodology and exploring new terrains. \nWe frequently attack these problems as a team, meaning that you will have to be able to clearly explain your reasoning and code in order to engage the rest of us. \n\n\nOur Stack\nPython / R – standard open-source libraries\nScikit-learn and various specialized Python and R ML libraries\nLarge Language Model (LLM) frameworks such as LangChain/LlamaIndex, LangGraph, CrewAI\nCloud platforms such as AWS, GCP, and Azure\nCI/CD: DVC, Github Actions, Sagemaker/VertexAI/AzureML,\nRelational database management systems\nMLOps and LLMOps tools for model deployment and monitoring.\nSoftware engineering best practices, including testing, version control (Git), and containerization (Docker, Kubernetes)\nOrchestration: Airflow, AWS Step functions, etc Engineering/LLM/deployment: Kubernetes, docker, terraform\n\nResponsibilities\nAnalyzing and planning problems, solutions, and delivery with stakeholder managment, and communication with client\nPreprocessing, feature engineering, and dataset creation\nML and LLM model development, fine-tuning, and evaluation\nValidation of results and model interpretability\nBuilding and optimizing data pipelines and ML/LLM infrastructure\nDeveloping APIs and integrating ML models into production systems\nEnsuring scalability, monitoring, and performance optimization of deployed models\n\nBackground & Skills\nMSc or Ph.D. in a quantitative field\nExcellent understanding of a broad set of ML and deep learning algorithms, including LLMs\nStrong software development skills in Python and experience with software engineering best practices\nExperience deploying ML and LLM models into production environments\nA passion for lean, clean, and maintainable code\nThe desire to grow and to share insights with others\n\nHelpful Knowledge\nDeep learning frameworks and transformer-based architectures\nLLM fine-tuning, prompt engineering, and retrieval-augmented generation (RAG)\nData pipelining and ML/LLM infrastructure best practices\nDevOps experience, CI/CD, Kubernetes, and serverless architectures\nExperience with vector databases e.g (Pinecode, redis, and ElasticSearch) for LLM applications\n\n\n\nAbout Team Modulai\nAt Modulai we focus 100% on solving problems with machine learning (ML). We work in teams on a project basis. We work for clients, as part of the core team in startups where we have long-time engagement as well as building our own ML products. \nLearning and teamwork are central to how we work. Everyone in the team is or will soon be a full-stack ML engineer capable of scoping and developing end-to-end ML solutions. You should be able to do end-to-end machine learning products by yourself but actually, never do it because we always work in teams. If there is data, we will do ML on it!\nApply here: https://modulai.teamtailor.com/",
+            "text_formatted": "<p>Modulai works with fish, trains, clothes, money, pets, office spaces, sound sensors and much more. If there is data, <strong>we do ML (Machine Learning) on it</strong>. </p><p>Our team consists of devoted ML engineers with strong track records from some of Sweden’s most successful startups. We work on project basis and take end-to-end responsibility. We love ML and we think that the best way for us to expand our knowledge is to be exposed to a diversified set of challenging and fun projects. </p><p>MACHINE LEARNING ENGINEER </p><p>As a member of the ML-team you will be working with a broad range of problems with one common denominator – ML will be the key ingredient. The projects could be external as well as internal – and in all cases – delivery is central. </p><p>You will have to analyze the problem at hand, come up with a solution strategy and execute on it. This typically entails gaining an in-depth understanding of the challenge, understanding the available data and then re-formulating it as a ML problem. It requires openness, creativity and an eagerness to learn new methodology and exploring new terrains. </p><p>We frequently attack these problems as a team, meaning that you will have to be able to clearly explain your reasoning and code in order to engage the rest of us. </p><p><br></p><p><strong>Our Stack</strong></p><ul><li>Python / R – standard open-source libraries</li><li>Scikit-learn and various specialized Python and R ML libraries</li><li>Large Language Model (LLM) frameworks such as LangChain/LlamaIndex, LangGraph, CrewAI</li><li>Cloud platforms such as AWS, GCP, and Azure</li><li>CI/CD: DVC, Github Actions, Sagemaker/VertexAI/AzureML,</li><li>Relational database management systems</li><li>MLOps and LLMOps tools for model deployment and monitoring.</li><li>Software engineering best practices, including testing, version control (Git), and containerization (Docker, Kubernetes)</li><li>Orchestration: Airflow, AWS Step functions, etc Engineering/LLM/deployment: Kubernetes, docker, terraform</li></ul><p><strong>Responsibilities</strong></p><ul><li>Analyzing and planning problems, solutions, and delivery with stakeholder managment, and communication with client</li><li>Preprocessing, feature engineering, and dataset creation</li><li>ML and LLM model development, fine-tuning, and evaluation</li><li>Validation of results and model interpretability</li><li>Building and optimizing data pipelines and ML/LLM infrastructure</li><li>Developing APIs and integrating ML models into production systems</li><li>Ensuring scalability, monitoring, and performance optimization of deployed models</li></ul><p><strong>Background &amp; Skills</strong></p><ul><li>MSc or Ph.D. in a quantitative field</li><li>Excellent understanding of a broad set of ML and deep learning algorithms, including LLMs</li><li>Strong software development skills in Python and experience with software engineering best practices</li><li>Experience deploying ML and LLM models into production environments</li><li>A passion for lean, clean, and maintainable code</li><li>The desire to grow and to share insights with others</li></ul><p><strong>Helpful Knowledge</strong></p><ul><li>Deep learning frameworks and transformer-based architectures</li><li>LLM fine-tuning, prompt engineering, and retrieval-augmented generation (RAG)</li><li>Data pipelining and ML/LLM infrastructure best practices</li><li>DevOps experience, CI/CD, Kubernetes, and serverless architectures</li><li>Experience with vector databases e.g (Pinecode, redis, and ElasticSearch) for LLM applications</li></ul><p><br></p><p><strong>About Team Modulai</strong></p><p>At Modulai we focus 100% on solving problems with machine learning (ML). We work in teams on a project basis. We work for clients, as part of the core team in startups where we have long-time engagement as well as building our own ML products. </p><p>Learning and teamwork are central to how we work. Everyone in the team is or will soon be a full-stack ML engineer capable of scoping and developing end-to-end ML solutions. You should be able to do end-to-end machine learning products by yourself but actually, never do it because we always work in teams. If there is data, we will do ML on it!</p><p><strong>Apply here:</strong> https://modulai.teamtailor.com/</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "www.modulai.io",
+            "organization_number": "5591524029",
+            "name": "Modulai AB",
+            "workplace": "Modulai AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://modulai.teamtailor.com/jobs/1104520-machine-learning-engineer",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "CQse_CRd_snw",
+            "label": "Civilingenjör, systemutveckling",
+            "legacy_ams_taxonomy_id": "6509"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": "Långholmsgatan 27",
+            "postcode": "11733",
+            "city": "STOCKHOLM",
+            "coordinates": [
+                18.03426418807693,
+                59.31576667073531
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [
+                {
+                    "weight": 10,
+                    "concept_id": "NVxJ_hLg_TYS",
+                    "label": "Engelska",
+                    "legacy_ams_taxonomy_id": "283"
+                }
+            ],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [
+                {
+                    "weight": 5,
+                    "concept_id": "zSLA_vw2_FXN",
+                    "label": "Svenska",
+                    "legacy_ams_taxonomy_id": "502"
+                }
+            ],
+            "work_experiences": [
+                {
+                    "weight": 5,
+                    "concept_id": "CQse_CRd_snw",
+                    "label": "Civilingenjör, systemutveckling",
+                    "legacy_ams_taxonomy_id": "6509"
+                }
+            ],
+            "education": [
+                {
+                    "weight": 5,
+                    "concept_id": "SY6y_KKg_gQ5",
+                    "label": "Matematik och övrig naturvetenskap",
+                    "legacy_ams_taxonomy_id": "13"
+                }
+            ],
+            "education_level": [
+                {
+                    "weight": 5,
+                    "concept_id": "asZm_TEQ_Srk",
+                    "label": "Eftergymnasial utbildning två år eller längre",
+                    "legacy_ams_taxonomy_id": "6"
+                }
+            ]
+        },
+        "application_contacts": [],
+        "publication_date": "2025-04-11T00:00:00",
+        "last_publication_date": "2025-10-01T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1743421713938
+    },
+    {
+        "relevance": 1.0,
+        "id": "29550419",
+        "external_id": "46-556227-4000-5689715-1",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29550419",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/organisation/5562274000/logotyper/logo.png",
+        "headline": "Machine Learning Engineer",
+        "application_deadline": "2025-09-03T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "We are seeking a talented and innovative Machine Learning Engineer to join our team and drive the development of advanced computer vision solutions. As part of a dynamic and multidisciplinary team, you will play a key role in creating and optimizing algorithms that process visual data, enhance real-time performance, and integrate seamlessly into embedded systems.\n \nResponsibilities:\n Design, implement, and refine machine learning algorithms to address complex computer vision challenges.\n Prepare, clean, and manage large datasets to ensure they meet the standards for effective model training and evaluation.\n Develop and fine-tune deep learning models to achieve high performance on diverse visual tasks.\n Optimize models for real-time execution on resource-constrained embedded systems, balancing memory and computational requirements.\n Collaborate on requirement gathering, testing, and documentation to ensure successful deployment of machine learning solutions.\n \n \nQualifications:\n Degree in Computer Science, Software Engineering, or a closely related discipline.\n Strong programming skills in Python, C, and C++.\n Solid understanding of deep learning techniques and architectures.\n  3+ years of working experience with sensor data and various types of image/video inputs.\n Ability to collaborate effectively within a cross-functional team environment.\n \n \nAdditional Information\nSome of our clients require you to undergo and be approved according to our current security regulations. Certain positions may also require specific citizenship.\n \nAbout Astek Sweden\nAstek has always been driven by a strong curiosity and a passion for technological possibilities. This fascination forms the foundation of everything we do – our commitment to innovation and product development, the long-term customer relationships we build, and the value we create in every assignment, every day. With us, you will have the opportunity to grow alongside some of the industry’s most skilled engineers and technical experts.\n \nWhat We Offer\nWe are a company where innovation, community, and professional growth are at the core. Here, you will have the opportunity to work on exciting and challenging projects in an environment where your expertise and ideas are valued. We offer:\n An inspiring workplace where technology and creativity meet.  Opportunities to collaborate with leading industry players.  Professional development and career growth.  A company culture where we support each other and have fun together!  Great benefits, including 5,000 SEK in wellness allowance.\nWe encourage all engineers to apply, regardless of gender, background, or life situation.\n \nWant to Be Part of Our Team?\nWe warmly welcome your application!\nRecruitment is ongoing, so don’t hesitate to apply. Feel free to reach out if you have any questions.\nRecruitment Contact: Daniella Hernandez  daniella.hernandez@astek.net  +46 070 624 0344\nPlease note that, due to GDPR regulations, we cannot accept applications via phone or email. Please apply through our career site.",
+            "text_formatted": "<p>We are seeking a talented and innovative Machine Learning Engineer to join our team and drive the development of advanced computer vision solutions. As part of a dynamic and multidisciplinary team, you will play a key role in creating and optimizing algorithms that process visual data, enhance real-time performance, and integrate seamlessly into embedded systems.</p><p><strong> </strong></p><p><strong>Responsibilities:</strong></p><ul> <li>Design, implement, and refine machine learning algorithms to address complex computer vision challenges.</li> <li>Prepare, clean, and manage large datasets to ensure they meet the standards for effective model training and evaluation.</li> <li>Develop and fine-tune deep learning models to achieve high performance on diverse visual tasks.</li> <li>Optimize models for real-time execution on resource-constrained embedded systems, balancing memory and computational requirements.</li> <li>Collaborate on requirement gathering, testing, and documentation to ensure successful deployment of machine learning solutions.</li> </ul><p><strong> </strong></p><p><strong>Qualifications:</strong></p><ul> <li>Degree in Computer Science, Software Engineering, or a closely related discipline.</li> <li>Strong programming skills in Python, C, and C++.</li> <li>Solid understanding of deep learning techniques and architectures.</li> <li> 3+ years of working experience with sensor data and various types of image/video inputs.</li> <li>Ability to collaborate effectively within a cross-functional team environment.</li> </ul><p><strong><em> </em></strong></p><p><strong><em>Additional Information</em></strong></p><p><em>Some of our clients require you to undergo and be approved according to our current security regulations. Certain positions may also require specific citizenship.</em></p><p><strong> </strong></p><p><strong>About Astek Sweden</strong></p><p>Astek has always been driven by a strong curiosity and a passion for technological possibilities. This fascination forms the foundation of everything we do – our commitment to innovation and product development, the long-term customer relationships we build, and the value we create in every assignment, every day. With us, you will have the opportunity to grow alongside some of the industry’s most skilled engineers and technical experts.</p><p><strong> </strong></p><p><strong>What We Offer</strong></p><p>We are a company where innovation, community, and professional growth are at the core. Here, you will have the opportunity to work on exciting and challenging projects in an environment where your expertise and ideas are valued. We offer:</p><p> An inspiring workplace where technology and creativity meet.  Opportunities to collaborate with leading industry players.  Professional development and career growth.  A company culture where we support each other and have fun together!  Great benefits, including 5,000 SEK in wellness allowance.</p><p><strong>We encourage all engineers to apply, regardless of gender, background, or life situation.</strong></p><p><strong> </strong></p><p><strong>Want to Be Part of Our Team?</strong></p><p>We warmly welcome your application!</p><p>Recruitment is ongoing, so don’t hesitate to apply. Feel free to reach out if you have any questions.</p><p><strong>Recruitment Contact:</strong> <strong>Daniella Hernandez</strong>  daniella.hernandez@astek.net  +46 070 624 0344</p><p><em>Please note that, due to GDPR regulations, we cannot accept applications via phone or email. Please apply through our career site.</em></p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Heltid\r\nAnställningstid enligt överenskommelse"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Lön enligt överenskommelse",
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://astek-se.net",
+            "organization_number": "5562274000",
+            "name": "ASTEK SWEDEN AB",
+            "workplace": "Astek Sweden AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://astekswedenab.teamtailor.com/jobs/5689715-machine-learning-engineer?promotion=1386969-arbetsformedlingen",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "rQds_YGd_quU",
+            "label": "Mjukvaruutvecklare",
+            "legacy_ams_taxonomy_id": "80"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Linköping",
+            "municipality_code": "0580",
+            "municipality_concept_id": "bm2x_1mr_Qhx",
+            "region": "Östergötlands län",
+            "region_code": "05",
+            "region_concept_id": "oLT3_Q9p_3nn",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                15.621373,
+                58.41081
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "rQds_YGd_quU",
+                    "label": "Mjukvaruutvecklare",
+                    "legacy_ams_taxonomy_id": "80"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Daniella Hernandez",
+                "email": "daniella.hernandez@conmore.se",
+                "telephone": "+46 706-24 03 44",
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-03-17T15:18:31",
+        "last_publication_date": "2025-09-03T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1742221111804
+    },
+    {
+        "relevance": 0.9526890119351921,
+        "id": "29702761",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29702761",
+        "logo_url": null,
+        "headline": "Senior Machine Learning Engineer",
+        "application_deadline": "2025-06-13T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Position: Senior Machine Learning Engineer\n Location: Onsite – Stockholm\n Cloud Certification Required: Yes – Google Cloud Platform (GCP) Machine Learning Certification\nAbout the Role\nWe are seeking a Senior Machine Learning Engineer to join our client’s dynamic AI/ML team within a global fashion network. In this role, you’ll be at the forefront of developing and scaling advanced AI-powered solutions that drive innovation and transform digital experiences.\nAs a key contributor, you will design and deploy end-to-end AI/ML systems—from data processing and modeling to production-ready deployment—ensuring performance, scalability, and reliability in a modern cloud-native environment.\nKey Responsibilities\nDesign, develop, and maintain scalable AI/ML solutions across the full lifecycle, including data exploration, feature engineering, model training, evaluation, and deployment.\n\n\nBuild and maintain large-scale data infrastructure to support AI/ML development and production use.\n\n\nDrive architectural decisions and contribute to the technical roadmap, ensuring clean, maintainable, and high-quality code.\n\n\nCreate reusable frameworks and components for model versioning, monitoring, traceability, and both batch and online inference.\n\n\nCollaborate closely with cross-functional teams—including engineers, data scientists, product managers, and business stakeholders—to build and continuously improve the AI ecosystem.\n\n\nApply MLOps best practices to automate and streamline ML model deployment and operations.\n\n\nEnsure all solutions are built with cybersecurity, reliability, and performance in mind.\n\nRequired Skills & Experience\n5+ years of experience in machine learning engineering or a similar role, with a strong focus on delivering AI/ML products.\n\n\nRobust software engineering skills, including DevOps, automated testing, and experience applying SRE principles to AI/ML projects.\n\n\nProven track record of deploying ML models and solutions to production in large-scale, data-rich environments.\n\n\nExpert in Python (4+ years) and back-end development frameworks (e.g., FastAPI).\n\n\nDeep experience with Google Cloud Platform (GCP) and Vertex AI for cloud-native ML development.\n\n\nStrong grasp of MLOps, including pipeline development and deployment automation.\n\n\nProficiency with data science techniques and ML frameworks, working with both batch and streaming data.\n\n\nSkilled in SQL, DBT, and modern cloud storage technologies.\n\n\nExperience in requirement analysis, solution design, task breakdown, and stakeholder collaboration.\n\n\nComfortable working in agile development environments, with a commitment to data-driven decision making.\n\nPreferred Qualifications\nGCP Machine Learning Certification (Required)\n\n\nPrevious experience working in the fashion or retail sector (Preferred but not required)\n\nWhat You’ll Gain\nThe opportunity to work in a high-impact role at the cutting edge of AI innovation in a global organization.\n\n\nA collaborative environment where your ideas help shape the future of fashion technology.\n\n\nAccess to modern tools, cloud infrastructure, and data at scale to build transformative solutions.",
+            "text_formatted": "<p><strong>Position: Senior Machine Learning Engineer</strong></p><p> <strong>Location:</strong> Onsite – Stockholm</p><p> <strong>Cloud Certification Required:</strong> Yes – Google Cloud Platform (GCP) Machine Learning Certification</p><p><strong>About the Role</strong></p><p>We are seeking a <strong>Senior Machine Learning Engineer</strong> to join our client’s dynamic AI/ML team within a global fashion network. In this role, you’ll be at the forefront of developing and scaling advanced AI-powered solutions that drive innovation and transform digital experiences.</p><p>As a key contributor, you will design and deploy end-to-end AI/ML systems—from data processing and modeling to production-ready deployment—ensuring performance, scalability, and reliability in a modern cloud-native environment.</p><p><strong>Key Responsibilities</strong></p><ul><li>Design, develop, and maintain scalable <strong>AI/ML solutions</strong> across the full lifecycle, including data exploration, feature engineering, model training, evaluation, and deployment.</li><li><br></li><li>Build and maintain <strong>large-scale data infrastructure</strong> to support AI/ML development and production use.</li><li><br></li><li>Drive <strong>architectural decisions</strong> and contribute to the technical roadmap, ensuring clean, maintainable, and high-quality code.</li><li><br></li><li>Create <strong>reusable frameworks and components</strong> for model versioning, monitoring, traceability, and both batch and online inference.</li><li><br></li><li>Collaborate closely with <strong>cross-functional teams</strong>—including engineers, data scientists, product managers, and business stakeholders—to build and continuously improve the AI ecosystem.</li><li><br></li><li>Apply <strong>MLOps best practices</strong> to automate and streamline ML model deployment and operations.</li><li><br></li><li>Ensure all solutions are built with <strong>cybersecurity, reliability, and performance</strong> in mind.</li></ul><p><strong>Required Skills &amp; Experience</strong></p><ul><li><strong>5+ years</strong> of experience in machine learning engineering or a similar role, with a strong focus on delivering AI/ML products.</li><li><br></li><li>Robust <strong>software engineering skills</strong>, including DevOps, automated testing, and experience applying <strong>SRE principles</strong> to AI/ML projects.</li><li><br></li><li>Proven track record of deploying ML models and solutions to production in <strong>large-scale, data-rich environments</strong>.</li><li><br></li><li>Expert in <strong>Python (4+ years)</strong> and back-end development frameworks (e.g., <strong>FastAPI</strong>).</li><li><br></li><li>Deep experience with <strong>Google Cloud Platform (GCP)</strong> and <strong>Vertex AI</strong> for cloud-native ML development.</li><li><br></li><li>Strong grasp of <strong>MLOps</strong>, including pipeline development and deployment automation.</li><li><br></li><li>Proficiency with <strong>data science techniques and ML frameworks</strong>, working with both <strong>batch and streaming data</strong>.</li><li><br></li><li>Skilled in <strong>SQL</strong>, <strong>DBT</strong>, and modern cloud storage technologies.</li><li><br></li><li>Experience in <strong>requirement analysis</strong>, solution design, task breakdown, and stakeholder collaboration.</li><li><br></li><li>Comfortable working in <strong>agile development environments</strong>, with a commitment to <strong>data-driven decision making</strong>.</li></ul><p><strong>Preferred Qualifications</strong></p><ul><li><strong>GCP Machine Learning Certification</strong> (Required)</li><li><br></li><li>Previous experience working in the <strong>fashion or retail sector</strong> (Preferred but not required)</li></ul><p><strong>What You’ll Gain</strong></p><ul><li>The opportunity to work in a <strong>high-impact role</strong> at the cutting edge of AI innovation in a global organization.</li><li><br></li><li>A <strong>collaborative environment</strong> where your ideas help shape the future of fashion technology.</li><li><br></li><li>Access to <strong>modern tools, cloud infrastructure, and data at scale</strong> to build transformative solutions.</li></ul><p><br></p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "qQUd_4qe_NDT",
+            "label": "6 månader eller längre",
+            "legacy_ams_taxonomy_id": "2"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": null,
+            "organization_number": "5591986913",
+            "name": "Semicon Service Nordic AB",
+            "workplace": "Stockholm "
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": "hr@semiconservicenordic.com",
+            "via_af": false,
+            "url": null,
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "YqiW_QLd_qHo",
+            "label": "Applikationsingenjör",
+            "legacy_ams_taxonomy_id": "84"
+        },
+        "occupation_group": {
+            "concept_id": "SPYW_7Z1_ShT",
+            "label": "Civilingenjörsyrken inom elektroteknik",
+            "legacy_ams_taxonomy_id": "2143"
+        },
+        "occupation_field": {
+            "concept_id": "6Hq3_tKo_V57",
+            "label": "Yrken med teknisk inriktning",
+            "legacy_ams_taxonomy_id": "18"
+        },
+        "workplace_address": {
+            "municipality": null,
+            "municipality_code": null,
+            "municipality_concept_id": null,
+            "region": null,
+            "region_code": null,
+            "region_concept_id": null,
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                null,
+                null
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [
+                {
+                    "weight": 10,
+                    "concept_id": "NVxJ_hLg_TYS",
+                    "label": "Engelska",
+                    "legacy_ams_taxonomy_id": "283"
+                }
+            ],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "YqiW_QLd_qHo",
+                    "label": "Applikationsingenjör",
+                    "legacy_ams_taxonomy_id": "84"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-14T14:00:59",
+        "last_publication_date": "2025-06-13T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1747224059138
+    },
+    {
+        "relevance": 0.9526890119351921,
+        "id": "29696428",
+        "external_id": "46-556922-0014-5908250-1",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29696428",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/organisation/5569220014/logotyper/logo.png",
+        "headline": "Senior Machine Learning Engineer",
+        "application_deadline": "2025-10-29T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "About us\nSoundtrack is a B2B scale-up company providing music streaming services for businesses. We serve small customers like the café around the corner, and much bigger brands like Joe & the Juice, Toni & Guy and TAG Heuer. On the inside, we're a bunch of talented, motivated and humble designers, engineers and music experts. We believe in product-led growth, where the product is the primary driver of customer acquisition, conversion and expansion. \nThe role\nAs a Senior Machine Learning Engineer in the Music Experience team, you’ll be working on a wide range of projects together with other engineers, product owners, UI/UX designers, machine learning experts, researchers, music experts and analysts.\nMusic is the core of Soundtrack’s product. The Music Experience team is a vertical team that is dedicated to ownership and development of all music features, like music onboarding, home, search, stations, user created playlists, schedules and artist/album/playlist detail pages. The team owns the features end to end, from UX/UI to APIs, databases, and machine learning.\nWe believe that good applications come from good research. We don’t shy away from doing extensive research when needed. We attend machine learning conferences and read relevant research as frequently as possible. However, we are mission driven and try to strike a good balance between long and short term goals.\nAs a member of this team, you will take part in building features that are core to Soundtrack’s value proposition and business. You will work on end-to-end machine learning solutions: data sourcing, training models, making sure data gathering is in place, and giving feedback on the user experience design.\nYou can check out the How it works page to see what kind of features you will be working on or download our app and sign up for a free trial to get a first hand experience.\nResponsibilities\n Developing, deploying and managing machine learning models and its connected systems\n Continuously improving the tooling and workflows around machine learning efforts in the team\n Contribute to the team’s vision, strategy and agenda\n Helping the team grow as a whole by sharing knowledge and lifting each other up\n \nAbout you\nWe're always looking to work with people who are friendly, professional, humble, open, and with a passion for detail. You are probably not a stranger to describing yourself as:\n Self-sustaining – you can work independently, taking initiatives and planning your own time\n Curious – you enjoy learning new things to grow both professionally as well as on a personal level\n A good communicator – you enjoy discussing different solutions and strategies for technical challenges\n Agile – you feel comfortable in a dynamic environment where focus lies in what’s important here and now, with the ability to realize when it's time to change the game plan and when to stick to it\n Humble – you are an open person, you say what you mean and mean what you say\n Street smart – crafty, able to build solutions with limited resources\n Not a perfectionist – but disciplined and methodical in your approach to solving problems\n \nMandatory requirements\n 5+ years of experience developing, deploying, and managing machine learning models and systems, preferably in a product development organization.\n Experience using machine learning frameworks, e.g. Tensorflow, Torch.\n Familiarity with cloud based training and deploying of machine learning models, preferably on Google Cloud Platform.\n Hands-on experience with data engineering tools, you are able to build and maintain high-scale pipelines using map-reduce frameworks (e.g. Apache Spark, Google Dataflow) and to use orchestration tools (e.g. Apache Airflow, Luigi, Argo, Kubeflow)\n Feel at home writing SQL\n Comfortable developing APIs and services, preferably using Python\n Strong communication and collaboration in a product development organization\n \nBeneficial requirements (not required)\n General interest in music and/or music technology\n Experience in MLOps\n Experience working with machine learning in the audio domain\n Experience working with personalization or recommendation applications\n GraphQL client and servers libraries\n Container based deployments using Docker/Kubernetes\n Continuous integration/Continuous deployment workflows\n \nEmployee Benefits\n You have the freedom to decide where you work the best with our Work From Anywhere program with a one-off setup bonus included\n Generous pension plan\n Yearly budget for health, wellness and personal development\n Laptop and mobile phone of your choice with included cellular subscription\n Regular social activities such as team events, meet ups, after works and off-sites\n Daily breakfast served at the office\n \nAt Soundtrack, we believe that diversity fuels creativity and innovation. We're committed to building a team that reflects a variety of backgrounds, perspectives, and experiences. We welcome applications from individuals of all races, ethnicities, genders, ages, abilities, religions, sexual orientations, and identities.\nWe reserve the right to close this vacancy early if we identify a suitable candidate before the application deadline. To ensure consideration, we encourage you to submit your application as soon as possible.\nPlease note that we only accept applications submitted via our career page and do not accept applications by e-mail.",
+            "text_formatted": "<p><strong>About us</strong></p><p>Soundtrack is a B2B scale-up company providing music streaming services for businesses. We serve small customers like the café around the corner, and much bigger brands like Joe &amp; the Juice, Toni &amp; Guy and TAG Heuer. On the inside, we're a bunch of talented, motivated and humble designers, engineers and music experts. We believe in <a href=\"https://openviewpartners.com/product-led-growth/\">product-led growth</a>, where the product is the primary driver of customer acquisition, conversion and expansion.<strong> </strong></p><p><strong>The role</strong></p><p>As a Senior Machine Learning Engineer in the Music Experience team, you’ll be working on a wide range of projects together with other engineers, product owners, UI/UX designers, machine learning experts, researchers, music experts and analysts.</p><p>Music is the core of Soundtrack’s product. The Music Experience team is a vertical team that is dedicated to ownership and development of all music features, like music onboarding, home, search, stations, user created playlists, schedules and artist/album/playlist detail pages. The team owns the features end to end, from UX/UI to APIs, databases, and machine learning.</p><p>We believe that good applications come from good research. We don’t shy away from doing extensive research when needed. We attend machine learning conferences and read relevant research as frequently as possible. However, we are mission driven and try to strike a good balance between long and short term goals.</p><p>As a member of this team, you will take part in building features that are core to Soundtrack’s value proposition and business. You will work on end-to-end machine learning solutions: data sourcing, training models, making sure data gathering is in place, and giving feedback on the user experience design.</p><p>You can check out the <a href=\"https://www.soundtrackyourbrand.com/how-it-works/\">How it works</a> page to see what kind of features you will be working on or <a href=\"https://www.soundtrackyourbrand.com/apps-and-hardware/\">download our app</a> and sign up for a free trial to get a first hand experience.</p><p><strong>Responsibilities</strong></p><ul> <li>Developing, deploying and managing machine learning models and its connected systems</li> <li>Continuously improving the tooling and workflows around machine learning efforts in the team</li> <li>Contribute to the team’s vision, strategy and agenda</li> <li>Helping the team grow as a whole by sharing knowledge and lifting each other up</li> </ul><p><strong>About you</strong></p><p>We're always looking to work with people who are friendly, professional, humble, open, and with a passion for detail. You are probably not a stranger to describing yourself as:</p><ul> <li>Self-sustaining – you can work independently, taking initiatives and planning your own time</li> <li>Curious – you enjoy learning new things to grow both professionally as well as on a personal level</li> <li>A good communicator – you enjoy discussing different solutions and strategies for technical challenges</li> <li>Agile – you feel comfortable in a dynamic environment where focus lies in what’s important here and now, with the ability to realize when it's time to change the game plan and when to stick to it</li> <li>Humble – you are an open person, you say what you mean and mean what you say</li> <li>Street smart – crafty, able to build solutions with limited resources</li> <li>Not a perfectionist – but disciplined and methodical in your approach to solving problems</li> </ul><p><strong>Mandatory requirements</strong></p><ul> <li>5+ years of experience developing, deploying, and managing machine learning models and systems, preferably in a product development organization.</li> <li>Experience using machine learning frameworks, e.g. Tensorflow, Torch.</li> <li>Familiarity with cloud based training and deploying of machine learning models, preferably on Google Cloud Platform.</li> <li>Hands-on experience with data engineering tools, you are able to build and maintain high-scale pipelines using map-reduce frameworks (e.g. Apache Spark, Google Dataflow) and to use orchestration tools (e.g. Apache Airflow, Luigi, Argo, Kubeflow)</li> <li>Feel at home writing SQL</li> <li>Comfortable developing APIs and services, preferably using Python</li> <li>Strong communication and collaboration in a product development organization</li> </ul><p><strong>Beneficial requirements (not required)</strong></p><ul> <li>General interest in music and/or music technology</li> <li>Experience in MLOps</li> <li>Experience working with machine learning in the audio domain</li> <li>Experience working with personalization or recommendation applications</li> <li>GraphQL client and servers libraries</li> <li>Container based deployments using Docker/Kubernetes</li> <li>Continuous integration/Continuous deployment workflows</li> </ul><p><strong>Employee Benefits</strong><strong></strong></p><ul> <li>You have the freedom to decide where you work the best with our Work From Anywhere program with a&nbsp;one-off setup bonus included</li> <li>Generous pension plan</li> <li>Yearly budget for health, wellness and personal development</li> <li>Laptop and mobile phone of your choice with included cellular subscription</li> <li>Regular social activities such as team events, meet ups,&nbsp;after works and off-sites</li> <li>Daily breakfast served at the office</li> </ul><p>At Soundtrack, we believe that diversity fuels creativity and innovation. We're committed to building a team that reflects a variety of backgrounds, perspectives, and experiences. We welcome applications from individuals of all races, ethnicities, genders, ages, abilities, religions, sexual orientations, and identities.</p><p>We reserve the right to close this vacancy early if we identify a suitable candidate before the application deadline. To ensure consideration, we encourage you to submit your application as soon as possible.</p><p>Please note that we only accept applications submitted via our career page and do not accept applications by e-mail. </p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Heltid\r\nAnställningstid enligt överenskommelse"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Lön enligt överenskommelse",
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://www.soundtrack.io/",
+            "organization_number": "5569220014",
+            "name": "Soundtrack Technologies Sweden AB",
+            "workplace": "Soundtrack Technologies Sweden AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://careers.soundtrack.io/jobs/5908250-senior-machine-learning-engineer?promotion=1465856-arbetsformedlingen",
+            "other": null
+        },
+        "experience_required": false,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "mBMU_HvW_LMY",
+            "label": "IT-strateg",
+            "legacy_ams_taxonomy_id": "5432"
+        },
+        "occupation_group": {
+            "concept_id": "UxT1_tPF_Kbg",
+            "label": "Övriga IT-specialister",
+            "legacy_ams_taxonomy_id": "2519"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                18.06858,
+                59.329323
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Petter Machado",
+                "email": "petter@soundtrack.io",
+                "telephone": null,
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-05-12T15:13:05",
+        "last_publication_date": "2025-10-29T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1747055585362
+    },
+    {
+        "relevance": 0.9526890119351921,
+        "id": "29672554",
+        "external_id": null,
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29672554",
+        "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/87920267/logotyper/logo.png",
+        "headline": "Data Machine Learning Scientist",
+        "application_deadline": "2025-06-01T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Data Machine Learning Scientist\n Position Description\nWe are looking for a Senior Data Scientist/Engineer for our client in the automotive industry. The client has a high focus on Digital Transformation and data driven decisions and is now upskilling with more Machine Learning, Data Analytics, Data visualization, Data Storytelling skills. We are therefore looking for a person with passion for PowerBi and Python, a skilled developer who can handle large volumes of data from various databases. You are a true team player who enjoys working with people. Excellent communicational- and networking skills are a necessity sine this role supports various teams and stakeholders of all levels with reports and analytics. You need to be able to present your analysis to various groups so presenting skills are key.\nYou are able to extract and structure data using specialized analytics tools. You build data models and standard reports and tools for a wider user community. You handle effectively interfaces to large amounts of data and I create / integrate data structures suitable for analysis and deploy algorithms in performance efficient code\nKey Responsibilities: \n·        Support various stakeholders and management using different Analytics tools and reports (Power BI)\n·        Support with data extraction from multiple sources using different tools (SQL, Python, Knime, Databricks)\n·        Support management in creating and implementing the strategy for upskilling the team in Analytics.\n·        Reliability Life Data Analysis (Weibull++)\n·        Development and participation in projects to deliver (new) Analytics tools \n·        Create analytical hypothesis taking business requirements into consideration.\n·        Identify opportunities for leveraging data to drive business solution.\n·        Conduct analysis to provide actionable insights, identify trends, and measure performance\n·        Visualise complex analytics output to enable and increase understanding of decision makers\n·        Apply statistics and mathematics models to understand and solve business problems on data.\n·        Collaborate with model developers to implement and deploy scalable solutions\n·        Accountable for the analytics quality, analytical leadership of the project team and delivery.\n·        Code and program data models and solve wider range of analytics problems\n·        Define standards and frameworks for data analysis\n·        Setup and enable colleagues to perform self-service reporting and analysis on data analysis platforms\nSkills required\n·     We see that you have a masters degree in engineering, preferably within Mathematics, Statistics, Computer Science or similar with a couple of years of relevant experience.\n·     You will need skills in Python and scientific packages like NumPy, Pandas etc. and experience in building data pipelines, data transformation and data visualization.\n·     Important to have analytic ability, creativity and enjoy interaction with different teams.\n·        Strong knowledge about statistical methods\n·        Machine learning/ data mining experience\n·        Life data analysis, Weibull analysis\n·        Data Storytelling & Data modelling \n·        Business Intelligence\n·        Agile way of working\n·        Collaborate with others and effective in building networks / teams\n·        Manage Complexity & Ambiguity  \n·        Fluent in English both spoken & written\n·        Excellent communicational skills\n·        Used to working in a global environment\n·        A service minded “doer” who takes initiatives\n·   Presenting skills using PowerBI\n\n\nSkilled in tools such as;\nPowerBI/DAX, SQL, Python / R, Databricks, Knime\nVersion control tools for collaborative development (Git)\nFamiliarity with working on modern cloud-based environments\nAI/Machine learning and Databases (SQL)\nDevOps tools such as Kubernetes and Docker\nExperience with CI/CD tools such as Tekton and ArgoCD\nOther SW knowledge would be a plus: REST, JSON, GIT/SVN, Microsoft Azure & Cloud technologies\n \nA big plus if you have worked in the automotive industry before.",
+            "text_formatted": "<p><strong>Data Machine Learning Scientist</strong></p><p><strong><u> Position Description</u></strong></p><p>We are looking for a Senior Data Scientist/Engineer for our client in the automotive industry. The client has a high focus on Digital Transformation and data driven decisions and is now upskilling with more Machine Learning, Data Analytics, Data visualization, Data Storytelling skills. We are therefore looking for a person with passion for PowerBi and Python, a skilled developer who can handle large volumes of data from various databases. You are a true team player who enjoys working with people. Excellent communicational- and networking skills are a necessity sine this role supports various teams and stakeholders of all levels with reports and analytics. You need to be able to present your analysis to various groups so presenting skills are key.</p><p>You are able to extract and structure data using specialized analytics tools. You build data models and standard reports and tools for a wider user community. You handle effectively interfaces to large amounts of data and I create / integrate data structures suitable for analysis and deploy algorithms in performance efficient code</p><p><strong>Key Responsibilities: </strong></p><p>·        Support various stakeholders and management using different Analytics tools and reports (Power BI)</p><p>·        Support with data extraction from multiple sources using different tools (SQL, Python, Knime, Databricks)</p><p>·        Support management in creating and implementing the strategy for upskilling the team in Analytics.</p><p>·        Reliability Life Data Analysis (Weibull++)</p><p>·        Development and participation in projects to deliver (new) Analytics tools </p><p>·        Create analytical hypothesis taking business requirements into consideration.</p><p>·        Identify opportunities for leveraging data to drive business solution.</p><p>·        Conduct analysis to provide actionable insights, identify trends, and measure performance</p><p>·        Visualise complex analytics output to enable and increase understanding of decision makers</p><p>·        Apply statistics and mathematics models to understand and solve business problems on data.</p><p>·        Collaborate with model developers to implement and deploy scalable solutions</p><p>·        Accountable for the analytics quality, analytical leadership of the project team and delivery.</p><p>·        Code and program data models and solve wider range of analytics problems</p><p>·        Define standards and frameworks for data analysis</p><p>·        Setup and enable colleagues to perform self-service reporting and analysis on data analysis platforms</p><p><strong><u>Skills required</u></strong></p><p>·     We see that you have a masters degree in engineering, preferably within Mathematics, Statistics, Computer Science or similar with a couple of years of relevant experience.</p><p>·     You will need skills in Python and scientific packages like NumPy, Pandas etc. and experience in building data pipelines, data transformation and data visualization.</p><p>·     Important to have analytic ability, creativity and enjoy interaction with different teams.</p><p>·        Strong knowledge about statistical methods</p><p>·        Machine learning/ data mining experience</p><p>·        Life data analysis, Weibull analysis</p><p>·        Data Storytelling &amp; Data modelling </p><p>·        Business Intelligence</p><p>·        Agile way of working</p><p>·        Collaborate with others and effective in building networks / teams</p><p>·        Manage Complexity &amp; Ambiguity  </p><p>·        Fluent in English both spoken &amp; written</p><p>·        Excellent communicational skills</p><p>·        Used to working in a global environment</p><p>·        A service minded “doer” who takes initiatives</p><p>·   Presenting skills using PowerBI</p><p><br></p><p><strong><u>Skilled in tools such as;</u></strong></p><p>PowerBI/DAX, SQL, Python / R, Databricks, Knime</p><p>Version control tools for collaborative development (Git)</p><p>Familiarity with working on modern cloud-based environments</p><p>AI/Machine learning and Databases (SQL)</p><p>DevOps tools such as Kubernetes and Docker</p><p>Experience with CI/CD tools such as Tekton and ArgoCD</p><p>Other SW knowledge would be a plus: REST, JSON, GIT/SVN, Microsoft Azure &amp; Cloud technologies</p><p> </p><p>A big plus if you have worked in the automotive industry before.</p><p><br></p><p><br></p><p> </p><p> </p><p> </p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": null
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": null,
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "www.integroconsulting.se",
+            "organization_number": "5593074866",
+            "name": "Integro Consulting AB",
+            "workplace": "Göteborg"
+        },
+        "application_details": {
+            "information": null,
+            "reference": "Data ML Scientist",
+            "email": "work@integroconsulting.se",
+            "via_af": false,
+            "url": null,
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "rz2m_96d_vyF",
+            "label": "Databasutvecklare",
+            "legacy_ams_taxonomy_id": "2423"
+        },
+        "occupation_group": {
+            "concept_id": "DJh5_yyF_hEM",
+            "label": "Mjukvaru- och systemutvecklare m.fl.",
+            "legacy_ams_taxonomy_id": "2512"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Göteborg",
+            "municipality_code": "1480",
+            "municipality_concept_id": "PVZL_BQT_XtL",
+            "region": "Västra Götalands län",
+            "region_code": "14",
+            "region_concept_id": "zdoY_6u5_Krt",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": "Herkulesgatan 1K, vån 2",
+            "postcode": "41703",
+            "city": "GÖTEBORG",
+            "coordinates": [
+                11.94783039724701,
+                57.719684381111946
+            ]
+        },
+        "must_have": {
+            "skills": [
+                {
+                    "weight": 10,
+                    "concept_id": "5Gmv_EZs_BPe",
+                    "label": "Dataanalys",
+                    "legacy_ams_taxonomy_id": "1126"
+                },
+                {
+                    "weight": 10,
+                    "concept_id": "qfkh_ZRK_w4W",
+                    "label": "Python, programmeringsspråk",
+                    "legacy_ams_taxonomy_id": "605952"
+                },
+                {
+                    "weight": 10,
+                    "concept_id": "Egmd_U5i_sRA",
+                    "label": "MySQL, databashanterare",
+                    "legacy_ams_taxonomy_id": "607089"
+                }
+            ],
+            "languages": [
+                {
+                    "weight": 10,
+                    "concept_id": "NVxJ_hLg_TYS",
+                    "label": "Engelska",
+                    "legacy_ams_taxonomy_id": "283"
+                }
+            ],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "rz2m_96d_vyF",
+                    "label": "Databasutvecklare",
+                    "legacy_ams_taxonomy_id": "2423"
+                }
+            ],
+            "education": [
+                {
+                    "weight": 10,
+                    "concept_id": "FHxz_HhN_3Mk",
+                    "label": "Data",
+                    "legacy_ams_taxonomy_id": "14"
+                }
+            ],
+            "education_level": [
+                {
+                    "weight": 10,
+                    "concept_id": "asZm_TEQ_Srk",
+                    "label": "Eftergymnasial utbildning två år eller längre",
+                    "legacy_ams_taxonomy_id": "6"
+                }
+            ]
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [],
+        "publication_date": "2025-05-02T11:26:11",
+        "last_publication_date": "2025-06-01T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_ANNONSERA",
+        "timestamp": 1746177971443
+    },
+    {
+        "relevance": 0.9526890119351921,
+        "id": "29616115",
+        "external_id": "46-559369-7302-PR6137",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29616115",
+        "logo_url": null,
+        "headline": "Machine Learning Engineer/Data Scientist",
+        "application_deadline": "2025-05-31T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Job description\nAre you interested in working with machine learning and AI within electric vehicle development? Do you thrive in turning the latest technical developments within ML/AI into data products that will be used all over the world? Would you like to be part of a successful and global company at the cutting edge of digitalization?\n\nThen you may be the one we are looking for!\n \nBasic qualifications\nRight now we have a need for those who have a dual strong background in both machine learning/data science AND knowledge or experience from the automotive area, particularly electric vehicles.\nIn order to succeed in this role, you need to have the following fundamental qualifications:\nA minimum of a Master’s or a PhD degree in a relevant highly quantitative field such as Data Science, Statistics, Mathematics/Applied Mathematics, Machine Learning, Computer Science, Vehicle Engineering or other Engineering/Natural Sciences areas with a strong applied mathematics component or background.\nAt least 3 years of experience working with advanced analytics, machine learning, data science or algorithm development in a professional environment.\nAutomotive knowledge and experience within (some of) the areas of electromobility, vehicle energy management, energy modeling of vehicles, battery technology.\nFluent in at least one of the popular programming languages for advanced data analysis and machine learning such as Python and R or similar languages.\nExperience in developing machine learning models and pipelines in ML libraries such as Tensorflow or Pytorch and scikit-learn.\nSpoken and written fluency in English.\n\n \nPreferred additional skills, personal traits, experience\nB driving’s license.\nExperience form working in an agile way.\nCI/CD experience.\nExperience using JIRA and git.\nExperience from working with and developing machine learning models for Time Series data.\nExtensive experience of the development of deep-learning models.\nExperience working with Transformers and LLM ML architectures.\nExperience working with Federated Learning.\nExperience from multiscale modeling of batteries, from cell-level to pack-level, especially the modelling and characterization of battery degradation.\nExperience from the (energy) modelling of electric vehicle powertrains.\nHigh familiarity with the impact of environmental factors on electric vehicle performance and energy consumption.\nExperience with the tools and techniques needed for the deployment of ML models in production environments.\nUp-to-date with the latest algorithmic and architectural developments within the areas of ML and AI, particularly within the automotive application area.\n\n \n \nWe attach a great importance to your personality and your willingness to develop yourself together with us. As such, we believe that you meet the following:\nYou have an interest, desire as well as habit of adopting new technologies.\nYou are a strong communicator who is able to quickly create strong relationships.\nYou have a highly analytical mindset and are both meticulous and structured.\nYou are an initiative taker who is both flexible and sees solutions instead of problems.\nYou make sure that your deliverables are of high quality and respect the set deadlines.\n\nAs you will be working as a consultant, you thrive in highly international collaborative environments.\n \nWe offer\nWelcome to Sigma Technology Experience! We’re a company of 30, backed up by the muscles from Sigma Technology Group. As we're currently expanding, we're seeking individuals who believe in the power of Data to make a difference. We value those who aspire to not only work as consultants but also contribute to shaping our workplace, culture, and strategies for ongoing skill development and staying current in our evolving industry.\nAs a consultant at Sigma Technology, you get the opportunity to work with world-leading companies together with your colleagues. We deliver everything from expert consultant assignments to entire teams and larger projects. Together with your manager, we make sure that you get an assignment that suits both you and us.\nWe also believe in building long-term professional relationships, and therefore strive to create an environment where you will enjoy working for a long time!\nAt Sigma Technology, we are incredibly proud of being one of Sweden’s most recommended employers in 2023!",
+            "text_formatted": "<p><strong>Job description</strong></p><p>Are you interested in working with machine learning and AI within electric vehicle development? Do you thrive in turning the latest technical developments within ML/AI into data products that will be used all over the world? Would you like to be part of a successful and global company at the cutting edge of digitalization?</p><p><br>Then you may be the one we are looking for!</p><p> </p><p><strong>Basic qualifications</strong></p><p>Right now we have a need for those who have a dual strong background in both machine learning/data science AND knowledge or experience from the automotive area, particularly electric vehicles.</p><p>In order to succeed in this role, you need to have the following fundamental qualifications:</p><ul><li>A minimum of a Master&rsquo;s or a PhD degree in a relevant highly quantitative field such as Data Science, Statistics, Mathematics/Applied Mathematics, Machine Learning, Computer Science, Vehicle Engineering or other Engineering/Natural Sciences areas with a strong applied mathematics component or background.</li><li>At least 3 years of experience working with advanced analytics, machine learning, data science or algorithm development in a professional environment.</li><li>Automotive knowledge and experience within (some of) the areas of electromobility, vehicle energy management, energy modeling of vehicles, battery technology.</li><li>Fluent in at least one of the popular programming languages for advanced data analysis and machine learning such as Python and R or similar languages.</li><li>Experience in developing machine learning models and pipelines in ML libraries such as Tensorflow or Pytorch and scikit-learn.</li><li>Spoken and written fluency in English.</li></ul><p> </p><p><strong>Preferred additional skills, personal traits, experience</strong></p><ul><li>B driving&rsquo;s license.</li><li>Experience form working in an agile way.</li><li>CI/CD experience.</li><li>Experience using JIRA and git.</li><li>Experience from working with and developing machine learning models for Time Series data.</li><li>Extensive experience of the development of deep-learning models.</li><li>Experience working with Transformers and LLM ML architectures.</li><li>Experience working with Federated Learning.</li><li>Experience from multiscale modeling of batteries, from cell-level to pack-level, especially the modelling and characterization of battery degradation.</li><li>Experience from the (energy) modelling of electric vehicle powertrains.</li><li>High familiarity with the impact of environmental factors on electric vehicle performance and energy consumption.</li><li>Experience with the tools and techniques needed for the deployment of ML models in production environments.</li><li>Up-to-date with the latest algorithmic and architectural developments within the areas of ML and AI, particularly within the automotive application area.</li></ul><p> </p><p> </p><p>We attach a great importance to your personality and your willingness to develop yourself together with us. As such, we believe that you meet the following:</p><ul><li>You have an interest, desire as well as habit of adopting new technologies.</li><li>You are a strong communicator who is able to quickly create strong relationships.</li><li>You have a highly analytical mindset and are both meticulous and structured.</li><li>You are an initiative taker who is both flexible and sees solutions instead of problems.</li><li>You make sure that your deliverables are of high quality and respect the set deadlines.</li></ul><p>As you will be working as a consultant, you thrive in highly international collaborative environments.</p><p> </p><p><strong>We offer</strong></p><p>Welcome to Sigma Technology Experience! We&rsquo;re a company of 30, backed up by the muscles from Sigma Technology Group. As we're currently expanding, we're seeking individuals who believe in the power of Data to make a difference. We value those who aspire to not only work as consultants but also contribute to shaping our workplace, culture, and strategies for ongoing skill development and staying current in our evolving industry.</p><p>As a consultant at Sigma Technology, you get the opportunity to work with world-leading companies together with your colleagues. We deliver everything from expert consultant assignments to entire teams and larger projects. Together with your manager, we make sure that you get an assignment that suits both you and us.</p><p>We also believe in building long-term professional relationships, and therefore strive to create an environment where you will enjoy working for a long time!</p><p>At Sigma Technology, we are incredibly proud of being one of Sweden&rsquo;s most recommended employers in 2023!</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Regular\r\nFull Time"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Fixed salary",
+        "duration": {
+            "concept_id": "a7uU_j21_mkL",
+            "label": "Tills vidare",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "https://sigma.se/sv/position/?id=profiler-positions-6137",
+            "organization_number": "5593697302",
+            "name": "Sigma Technology Experience AB",
+            "workplace": "Sigma Technology"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://sigma.se/sv/position/?id=profiler-positions-6137",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "7YaM_bPu_c1T",
+            "label": "Systemanalytiker/Systemutredare",
+            "legacy_ams_taxonomy_id": "2411"
+        },
+        "occupation_group": {
+            "concept_id": "UXKZ_3zZ_ipB",
+            "label": "Systemanalytiker och IT-arkitekter m.fl.",
+            "legacy_ams_taxonomy_id": "2511"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Göteborg",
+            "municipality_code": "1480",
+            "municipality_concept_id": "PVZL_BQT_XtL",
+            "region": "Västra Götalands län",
+            "region_code": "14",
+            "region_concept_id": "zdoY_6u5_Krt",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                11.97456,
+                57.70887
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "7YaM_bPu_c1T",
+                    "label": "Systemanalytiker/Systemutredare",
+                    "legacy_ams_taxonomy_id": "2411"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Kasper Kristensson",
+                "email": null,
+                "telephone": null,
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2025-04-09T09:10:15",
+        "last_publication_date": "2025-05-31T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1744182615832
+    },
+    {
+        "relevance": 0.9526890119351921,
+        "id": "29333997",
+        "external_id": "46-559366-0524-5364037-1",
+        "original_id": null,
+        "label": "[]",
+        "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29333997",
+        "logo_url": null,
+        "headline": "Principal Machine Learning Engineer",
+        "application_deadline": "2025-06-06T23:59:59",
+        "number_of_vacancies": 1,
+        "description": {
+            "text": "Daily Tasks:\n• Design and develop and review advanced machine learning models and architectures, including deep learning, optimization, and generative AI systems\n• Lead complex AI/ML project initiatives, providing technical guidance and architectural oversight to cross-functional engineering teams\n• Conduct in-depth research and experimentation to evaluate emerging AI technologies, assess their potential applications, and develop proof-of-concept solutions\n• Review and optimize existing AI systems for performance, scalability, and efficiency, implementing advanced techniques like model compression and transfer learning\n• Collaborate with product managers and stakeholders to translate business requirements into technical AI strategies and implementation roadmaps\nMinimum Technical Skills:\n• Expert-level proficiency in Python, with deep understanding of machine learning libraries\n• Advanced knowledge of machine learning algorithms, neural network architectures, and AI model development\n• Extensive experience with cloud platforms (must have GCP, nice to have Azure) and AI/ML cloud services\n• Strong background in statistical modeling, data preprocessing, and feature engineering\n• Proficiency in big data technologies and distributed computing frameworks\n• Demonstrated ability to design and implement scalable machine learning infrastructure\nLeadership and Experience Level:\n• Minimum of 8-10 years of professional experience in AI/ML engineering\n• Proven track record of leading complex AI initiatives from conception to production\n• Senior technical leadership experience, capable of mentoring junior engineers and driving technical strategy\n• Ability to communicate complex technical concepts to both technical and non-technical stakeholders\n• Demonstrated innovation in AI research or practical applications\nOffer due date:2025-01-05\nStart date:2025-01-07\nEnd date:2025-06-30",
+            "text_formatted": "<p><strong>Daily Tasks:</strong></p><p>• Design and develop and review advanced machine learning models and architectures, including deep learning, optimization, and generative AI systems</p><p>• Lead complex AI/ML project initiatives, providing technical guidance and architectural oversight to cross-functional engineering teams</p><p>• Conduct in-depth research and experimentation to evaluate emerging AI technologies, assess their potential applications, and develop proof-of-concept solutions</p><p>• Review and optimize existing AI systems for performance, scalability, and efficiency, implementing advanced techniques like model compression and transfer learning</p><p>• Collaborate with product managers and stakeholders to translate business requirements into technical AI strategies and implementation roadmaps</p><p><strong>Minimum Technical Skills:</strong></p><p>• Expert-level proficiency in Python, with deep understanding of machine learning libraries</p><p>• Advanced knowledge of machine learning algorithms, neural network architectures, and AI model development</p><p>• Extensive experience with cloud platforms (must have GCP, nice to have Azure) and AI/ML cloud services</p><p>• Strong background in statistical modeling, data preprocessing, and feature engineering</p><p>• Proficiency in big data technologies and distributed computing frameworks</p><p>• Demonstrated ability to design and implement scalable machine learning infrastructure</p><p><strong>Leadership and Experience Level:</strong></p><p>• Minimum of 8-10 years of professional experience in AI/ML engineering</p><p>• Proven track record of leading complex AI initiatives from conception to production</p><p>• Senior technical leadership experience, capable of mentoring junior engineers and driving technical strategy</p><p>• Ability to communicate complex technical concepts to both technical and non-technical stakeholders</p><p>• Demonstrated innovation in AI research or practical applications</p><p><strong>Offer due date:</strong>2025-01-05</p><p><strong>Start date:</strong>2025-01-07</p><p><strong>End date:</strong>2025-06-30</p>",
+            "company_information": null,
+            "needs": null,
+            "requirements": null,
+            "conditions": "Heltid\r\nStart date: 2025-01-07 - End date: 2025-06-30"
+        },
+        "employment_type": {
+            "concept_id": "PFZr_Syz_cUq",
+            "label": "Vanlig anställning",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_type": {
+            "concept_id": "oG8G_9cW_nRf",
+            "label": "Fast månads- vecko- eller timlön",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "salary_description": "Lön enligt överenskommelse",
+        "duration": {
+            "concept_id": "qQUd_4qe_NDT",
+            "label": "6 månader eller längre",
+            "legacy_ams_taxonomy_id": "2"
+        },
+        "working_hours_type": {
+            "concept_id": "6YE1_gAC_R2G",
+            "label": "Heltid",
+            "legacy_ams_taxonomy_id": "1"
+        },
+        "scope_of_work": {
+            "min": 100,
+            "max": 100
+        },
+        "access": null,
+        "employer": {
+            "phone_number": null,
+            "email": null,
+            "url": "http://www.progalaxy.se",
+            "organization_number": "5593660524",
+            "name": "Professional Galaxy AB",
+            "workplace": "Professional Galaxy AB"
+        },
+        "application_details": {
+            "information": null,
+            "reference": null,
+            "email": null,
+            "via_af": false,
+            "url": "https://careers.progalaxy.se/jobs/5364037-principal-machine-learning-engineer?promotion=1268609-arbetsformedlingen",
+            "other": null
+        },
+        "experience_required": true,
+        "access_to_own_car": false,
+        "driving_license_required": false,
+        "driving_license": null,
+        "occupation": {
+            "concept_id": "uyJg_i94_xmr",
+            "label": "IT-arkitekt/Lösningsarkitekt",
+            "legacy_ams_taxonomy_id": "6626"
+        },
+        "occupation_group": {
+            "concept_id": "UXKZ_3zZ_ipB",
+            "label": "Systemanalytiker och IT-arkitekter m.fl.",
+            "legacy_ams_taxonomy_id": "2511"
+        },
+        "occupation_field": {
+            "concept_id": "apaJ_2ja_LuF",
+            "label": "Data/IT",
+            "legacy_ams_taxonomy_id": "3"
+        },
+        "workplace_address": {
+            "municipality": "Stockholm",
+            "municipality_code": "0180",
+            "municipality_concept_id": "AvNB_uwa_6n6",
+            "region": "Stockholms län",
+            "region_code": "01",
+            "region_concept_id": "CifL_Rzy_Mku",
+            "country": "Sverige",
+            "country_code": "199",
+            "country_concept_id": "i46j_HmG_v64",
+            "street_address": null,
+            "postcode": null,
+            "city": null,
+            "coordinates": [
+                18.06858,
+                59.329323
+            ]
+        },
+        "must_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [
+                {
+                    "weight": 10,
+                    "concept_id": "uyJg_i94_xmr",
+                    "label": "IT-arkitekt/Lösningsarkitekt",
+                    "legacy_ams_taxonomy_id": "6626"
+                }
+            ],
+            "education": [],
+            "education_level": []
+        },
+        "nice_to_have": {
+            "skills": [],
+            "languages": [],
+            "work_experiences": [],
+            "education": [],
+            "education_level": []
+        },
+        "application_contacts": [
+            {
+                "name": null,
+                "description": "Asma Bilal",
+                "email": "asma.bilal@progalaxy.se",
+                "telephone": "0738076207",
+                "contact_type": null
+            }
+        ],
+        "publication_date": "2024-12-18T16:57:54",
+        "last_publication_date": "2025-06-06T23:59:59",
+        "removed": false,
+        "removed_date": null,
+        "source_type": "VIA_PLATSBANKEN_DXA",
+        "timestamp": 1734537474191
+    }
+]
