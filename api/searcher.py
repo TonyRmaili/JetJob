@@ -1,9 +1,47 @@
 import requests
 import json
 import os
+from datetime import datetime
 
-def search_ads(BASE_URL:str ,keyword:str,limit:int, offset:int,
-            output_savepath:str, output_filename:str):
+
+def multi_search(keywords: list[str], BASE_URL: str, limit: int, offset: int, filter_key: str, output_path: str):
+    seen_ids = set()
+    unique_ads = []
+
+    for keyword in keywords:
+        hits = search_ads(BASE_URL, keyword, limit, offset)
+        if hits:
+            for ad in hits:
+                ad_id = ad.get("id")
+                if ad_id and ad_id not in seen_ids:
+                    seen_ids.add(ad_id)
+                    unique_ads.append(ad)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    joined_keywords = "_".join(keywords)
+
+    matched_ads, non_matched_ads = split_by_keyword_full_objects(data=unique_ads, keyword=filter_key)
+
+    matched_dir = os.path.join(output_path, f"matched_{filter_key}")
+    unmatched_dir = os.path.join(output_path, f"unmatched_{filter_key}")
+
+    os.makedirs(matched_dir, exist_ok=True)
+    os.makedirs(unmatched_dir, exist_ok=True)
+
+    filename = f"{timestamp}_{joined_keywords}.json"
+
+    # Save matched ads
+    with open(os.path.join(matched_dir, filename), "w", encoding="utf-8") as f:
+        json.dump(matched_ads, f, indent=2, ensure_ascii=False)
+
+    # Save unmatched ads
+    with open(os.path.join(unmatched_dir, filename), "w", encoding="utf-8") as f:
+        json.dump(non_matched_ads, f, indent=2, ensure_ascii=False)
+
+    print(f"Saved {len(matched_ads)} matched and {len(non_matched_ads)} unmatched ads.")
+
+
+def search_ads(BASE_URL:str ,keyword:str,limit:int, offset:int) -> list:
     # Search parameters
     params = {
     "q": keyword,             
@@ -13,129 +51,60 @@ def search_ads(BASE_URL:str ,keyword:str,limit:int, offset:int,
 
     # Make the GET request
     response = requests.get(BASE_URL , params= params)
-
+   
     # Check for successful response
     if response.status_code == 200:
         data = response.json()
         hits = data.get("hits", [])
 
         if hits:
-            # for job in hits:
-            #     headline = job.get("headline", "No headline provided")
-            #     municipality = job.get("workplace_address", {}).get("municipality", "No municipality provided")
-            #     employer = job.get("employer", {}).get("name", "No employer provided")
-            #     print(f"Job Title: {headline}\nLocation: {municipality}\nEmployer: {employer}\n")
-            # first_hit = hits[0]
-
-            # Save all parameters from the first hit to a file (pretty JSON format)
-
-            save_path = os.path.join(output_savepath,output_filename)
-
-            with open(save_path, "w", encoding="utf-8") as f:
-                json.dump(hits, f, ensure_ascii=False, indent=4)
-
+           return hits
         else:
             print("No job listings found for the given search parameters.")
     else:
         print(f"Request failed with status code: {response.status_code}")
 
-def format_response(path,response):
-    pass
 
-def sort_response(path):
-    with open(path,encoding='utf-8') as f:
-        response = json.load(f)
-    email_fields = find_email_keys(response)
-
-    for path, value in email_fields:
-        print(f"Found: {path} => {value}")
-
-def find_email_keys(obj, path=""):
-    results = []
+def contains_keyword(obj,keyword):
     if isinstance(obj, dict):
         for key, value in obj.items():
-            full_path = f"{path}.{key}" if path else key
-            if "email" in key.lower():
-                results.append((full_path, value))
-            results.extend(find_email_keys(value, full_path))
-
+            if keyword in key.lower() and value:
+                return True
+            if contains_keyword(value, keyword):
+                return True
     elif isinstance(obj, list):
-        for idx, item in enumerate(obj):
-            full_path = f"{path}[{idx}]"
-            results.extend(find_email_keys(item, full_path))
-
-    return results
-
-def find_email_objects(obj, email_key_match="email", path=""):
-    results = []
-
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            if email_key_match.lower() in key.lower():
-                results.append((obj, path))  # Save the object itself and its path
-                break  # Only need one matching key to include the object
-        for key, value in obj.items():
-            results.extend(find_email_objects(value, email_key_match, f"{path}.{key}" if path else key))
-
-    elif isinstance(obj, list):
-        for idx, item in enumerate(obj):
-            results.extend(find_email_objects(item, email_key_match, f"{path}[{idx}]"))
-
-    return results
+        for item in obj:
+            if contains_keyword(item ,keyword):
+                return True
+    return False
 
 
-def save_objects_by_email_presence(json_data, output_base_path):
-    found_objects = find_email_objects(json_data)
+def split_by_keyword_full_objects(data, keyword):
+    with_keyword = []
+    without_keyword = []
 
-    present_folder = os.path.join(output_base_path, "has_email")
-    none_folder = os.path.join(output_base_path, "missing_email")
-
-    os.makedirs(present_folder, exist_ok=True)
-    os.makedirs(none_folder, exist_ok=True)
-
-    count_present = 0
-    count_none = 0
-
-    for i, (obj, path) in enumerate(found_objects):
-        # Find the first email-like key in the object
-        email_value = next((v for k, v in obj.items() if "email" in k.lower()), None)
-
-        if email_value is None:
-            out_path = os.path.join(none_folder, f"object_{count_none}.json")
-            count_none += 1
+    for entry in data:
+        if contains_keyword(entry, keyword):
+            with_keyword.append(entry)
         else:
-            out_path = os.path.join(present_folder, f"object_{count_present}.json")
-            count_present += 1
+            without_keyword.append(entry)
 
-        with open(out_path, "w", encoding="utf-8") as f:
-            json.dump(obj, f, indent=4)
+    return with_keyword, without_keyword
 
-    print(f"Saved {count_present} with email and {count_none} with missing email.")
+
 
 
 if __name__ == "__main__":
     BASE_URL = "https://jobsearch.api.jobtechdev.se/search"
-
-    path = "./outputs/test.json"
-
-    # sort_response(path=path)
-
-    # with open(path, "r", encoding="utf-8") as f:
-    #     data = json.load(f)
-
-    # save_objects_by_email_presence(data, "./sorted_email_objects")
+    keywords = ["python","machine learning"]
 
 
-    search_ads(
+    multi_search(
+        keywords=keywords,
         BASE_URL=BASE_URL,
-        
-        keyword="python",
         limit=10,
         offset=0,
-
-        output_savepath= "./outputs",
-        output_filename="test_muni1280.json"
+        filter_key="email",
+        output_path="./outputs"
     )
-
-
-
+ 

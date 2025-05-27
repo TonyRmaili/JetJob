@@ -6,7 +6,7 @@ import json
 from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
 from api.send_email import send_email
-from api.searcher import search_ads
+from api.searcher import multi_search
 
 
 # start command 
