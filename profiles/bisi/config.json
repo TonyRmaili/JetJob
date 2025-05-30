@@ -9,5 +9,11 @@
         "Östergötlands Län"
     ],
     "limit": 10,
-    "offset": 0
+    "offset": 0,
+    "system_prompt_path": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/prompts/sdf.txt",
+    "attachment_files": [
+        "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/outputs/dont_email.json",
+        "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/outputs/example_params.json",
+        "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/outputs/first_job_ad.json"
+    ]
 }

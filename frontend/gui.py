@@ -77,7 +77,6 @@ class JetJob:
 
         self.adjust_window()
 
-
     def init_main_frame(self):
         folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses")
         config_values, config_path = self.load_config_values()
@@ -170,10 +169,7 @@ class JetJob:
 
         self.show_frame(self.main_frame)
         refresh_file_list()
-
-    
-
-        
+ 
     def init_create_profile_frame(self):
         def refresh_profile_list():
             for widget in self.profile_list_frame.winfo_children():
@@ -431,8 +427,6 @@ class JetJob:
         clear_all_btn = tk.Button(region_button_frame, text="Clear All", command=lambda: region_box.selection_clear(0, tk.END))
         clear_all_btn.grid(row=1, column=0, sticky="ew")
             
-
-
          # Add + Delete keyword buttons
         def add_keyword():
             word = keyword_var.get().strip()
@@ -501,8 +495,119 @@ class JetJob:
         self.show_frame(self.config_search_param_frame)
 
     def init_data_files_frame(self):
-        pass
+        prompt_dir = os.path.join(self.profiles_path,self.selected_profile,"prompts")
+        attachments_dir = os.path.join(self.profiles_path,self.selected_profile,"attachment_files")
+        data_files_frame = tk.Frame(self.root)
+        data_files_frame.grid(row=0, column=0, sticky="nsew")
 
+        label = tk.Label(data_files_frame,text="Manage System prompts - Attachemnt files and more!",font=("Ariel, 14"))
+        label.grid(row=0, column=0, sticky="nsew")
+        
+        def select_prompt_click():
+            selected_file = filedialog.askopenfilename(
+                title="Select a system prompt",
+                initialdir=prompt_dir,
+                filetypes=[("Text or Markdown files", "*.txt *.md")]
+            )
+            if selected_file:
+                data, path = self.load_config_values()
+                data["system_prompt_path"] = selected_file
+    
+                with open(path, "w",encoding="utf-8") as f:
+                    json.dump(data, f, indent=4, ensure_ascii=False)
+                print("✅ Config saved")
+
+        def add_files_click():
+            selected_files = filedialog.askopenfilenames(
+                title="Select data files for mail attachment (CV, grades, etc)",
+                initialdir=attachments_dir,
+                filetypes=[("All files", "*.*")]
+                )
+            if selected_files:
+                data, path = self.load_config_values()
+                data["attachment_files"] = selected_files
+                with open(path,'w',encoding="utf-8") as f:
+                    json.dump(data,f,indent=4,ensure_ascii=False)
+
+
+        # fist frame
+        system_prompt_frame = tk.LabelFrame(data_files_frame,text="System prompt")
+        system_prompt_frame.grid(row=1,column=0,padx=5,pady=5)
+
+        select_sys_prompt_label = tk.Button(system_prompt_frame,text="Select premade prompt",command=select_prompt_click)
+        select_sys_prompt_label.grid(row=0,column=0,padx=10,pady=10)
+
+        create_sys_prompt_label = tk.Button(system_prompt_frame,text="Create new prompt", command=lambda:self.create_prompt_click(prompt_dir))
+        create_sys_prompt_label.grid(row=1,column=0,padx=10,pady=10, sticky="nws")
+
+        # second frame
+        attachment_files_frame = tk.LabelFrame(data_files_frame,text="Select attachment files")
+        attachment_files_frame.grid(row=2,column=0,padx=5,pady=5)
+
+        attachment_files_btn = tk.Button(attachment_files_frame,text="Add files", command=add_files_click)
+        attachment_files_btn.grid(row=0,column=0,padx=10,pady=10)
+
+        self.adjust_window()
+        self.show_frame(data_files_frame)
+        
+    def create_prompt_click(self,save_dir):
+        def save_prompt():
+            filename = filename_var.get().strip()
+            extension = extension_var.get()
+            content = text_area.get("1.0", tk.END).strip()
+
+            if not filename:
+                tk.messagebox.showwarning("Missing filename", "Please enter a filename.")
+                return
+            if not content:
+                tk.messagebox.showwarning("Empty prompt", "Please enter some prompt content.")
+                return
+
+            # Ensure extension is correct
+            if not filename.endswith(extension):
+                filename += extension
+
+            # Save path — change as needed
+            os.makedirs(save_dir, exist_ok=True)
+            full_path = os.path.join(save_dir, filename)
+
+            try:
+                with open(full_path, "w", encoding="utf-8") as f:
+                    f.write(content)
+                tk.messagebox.showinfo("Success", f"Saved to:\n{full_path}")
+                popup.destroy()
+            except Exception as e:
+                tk.messagebox.showerror("Error", f"Failed to save file:\n{e}")
+
+        # --- UI ---
+        popup = tk.Toplevel(self.root)
+        popup.title("Create New System Prompt")
+        popup.geometry("600x500")
+
+        # Filename Entry
+        filename_label = tk.Label(popup, text="Filename:")
+        filename_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
+
+        filename_var = tk.StringVar()
+        filename_entry = tk.Entry(popup, textvariable=filename_var, width=40)
+        filename_entry.grid(row=0, column=1, padx=5, pady=10, sticky="w")
+
+        # Extension toggle
+        extension_var = tk.StringVar(value=".txt")
+        extension_menu = tk.OptionMenu(popup, extension_var, ".txt", ".md")
+        extension_menu.grid(row=0, column=2, padx=5, pady=10, sticky="w")
+
+        # Text Area
+        text_area = tk.Text(popup, wrap="word")
+        text_area.grid(row=1, column=0, columnspan=3, padx=10, pady=10, sticky="nsew")
+
+        # Configure grid for resizing
+        popup.columnconfigure(1, weight=1)
+        popup.rowconfigure(1, weight=1)
+
+        # Save Button
+        save_button = tk.Button(popup, text="Save Prompt", command=save_prompt)
+        save_button.grid(row=2, column=0, columnspan=3, pady=10)
 
     def create_menu(self):
         self.menubar = tk.Menu(self.root)
@@ -514,6 +619,7 @@ class JetJob:
 
         # search param config
         self.menubar.add_command(label="Search Parameter config", command=self.init_config_search_param_frame)
+
 
         self.menubar.add_command(label="Data files",command=self.init_data_files_frame)
 
@@ -597,7 +703,7 @@ class JetJob:
         attachement_files_path = os.path.join(self.profiles_path,name,"attachement_files")
         os.makedirs(attachement_files_path,exist_ok=True)
 
-    def load_config_values(self):
+    def load_config_values(self) -> tuple[dict,str]:
         config_path = os.path.join(self.profiles_path, self.selected_profile, "config.json")
         if os.path.exists(config_path):
             with open(config_path,encoding="utf-8") as f:
@@ -607,175 +713,12 @@ class JetJob:
 
         return config_values ,config_path
 
+    def setup_personal_letter_payload(self):
+        pass
 
+    def mass_send_email(self):
+        pass
 
-
-
-    # def scan_for_profile_config(self) -> bool:
-    #     pass
-
-
-    # def scan_for_env(self) -> bool:
-    #     top_level_files = os.listdir('.')
-    #     if '.env' in top_level_files:
-    #         self.response_text.delete("1.0", "end")  # Clear previous content
-    #         self.response_text.insert("end", f".env found at root:\n")
-    #         return True
-    #     else:
-    #         self.response_text.delete("1.0", "end")  # Clear previous content
-    #         self.response_text.insert("end", f"No .env found\n")
-    #         self.configure_env_file()
-    #         return False
-    
-    
-
-    # def create_labelframes(self):
-    #     # base frame config
-    #     self.root.grid_rowconfigure(0, weight=1)   # top half grows vertically
-    #     self.root.grid_rowconfigure(1, weight=0)   # bottom row: just its natural size
-    #     self.root.grid_columnconfigure((0, 1), weight=1)
-
-
-    #     # top left frame
-    #     self.config_frame = tk.LabelFrame(self.root, bg="lightgrey", text="Config values")
-    #     self.config_frame.grid(row=0, column=0 , sticky="nsew")
-    #     self.add_to_config_frame()
-    
-    #     # top right frame
-    #     self.files_frame = tk.LabelFrame(self.root, bg="lightgrey", text="Selected Files")
-    #     self.files_frame.grid(row=0, column=1, sticky="nsew")
-    #     self.add_to_files_frame()
-
-        
-    #     # bottom frame
-    #     self.response_frame = tk.LabelFrame(self.root, bg="lightblue", text="terminal")
-    #     self.response_frame.grid(row=1, column=0, columnspan=3, sticky="news")
-    #     self.add_to_response_frame()
-     
-    # def add_to_response_frame(self):
-    #     # --- scrolling text area (unchanged) ---------------------------------
-    #     text_container = tk.Frame(self.response_frame)
-    #     text_container.pack(side="top", fill="both", expand=True)
-
-    #     scrollbar = tk.Scrollbar(text_container, width=12)
-    #     scrollbar.pack(side="right", fill="y")
-
-    #     self.response_text = tk.Text(
-    #         text_container,
-    #         height=6,
-    #         wrap="word",
-    #         yscrollcommand=scrollbar.set,
-    #         borderwidth=0,
-    #         highlightthickness=0
-    #     )
-    #     self.response_text.pack(side="left", fill="both", expand=True)
-    #     scrollbar.config(command=self.response_text.yview)
-
-    #     # --- centred button --------------------------------------------------
-    #     run_btn = tk.Button(
-    #         self.response_frame,
-    #         text="Run / Send",
-    #         width=20,
-    #         command=self.on_run_click
-    #     )
-    #     # no fill, no expand → keep natural width; anchor keeps it centred
-    #     run_btn.pack(side="top", pady=4, anchor="center")
-
-    # def add_to_config_frame(self):
-    #     # response format
-    #     self.use_json_var = tk.BooleanVar()
-    #     self.response_format_box = tk.Checkbutton(self.config_frame,text="Use Json Response", variable=self.use_json_var)
-    #     self.response_format_box.pack(anchor="w", padx=10, pady=5)
-
-    #     # temperature
-    #     self.temperature_var = tk.DoubleVar(value=0.0)
-
-    #     temp_slider_row = tk.Frame(self.config_frame)
-    #     temp_slider_row.pack(anchor="w", padx=10, pady=5)
-  
-    #     tk.Label(temp_slider_row, text="Set temp value (0.0 to 2.0):").pack(side="left")
-       
-    #     self.temp_slider = tk.Scale(
-    #         temp_slider_row,
-    #         from_=0.0,
-    #         to=2.0,
-    #         resolution=0.1,
-    #         orient="horizontal",
-    #         variable=self.temperature_var,
-    #         length=100
-    #     )
-    #     self.temp_slider.pack(side="left", padx=10)
-
-       
-    #     # LLM models
-    #     self.model = tk.StringVar(value=self.models[0])  # default to first option
-
-    #     # Create a horizontal frame for label + dropdown
-    #     model_row = tk.Frame(self.config_frame)
-    #     model_row.pack(anchor="w", padx=10, pady=5)
-    #     tk.Label(model_row, text="Select Model:").pack(side="left")
-
-    #     # Dropdown
-    #     self.model_dropdown = tk.OptionMenu(model_row, self.model, *self.models)
-    #     self.model_dropdown.pack(side="left", padx=10)
-
-    # def refresh_model_dropdown(self):
-    #     menu = self.model_dropdown["menu"]
-    #     menu.delete(0, "end")  # Clear existing options
-
-    #     for model in self.models:
-    #         menu.add_command(label=model, command=lambda m=model: self.model.set(m))
-
-    #     # Optional: Reset selection if current value is invalid
-    #     if self.model.get() not in self.models:
-    #         self.model.set(self.models[0])
-
-    # def add_to_files_frame(self):
-    #     # system prompt label
-    #     self.selected_sys_prompt_label = tk.Label(self.files_frame, text="No system prompt selected")
-    #     self.selected_sys_prompt_label.pack(pady=10)
-        
-    #     # Data files label
-    #     self.selected_data_files_label = tk.Label(self.files_frame, text="No data files selected")
-    #     self.selected_data_files_label.pack(pady=10)
-
-    #     # Output folder label
-    #     self.output_folder_label = tk.Label(self.files_frame, text="No output folder selected")
-    #     self.output_folder_label.pack(pady=10)
-
-    #     # Output filename label
-    #     self.output_filename_label = tk.Label(self.files_frame, text="No output filename selected")
-    #     self.output_filename_label.pack(pady=10)
-
-    # def select_profile(self):
-    #     pass
-
-    # def create_profile(self):
-    #     # Create a new popup window
-    #     popup = tk.Toplevel(self.root)
-    #     popup.title("Create Profile")
-
-    #     # Entry label and field
-    #     tk.Label(popup, text="Enter a new profile name:").pack(pady=5)
-        
-    #     name_entry = tk.Entry(popup, width=50)
-    #     name_entry.pack(pady=5)
-
-    #     # Button to create folder
-    #     def submit():
-    #         folder_path = name_entry.get().strip()
-    #         if folder_path:
-    #             try:
-                    
-                    
-    #                 pass
-
-    #             except Exception as e:
-    #                 tk.Label(popup, text=f"Error:\n{e}", fg="red").pack(pady=5)
-
-    #     tk.Button(popup, text="Create Folder", command=submit).pack(pady=10)
-
-    
 
     # def create_output_filename(self):
     #     popup = tk.Toplevel(self.root)

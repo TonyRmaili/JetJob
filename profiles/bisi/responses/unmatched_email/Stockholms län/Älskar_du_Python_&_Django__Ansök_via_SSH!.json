@@ -1,17 +1,17 @@
 {
-    "relevance": 0.8419397356479819,
+    "relevance": 0.8419010704639723,
     "id": "29739456",
     "external_id": null,
     "original_id": null,
     "label": "[]",
     "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29739456",
     "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/82353272/logotyper/logo.png",
-    "headline": "\u00c4lskar du Python & Django? Ans\u00f6k via SSH!",
+    "headline": "Älskar du Python & Django? Ansök via SSH!",
     "application_deadline": "2025-06-02T23:59:59",
     "number_of_vacancies": 1,
     "description": {
-        "text": "Vill du jobba med Python och Django? \u00c4lskar du open source? D\u00e5 vill vi g\u00e4rna jobba med dig.\nAns\u00f6k direkt i terminalen genom att SSH:a till join.5monkeys.se!\nFr\u00e5n v\u00e5ra kontor i Stockholm, G\u00f6teborg och fr\u00e5n v\u00e5ra distanskontor (remote!) tar vi fram storskaliga digitala tj\u00e4nster \u00e5t v\u00e5ra kunder.\nVi har utvecklat n\u00e5gra av Sveriges allra st\u00f6rsta Python/Django-baserade digitala tj\u00e4nster. Genom att all utveckling sker tillsammans i team kan vi uppr\u00e4tth\u00e5lla en mycket h\u00f6g gemensam kunskaps- och kvalitetsniv\u00e5 d\u00e4r vi l\u00e4r oss av varandra.\nVi gillar modern testdriven utveckling med byggstenar s\u00e5som Docker, CI-verktyg och h\u00f6g coverage.\nVi bidrar aktivt till flera open source-projekt. Du hittar n\u00e5gra av v\u00e5ra projekt p\u00e5 GitHub: https://github.com/5monkeys\nDu ans\u00f6ker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. V\u00e4lkommen!",
-        "text_formatted": "<p>Vill du jobba med Python och Django? \u00c4lskar du open source? D\u00e5 vill vi g\u00e4rna jobba med dig.</p><p>Ans\u00f6k direkt i terminalen genom att SSH:a till join.5monkeys.se!</p><p>Fr\u00e5n v\u00e5ra kontor i Stockholm, G\u00f6teborg och fr\u00e5n v\u00e5ra distanskontor (remote!) tar vi fram storskaliga digitala tj\u00e4nster \u00e5t v\u00e5ra kunder.</p><p>Vi har utvecklat n\u00e5gra av Sveriges allra st\u00f6rsta Python/Django-baserade digitala tj\u00e4nster. Genom att all utveckling sker tillsammans i team kan vi uppr\u00e4tth\u00e5lla en mycket h\u00f6g gemensam kunskaps- och kvalitetsniv\u00e5 d\u00e4r vi l\u00e4r oss av varandra.</p><p>Vi gillar modern testdriven utveckling med byggstenar s\u00e5som Docker, CI-verktyg och h\u00f6g coverage.</p><p>Vi bidrar aktivt till flera open source-projekt. Du hittar n\u00e5gra av v\u00e5ra projekt p\u00e5 GitHub: https://github.com/5monkeys</p><p>Du ans\u00f6ker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. V\u00e4lkommen!</p>",
+        "text": "Vill du jobba med Python och Django? Älskar du open source? Då vill vi gärna jobba med dig.\nAnsök direkt i terminalen genom att SSH:a till join.5monkeys.se!\nFrån våra kontor i Stockholm, Göteborg och från våra distanskontor (remote!) tar vi fram storskaliga digitala tjänster åt våra kunder.\nVi har utvecklat några av Sveriges allra största Python/Django-baserade digitala tjänster. Genom att all utveckling sker tillsammans i team kan vi upprätthålla en mycket hög gemensam kunskaps- och kvalitetsnivå där vi lär oss av varandra.\nVi gillar modern testdriven utveckling med byggstenar såsom Docker, CI-verktyg och hög coverage.\nVi bidrar aktivt till flera open source-projekt. Du hittar några av våra projekt på GitHub: https://github.com/5monkeys\nDu ansöker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. Välkommen!",
+        "text_formatted": "<p>Vill du jobba med Python och Django? Älskar du open source? Då vill vi gärna jobba med dig.</p><p>Ansök direkt i terminalen genom att SSH:a till join.5monkeys.se!</p><p>Från våra kontor i Stockholm, Göteborg och från våra distanskontor (remote!) tar vi fram storskaliga digitala tjänster åt våra kunder.</p><p>Vi har utvecklat några av Sveriges allra största Python/Django-baserade digitala tjänster. Genom att all utveckling sker tillsammans i team kan vi upprätthålla en mycket hög gemensam kunskaps- och kvalitetsnivå där vi lär oss av varandra.</p><p>Vi gillar modern testdriven utveckling med byggstenar såsom Docker, CI-verktyg och hög coverage.</p><p>Vi bidrar aktivt till flera open source-projekt. Du hittar några av våra projekt på GitHub: https://github.com/5monkeys</p><p>Du ansöker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. Välkommen!</p>",
         "company_information": null,
         "needs": null,
         "requirements": null,
@@ -19,12 +19,12 @@
     },
     "employment_type": {
         "concept_id": "PFZr_Syz_cUq",
-        "label": "Vanlig anst\u00e4llning",
+        "label": "Vanlig anställning",
         "legacy_ams_taxonomy_id": "1"
     },
     "salary_type": {
         "concept_id": "oG8G_9cW_nRf",
-        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "label": "Fast månads- vecko- eller timlön",
         "legacy_ams_taxonomy_id": "1"
     },
     "salary_description": null,
@@ -57,7 +57,7 @@
         "email": null,
         "via_af": false,
         "url": null,
-        "other": "Anslut med SSH till join.5monkeys.se f\u00f6r att g\u00f6ra din ans\u00f6kan"
+        "other": "Anslut med SSH till join.5monkeys.se för att göra din ansökan"
     },
     "experience_required": true,
     "access_to_own_car": false,
@@ -82,7 +82,7 @@
         "municipality": "Stockholm",
         "municipality_code": "0180",
         "municipality_concept_id": "AvNB_uwa_6n6",
-        "region": "Stockholms l\u00e4n",
+        "region": "Stockholms län",
         "region_code": "01",
         "region_concept_id": "CifL_Rzy_Mku",
         "country": "Sverige",

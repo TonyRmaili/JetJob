@@ -1,12 +1,12 @@
 {
-    "relevance": 0.8905932809462851,
+    "relevance": 0.8905635651145711,
     "id": "29687720",
     "external_id": null,
     "original_id": null,
     "label": "[]",
     "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29687720",
     "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/87967126/logotyper/logo.png",
-    "headline": "Senior Python Test Engineer \u2013 12406",
+    "headline": "Senior Python Test Engineer – 12406",
     "application_deadline": "2025-06-07T23:59:59",
     "number_of_vacancies": 1,
     "description": {
@@ -19,12 +19,12 @@
     },
     "employment_type": {
         "concept_id": "PFZr_Syz_cUq",
-        "label": "Vanlig anst\u00e4llning",
+        "label": "Vanlig anställning",
         "legacy_ams_taxonomy_id": "1"
     },
     "salary_type": {
         "concept_id": "oG8G_9cW_nRf",
-        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "label": "Fast månads- vecko- eller timlön",
         "legacy_ams_taxonomy_id": "1"
     },
     "salary_description": null,
@@ -65,7 +65,7 @@
     "driving_license": null,
     "occupation": {
         "concept_id": "TT8h_qKk_1iu",
-        "label": "Aff\u00e4rskonsult, IT",
+        "label": "Affärskonsult, IT",
         "legacy_ams_taxonomy_id": "7579"
     },
     "occupation_group": {
@@ -103,7 +103,7 @@
             {
                 "weight": 10,
                 "concept_id": "TT8h_qKk_1iu",
-                "label": "Aff\u00e4rskonsult, IT",
+                "label": "Affärskonsult, IT",
                 "legacy_ams_taxonomy_id": "7579"
             }
         ],

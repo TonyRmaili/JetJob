@@ -112,7 +112,7 @@ def sanitize_filename(name: str) -> str:
 
 def save_json(obj,path):
     with open(path,'w',encoding="utf-8") as f:
-        json.dump(obj,f,indent=4)
+        json.dump(obj,f,indent=4, ensure_ascii=False)
 
 
 if __name__ == "__main__":
