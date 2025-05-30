@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from datetime import datetime
+import re
 
 
 def multi_search(keywords: list[str], BASE_URL: str, limit: int, offset: int, filter_key: str, output_path: str):
@@ -17,9 +18,6 @@ def multi_search(keywords: list[str], BASE_URL: str, limit: int, offset: int, fi
                     seen_ids.add(ad_id)
                     unique_ads.append(ad)
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    joined_keywords = "_".join(keywords)
-
     matched_ads, non_matched_ads = split_by_keyword_full_objects(data=unique_ads, keyword=filter_key)
 
     matched_dir = os.path.join(output_path, f"matched_{filter_key}")
@@ -28,15 +26,9 @@ def multi_search(keywords: list[str], BASE_URL: str, limit: int, offset: int, fi
     os.makedirs(matched_dir, exist_ok=True)
     os.makedirs(unmatched_dir, exist_ok=True)
 
-    filename = f"{timestamp}_{joined_keywords}.json"
+    sort_by_region(obj=matched_ads,path=matched_dir)
+    sort_by_region(obj=non_matched_ads,path=unmatched_dir)
 
-    # Save matched ads
-    with open(os.path.join(matched_dir, filename), "w", encoding="utf-8") as f:
-        json.dump(matched_ads, f, indent=2, ensure_ascii=False)
-
-    # Save unmatched ads
-    with open(os.path.join(unmatched_dir, filename), "w", encoding="utf-8") as f:
-        json.dump(non_matched_ads, f, indent=2, ensure_ascii=False)
 
     print(f"Saved {len(matched_ads)} matched and {len(non_matched_ads)} unmatched ads.")
 
@@ -91,14 +83,43 @@ def split_by_keyword_full_objects(data, keyword):
 
     return with_keyword, without_keyword
 
+def sort_by_region(path,obj):
+    
+    for ad in obj:
+        region = ad["workplace_address"]["region"]
+        headline = ad["headline"]
+        headline = sanitize_filename(headline)
+        
+        if region:
+            folder_path = os.path.join(path,region)
+            os.makedirs(folder_path,exist_ok=True)
+            save_path = os.path.join(folder_path,headline+".json")
+            
+        else:
+            folder_path = os.path.join(path,"region_missing")
+            os.makedirs(folder_path,exist_ok=True)
+            save_path = os.path.join(folder_path,headline+".json")
 
+        save_json(obj=ad,path=save_path)
+
+
+def sanitize_filename(name: str) -> str:
+    name = name.strip()  # Remove leading/trailing whitespace
+    name = re.sub(r'[<>:"/\\|?*\n\r\t]', '_', name)  # Replace invalid characters with _
+    name = re.sub(r'\s+', '_', name)  # Replace internal whitespace with _
+    return name
+
+
+def save_json(obj,path):
+    with open(path,'w',encoding="utf-8") as f:
+        json.dump(obj,f,indent=4)
 
 
 if __name__ == "__main__":
     BASE_URL = "https://jobsearch.api.jobtechdev.se/search"
     keywords = ["python","machine learning"]
 
-
+    
     multi_search(
         keywords=keywords,
         BASE_URL=BASE_URL,

@@ -1,0 +1,120 @@
+{
+    "relevance": 0.8418297992386548,
+    "id": "29739456",
+    "external_id": null,
+    "original_id": null,
+    "label": "[]",
+    "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29739456",
+    "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/82353272/logotyper/logo.png",
+    "headline": "\u00c4lskar du Python & Django? Ans\u00f6k via SSH!",
+    "application_deadline": "2025-06-02T23:59:59",
+    "number_of_vacancies": 1,
+    "description": {
+        "text": "Vill du jobba med Python och Django? \u00c4lskar du open source? D\u00e5 vill vi g\u00e4rna jobba med dig.\nAns\u00f6k direkt i terminalen genom att SSH:a till join.5monkeys.se!\nFr\u00e5n v\u00e5ra kontor i Stockholm, G\u00f6teborg och fr\u00e5n v\u00e5ra distanskontor (remote!) tar vi fram storskaliga digitala tj\u00e4nster \u00e5t v\u00e5ra kunder.\nVi har utvecklat n\u00e5gra av Sveriges allra st\u00f6rsta Python/Django-baserade digitala tj\u00e4nster. Genom att all utveckling sker tillsammans i team kan vi uppr\u00e4tth\u00e5lla en mycket h\u00f6g gemensam kunskaps- och kvalitetsniv\u00e5 d\u00e4r vi l\u00e4r oss av varandra.\nVi gillar modern testdriven utveckling med byggstenar s\u00e5som Docker, CI-verktyg och h\u00f6g coverage.\nVi bidrar aktivt till flera open source-projekt. Du hittar n\u00e5gra av v\u00e5ra projekt p\u00e5 GitHub: https://github.com/5monkeys\nDu ans\u00f6ker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. V\u00e4lkommen!",
+        "text_formatted": "<p>Vill du jobba med Python och Django? \u00c4lskar du open source? D\u00e5 vill vi g\u00e4rna jobba med dig.</p><p>Ans\u00f6k direkt i terminalen genom att SSH:a till join.5monkeys.se!</p><p>Fr\u00e5n v\u00e5ra kontor i Stockholm, G\u00f6teborg och fr\u00e5n v\u00e5ra distanskontor (remote!) tar vi fram storskaliga digitala tj\u00e4nster \u00e5t v\u00e5ra kunder.</p><p>Vi har utvecklat n\u00e5gra av Sveriges allra st\u00f6rsta Python/Django-baserade digitala tj\u00e4nster. Genom att all utveckling sker tillsammans i team kan vi uppr\u00e4tth\u00e5lla en mycket h\u00f6g gemensam kunskaps- och kvalitetsniv\u00e5 d\u00e4r vi l\u00e4r oss av varandra.</p><p>Vi gillar modern testdriven utveckling med byggstenar s\u00e5som Docker, CI-verktyg och h\u00f6g coverage.</p><p>Vi bidrar aktivt till flera open source-projekt. Du hittar n\u00e5gra av v\u00e5ra projekt p\u00e5 GitHub: https://github.com/5monkeys</p><p>Du ans\u00f6ker enklast direkt i terminalen genom att SSH:a till join.5monkeys.se. V\u00e4lkommen!</p>",
+        "company_information": null,
+        "needs": null,
+        "requirements": null,
+        "conditions": null
+    },
+    "employment_type": {
+        "concept_id": "PFZr_Syz_cUq",
+        "label": "Vanlig anst\u00e4llning",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_type": {
+        "concept_id": "oG8G_9cW_nRf",
+        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_description": null,
+    "duration": {
+        "concept_id": "a7uU_j21_mkL",
+        "label": "Tills vidare",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "working_hours_type": {
+        "concept_id": "6YE1_gAC_R2G",
+        "label": "Heltid",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "scope_of_work": {
+        "min": 100,
+        "max": 100
+    },
+    "access": null,
+    "employer": {
+        "phone_number": null,
+        "email": null,
+        "url": "https://www.5monkeys.se/",
+        "organization_number": "5567124143",
+        "name": "5 Monkeys Agency AB",
+        "workplace": "5 Monkeys Agency AB"
+    },
+    "application_details": {
+        "information": null,
+        "reference": null,
+        "email": null,
+        "via_af": false,
+        "url": null,
+        "other": "Anslut med SSH till join.5monkeys.se f\u00f6r att g\u00f6ra din ans\u00f6kan"
+    },
+    "experience_required": true,
+    "access_to_own_car": false,
+    "driving_license_required": false,
+    "driving_license": null,
+    "occupation": {
+        "concept_id": "fg7B_yov_smw",
+        "label": "Systemutvecklare/Programmerare",
+        "legacy_ams_taxonomy_id": "2419"
+    },
+    "occupation_group": {
+        "concept_id": "DJh5_yyF_hEM",
+        "label": "Mjukvaru- och systemutvecklare m.fl.",
+        "legacy_ams_taxonomy_id": "2512"
+    },
+    "occupation_field": {
+        "concept_id": "apaJ_2ja_LuF",
+        "label": "Data/IT",
+        "legacy_ams_taxonomy_id": "3"
+    },
+    "workplace_address": {
+        "municipality": "Stockholm",
+        "municipality_code": "0180",
+        "municipality_concept_id": "AvNB_uwa_6n6",
+        "region": "Stockholms l\u00e4n",
+        "region_code": "01",
+        "region_concept_id": "CifL_Rzy_Mku",
+        "country": "Sverige",
+        "country_code": "199",
+        "country_concept_id": "i46j_HmG_v64",
+        "street_address": null,
+        "postcode": null,
+        "city": null,
+        "coordinates": [
+            null,
+            null
+        ]
+    },
+    "must_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "nice_to_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "application_contacts": [],
+    "publication_date": "2025-05-30T02:56:38",
+    "last_publication_date": "2025-06-02T23:59:59",
+    "removed": false,
+    "removed_date": null,
+    "source_type": "VIA_ANNONSERA",
+    "timestamp": 1748566598355
+}

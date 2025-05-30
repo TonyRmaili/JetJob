@@ -1,0 +1,128 @@
+{
+    "relevance": 0.9528921117558323,
+    "id": "29696428",
+    "external_id": "46-556922-0014-5908250-1",
+    "original_id": null,
+    "label": "[]",
+    "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29696428",
+    "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/organisation/5569220014/logotyper/logo.png",
+    "headline": "Senior Machine Learning Engineer",
+    "application_deadline": "2025-10-29T23:59:59",
+    "number_of_vacancies": 1,
+    "description": {
+        "text": "About us\nSoundtrack is a B2B scale-up company providing music streaming services for businesses. We serve small customers like the caf\u00e9 around the corner, and much bigger brands like Joe & the Juice, Toni & Guy and TAG Heuer. On the inside, we're a bunch of talented, motivated and humble designers, engineers and music experts. We believe in product-led growth, where the product is the primary driver of customer acquisition, conversion and expansion. \nThe role\nAs a Senior Machine Learning Engineer in the Music Experience team, you\u2019ll be working on a wide range of projects together with other engineers, product owners, UI/UX designers, machine learning experts, researchers, music experts and analysts.\nMusic is the core of Soundtrack\u2019s product. The Music Experience team is a vertical team that is dedicated to ownership and development of all music features, like music onboarding, home, search, stations, user created playlists, schedules and artist/album/playlist detail pages. The team owns the features end to end, from UX/UI to APIs, databases, and machine learning.\nWe believe that good applications come from good research. We don\u2019t shy away from doing extensive research when needed. We attend machine learning conferences and read relevant research as frequently as possible. However, we are mission driven and try to strike a good balance between long and short term goals.\nAs a member of this team, you will take part in building features that are core to Soundtrack\u2019s value proposition and business. You will work on end-to-end machine learning solutions: data sourcing, training models, making sure data gathering is in place, and giving feedback on the user experience design.\nYou can check out the How it works page to see what kind of features you will be working on or download our app and sign up for a free trial to get a first hand experience.\nResponsibilities\n Developing, deploying and managing machine learning models and its connected systems\n Continuously improving the tooling and workflows around machine learning efforts in the team\n Contribute to the team\u2019s vision, strategy and agenda\n Helping the team grow as a whole by sharing knowledge and lifting each other up\n \nAbout you\nWe're always looking to work with people who are friendly, professional, humble, open, and with a passion for detail. You are probably not a stranger to describing yourself as:\n Self-sustaining \u2013 you can work independently, taking initiatives and planning your own time\n Curious \u2013 you enjoy learning new things to grow both professionally as well as on a personal level\n A good communicator \u2013 you enjoy discussing different solutions and strategies for technical challenges\n Agile \u2013 you feel comfortable in a dynamic environment where focus lies in what\u2019s important here and now, with the ability to realize when it's time to change the game plan and when to stick to it\n Humble \u2013 you are an open person, you say what you mean and mean what you say\n Street smart \u2013 crafty, able to build solutions with limited resources\n Not a perfectionist \u2013 but disciplined and methodical in your approach to solving problems\n \nMandatory requirements\n 5+ years of experience developing, deploying, and managing machine learning models and systems, preferably in a product development organization.\n Experience using machine learning frameworks, e.g. Tensorflow, Torch.\n Familiarity with cloud based training and deploying of machine learning models, preferably on Google Cloud Platform.\n Hands-on experience with data engineering tools, you are able to build and maintain high-scale pipelines using map-reduce frameworks (e.g. Apache Spark, Google Dataflow) and to use orchestration tools (e.g. Apache Airflow, Luigi, Argo, Kubeflow)\n Feel at home writing SQL\n Comfortable developing APIs and services, preferably using Python\n Strong communication and collaboration in a product development organization\n \nBeneficial requirements (not required)\n General interest in music and/or music technology\n Experience in MLOps\n Experience working with machine learning in the audio domain\n Experience working with personalization or recommendation applications\n GraphQL client and servers libraries\n Container based deployments using Docker/Kubernetes\n Continuous integration/Continuous deployment workflows\n \nEmployee Benefits\n You have the freedom to decide where you work the best with our Work From Anywhere program with a\u00a0one-off setup bonus included\n Generous pension plan\n Yearly budget for health, wellness and personal development\n Laptop and mobile phone of your choice with included cellular subscription\n Regular social activities such as team events, meet ups,\u00a0after works and off-sites\n Daily breakfast served at the office\n \nAt Soundtrack, we believe that diversity fuels creativity and innovation. We're committed to building a team that reflects a variety of backgrounds, perspectives, and experiences. We welcome applications from individuals of all races, ethnicities, genders, ages, abilities, religions, sexual orientations, and identities.\nWe reserve the right to close this vacancy early if we identify a suitable candidate before the application deadline. To ensure consideration, we encourage you to submit your application as soon as possible.\nPlease note that we only accept applications submitted via our career page and do not accept applications by e-mail.",
+        "text_formatted": "<p><strong>About us</strong></p><p>Soundtrack is a B2B scale-up company providing music streaming services for businesses. We serve small customers like the caf\u00e9 around the corner, and much bigger brands like Joe &amp; the Juice, Toni &amp; Guy and TAG Heuer. On the inside, we're a bunch of talented, motivated and humble designers, engineers and music experts. We believe in <a href=\"https://openviewpartners.com/product-led-growth/\">product-led growth</a>, where the product is the primary driver of customer acquisition, conversion and expansion.<strong> </strong></p><p><strong>The role</strong></p><p>As a Senior Machine Learning Engineer in the Music Experience team, you\u2019ll be working on a wide range of projects together with other engineers, product owners, UI/UX designers, machine learning experts, researchers, music experts and analysts.</p><p>Music is the core of Soundtrack\u2019s product. The Music Experience team is a vertical team that is dedicated to ownership and development of all music features, like music onboarding, home, search, stations, user created playlists, schedules and artist/album/playlist detail pages. The team owns the features end to end, from UX/UI to APIs, databases, and machine learning.</p><p>We believe that good applications come from good research. We don\u2019t shy away from doing extensive research when needed. We attend machine learning conferences and read relevant research as frequently as possible. However, we are mission driven and try to strike a good balance between long and short term goals.</p><p>As a member of this team, you will take part in building features that are core to Soundtrack\u2019s value proposition and business. You will work on end-to-end machine learning solutions: data sourcing, training models, making sure data gathering is in place, and giving feedback on the user experience design.</p><p>You can check out the <a href=\"https://www.soundtrackyourbrand.com/how-it-works/\">How it works</a> page to see what kind of features you will be working on or <a href=\"https://www.soundtrackyourbrand.com/apps-and-hardware/\">download our app</a> and sign up for a free trial to get a first hand experience.</p><p><strong>Responsibilities</strong></p><ul> <li>Developing, deploying and managing machine learning models and its connected systems</li> <li>Continuously improving the tooling and workflows around machine learning efforts in the team</li> <li>Contribute to the team\u2019s vision, strategy and agenda</li> <li>Helping the team grow as a whole by sharing knowledge and lifting each other up</li> </ul><p><strong>About you</strong></p><p>We're always looking to work with people who are friendly, professional, humble, open, and with a passion for detail. You are probably not a stranger to describing yourself as:</p><ul> <li>Self-sustaining \u2013 you can work independently, taking initiatives and planning your own time</li> <li>Curious \u2013 you enjoy learning new things to grow both professionally as well as on a personal level</li> <li>A good communicator \u2013 you enjoy discussing different solutions and strategies for technical challenges</li> <li>Agile \u2013 you feel comfortable in a dynamic environment where focus lies in what\u2019s important here and now, with the ability to realize when it's time to change the game plan and when to stick to it</li> <li>Humble \u2013 you are an open person, you say what you mean and mean what you say</li> <li>Street smart \u2013 crafty, able to build solutions with limited resources</li> <li>Not a perfectionist \u2013 but disciplined and methodical in your approach to solving problems</li> </ul><p><strong>Mandatory requirements</strong></p><ul> <li>5+ years of experience developing, deploying, and managing machine learning models and systems, preferably in a product development organization.</li> <li>Experience using machine learning frameworks, e.g. Tensorflow, Torch.</li> <li>Familiarity with cloud based training and deploying of machine learning models, preferably on Google Cloud Platform.</li> <li>Hands-on experience with data engineering tools, you are able to build and maintain high-scale pipelines using map-reduce frameworks (e.g. Apache Spark, Google Dataflow) and to use orchestration tools (e.g. Apache Airflow, Luigi, Argo, Kubeflow)</li> <li>Feel at home writing SQL</li> <li>Comfortable developing APIs and services, preferably using Python</li> <li>Strong communication and collaboration in a product development organization</li> </ul><p><strong>Beneficial requirements (not required)</strong></p><ul> <li>General interest in music and/or music technology</li> <li>Experience in MLOps</li> <li>Experience working with machine learning in the audio domain</li> <li>Experience working with personalization or recommendation applications</li> <li>GraphQL client and servers libraries</li> <li>Container based deployments using Docker/Kubernetes</li> <li>Continuous integration/Continuous deployment workflows</li> </ul><p><strong>Employee Benefits</strong><strong></strong></p><ul> <li>You have the freedom to decide where you work the best with our Work From Anywhere program with a&nbsp;one-off setup bonus included</li> <li>Generous pension plan</li> <li>Yearly budget for health, wellness and personal development</li> <li>Laptop and mobile phone of your choice with included cellular subscription</li> <li>Regular social activities such as team events, meet ups,&nbsp;after works and off-sites</li> <li>Daily breakfast served at the office</li> </ul><p>At Soundtrack, we believe that diversity fuels creativity and innovation. We're committed to building a team that reflects a variety of backgrounds, perspectives, and experiences. We welcome applications from individuals of all races, ethnicities, genders, ages, abilities, religions, sexual orientations, and identities.</p><p>We reserve the right to close this vacancy early if we identify a suitable candidate before the application deadline. To ensure consideration, we encourage you to submit your application as soon as possible.</p><p>Please note that we only accept applications submitted via our career page and do not accept applications by e-mail. </p>",
+        "company_information": null,
+        "needs": null,
+        "requirements": null,
+        "conditions": "Heltid\r\nAnst\u00e4llningstid enligt \u00f6verenskommelse"
+    },
+    "employment_type": {
+        "concept_id": "PFZr_Syz_cUq",
+        "label": "Vanlig anst\u00e4llning",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_type": {
+        "concept_id": "oG8G_9cW_nRf",
+        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_description": "L\u00f6n enligt \u00f6verenskommelse",
+    "duration": {
+        "concept_id": "a7uU_j21_mkL",
+        "label": "Tills vidare",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "working_hours_type": {
+        "concept_id": "6YE1_gAC_R2G",
+        "label": "Heltid",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "scope_of_work": {
+        "min": 100,
+        "max": 100
+    },
+    "access": null,
+    "employer": {
+        "phone_number": null,
+        "email": null,
+        "url": "https://www.soundtrack.io/",
+        "organization_number": "5569220014",
+        "name": "Soundtrack Technologies Sweden AB",
+        "workplace": "Soundtrack Technologies Sweden AB"
+    },
+    "application_details": {
+        "information": null,
+        "reference": null,
+        "email": null,
+        "via_af": false,
+        "url": "https://careers.soundtrack.io/jobs/5908250-senior-machine-learning-engineer?promotion=1465856-arbetsformedlingen",
+        "other": null
+    },
+    "experience_required": false,
+    "access_to_own_car": false,
+    "driving_license_required": false,
+    "driving_license": null,
+    "occupation": {
+        "concept_id": "mBMU_HvW_LMY",
+        "label": "IT-strateg",
+        "legacy_ams_taxonomy_id": "5432"
+    },
+    "occupation_group": {
+        "concept_id": "UxT1_tPF_Kbg",
+        "label": "\u00d6vriga IT-specialister",
+        "legacy_ams_taxonomy_id": "2519"
+    },
+    "occupation_field": {
+        "concept_id": "apaJ_2ja_LuF",
+        "label": "Data/IT",
+        "legacy_ams_taxonomy_id": "3"
+    },
+    "workplace_address": {
+        "municipality": "Stockholm",
+        "municipality_code": "0180",
+        "municipality_concept_id": "AvNB_uwa_6n6",
+        "region": "Stockholms l\u00e4n",
+        "region_code": "01",
+        "region_concept_id": "CifL_Rzy_Mku",
+        "country": "Sverige",
+        "country_code": "199",
+        "country_concept_id": "i46j_HmG_v64",
+        "street_address": null,
+        "postcode": null,
+        "city": null,
+        "coordinates": [
+            18.06858,
+            59.329323
+        ]
+    },
+    "must_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "nice_to_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "application_contacts": [
+        {
+            "name": null,
+            "description": "Petter Machado",
+            "email": "petter@soundtrack.io",
+            "telephone": null,
+            "contact_type": null
+        }
+    ],
+    "publication_date": "2025-05-12T15:13:05",
+    "last_publication_date": "2025-10-29T23:59:59",
+    "removed": false,
+    "removed_date": null,
+    "source_type": "VIA_PLATSBANKEN_DXA",
+    "timestamp": 1747055585362
+}

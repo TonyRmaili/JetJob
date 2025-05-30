@@ -1,0 +1,127 @@
+{
+    "relevance": 0.8905123823276191,
+    "id": "29687720",
+    "external_id": null,
+    "original_id": null,
+    "label": "[]",
+    "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29687720",
+    "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/arbetsplatser/87967126/logotyper/logo.png",
+    "headline": "Senior Python Test Engineer \u2013 12406",
+    "application_deadline": "2025-06-07T23:59:59",
+    "number_of_vacancies": 1,
+    "description": {
+        "text": "Veritaz is a leading IT staffing solutions provider in Sweden, committed to advancing individual careers and aiding employers in securing the perfect talent fit. With a proven track record of successful partnerships with top companies, we have rapidly grown our presence in the USA, Europe, and Sweden as a dependable and trusted resource within the IT industry.\nAssignment Description:\nWe are looking for a Senior Python Test Engineer to join our dynamic team.\nWhat you will work on:\nMigrate test cases from Robot Framework to Pytest across both component and domain integration levels\nValidate all migrated test cases in collaboration with the owning teams to ensure full functionality and alignment\nDevelop parameterized and auto-generated test cases as needed, supporting ongoing feature development\nContribute to the testing of integrated vehicle functionalities including infotainment, connectivity, diagnostics, power modes, Bluetooth pairing, mobile network access, Wi-Fi hotspots, OTA updates, media playback, voice control, navigation, and smartphone platform integration (Android Auto, Apple CarPlay)\nLead or support stakeholder collaboration, test governance meetings, request prioritization, and ensure seamless daily test execution\n\nWhat you bring:\nMandatory on-site availability in Gothenburg; remote work is not permitted\nProven experience with Robot Framework and Python for test development and automation\nPrior work experience in Sweden and with an automotive customer\nFor senior test engineer role: minimum 5 years of experience, with ability to lead test coordination and contribute to test strategy and planning\nFor test engineer roles: minimum 3 years of hands-on testing experience in relevant domains\nStrong communication and organizational skills with the ability to manage priorities and cross-team dependencies\nProficiency in English, both spoken and written, sufficient for all aspects of the assignment",
+        "text_formatted": "<p>Veritaz is a leading IT staffing solutions provider in Sweden, committed to advancing individual careers and aiding employers in securing the perfect talent fit. With a proven track record of successful partnerships with top companies, we have rapidly grown our presence in the USA, Europe, and Sweden as a dependable and trusted resource within the IT industry.</p><p><strong>Assignment Description:</strong></p><p>We are looking for a Senior Python Test Engineer to join our dynamic team.</p><p><strong>What you will work on:</strong></p><ul><li>Migrate test cases from Robot Framework to Pytest across both component and domain integration levels</li><li>Validate all migrated test cases in collaboration with the owning teams to ensure full functionality and alignment</li><li>Develop parameterized and auto-generated test cases as needed, supporting ongoing feature development</li><li>Contribute to the testing of integrated vehicle functionalities including infotainment, connectivity, diagnostics, power modes, Bluetooth pairing, mobile network access, Wi-Fi hotspots, OTA updates, media playback, voice control, navigation, and smartphone platform integration (Android Auto, Apple CarPlay)</li><li>Lead or support stakeholder collaboration, test governance meetings, request prioritization, and ensure seamless daily test execution</li></ul><p><strong>What you bring:</strong></p><ul><li>Mandatory on-site availability in Gothenburg; remote work is not permitted</li><li>Proven experience with Robot Framework and Python for test development and automation</li><li>Prior work experience in Sweden and with an automotive customer</li><li>For senior test engineer role: minimum 5 years of experience, with ability to lead test coordination and contribute to test strategy and planning</li><li>For test engineer roles: minimum 3 years of hands-on testing experience in relevant domains</li><li>Strong communication and organizational skills with the ability to manage priorities and cross-team dependencies</li><li>Proficiency in English, both spoken and written, sufficient for all aspects of the assignment</li></ul>",
+        "company_information": null,
+        "needs": null,
+        "requirements": null,
+        "conditions": null
+    },
+    "employment_type": {
+        "concept_id": "PFZr_Syz_cUq",
+        "label": "Vanlig anst\u00e4llning",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_type": {
+        "concept_id": "oG8G_9cW_nRf",
+        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_description": null,
+    "duration": {
+        "concept_id": "a7uU_j21_mkL",
+        "label": "Tills vidare",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "working_hours_type": {
+        "concept_id": "6YE1_gAC_R2G",
+        "label": "Heltid",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "scope_of_work": {
+        "min": 100,
+        "max": 100
+    },
+    "access": null,
+    "employer": {
+        "phone_number": null,
+        "email": null,
+        "url": "http://www.veritaz.se",
+        "organization_number": "5592500705",
+        "name": "Veritaz AB",
+        "workplace": "Gothenburg"
+    },
+    "application_details": {
+        "information": null,
+        "reference": null,
+        "email": null,
+        "via_af": false,
+        "url": "https://veritaz.se/jobs/senior-python-test-engineer-12406",
+        "other": null
+    },
+    "experience_required": true,
+    "access_to_own_car": false,
+    "driving_license_required": false,
+    "driving_license": null,
+    "occupation": {
+        "concept_id": "TT8h_qKk_1iu",
+        "label": "Aff\u00e4rskonsult, IT",
+        "legacy_ams_taxonomy_id": "7579"
+    },
+    "occupation_group": {
+        "concept_id": "UXKZ_3zZ_ipB",
+        "label": "Systemanalytiker och IT-arkitekter m.fl.",
+        "legacy_ams_taxonomy_id": "2511"
+    },
+    "occupation_field": {
+        "concept_id": "apaJ_2ja_LuF",
+        "label": "Data/IT",
+        "legacy_ams_taxonomy_id": "3"
+    },
+    "workplace_address": {
+        "municipality": null,
+        "municipality_code": null,
+        "municipality_concept_id": null,
+        "region": null,
+        "region_code": null,
+        "region_concept_id": null,
+        "country": "Sverige",
+        "country_code": "199",
+        "country_concept_id": "i46j_HmG_v64",
+        "street_address": null,
+        "postcode": null,
+        "city": null,
+        "coordinates": [
+            null,
+            null
+        ]
+    },
+    "must_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [
+            {
+                "weight": 10,
+                "concept_id": "TT8h_qKk_1iu",
+                "label": "Aff\u00e4rskonsult, IT",
+                "legacy_ams_taxonomy_id": "7579"
+            }
+        ],
+        "education": [],
+        "education_level": []
+    },
+    "nice_to_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "application_contacts": [],
+    "publication_date": "2025-05-08T11:59:44",
+    "last_publication_date": "2025-06-07T23:59:59",
+    "removed": false,
+    "removed_date": null,
+    "source_type": "VIA_ANNONSERA",
+    "timestamp": 1746698384298
+}

@@ -44,80 +44,102 @@ class JetJob:
         # gpt models
         self.models = ["gpt-4o", "gpt-4o-mini","gpt-4.1"]
 
-        self.regions = ["Blekinge",
-                        "Dalarnas",
-                        "Gotlands", 
-                        "Gävleborgs", 
-                        "Hallands", 
-                        "Jämtlands", 
-                        "Jönköpings", 
-                        "Kalmar", 
-                        "Kronobergs", 
-                        "Norrbottens", 
-                        "Skåne", 
-                        "Stockholms", 
-                        "Södermanlands", 
-                        "Uppsala", 
-                        "Värmlands", 
-                        "Västerbottens", 
-                        "Västernorrlands", 
-                        "Västmanlands",
-                        "Västra Götalands", 
-                        "Örebro", 
-                        "Östergötlands" 
-                    ]
-
-
+        self.regions = ["Blekinge Län",
+                        "Dalarnas Län",
+                        "Gotlands Län", 
+                        "Gävleborgs Län", 
+                        "Hallands Län", 
+                        "Jämtlands Län", 
+                        "Jönköpings Län", 
+                        "Kalmar Län", 
+                        "Kronobergs Län", 
+                        "Norrbottens Län", 
+                        "Skåne Län", 
+                        "Stockholms Län", 
+                        "Södermanlands Län", 
+                        "Uppsala Län", 
+                        "Värmlands Län", 
+                        "Västerbottens Län", 
+                        "Västernorrlands Län", 
+                        "Västmanlands Län",
+                        "Västra Götalands Län", 
+                        "Örebro Län", 
+                        "Östergötlands Län"
+                        ]
+        
+        
         # selected variables
         self.selected_system_prompt_file = None
         self.selected_data_files = []
         self.output_folder = None
         self.output_filename = None
+        self.selected_regions = []
 
         self.adjust_window()
 
 
     def init_main_frame(self):
-        valid_folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses/valid")
+        folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses")
+        config_values, config_path = self.load_config_values()
 
         def on_search():
-            pass  
+            multi_search(
+                keywords=config_values["keywords"],
+                BASE_URL=config_values["url"],
+                limit=config_values["limit"],
+                offset=config_values["offset"],
+                filter_key="email",
+                output_path=folder_path          
+            )
+
+            refresh_file_list()
 
         def refresh_file_list():
             # Clear previous widgets in right_frame
             for widget in right_frame.winfo_children():
                 widget.destroy()
+            
+            valid_path = os.path.join(folder_path,f"matched_email")
+            
+            for region_index, region in enumerate(config_values["regions"]):
+                region_path = os.path.join(valid_path, region)
 
-            if not os.path.exists(valid_folder_path):
-                os.makedirs(valid_folder_path)
+                # region frame
+                region_frame = tk.LabelFrame(right_frame, text=region)
+                region_frame.grid(row=region_index, column=0, sticky="news", padx=5, pady=5)
 
-            files = [f for f in os.listdir(valid_folder_path) if os.path.isfile(os.path.join(valid_folder_path, f))]
+                # Allow filename column to expand
+                region_frame.columnconfigure(0, weight=1)
 
-            if not files:
-                no_files_label = tk.Label(right_frame, text="No files found.", fg="gray")
-                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
-                return
+                files = [f for f in os.listdir(region_path) if os.path.isfile(os.path.join(region_path, f))]
 
-            for idx, filename in enumerate(files):
-                full_path = os.path.join(valid_folder_path, filename)
+                if not files:
+                    no_files_label = tk.Label(region_frame, text="No files found.", fg="gray")
+                    no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+                    continue
 
-                # File label
-                file_label = tk.Label(right_frame, text=filename, anchor="w")
-                file_label.grid(row=idx, column=0, sticky="w", padx=5, pady=2)
+                for idx, filename in enumerate(files):
+                    full_path = os.path.join(region_path, filename)
 
-                # View button
-                view_btn = tk.Button(right_frame, text="View", width=8,
-                                    command=lambda f=full_path: view_file(f))
-                view_btn.grid(row=idx, column=1, padx=5)
+                    # File label (left aligned, expandable)
+                    file_label = tk.Label(region_frame, text=filename, anchor="w")
+                    file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="w")
 
-                # Delete button
-                delete_btn = tk.Button(right_frame, text="Delete", width=8,
-                                    command=lambda f=full_path: delete_file(f))
-                delete_btn.grid(row=idx, column=2, padx=5)
+                    # View button (right aligned)
+                    view_btn = tk.Button(region_frame, text="View", width=8,
+                                        command=lambda f=full_path: view_file(f))
+                    view_btn.grid(row=idx, column=1, padx=5, sticky="e")
+
+                    # Delete button (right aligned)
+                    delete_btn = tk.Button(region_frame, text="Delete", width=8,
+                                        command=lambda f=full_path: delete_file(f))
+                    delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
 
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
-                content = f.read()
+                data = json.load(f)
+
+            content = data["description"]["text"]
 
             popup = tk.Toplevel(self.root)
             popup.title(f"Viewing: {os.path.basename(filepath)}")
@@ -139,7 +161,7 @@ class JetJob:
         left_frame = tk.LabelFrame(self.main_frame, text="Buttons")
         left_frame.grid(row=0, column=0, sticky="nsw")
 
-        right_frame = tk.LabelFrame(self.main_frame, text="Responses")
+        right_frame = tk.LabelFrame(self.main_frame, text="Ads")
         right_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
         right_frame.columnconfigure(0, weight=1)
 
@@ -148,6 +170,8 @@ class JetJob:
 
         self.show_frame(self.main_frame)
         refresh_file_list()
+
+    
 
         
     def init_create_profile_frame(self):
@@ -342,15 +366,7 @@ class JetJob:
         self.config_search_param_frame = tk.Frame(self.root)
         self.config_search_param_frame.grid(row=0, column=0, sticky="nsew")
 
-        config_path = os.path.join(self.profiles_path, self.selected_profile, "config.json")
-
-        if os.path.exists(config_path):
-            with open(config_path) as f:
-                config_values = json.load(f)
-        else:
-            config_values = {}
-
-        print(config_values)
+        config_values , config_path = self.load_config_values()
 
         # URL row
         url_label = tk.Label(self.config_search_param_frame, text="URL")
@@ -375,6 +391,48 @@ class JetJob:
             keyword_listbox.insert("end", kw)
 
 
+        
+        # --- Regions Section ---
+        region_label = tk.Label(self.config_search_param_frame, text="Regions")
+        region_label.grid(row=3, column=0, padx=10, pady=5, sticky="nw")
+
+        # Frame to hold listbox and scrollbar
+        region_listbox_frame = tk.Frame(self.config_search_param_frame)
+        region_listbox_frame.grid(row=3, column=1, padx=10, pady=5, sticky="w")
+
+        # Listbox
+        region_box = tk.Listbox(region_listbox_frame, selectmode="multiple", height=10, exportselection=False)
+        region_box.grid(row=0, column=0, sticky="ns")
+
+        # Scrollbar
+        region_scrollbar = tk.Scrollbar(region_listbox_frame, orient="vertical", command=region_box.yview)
+        region_scrollbar.grid(row=0, column=1, sticky="ns")
+        region_box.config(yscrollcommand=region_scrollbar.set)
+
+        # Populate listbox
+        for region in self.regions:
+            region_box.insert(tk.END, region)
+
+        # Pre-select saved regions
+        selected_regions = config_values.get("regions", [])
+        for idx, region in enumerate(self.regions):
+            if region in selected_regions:
+                region_box.selection_set(idx)
+
+        # Frame to contain both buttons vertically
+        region_button_frame = tk.Frame(self.config_search_param_frame)
+        region_button_frame.grid(row=3, column=2, padx=10, pady=5, sticky="n")
+
+        # "Select All" button in row 0
+        select_all_btn = tk.Button(region_button_frame, text="Select All", command=lambda: region_box.select_set(0, tk.END))
+        select_all_btn.grid(row=0, column=0, pady=(0, 10), sticky="ew")
+
+        # "Clear All" button in row 1
+        clear_all_btn = tk.Button(region_button_frame, text="Clear All", command=lambda: region_box.selection_clear(0, tk.END))
+        clear_all_btn.grid(row=1, column=0, sticky="ew")
+            
+
+
          # Add + Delete keyword buttons
         def add_keyword():
             word = keyword_var.get().strip()
@@ -395,36 +453,41 @@ class JetJob:
 
         # LIMIT Slider (1–100)
         limit_label = tk.Label(self.config_search_param_frame, text="Limit")
-        limit_label.grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        limit_label.grid(row=4, column=0, padx=10, pady=10, sticky="w")
 
         limit_var = tk.IntVar(value=config_values.get("limit", 10))  # default = 10
         limit_slider = tk.Scale(
             self.config_search_param_frame, from_=1, to=100,
             orient="horizontal", variable=limit_var, resolution=1
         )
-        limit_slider.grid(row=3, column=1, padx=10, pady=10, sticky="w")
+        limit_slider.grid(row=4, column=1, padx=10, pady=10, sticky="w")
 
         # OFFSET Slider (0–500 default range)
         offset_label = tk.Label(self.config_search_param_frame, text="Offset")
-        offset_label.grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        offset_label.grid(row=5, column=0, padx=10, pady=10, sticky="w")
 
         offset_var = tk.IntVar(value=config_values.get("offset", 0))  # default = 0
         offset_slider = tk.Scale(
             self.config_search_param_frame, from_=0, to=500,
             orient="horizontal", variable=offset_var, resolution=1
         )
-        offset_slider.grid(row=4, column=1, padx=10, pady=10, sticky="w")
+        offset_slider.grid(row=5, column=1, padx=10, pady=10, sticky="w")
 
 
         def on_done_click():
+            selected_indices = region_box.curselection()
+            selected_regions = [self.regions[i] for i in selected_indices]
+
             data = {
                 "url": url_var.get(),
                 "keywords": keyword_listbox.get(0, "end"),
+                "regions": selected_regions,
                 "limit": limit_var.get(),
                 "offset": offset_var.get()
             }
-            with open(config_path, "w") as f:
-                json.dump(data, f, indent=4)
+            
+            with open(config_path, "w",encoding="utf-8") as f:
+                json.dump(data, f, indent=4, ensure_ascii=False)
             print("✅ Config saved")
 
             self.show_frame(self.main_frame)
@@ -432,8 +495,9 @@ class JetJob:
         
         # Save Button
         save_button = tk.Button(self.config_search_param_frame, text="Done", command=on_done_click)
-        save_button.grid(row=5,column=0,pady=10, padx=10,sticky="we")
-
+        save_button.grid(row=6,column=0,pady=10, padx=10,sticky="we")
+ 
+        self.adjust_window()
         self.show_frame(self.config_search_param_frame)
 
     def init_data_files_frame(self):
@@ -452,7 +516,6 @@ class JetJob:
         self.menubar.add_command(label="Search Parameter config", command=self.init_config_search_param_frame)
 
         self.menubar.add_command(label="Data files",command=self.init_data_files_frame)
-
 
     def show_frame(self, frame):
         frame.tkraise()
@@ -523,7 +586,6 @@ class JetJob:
 
         window.geometry(f"{width}x{height}+{x}+{y}")
 
-
     def create_profile_subfolders(self,name):
         # make subfolder
         prompts_path = os.path.join(self.profiles_path,name,"prompts")
@@ -532,21 +594,18 @@ class JetJob:
         responses_path = os.path.join(self.profiles_path,name,"responses")
         os.makedirs(responses_path,exist_ok=True)
 
-        valid_responses_path = os.path.join(responses_path,"valid")
-        os.makedirs(valid_responses_path,exist_ok=True)
-
-        rest_responses_path = os.path.join(responses_path,"rest")
-        os.makedirs(rest_responses_path,exist_ok=True)
-
         attachement_files_path = os.path.join(self.profiles_path,name,"attachement_files")
         os.makedirs(attachement_files_path,exist_ok=True)
 
+    def load_config_values(self):
+        config_path = os.path.join(self.profiles_path, self.selected_profile, "config.json")
+        if os.path.exists(config_path):
+            with open(config_path,encoding="utf-8") as f:
+                config_values = json.load(f)           
+        else:
+            config_values = {}
 
-
-
-
-
-
+        return config_values ,config_path
 
 
 

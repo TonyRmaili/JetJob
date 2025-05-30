@@ -1,7 +1,12 @@
 {
     "url": "https://jobsearch.api.jobtechdev.se/search",
     "keywords": [
-        "python"
+        "python",
+        "machine learning"
+    ],
+    "regions": [
+        "Stockholms Län",
+        "Östergötlands Län"
     ],
     "limit": 10,
     "offset": 0

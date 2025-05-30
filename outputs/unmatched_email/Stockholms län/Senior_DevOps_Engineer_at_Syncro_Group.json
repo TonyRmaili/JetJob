@@ -1,0 +1,127 @@
+{
+    "relevance": 0.5250714823890686,
+    "id": "29740731",
+    "external_id": "46-559436-7608-jobsolution-1878",
+    "original_id": null,
+    "label": "[]",
+    "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29740731",
+    "logo_url": null,
+    "headline": "Senior DevOps Engineer at Syncro Group",
+    "application_deadline": "2025-06-13T23:59:59",
+    "number_of_vacancies": 1,
+    "description": {
+        "text": "Build and scale cloud infrastructure in a fast-growing tech company\n\nSyncro Group is a listed tech group with companies active in influencer marketing, campaign management, and recruitment. We develop platforms that connect creators, brands, and agencies \u2014 and we\u2019re in a phase of rapid development and product expansion.\n\nWe are now looking for a Senior DevOps Engineer to help us build, automate, and scale our AWS infrastructure.\n\nWhy Join Us?\n\nHigh level of technical freedom and impact\nA small, tight-knit team with short decision-making paths\nWork 100% remotely or from our Stockholm office\nCompetitive salary, pension, and wellness allowance\n\n\nAbout the Role\n\nYou\u2019ll play a key role in our tech team, working closely with developers and UX to drive efforts around CI/CD, cloud infrastructure, and operational reliability. The role involves both building new infrastructure and improving existing environments. You'll work closely with product and development in an agile and solution-oriented setup.\n\nKey Responsibilities\n\nDesign and maintain scalable cloud infrastructure in AWS\nAutomate deployment workflows and CI/CD pipelines\nWork with container and serverless technologies\nImplement monitoring, logging, and observability tools\nSupport development teams with infrastructure and environments\nObject-oriented programming in JavaScript, PHP, or Python\n\n\nOur Tech Stack (Examples)\n\nCompute & Containers: ECS, Lambda, EC2, Docker\nStorage & Databases: S3, RDS, ElastiCache\nCI/CD: GitHub Actions, Serverless Framework\nMonitoring & Logging: CloudWatch, Elastic Stack\nNetworking & Security: IAM, VPC, Route 53\n\n\n\u00a0What We\u2019re Looking For\n\nSolid experience with DevOps and cloud infrastructure (preferably AWS)\nProficiency in object-oriented programming language such as JavaScript, PHP, or Python\nExperience working with CI/CD, Infrastructure as Code, and automation\nHands-on experience with containers or serverless environments\nAbility to take ownership and proactively drive improvements\n\n\n\u00a0Preferred Qualifications\n\nExperience with databases, testing tools, or DNS configuration\n\n\nHow to Apply\n\nExcited about the role? Great! We\u2019d love to hear from you \u2014 apply with your CV and we\u2019ll get in touch regarding the next steps.\n\nThis recruitment is managed by Job Solution Consulting. All inquiries regarding the position should be directed to Job Solution Consulting. For questions, feel free to reach out to:\n\nfredrik.hovstadius@jobsolution.se",
+        "text_formatted": "<p><strong>Build and scale cloud infrastructure in a fast-growing tech company</strong></p>\n<p>Syncro Group is a listed tech group with companies active in influencer marketing, campaign management, and recruitment. We develop platforms that connect creators, brands, and agencies \u2014 and we\u2019re in a phase of rapid development and product expansion.</p>\n<p>We are now looking for a <strong>Senior DevOps Engineer</strong> to help us build, automate, and scale our AWS infrastructure.</p>\n<p><strong>Why Join Us?</strong></p>\n<ul><li>High level of technical freedom and impact</li><li>A small, tight-knit team with short decision-making paths</li><li>Work 100% remotely or from our Stockholm office</li><li>Competitive salary, pension, and wellness allowance</li></ul>\n<p><strong>About the Role</strong></p>\n<p>You\u2019ll play a key role in our tech team, working closely with developers and UX to drive efforts around CI/CD, cloud infrastructure, and operational reliability. The role involves both building new infrastructure and improving existing environments. You'll work closely with product and development in an agile and solution-oriented setup.</p>\n<p><strong>Key Responsibilities</strong></p>\n<ul><li>Design and maintain scalable cloud infrastructure in AWS</li><li>Automate deployment workflows and CI/CD pipelines</li><li>Work with container and serverless technologies</li><li>Implement monitoring, logging, and observability tools</li><li>Support development teams with infrastructure and environments</li><li>Object-oriented programming in JavaScript, PHP, or Python</li></ul>\n<p><strong>Our Tech Stack (Examples)</strong></p>\n<ul><li><strong>Compute &amp; Containers:</strong> ECS, Lambda, EC2, Docker</li><li><strong>Storage &amp; Databases:</strong> S3, RDS, ElastiCache</li><li><strong>CI/CD:</strong> GitHub Actions, Serverless Framework</li><li><strong>Monitoring &amp; Logging:</strong> CloudWatch, Elastic Stack</li><li><strong>Networking &amp; Security:</strong> IAM, VPC, Route 53</li></ul>\n<p>\u00a0<strong>What We\u2019re Looking For</strong></p>\n<ul><li>Solid experience with DevOps and cloud infrastructure (preferably AWS)</li><li>Proficiency in object-oriented programming language such as JavaScript, PHP, or Python</li><li>Experience working with CI/CD, Infrastructure as Code, and automation</li><li>Hands-on experience with containers or serverless environments</li><li>Ability to take ownership and proactively drive improvements</li></ul>\n<p>\u00a0<strong>Preferred Qualifications</strong></p>\n<ul><li>Experience with databases, testing tools, or DNS configuration</li></ul>\n<p><strong>How to Apply</strong></p>\n<p>Excited about the role? Great! We\u2019d love to hear from you \u2014 apply with your CV and we\u2019ll get in touch regarding the next steps.</p>\n<p>This recruitment is managed by Job Solution Consulting. All inquiries regarding the position should be directed to Job Solution Consulting. For questions, feel free to reach out to:\n\nfredrik.hovstadius@jobsolution.se</p>",
+        "company_information": null,
+        "needs": null,
+        "requirements": null,
+        "conditions": "Heltid\r\nTillsvidareanst\u00e4llning"
+    },
+    "employment_type": {
+        "concept_id": "PFZr_Syz_cUq",
+        "label": "Vanlig anst\u00e4llning",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_type": {
+        "concept_id": "oG8G_9cW_nRf",
+        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_description": "M\u00e5nadsl\u00f6n - Fast l\u00f6n",
+    "duration": {
+        "concept_id": "a7uU_j21_mkL",
+        "label": "Tills vidare",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "working_hours_type": {
+        "concept_id": "6YE1_gAC_R2G",
+        "label": "Heltid",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "scope_of_work": {
+        "min": 100,
+        "max": 100
+    },
+    "access": null,
+    "employer": {
+        "phone_number": null,
+        "email": null,
+        "url": "https://www.jobsolution.se/",
+        "organization_number": "5594367608",
+        "name": "Job Solution Sweden Consulting AB",
+        "workplace": "Job Solution Sweden Consulting AB"
+    },
+    "application_details": {
+        "information": null,
+        "reference": null,
+        "email": null,
+        "via_af": false,
+        "url": "https://www.jobsolution.se/jobs/1878-senior-devops-engineer-at-syncro-group/?pnty_src=arbetsformedlingen",
+        "other": null
+    },
+    "experience_required": true,
+    "access_to_own_car": false,
+    "driving_license_required": false,
+    "driving_license": null,
+    "occupation": {
+        "concept_id": "rQds_YGd_quU",
+        "label": "Mjukvaruutvecklare",
+        "legacy_ams_taxonomy_id": "80"
+    },
+    "occupation_group": {
+        "concept_id": "DJh5_yyF_hEM",
+        "label": "Mjukvaru- och systemutvecklare m.fl.",
+        "legacy_ams_taxonomy_id": "2512"
+    },
+    "occupation_field": {
+        "concept_id": "apaJ_2ja_LuF",
+        "label": "Data/IT",
+        "legacy_ams_taxonomy_id": "3"
+    },
+    "workplace_address": {
+        "municipality": "Stockholm",
+        "municipality_code": "0180",
+        "municipality_concept_id": "AvNB_uwa_6n6",
+        "region": "Stockholms l\u00e4n",
+        "region_code": "01",
+        "region_concept_id": "CifL_Rzy_Mku",
+        "country": "Sverige",
+        "country_code": "199",
+        "country_concept_id": "i46j_HmG_v64",
+        "street_address": null,
+        "postcode": null,
+        "city": null,
+        "coordinates": [
+            18.06858,
+            59.329323
+        ]
+    },
+    "must_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [
+            {
+                "weight": 10,
+                "concept_id": "rQds_YGd_quU",
+                "label": "Mjukvaruutvecklare",
+                "legacy_ams_taxonomy_id": "80"
+            }
+        ],
+        "education": [],
+        "education_level": []
+    },
+    "nice_to_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "application_contacts": [],
+    "publication_date": "2025-05-30T12:56:23",
+    "last_publication_date": "2025-06-13T23:59:59",
+    "removed": false,
+    "removed_date": null,
+    "source_type": "VIA_PLATSBANKEN_DXA",
+    "timestamp": 1748602583347
+}

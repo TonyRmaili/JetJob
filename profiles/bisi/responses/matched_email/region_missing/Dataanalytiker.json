@@ -1,0 +1,135 @@
+{
+    "relevance": 0.5252639207989104,
+    "id": "29740817",
+    "external_id": "46-559162-9901-5994708-1",
+    "original_id": null,
+    "label": "[]",
+    "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29740817",
+    "logo_url": "https://arbetsformedlingen.se/rest/agas/api/v1/organisation/5591629901/logotyper/logo.png",
+    "headline": "Dataanalytiker",
+    "application_deadline": "2025-06-30T23:59:59",
+    "number_of_vacancies": 1,
+    "description": {
+        "text": "Har du ett \u00f6ga f\u00f6r m\u00f6nster i data och trivs med att arbeta n\u00e4ra verksamheten? Vi p\u00e5 Aveer s\u00f6ker nu en dataanalytiker till ett konsultuppdrag hos en av v\u00e5ra kunder \u2013 ett uppdrag d\u00e4r du f\u00e5r anv\u00e4nda din erfarenhet till att skapa tydliga insikter och bidra till h\u00e5llbara l\u00f6sningar inom logistik.\n\nOm rollenDu kommer att arbeta i ett verksamhetsn\u00e4ra uppdrag inom produktionslogistik, d\u00e4r du ansvarar f\u00f6r att samla in, strukturera och analysera data kopplat till transportfl\u00f6den och logistikprocesser.\nUppdraget omfattar b\u00e5de datahantering, analys och visualisering, och sker i n\u00e4ra samarbete med b\u00e5de IT och verksamhet.\nH\u00e4r erbjuds du ett uppdrag med varierade arbetsuppgifter, god \u00f6verblick och m\u00f6jlighet att p\u00e5verka arbetss\u00e4tt och resultat.\n\nI rollen kommer du bland annat att: Extrahera, rensa och strukturera data med hj\u00e4lp av Python, SQL och BI-verktyg\n Skapa och underh\u00e5lla datamodeller, dashboards och rapporter\n Analysera transportdata och identifiera f\u00f6rb\u00e4ttringsm\u00f6jligheter\n Arbeta tillsammans med olika funktioner f\u00f6r att oms\u00e4tta aff\u00e4rsbehov till datadrivna l\u00f6sningar\n \n\nVi s\u00f6ker dig som har: Erfarenhet av dataanalys i professionella sammanhang\n Vana att arbeta i milj\u00f6er d\u00e4r verksamhetsf\u00f6rst\u00e5else och datakompetens kombineras\n Kunskap i Python eller R, samt erfarenhet av SQL och BI-verktyg\n F\u00f6rm\u00e5ga att ta egna initiativ, samarbeta brett och oms\u00e4tta data till aff\u00e4rsnytta\n \n\nMeriterande erfarenheter: Erfarenhet av logistik, supply chain eller transportrelaterade analyser\n Intresse f\u00f6r h\u00e5llbarhet kopplat till data och processf\u00f6rb\u00e4ttring\n \n\n\u00d6vrig information:Placeringsort: G\u00f6teborg",
+        "text_formatted": "<p>Har du ett \u00f6ga f\u00f6r m\u00f6nster i data och trivs med att arbeta n\u00e4ra verksamheten? Vi p\u00e5 Aveer s\u00f6ker nu en dataanalytiker till ett konsultuppdrag hos en av v\u00e5ra kunder \u2013 ett uppdrag d\u00e4r du f\u00e5r anv\u00e4nda din erfarenhet till att skapa tydliga insikter och bidra till h\u00e5llbara l\u00f6sningar inom logistik.</p><p></p>Om rollen<p>Du kommer att arbeta i ett verksamhetsn\u00e4ra uppdrag inom produktionslogistik, d\u00e4r du ansvarar f\u00f6r att samla in, strukturera och analysera data kopplat till transportfl\u00f6den och logistikprocesser.</p><p>Uppdraget omfattar b\u00e5de datahantering, analys och visualisering, och sker i n\u00e4ra samarbete med b\u00e5de IT och verksamhet.</p><p>H\u00e4r erbjuds du ett uppdrag med varierade arbetsuppgifter, god \u00f6verblick och m\u00f6jlighet att p\u00e5verka arbetss\u00e4tt och resultat.</p><p></p>I rollen kommer du bland annat att:<ul> <li>Extrahera, rensa och strukturera data med hj\u00e4lp av Python, SQL och BI-verktyg</li> <li>Skapa och underh\u00e5lla datamodeller, dashboards och rapporter</li> <li>Analysera transportdata och identifiera f\u00f6rb\u00e4ttringsm\u00f6jligheter</li> <li>Arbeta tillsammans med olika funktioner f\u00f6r att oms\u00e4tta aff\u00e4rsbehov till datadrivna l\u00f6sningar</li> </ul><p></p>Vi s\u00f6ker dig som har:<ul> <li>Erfarenhet av dataanalys i professionella sammanhang</li> <li>Vana att arbeta i milj\u00f6er d\u00e4r verksamhetsf\u00f6rst\u00e5else och datakompetens kombineras</li> <li>Kunskap i Python eller R, samt erfarenhet av SQL och BI-verktyg</li> <li>F\u00f6rm\u00e5ga att ta egna initiativ, samarbeta brett och oms\u00e4tta data till aff\u00e4rsnytta</li> </ul><p></p>Meriterande erfarenheter:<ul> <li>Erfarenhet av logistik, supply chain eller transportrelaterade analyser</li> <li>Intresse f\u00f6r h\u00e5llbarhet kopplat till data och processf\u00f6rb\u00e4ttring</li> </ul><p></p>\u00d6vrig information:<p>Placeringsort: G\u00f6teborg</p>",
+        "company_information": null,
+        "needs": null,
+        "requirements": null,
+        "conditions": "Heltid\r\nAnst\u00e4llningstid enligt \u00f6verenskommelse"
+    },
+    "employment_type": {
+        "concept_id": "PFZr_Syz_cUq",
+        "label": "Vanlig anst\u00e4llning",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_type": {
+        "concept_id": "oG8G_9cW_nRf",
+        "label": "Fast m\u00e5nads- vecko- eller timl\u00f6n",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_description": "L\u00f6n enligt \u00f6verenskommelse",
+    "duration": {
+        "concept_id": "a7uU_j21_mkL",
+        "label": "Tills vidare",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "working_hours_type": {
+        "concept_id": "6YE1_gAC_R2G",
+        "label": "Heltid",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "scope_of_work": {
+        "min": 100,
+        "max": 100
+    },
+    "access": null,
+    "employer": {
+        "phone_number": null,
+        "email": null,
+        "url": "http://www.ecareer.se",
+        "organization_number": "5591629901",
+        "name": "Ecareer AB",
+        "workplace": "ecareer"
+    },
+    "application_details": {
+        "information": null,
+        "reference": null,
+        "email": null,
+        "via_af": false,
+        "url": "https://jobb.ecareer.se/jobs/5994708-dataanalytiker?promotion=1493458-arbetsformedlingen",
+        "other": null
+    },
+    "experience_required": true,
+    "access_to_own_car": false,
+    "driving_license_required": false,
+    "driving_license": null,
+    "occupation": {
+        "concept_id": "7YaM_bPu_c1T",
+        "label": "Systemanalytiker/Systemutredare",
+        "legacy_ams_taxonomy_id": "2411"
+    },
+    "occupation_group": {
+        "concept_id": "UXKZ_3zZ_ipB",
+        "label": "Systemanalytiker och IT-arkitekter m.fl.",
+        "legacy_ams_taxonomy_id": "2511"
+    },
+    "occupation_field": {
+        "concept_id": "apaJ_2ja_LuF",
+        "label": "Data/IT",
+        "legacy_ams_taxonomy_id": "3"
+    },
+    "workplace_address": {
+        "municipality": null,
+        "municipality_code": null,
+        "municipality_concept_id": null,
+        "region": null,
+        "region_code": null,
+        "region_concept_id": null,
+        "country": "Sverige",
+        "country_code": "199",
+        "country_concept_id": "i46j_HmG_v64",
+        "street_address": null,
+        "postcode": null,
+        "city": null,
+        "coordinates": [
+            null,
+            null
+        ]
+    },
+    "must_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [
+            {
+                "weight": 10,
+                "concept_id": "7YaM_bPu_c1T",
+                "label": "Systemanalytiker/Systemutredare",
+                "legacy_ams_taxonomy_id": "2411"
+            }
+        ],
+        "education": [],
+        "education_level": []
+    },
+    "nice_to_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "application_contacts": [
+        {
+            "name": null,
+            "description": "My Tillstr\u00f6m",
+            "email": "my.tillstrom@aveer.se",
+            "telephone": null,
+            "contact_type": null
+        }
+    ],
+    "publication_date": "2025-05-30T13:14:03",
+    "last_publication_date": "2025-06-30T23:59:59",
+    "removed": false,
+    "removed_date": null,
+    "source_type": "VIA_PLATSBANKEN_DXA",
+    "timestamp": 1748603643214
+}
