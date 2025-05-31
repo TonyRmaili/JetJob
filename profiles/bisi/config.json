@@ -5,10 +5,18 @@
         "machine learning"
     ],
     "regions": [
-        "Stockholms Län"  
+        "Stockholms Län"
     ],
     "limit": 10,
     "offset": 0,
     "about_me_path": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/prompts/me_v1.txt",
-    "system_prompt_path": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/prompts/system_prompt_v1.md"
+    "system_prompt_path": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/prompts/system_prompt_v1.md",
+    "processed_ids": [
+        "29741379",
+        "29730343",
+        "29731968",
+        "29741377",
+        "29391304",
+        "29696428"
+    ]
 }

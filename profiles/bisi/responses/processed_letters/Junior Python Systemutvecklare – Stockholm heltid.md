@@ -1,0 +1,7 @@
+Jag blev intresserad av tjänsten som junior Python systemutvecklare hos er efter att ha sett annonsen på er webbplats. Med en bakgrund inom AI-utveckling och maskininlärning, samt praktisk erfarenhet av Python-programmering och automation, tror jag att jag kan bidra med både teknisk kompetens och nyfikenhet till ert team.
+
+Jag har arbetat med projekt som involverar stora språkmodeller och AI-drivna automationssystem, där jag bland annat har byggt backend-lösningar, utvecklat verktyg för databehandling och integrerat olika API:er. Med god vana av versionshantering (Git), och erfarenhet av att skapa och optimera CI/CD-flöden i utvecklingsprojekt, känner jag mig bekväm i moderna utvecklingsmiljöer. Jag har även arbetat med integration mot molntjänster, främst Azure, och är van vid att strukturera kod och data i JSON-format samt hantera REST-API:er.
+
+Att arbeta i varierande projekt och vara med och effektivisera kunders tekniska vardag känns både motiverande och utvecklande för mig. Jag trivs med att arbeta praktiskt och lösningsorienterat, och uppskattar möjligheten till kontinuerlig kompetensutveckling som ni erbjuder. Jag ser fram emot att bidra med min erfarenhet av Python och AI, samtidigt som jag är ivrig att lära mig mer om DevOps, microservices och molnbaserade lösningar.
+
+Jag är tillgänglig för intervju med kort varsel och ser fram emot möjligheten att diskutera hur jag kan bidra till ert team.

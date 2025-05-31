@@ -1,0 +1,7 @@
+Jag blev intresserad av tjänsten som Power Platform AI Specialist hos Ving efter att ha läst er annons via 2Complete. Det är tydligt att ni söker någon med passion för automation, AI och innovativa lösningar i en dynamisk miljö – något som stämmer väl in på min bakgrund och mina intressen.
+
+Jag arbetar idag som AI-utvecklare med fokus på maskininlärning, Python och automatisering, där jag bland annat har byggt AI-drivna automationssystem, utvecklat verktyg för träningsdata samt arbetat mycket med stora språkmodeller och prompt engineering. Jag är van vid att ta fram användarvänliga och stabila lösningar, ofta med integration mot REST API:er och JSON-hantering. Mina erfarenheter omfattar även att skapa AI-assistenter, bygga gränssnitt samt att arbeta med multimodala AI-lösningar inom text, bild och ljud.
+
+Även om jag främst har arbetat med OpenAI:s API:er och Azure OpenAI-tjänster ser jag stora möjligheter att överföra mina kunskaper till Microsoft Power Platform och Copilot Studio. Min vana att snabbt sätta mig in i nya teknologier och samarbeta i team gör att jag gärna bidrar till att stötta och utbilda Citizen Developers samt skapa affärsnytta genom generativa AI-lösningar. Jag uppskattar också att ni värderar nyfikenhet och utvecklingsvilja högt, vilket är egenskaper jag själv ser som centrala i mitt arbete.
+
+Jag ser mycket fram emot möjligheten att utvecklas inom Ving och bidra till ert arbete med att driva plattformen framåt. Jag är tillgänglig för intervju när det passar och svarar gärna på frågor om min bakgrund och mina projekt.

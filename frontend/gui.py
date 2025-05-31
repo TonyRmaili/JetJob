@@ -749,20 +749,65 @@ class JetJob:
         return config_values ,config_path
 
     def setup_personal_letter_payload(self):
-        data, path = self.validate_config_values()
-        
+        data, path = self.validate_config_values() 
         folder_path = os.path.join(self.profiles_path, self.selected_profile,"responses","matched_email")
+        system_prompt_path = data["system_prompt_path"]
+        about_me_path = data["about_me_path"]
+        text_prepend_ad_data = "Here is the ad:\n"
+        text_prepend_about_me_data = "This is some data about me:\n"
+
+        data["processed_ids"] = []
+        ai_caller = AICaller()
+
+        with open(system_prompt_path, encoding="utf-8") as f:
+            system_prompt = f.read()
+
+        with open(about_me_path, encoding="utf-8") as f:
+            about_me_data = f.read()
+
         
         for region in data["regions"]:
             region_path = os.path.join(folder_path, region)
-            
             for ad in os.listdir(region_path):
+                
+                message_builder = MessageBuilder()
+                message_builder.add_message(role="system",message=system_prompt)
+                message_builder.add_message(role="user",message=text_prepend_about_me_data+about_me_data)
+
                 full_path = os.path.join(region_path, ad)
                 with open(full_path, encoding="utf-8") as f:
                     ad_data = json.load(f)
-                description = ad_data["description"]["text"]
-                print(description)
 
+                ad_id = ad_data["id"]
+                ad_headline = ad_data["headline"]
+                description = ad_data["description"]["text"]
+                message_builder.add_message(role="user",message=text_prepend_ad_data+description)
+
+                response = ai_caller.chat_openai(
+                    model="gpt-4.1",
+                    messages=message_builder.messages,
+                    temperature=0.7,
+                    response_format=None
+                )
+
+                message_builder.reset_messages()
+
+                processed_letters_path = os.path.join(self.profiles_path, self.selected_profile,"responses","processed_letters")
+                os.makedirs(processed_letters_path,exist_ok=True)
+                filename = ad_headline+".md"
+                save_path = os.path.join(processed_letters_path,filename)
+
+                with open(save_path,'w',encoding="utf-8") as f:
+                    f.write(response)
+
+                data["processed_ids"].append(ad_id)
+
+        with open(path,'w',encoding="utf-8") as f:
+            json.dump(data,f,indent=4,ensure_ascii=False)
+        
+        print(f"messages pre-processed and saved at {processed_letters_path}")
+
+                
     def mass_send_email(self):
         pass
 
