@@ -78,9 +78,8 @@ class JetJob:
         self.adjust_window()
 
     def init_main_frame(self):
+       
         folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses")
-        config_values, config_path = self.load_config_values()
-
         def on_search():
             multi_search(
                 keywords=config_values["keywords"],
@@ -94,6 +93,7 @@ class JetJob:
             refresh_file_list()
 
         def refresh_file_list():
+            config_values, config_path = self.load_config_values()
             # Clear previous widgets in right_frame
             for widget in right_frame.winfo_children():
                 widget.destroy()
@@ -109,8 +109,10 @@ class JetJob:
 
                 # Allow filename column to expand
                 region_frame.columnconfigure(0, weight=1)
-
-                files = [f for f in os.listdir(region_path) if os.path.isfile(os.path.join(region_path, f))]
+                try:
+                    files = [f for f in os.listdir(region_path) if os.path.isfile(os.path.join(region_path, f))]
+                except FileNotFoundError as e:
+                    continue
 
                 if not files:
                     no_files_label = tk.Label(region_frame, text="No files found.", fg="gray")
@@ -133,7 +135,7 @@ class JetJob:
                     delete_btn = tk.Button(region_frame, text="Delete", width=8,
                                         command=lambda f=full_path: delete_file(f))
                     delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
-
+           
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -153,6 +155,14 @@ class JetJob:
                 os.remove(filepath)
                 refresh_file_list()
 
+        def on_personalize_click():
+            try:
+                self.setup_personal_letter_payload()
+
+            except ValueError as e:
+                messagebox.showwarning("Invalid Configuration", str(e))
+                return
+
         # Main UI setup
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
@@ -166,6 +176,12 @@ class JetJob:
 
         search_btn = tk.Button(left_frame, text="Search", command=on_search, width=10)
         search_btn.grid(row=0, column=0, padx=10, pady=10)
+
+        personalize_btn = tk.Button(left_frame, text="Personalize letters", command=on_personalize_click, width=15)
+        personalize_btn.grid(row=1, column=0, padx=10, pady=10)
+
+        refresh_btn = tk.Button(left_frame, text="Refresh", command=refresh_file_list, width=10)
+        refresh_btn.grid(row=2, column=0, padx=10, pady=10)
 
         self.show_frame(self.main_frame)
         refresh_file_list()
@@ -362,7 +378,7 @@ class JetJob:
         self.config_search_param_frame = tk.Frame(self.root)
         self.config_search_param_frame.grid(row=0, column=0, sticky="nsew")
 
-        config_values , config_path = self.load_config_values()
+        config_values, config_path = self.load_config_values()
 
         # URL row
         url_label = tk.Label(self.config_search_param_frame, text="URL")
@@ -472,16 +488,15 @@ class JetJob:
             selected_indices = region_box.curselection()
             selected_regions = [self.regions[i] for i in selected_indices]
 
-            data = {
-                "url": url_var.get(),
-                "keywords": keyword_listbox.get(0, "end"),
-                "regions": selected_regions,
-                "limit": limit_var.get(),
-                "offset": offset_var.get()
-            }
+            # update config values
+            config_values["url"] = url_var.get()
+            config_values["keywords"] = keyword_listbox.get(0, "end")
+            config_values["regions"] = selected_regions
+            config_values["limit"] = limit_var.get()
+            config_values["offset"] = offset_var.get()
             
             with open(config_path, "w",encoding="utf-8") as f:
-                json.dump(data, f, indent=4, ensure_ascii=False)
+                json.dump(config_values, f, indent=4, ensure_ascii=False)
             print("✅ Config saved")
 
             self.show_frame(self.main_frame)
@@ -497,21 +512,22 @@ class JetJob:
     def init_data_files_frame(self):
         prompt_dir = os.path.join(self.profiles_path,self.selected_profile,"prompts")
         attachments_dir = os.path.join(self.profiles_path,self.selected_profile,"attachment_files")
+
         data_files_frame = tk.Frame(self.root)
         data_files_frame.grid(row=0, column=0, sticky="nsew")
 
         label = tk.Label(data_files_frame,text="Manage System prompts - Attachemnt files and more!",font=("Ariel, 14"))
         label.grid(row=0, column=0, sticky="nsew")
         
-        def select_prompt_click():
+        def select_file_click(title,keyword):
             selected_file = filedialog.askopenfilename(
-                title="Select a system prompt",
+                title=title,
                 initialdir=prompt_dir,
                 filetypes=[("Text or Markdown files", "*.txt *.md")]
             )
             if selected_file:
                 data, path = self.load_config_values()
-                data["system_prompt_path"] = selected_file
+                data[keyword] = selected_file
     
                 with open(path, "w",encoding="utf-8") as f:
                     json.dump(data, f, indent=4, ensure_ascii=False)
@@ -534,10 +550,13 @@ class JetJob:
         system_prompt_frame = tk.LabelFrame(data_files_frame,text="System prompt")
         system_prompt_frame.grid(row=1,column=0,padx=5,pady=5)
 
-        select_sys_prompt_label = tk.Button(system_prompt_frame,text="Select premade prompt",command=select_prompt_click)
+        sys_title = "Create New System Prompt"
+        sys_key = "system_prompt_path"
+        select_sys_prompt_label = tk.Button(system_prompt_frame,text="Select premade prompt",command=lambda:select_file_click(sys_title,sys_key))
         select_sys_prompt_label.grid(row=0,column=0,padx=10,pady=10)
 
-        create_sys_prompt_label = tk.Button(system_prompt_frame,text="Create new prompt", command=lambda:self.create_prompt_click(prompt_dir))
+        
+        create_sys_prompt_label = tk.Button(system_prompt_frame,text="Create new prompt", command=lambda:self.create_text_click(prompt_dir,sys_title))
         create_sys_prompt_label.grid(row=1,column=0,padx=10,pady=10, sticky="nws")
 
         # second frame
@@ -547,10 +566,26 @@ class JetJob:
         attachment_files_btn = tk.Button(attachment_files_frame,text="Add files", command=add_files_click)
         attachment_files_btn.grid(row=0,column=0,padx=10,pady=10)
 
+        about_me_frame = tk.LabelFrame(data_files_frame,text="About me - Let the AI know you better")
+        about_me_frame.grid(row=3,column=0,padx=5,pady=5)
+
+        about_title = "About me text"
+        about_key = "about_me_path"
+        select_about_me_btn = tk.Button(about_me_frame,text="Select 'about me' text", command=lambda:select_file_click(about_title,about_key))
+        select_about_me_btn.grid(row=0,column=0,padx=10,pady=10)
+
+        create_about_me_btn = tk.Button(about_me_frame,text="Add 'about me' text", command=lambda:self.create_text_click(prompt_dir,about_title))
+        create_about_me_btn.grid(row=1,column=0,padx=10,pady=10)
+
+
+        back_btn = tk.Button(data_files_frame,text="Back",command=lambda:self.show_frame(self.main_frame))
+        back_btn.grid(row=4,column=0,padx=5,pady=5)
+
+
         self.adjust_window()
         self.show_frame(data_files_frame)
-        
-    def create_prompt_click(self,save_dir):
+
+    def create_text_click(self,save_dir,title):
         def save_prompt():
             filename = filename_var.get().strip()
             extension = extension_var.get()
@@ -581,7 +616,7 @@ class JetJob:
 
         # --- UI ---
         popup = tk.Toplevel(self.root)
-        popup.title("Create New System Prompt")
+        popup.title(title)
         popup.geometry("600x500")
 
         # Filename Entry
@@ -714,199 +749,39 @@ class JetJob:
         return config_values ,config_path
 
     def setup_personal_letter_payload(self):
-        pass
+        data, path = self.validate_config_values()
+        
+        folder_path = os.path.join(self.profiles_path, self.selected_profile,"responses","matched_email")
+        
+        for region in data["regions"]:
+            region_path = os.path.join(folder_path, region)
+            
+            for ad in os.listdir(region_path):
+                full_path = os.path.join(region_path, ad)
+                with open(full_path, encoding="utf-8") as f:
+                    ad_data = json.load(f)
+                description = ad_data["description"]["text"]
+                print(description)
 
     def mass_send_email(self):
         pass
 
+    def validate_config_values(self) -> tuple[dict,str]:
+        data, path = self.load_config_values()
 
-    # def create_output_filename(self):
-    #     popup = tk.Toplevel(self.root)
-    #     popup.title("Output filename")
+        for key, value in data.items():
+            if value is None:
+                raise ValueError(f"Config value '{key}' is None.")
+            if isinstance(value, str) and not value.strip():
+                raise ValueError(f"Config value '{key}' is an empty string.")
+            if isinstance(value, list) and not value:
+                raise ValueError(f"Config value '{key}' is an empty list.")
 
-    #     # Entry label and field
-    #     tk.Label(popup, text="Enter filename:").pack(pady=5)
+        print("✅ All config values are valid.")
+        return data, path
 
-    #     filename_var = tk.StringVar()
-    #     path_entry = tk.Entry(popup, width=50, textvariable=filename_var)
-    #     path_entry.pack(pady=5)
+   
 
-    #     # Save button
-    #     def save_filename():
-    #         self.output_filename = filename_var.get().strip()
-    #         self.output_filename_label.config(text=f"Select filename:\n{self.output_filename}")
-    #         popup.destroy()
-
-    #     tk.Button(popup, text="Save", command=save_filename).pack(pady=10)
-
-    # def reset_system_prompt(self):
-    #     self.selected_system_prompt_file = None
-    #     self.selected_sys_prompt_label.config(text=f"No system prompt selected")
-
-    # def reset_data_files(self):
-    #     self.selected_data_files = []
-    #     self.selected_data_files_label.config(text="No data files selected")
-
-    # def select_system_prompt(self):
-    #     file_path = filedialog.askopenfilename(
-    #         title="Select a system prompt file",
-    #         filetypes=[("All files", "*.*")]
-    #     )
-    #     if file_path:
-    #         filename = os.path.basename(file_path)
-    #         self.selected_sys_prompt_label.config(text=f"Selected System Prompt: {filename}")
-    #         self.selected_system_prompt_file = file_path
-
-    # def select_data_files(self):
-    #     file_paths = filedialog.askopenfilenames(
-    #         title="Select one or more data files",
-    #         filetypes=[("All files", "*.*")]
-    #     )
-    #     if file_paths:
-    #         # Convert new file_paths to dicts
-    #         new_files = [
-    #             {
-    #                 "full_path": fp,
-    #                 "filename": os.path.basename(fp),
-    #                 "filename_no_ext": os.path.splitext(os.path.basename(fp))[0]
-    #             }
-    #             for fp in file_paths
-    #         ]
-
-    #         # Combine with previous selections, remove duplicates by full_path
-    #         prev_files = getattr(self, 'selected_data_files', [])
-    #         prev_paths = {f['full_path'] for f in prev_files}
-            
-    #         # Only add new files not already in the list
-    #         combined_files = prev_files + [f for f in new_files if f['full_path'] not in prev_paths]
-            
-    #         self.selected_data_files = combined_files
-
-    #         # Display filenames
-    #         filenames = [f['filename'] for f in self.selected_data_files]
-    #         self.selected_data_files_label.config(text="Data Files:\n" + "\n".join(filenames))
-
-    # def select_folder(self):
-    #     folder_path = filedialog.askdirectory(
-    #         title="Select a folder",
-    #         mustexist=True  # Only allow selecting existing folders
-    #     )
-    #     if folder_path:
-    #         self.output_folder = folder_path
-    #         # Optional: update a label to display the selected folder
-    #         basename = os.path.basename(self.output_folder)
-    #         self.output_folder_label.config(text=f"Selected Folder:\n{basename}")
-
-    # def create_folder(self):
-    #     # Create a new popup window
-    #     popup = tk.Toplevel(self.root)
-    #     popup.title("Create Folder")
-
-    #     # Entry label and field
-    #     tk.Label(popup, text="Enter base folder path:").pack(pady=5)
-        
-    #     path_entry = tk.Entry(popup, width=50)
-    #     path_entry.pack(pady=5)
-
-    #     # Button to create folder
-    #     def submit():
-    #         folder_path = path_entry.get().strip()
-    #         if folder_path:
-    #             try:
-    #                 if os.path.exists(folder_path):
-    #                     tk.Label(popup, text=f"Folder already exists:\n{folder_path}", fg="orange").pack(pady=5)
-    #                 else:
-    #                     os.makedirs(folder_path)
-    #                     tk.Label(popup, text=f"Folder created:\n{folder_path}", fg="green").pack(pady=5)
-                    
-    #                 self.output_folder = folder_path  # Save regardless of existence
-    #                 basename = os.path.basename(self.output_folder)
-    #                 self.output_folder_label.config(text=f"Selected Folder:\n{basename}")
-
-    #             except Exception as e:
-    #                 tk.Label(popup, text=f"Error:\n{e}", fg="red").pack(pady=5)
-
-    #     tk.Button(popup, text="Create Folder", command=submit).pack(pady=10)
-
-    # def validate_required_fields(self):
-    #     if not self.selected_system_prompt_file:
-    #         raise ValueError("System prompt file is not selected.")
-    #     if not self.selected_data_files:
-    #         raise ValueError("No data files selected.")
-    #     if not self.output_folder:
-    #         raise ValueError("Output folder is not set.")
-    #     if not self.output_filename:
-    #         raise ValueError("Output filename is not set.")
-
-    # def construct_message(self):
-    #     # init Azure and MessageBuilder 
-    #     self.response_text.delete("1.0", "end")  # Clear previous content
-
-    #     message_builder = MessageBuilder(
-    #         response_format=self.use_json_var.get()      
-    #     )
-    #     azure_ai = AICaller()
-
-    #     system_prompt_data = self.load_file(filepath=self.selected_system_prompt_file,json_format=False)
-
-    #     for file in self.selected_data_files:
-    #         message_builder.add_message(role="system",message=system_prompt_data)
-    #         data = self.load_file(filepath=file["full_path"], json_format=False)
-
-    #         message_builder.add_message(role="user",message=data)
-
-    #         response = azure_ai.chat_openai(
-    #             model=self.model.get(),
-    #             messages=message_builder.messages,
-    #             temperature=self.temperature_var.get(),
-    #             response_format=self.use_json_var.get()
-    #         )
-
-            
-    #         output_path = os.path.join(self.output_folder,file["filename_no_ext"])
-    #         os.makedirs(output_path,exist_ok=True)
-
-    #         if self.use_json_var.get():
-    #             full_output_path = os.path.join(output_path,self.output_filename+".json")
-    #         else:
-    #             full_output_path = os.path.join(output_path,self.output_filename+".txt")
-
-    #         self.save_file(
-    #             filepath=full_output_path,
-    #             data=response,
-    #             json_format=self.use_json_var.get()
-    #         )
-
-    #         self.response_text.insert("end", f"Successful response. File saved at {full_output_path}")
-
-    #         message_builder.reset_messages()
-
-    # def save_file(self,filepath, data, json_format:bool):
-    #     with open(filepath,'w',encoding='utf-8') as f:
-    #         if not json_format:
-    #             f.write(data)
-    #         else:
-    #             data = json.loads(data)
-    #             json.dump(data,f,indent=4, ensure_ascii=False)
-
-    # def load_file(self,filepath,json_format:bool):
-    #     with open(filepath) as f:
-    #         if not json_format:  
-    #                 data = f.read()
-    #         else:
-    #             data = json.load(f)
-    #     return data
-
-    # def on_run_click(self):
-    #     try:
-    #         self.validate_required_fields()
-    #         self.construct_message()
-
-    #     except ValueError as e:
-    #         print(f"[Error] {e}")
-    #         messagebox.showerror("Missing Input", str(e))
-        
-        
 if __name__ == '__main__':
     producer = JetJob(screen_height=0.35,screen_width=0.3)
     producer.root.mainloop()
