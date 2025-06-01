@@ -1,0 +1,16 @@
+{
+    "url": "https://jobsearch.api.jobtechdev.se/search",
+    "gmail": null,
+    "keywords": [
+        "yu"
+    ],
+    "regions": [
+        "Blekinge Län"
+    ],
+    "limit": 10,
+    "offset": 0,
+    "about_me_path": null,
+    "system_prompt_path": null,
+    "processed_ids": [],
+    "sent_ids": []
+}

@@ -32,11 +32,25 @@ class JetJob:
         if not self.has_valid_profiles():
             self.selected_profile = None
             self.main_frame = None
+            self.config_values = {
+                    "url": None,
+                    "gmail":None,
+                    "keywords": [],
+                    "regions": [],
+                    "limit": None,
+                    "offset": None,
+                    "about_me_path": None,
+                    "system_prompt_path": None,
+                    "processed_ids": [],
+                    "sent_ids":[]
+                }
+            self.config_path = None
             self.init_create_profile_frame()
             self.show_frame(self.create_profile_frame)
 
         else:
             self.selected_profile = self.get_last_used_profile()
+            self.config_values , self.config_path = self.load_config_values()
             self.init_main_frame()
             self.show_frame(self.main_frame)
            
@@ -77,19 +91,23 @@ class JetJob:
 
         self.adjust_window()
 
-    def init_main_frame(self):
-       
+    def init_main_frame(self):    
         folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses")
+        
         def on_search():
-            multi_search(
-                keywords=config_values["keywords"],
-                BASE_URL=config_values["url"],
-                limit=config_values["limit"],
-                offset=config_values["offset"],
-                filter_key="email",
-                output_path=folder_path          
-            )
+            
+            # multi_search(
+            #     keywords=config_values["keywords"],
+            #     BASE_URL=config_values["url"],
+            #     limit=config_values["limit"],
+            #     offset=config_values["offset"],
+            #     filter_key="email",
+            #     output_path=folder_path          
+            # )
 
+            print(self.config_values["keywords"])
+            print(self.config_values["regions"])
+            print(self.config_path)
             refresh_file_list()
 
         def refresh_file_list():
@@ -228,18 +246,14 @@ class JetJob:
                 return
 
             # config parameters
-            default_config_data = {
-                "url":"https://jobsearch.api.jobtechdev.se/search",
-                "keywords":[
-                    "python"
-                ],
-                "limit":10,
-                "offset":0
-            }
-
+            self.config_values["url"] = "https://jobsearch.api.jobtechdev.se/search"
+            self.config_values["limit"] = 10
+            self.config_values["offset"] = 0
+              
+            
             os.makedirs(profile_dir)
             with open(os.path.join(profile_dir, "config.json"), "w") as f:
-                json.dump(default_config_data, f, indent=4)
+                json.dump(self.config_values, f, indent=4)
             self.create_env_file(profile_dir=profile_dir)
 
             print(f"✅ Created profile: {name}")
@@ -259,6 +273,7 @@ class JetJob:
 
             self.selected_profile = selected
             self.set_last_used_profile(selected)
+            self.update_config()
             self.init_main_frame()
             self.show_frame(self.main_frame)
 
@@ -378,39 +393,48 @@ class JetJob:
         self.config_search_param_frame = tk.Frame(self.root)
         self.config_search_param_frame.grid(row=0, column=0, sticky="nsew")
 
-        config_values, config_path = self.load_config_values()
+        self.update_config()
+        # config_values, config_path = self.load_config_values()
 
         # URL row
         url_label = tk.Label(self.config_search_param_frame, text="URL")
         url_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
-        url_var = tk.StringVar(value=config_values.get("url", ""))
+        url_var = tk.StringVar(value=self.config_values.get("url", ""))
         url_entry = tk.Entry(self.config_search_param_frame, textvariable=url_var, width=40)
         url_entry.grid(row=0, column=1, padx=10, pady=10, sticky="w")
 
+        # gmail row
+        gmail_label = tk.Label(self.config_search_param_frame, text="Gmail")
+        gmail_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+
+        gmail_var = tk.StringVar(value=self.config_values.get("gmail", ""))
+        gmail_entry = tk.Entry(self.config_search_param_frame, textvariable=gmail_var, width=40)
+        gmail_entry.grid(row=1, column=1, padx=10, pady=10, sticky="w")
+
         # Keyword entry
         keywords_label = tk.Label(self.config_search_param_frame, text="Keywords")
-        keywords_label.grid(row=1, column=0, padx=10, pady=5, sticky="nw")
+        keywords_label.grid(row=2, column=0, padx=10, pady=5, sticky="nw")
 
         keyword_var = tk.StringVar()
         keyword_entry = tk.Entry(self.config_search_param_frame, textvariable=keyword_var, width=30)
-        keyword_entry.grid(row=1, column=1, padx=10, pady=(5, 0), sticky="w")
+        keyword_entry.grid(row=2, column=1, padx=10, pady=(5, 0), sticky="w")
 
         # Keyword Listbox
         keyword_listbox = tk.Listbox(self.config_search_param_frame, height=6, width=30, selectmode="multiple")
-        keyword_listbox.grid(row=2, column=1, padx=10, pady=5, sticky="w")
-        for kw in config_values.get("keywords", []):
+        keyword_listbox.grid(row=3, column=1, padx=10, pady=5, sticky="w")
+        for kw in self.config_values.get("keywords", []):
             keyword_listbox.insert("end", kw)
 
 
         
         # --- Regions Section ---
         region_label = tk.Label(self.config_search_param_frame, text="Regions")
-        region_label.grid(row=3, column=0, padx=10, pady=5, sticky="nw")
+        region_label.grid(row=4, column=0, padx=10, pady=5, sticky="nw")
 
         # Frame to hold listbox and scrollbar
         region_listbox_frame = tk.Frame(self.config_search_param_frame)
-        region_listbox_frame.grid(row=3, column=1, padx=10, pady=5, sticky="w")
+        region_listbox_frame.grid(row=4, column=1, padx=10, pady=5, sticky="w")
 
         # Listbox
         region_box = tk.Listbox(region_listbox_frame, selectmode="multiple", height=10, exportselection=False)
@@ -426,14 +450,14 @@ class JetJob:
             region_box.insert(tk.END, region)
 
         # Pre-select saved regions
-        selected_regions = config_values.get("regions", [])
+        selected_regions = self.config_values.get("regions", [])
         for idx, region in enumerate(self.regions):
             if region in selected_regions:
                 region_box.selection_set(idx)
 
         # Frame to contain both buttons vertically
         region_button_frame = tk.Frame(self.config_search_param_frame)
-        region_button_frame.grid(row=3, column=2, padx=10, pady=5, sticky="n")
+        region_button_frame.grid(row=4, column=2, padx=10, pady=5, sticky="n")
 
         # "Select All" button in row 0
         select_all_btn = tk.Button(region_button_frame, text="Select All", command=lambda: region_box.select_set(0, tk.END))
@@ -456,32 +480,32 @@ class JetJob:
 
         
         add_btn = tk.Button(self.config_search_param_frame, text="Add", command=add_keyword)
-        add_btn.grid(row=1, column=2, padx=5, pady=(5, 0))
+        add_btn.grid(row=2, column=2, padx=5, pady=(5, 0))
 
         del_btn = tk.Button(self.config_search_param_frame, text="Delete", command=delete_selected)
-        del_btn.grid(row=2, column=2, padx=5, pady=5)
+        del_btn.grid(row=3, column=2, padx=5, pady=5)
 
         # LIMIT Slider (1–100)
         limit_label = tk.Label(self.config_search_param_frame, text="Limit")
-        limit_label.grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        limit_label.grid(row=5, column=0, padx=10, pady=10, sticky="w")
 
-        limit_var = tk.IntVar(value=config_values.get("limit", 10))  # default = 10
+        limit_var = tk.IntVar(value=self.config_values.get("limit", 10))  # default = 10
         limit_slider = tk.Scale(
             self.config_search_param_frame, from_=1, to=100,
             orient="horizontal", variable=limit_var, resolution=1
         )
-        limit_slider.grid(row=4, column=1, padx=10, pady=10, sticky="w")
+        limit_slider.grid(row=5, column=1, padx=10, pady=10, sticky="w")
 
         # OFFSET Slider (0–500 default range)
         offset_label = tk.Label(self.config_search_param_frame, text="Offset")
-        offset_label.grid(row=5, column=0, padx=10, pady=10, sticky="w")
+        offset_label.grid(row=6, column=0, padx=10, pady=10, sticky="w")
 
-        offset_var = tk.IntVar(value=config_values.get("offset", 0))  # default = 0
+        offset_var = tk.IntVar(value=self.config_values.get("offset", 0))  # default = 0
         offset_slider = tk.Scale(
             self.config_search_param_frame, from_=0, to=500,
             orient="horizontal", variable=offset_var, resolution=1
         )
-        offset_slider.grid(row=5, column=1, padx=10, pady=10, sticky="w")
+        offset_slider.grid(row=6, column=1, padx=10, pady=10, sticky="w")
 
 
         def on_done_click():
@@ -489,14 +513,15 @@ class JetJob:
             selected_regions = [self.regions[i] for i in selected_indices]
 
             # update config values
-            config_values["url"] = url_var.get()
-            config_values["keywords"] = keyword_listbox.get(0, "end")
-            config_values["regions"] = selected_regions
-            config_values["limit"] = limit_var.get()
-            config_values["offset"] = offset_var.get()
+            self.config_values["url"] = url_var.get()
+            self.config_values["gmail"] = gmail_var.get()
+            self.config_values["keywords"] = keyword_listbox.get(0, "end")
+            self.config_values["regions"] = selected_regions
+            self.config_values["limit"] = limit_var.get()
+            self.config_values["offset"] = offset_var.get()
             
-            with open(config_path, "w",encoding="utf-8") as f:
-                json.dump(config_values, f, indent=4, ensure_ascii=False)
+            with open(self.config_path, "w",encoding="utf-8") as f:
+                json.dump(self.config_values, f, indent=4, ensure_ascii=False)
             print("✅ Config saved")
 
             self.show_frame(self.main_frame)
@@ -504,7 +529,7 @@ class JetJob:
         
         # Save Button
         save_button = tk.Button(self.config_search_param_frame, text="Done", command=on_done_click)
-        save_button.grid(row=6,column=0,pady=10, padx=10,sticky="we")
+        save_button.grid(row=7,column=0,pady=10, padx=10,sticky="we")
  
         self.adjust_window()
         self.show_frame(self.config_search_param_frame)
@@ -585,6 +610,9 @@ class JetJob:
         self.adjust_window()
         self.show_frame(data_files_frame)
 
+    def init_gpt_config_frame(self):
+        pass
+
     def create_text_click(self,save_dir,title):
         def save_prompt():
             filename = filename_var.get().strip()
@@ -655,8 +683,11 @@ class JetJob:
         # search param config
         self.menubar.add_command(label="Search Parameter config", command=self.init_config_search_param_frame)
 
-
+        # Data files
         self.menubar.add_command(label="Data files",command=self.init_data_files_frame)
+
+        # gpt- config
+        self.menubar.add_command(label="Gpt config",command=self.init_gpt_config_frame)
 
     def show_frame(self, frame):
         frame.tkraise()
@@ -728,15 +759,31 @@ class JetJob:
         window.geometry(f"{width}x{height}+{x}+{y}")
 
     def create_profile_subfolders(self,name):
-        # make subfolder
-        prompts_path = os.path.join(self.profiles_path,name,"prompts")
-        os.makedirs(prompts_path,exist_ok=True)
+        # system prompts
+        self.prompts_path = os.path.join(self.profiles_path,name,"prompts")
+        os.makedirs(self.prompts_path,exist_ok=True)
 
-        responses_path = os.path.join(self.profiles_path,name,"responses")
-        os.makedirs(responses_path,exist_ok=True)
+        # ads
+        self.ads_path = os.path.join(self.profiles_path,name,"ads")
+        os.makedirs(self.ads_path,exist_ok=True)
 
-        attachement_files_path = os.path.join(self.profiles_path,name,"attachement_files")
-        os.makedirs(attachement_files_path,exist_ok=True)
+        # processed letters (personliga brev)
+        self.processed_letters_path = os.path.join(self.profiles_path,name,"processed_letters")
+        os.makedirs(self.processed_letters_path,exist_ok=True)
+
+        # attachement files (CV,pictures, others)
+        self.attachement_files_path = os.path.join(self.profiles_path,name,"attachement_files")
+        os.makedirs(self.attachement_files_path,exist_ok=True)
+
+        # about me text 
+        self.about_me_path = os.path.join(self.profiles_path,name,"about_me")
+        os.makedirs(self.about_me_path,exist_ok=True)
+
+    def save_config_values(self,*kwargs):
+        pass
+
+    def update_config(self):
+        self.config_values, self.config_path = self.load_config_values()
 
     def load_config_values(self) -> tuple[dict,str]:
         config_path = os.path.join(self.profiles_path, self.selected_profile, "config.json")
@@ -807,13 +854,8 @@ class JetJob:
         
         print(f"messages pre-processed and saved at {processed_letters_path}")
 
-                
-    def mass_send_email(self):
-        pass
-
     def validate_config_values(self) -> tuple[dict,str]:
         data, path = self.load_config_values()
-
         for key, value in data.items():
             if value is None:
                 raise ValueError(f"Config value '{key}' is None.")
@@ -825,7 +867,9 @@ class JetJob:
         print("✅ All config values are valid.")
         return data, path
 
-   
+    def mass_send_email(self):
+        pass
+
 
 if __name__ == '__main__':
     producer = JetJob(screen_height=0.35,screen_width=0.3)

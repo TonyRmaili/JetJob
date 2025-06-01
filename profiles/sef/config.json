@@ -1,0 +1,14 @@
+{
+    "url": "https://jobsearch.api.jobtechdev.se/search",
+    "gmail": "bisi@gmai.com",
+    "keywords": [
+        "java"
+    ],
+    "regions": [],
+    "limit": 10,
+    "offset": 66,
+    "about_me_path": null,
+    "system_prompt_path": null,
+    "processed_ids": [],
+    "sent_ids": []
+}

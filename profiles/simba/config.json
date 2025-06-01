@@ -1,8 +1,0 @@
-{
-    "url": "https://jobsearch.api.jobtechdev.se/search",
-    "keywords": [
-        "python"
-    ],
-    "limit": 10,
-    "offset": 0
-}
