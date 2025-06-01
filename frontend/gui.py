@@ -86,16 +86,21 @@ class JetJob:
 
     def init_main_frame(self):    
         def on_search():
+            try:
+                self.validate_search_values()
+            except ValueError as e:
+                messagebox.showwarning(e)
+                return
             # multi_search(
             #     keywords=self.config_values["keywords"],
             #     BASE_URL=self.config_values["url"],
             #     limit=self.config_values["limit"],
             #     offset=self.config_values["offset"],
             #     filter_key="email",
-            #     output_path=folder_path          
+            #     output_path=self.ads_path          
             # )
-
             
+
             print(self.ads_path)
             print(self.config_values["keywords"])
             print(self.config_values["regions"])
@@ -853,9 +858,24 @@ class JetJob:
                 raise ValueError(f"Config value '{key}' is an empty string.")
             if isinstance(value, list) and not value:
                 raise ValueError(f"Config value '{key}' is an empty list.")
+            
 
         print("✅ All config values are valid.")
         return data, path
+
+    def validate_search_values(self):
+        if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":
+            raise ValueError(f"url is not valid: {self.config_values["url"]}")
+        if not self.config_values["keywords"] or not self.config_values["regions"]:
+            raise ValueError(f"regions or keywords parameter is empty")
+        if self.config_values["limit"] < 0 or self.config_values["offset"] < 0:
+            raise ValueError(f"limit or offset negative value")
+        if not self.config_values["limit"] or not self.config_values["offset"]:
+            raise ValueError(f"invalid limit or offset value")
+        if not self.ads_path:
+            raise ValueError(f"save path missing {self.ads_path}") 
+        
+
 
     def mass_send_email(self):
         pass
