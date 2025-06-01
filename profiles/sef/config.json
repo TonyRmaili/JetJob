@@ -2,9 +2,13 @@
     "url": "https://jobsearch.api.jobtechdev.se/search",
     "gmail": "bisi@gmai.com",
     "keywords": [
-        "java"
+        "java",
+        "tyuip"
     ],
-    "regions": [],
+    "regions": [
+        "Blekinge Län",
+        "Dalarnas Län"
+    ],
     "limit": 10,
     "offset": 66,
     "about_me_path": null,

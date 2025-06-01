@@ -28,7 +28,6 @@ class JetJob:
         self.profiles_path = "./profiles"
         os.makedirs(self.profiles_path,exist_ok=True)
 
-
         if not self.has_valid_profiles():
             self.selected_profile = None
             self.main_frame = None
@@ -51,12 +50,13 @@ class JetJob:
         else:
             self.selected_profile = self.get_last_used_profile()
             self.config_values , self.config_path = self.load_config_values()
+            self.create_profile_subfolders(self.selected_profile)
             self.init_main_frame()
             self.show_frame(self.main_frame)
            
 
         # gpt models
-        self.models = ["gpt-4o", "gpt-4o-mini","gpt-4.1"]
+        self.models = ["gpt-4.1","gpt-4o", "gpt-4o-mini"]
 
         self.regions = ["Blekinge Län",
                         "Dalarnas Län",
@@ -82,29 +82,21 @@ class JetJob:
                         ]
         
         
-        # selected variables
-        self.selected_system_prompt_file = None
-        self.selected_data_files = []
-        self.output_folder = None
-        self.output_filename = None
-        self.selected_regions = []
-
         self.adjust_window()
 
     def init_main_frame(self):    
-        folder_path = os.path.join(self.profiles_path,self.selected_profile,"responses")
-        
         def on_search():
-            
             # multi_search(
-            #     keywords=config_values["keywords"],
-            #     BASE_URL=config_values["url"],
-            #     limit=config_values["limit"],
-            #     offset=config_values["offset"],
+            #     keywords=self.config_values["keywords"],
+            #     BASE_URL=self.config_values["url"],
+            #     limit=self.config_values["limit"],
+            #     offset=self.config_values["offset"],
             #     filter_key="email",
             #     output_path=folder_path          
             # )
 
+            
+            print(self.ads_path)
             print(self.config_values["keywords"])
             print(self.config_values["regions"])
             print(self.config_path)
@@ -116,7 +108,7 @@ class JetJob:
             for widget in right_frame.winfo_children():
                 widget.destroy()
             
-            valid_path = os.path.join(folder_path,f"matched_email")
+            valid_path = os.path.join(self.ads_path,f"matched_email")
             
             for region_index, region in enumerate(config_values["regions"]):
                 region_path = os.path.join(valid_path, region)
@@ -394,7 +386,6 @@ class JetJob:
         self.config_search_param_frame.grid(row=0, column=0, sticky="nsew")
 
         self.update_config()
-        # config_values, config_path = self.load_config_values()
 
         # URL row
         url_label = tk.Label(self.config_search_param_frame, text="URL")
@@ -426,8 +417,7 @@ class JetJob:
         for kw in self.config_values.get("keywords", []):
             keyword_listbox.insert("end", kw)
 
-
-        
+ 
         # --- Regions Section ---
         region_label = tk.Label(self.config_search_param_frame, text="Regions")
         region_label.grid(row=4, column=0, padx=10, pady=5, sticky="nw")
@@ -513,20 +503,18 @@ class JetJob:
             selected_regions = [self.regions[i] for i in selected_indices]
 
             # update config values
-            self.config_values["url"] = url_var.get()
-            self.config_values["gmail"] = gmail_var.get()
-            self.config_values["keywords"] = keyword_listbox.get(0, "end")
-            self.config_values["regions"] = selected_regions
-            self.config_values["limit"] = limit_var.get()
-            self.config_values["offset"] = offset_var.get()
+            save_data = {
+                "url":url_var.get(),
+                "gmail":gmail_var.get(),
+                "keywords":keyword_listbox.get(0, "end"),
+                "regions":selected_regions,
+                "limit":limit_var.get(),
+                "offset":offset_var.get(),
+            }
             
-            with open(self.config_path, "w",encoding="utf-8") as f:
-                json.dump(self.config_values, f, indent=4, ensure_ascii=False)
-            print("✅ Config saved")
-
+            self.save_config_values(**save_data)
             self.show_frame(self.main_frame)
 
-        
         # Save Button
         save_button = tk.Button(self.config_search_param_frame, text="Done", command=on_done_click)
         save_button.grid(row=7,column=0,pady=10, padx=10,sticky="we")
@@ -534,81 +522,78 @@ class JetJob:
         self.adjust_window()
         self.show_frame(self.config_search_param_frame)
 
-    def init_data_files_frame(self):
-        prompt_dir = os.path.join(self.profiles_path,self.selected_profile,"prompts")
-        attachments_dir = os.path.join(self.profiles_path,self.selected_profile,"attachment_files")
 
+    def init_data_files_frame(self):
         data_files_frame = tk.Frame(self.root)
         data_files_frame.grid(row=0, column=0, sticky="nsew")
+        data_files_frame.columnconfigure(0, weight=1)
 
-        label = tk.Label(data_files_frame,text="Manage System prompts - Attachemnt files and more!",font=("Ariel, 14"))
-        label.grid(row=0, column=0, sticky="nsew")
-        
-        def select_file_click(title,keyword):
+        # Title Label
+        label = tk.Label(data_files_frame, text="Manage System Prompts, Attachment Files, and More!", font=("Arial", 14))
+        label.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
+        def select_file_click(title,keyword,initial_dir):
             selected_file = filedialog.askopenfilename(
                 title=title,
-                initialdir=prompt_dir,
+                initialdir=initial_dir,
                 filetypes=[("Text or Markdown files", "*.txt *.md")]
             )
             if selected_file:
-                data, path = self.load_config_values()
-                data[keyword] = selected_file
-    
-                with open(path, "w",encoding="utf-8") as f:
-                    json.dump(data, f, indent=4, ensure_ascii=False)
+                save_data = {keyword :selected_file}
+                self.save_config_values(**save_data)
                 print("✅ Config saved")
 
         def add_files_click():
             selected_files = filedialog.askopenfilenames(
                 title="Select data files for mail attachment (CV, grades, etc)",
-                initialdir=attachments_dir,
+                initialdir=self.attachement_files_path,
                 filetypes=[("All files", "*.*")]
                 )
             if selected_files:
-                data, path = self.load_config_values()
-                data["attachment_files"] = selected_files
-                with open(path,'w',encoding="utf-8") as f:
-                    json.dump(data,f,indent=4,ensure_ascii=False)
-
-
-        # fist frame
-        system_prompt_frame = tk.LabelFrame(data_files_frame,text="System prompt")
-        system_prompt_frame.grid(row=1,column=0,padx=5,pady=5)
-
-        sys_title = "Create New System Prompt"
-        sys_key = "system_prompt_path"
-        select_sys_prompt_label = tk.Button(system_prompt_frame,text="Select premade prompt",command=lambda:select_file_click(sys_title,sys_key))
-        select_sys_prompt_label.grid(row=0,column=0,padx=10,pady=10)
-
+                save_data = {"attachment_files" :selected_files}
+                self.save_config_values(**save_data)
+                print("✅ Config saved")
         
-        create_sys_prompt_label = tk.Button(system_prompt_frame,text="Create new prompt", command=lambda:self.create_text_click(prompt_dir,sys_title))
-        create_sys_prompt_label.grid(row=1,column=0,padx=10,pady=10, sticky="nws")
 
-        # second frame
-        attachment_files_frame = tk.LabelFrame(data_files_frame,text="Select attachment files")
-        attachment_files_frame.grid(row=2,column=0,padx=5,pady=5)
+        # System Prompt Frame
+        system_prompt_frame = tk.LabelFrame(data_files_frame, text="System Prompt")
+        system_prompt_frame.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+        system_prompt_frame.columnconfigure(0, weight=1)
 
-        attachment_files_btn = tk.Button(attachment_files_frame,text="Add files", command=add_files_click)
-        attachment_files_btn.grid(row=0,column=0,padx=10,pady=10)
+        tk.Button(system_prompt_frame, text="Select Premade Prompt",
+                command=lambda: select_file_click("Select System Prompt", "system_prompt_path", self.prompts_path)
+                ).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
 
-        about_me_frame = tk.LabelFrame(data_files_frame,text="About me - Let the AI know you better")
-        about_me_frame.grid(row=3,column=0,padx=5,pady=5)
+        tk.Button(system_prompt_frame, text="Create New Prompt",
+                command=lambda: self.create_text_click(self.prompts_path, "Create new System prompt")
+                ).grid(row=1, column=0, padx=10, pady=5, sticky="ew")
 
-        about_title = "About me text"
-        about_key = "about_me_path"
-        select_about_me_btn = tk.Button(about_me_frame,text="Select 'about me' text", command=lambda:select_file_click(about_title,about_key))
-        select_about_me_btn.grid(row=0,column=0,padx=10,pady=10)
+        # Attachment Files Frame
+        attachment_files_frame = tk.LabelFrame(data_files_frame, text="Attachment Files")
+        attachment_files_frame.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
 
-        create_about_me_btn = tk.Button(about_me_frame,text="Add 'about me' text", command=lambda:self.create_text_click(prompt_dir,about_title))
-        create_about_me_btn.grid(row=1,column=0,padx=10,pady=10)
+        tk.Button(attachment_files_frame, text="Add Files", command=add_files_click
+                ).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
 
+        # About Me Frame
+        about_me_frame = tk.LabelFrame(data_files_frame, text="About Me")
+        about_me_frame.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
+        about_me_frame.columnconfigure(0, weight=1)
 
-        back_btn = tk.Button(data_files_frame,text="Back",command=lambda:self.show_frame(self.main_frame))
-        back_btn.grid(row=4,column=0,padx=5,pady=5)
+        tk.Button(about_me_frame, text="Select 'About Me' Text",
+                command=lambda: select_file_click("About me text", "about_me_path", self.about_me_path)
+                ).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
 
+        tk.Button(about_me_frame, text="Add 'About Me' Text",
+                command=lambda: self.create_text_click(self.about_me_path, "About me text")
+                ).grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+
+        # Back Button
+        tk.Button(data_files_frame, text="Back", command=lambda: self.show_frame(self.main_frame)
+                ).grid(row=4, column=0, padx=10, pady=15, sticky="w")
 
         self.adjust_window()
         self.show_frame(data_files_frame)
+
 
     def init_gpt_config_frame(self):
         pass
@@ -779,9 +764,14 @@ class JetJob:
         self.about_me_path = os.path.join(self.profiles_path,name,"about_me")
         os.makedirs(self.about_me_path,exist_ok=True)
 
-    def save_config_values(self,*kwargs):
-        pass
+    def save_config_values(self,**kwargs):
+        for key,value in kwargs.items():
+            self.config_values[key] = value
 
+        with open(self.config_path, "w",encoding="utf-8") as f:
+                json.dump(self.config_values, f, indent=4, ensure_ascii=False)
+        print("✅ Config saved")
+            
     def update_config(self):
         self.config_values, self.config_path = self.load_config_values()
 
