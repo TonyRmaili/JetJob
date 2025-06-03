@@ -1,10 +1,15 @@
 {
     "url": "https://jobsearch.api.jobtechdev.se/search",
-    "gmail": null,
-    "keywords": [],
-    "regions": [],
-    "limit": 10,
-    "offset": 0,
+    "gmail": "",
+    "keywords": [
+        "python"
+    ],
+    "regions": [
+        "Stockholms Län"
+    ],
+    "missing_regions": true,
+    "limit": 14,
+    "offset": 7,
     "model": "gpt-4o-mini",
     "temperature": 0.2,
     "about_me_path": null,

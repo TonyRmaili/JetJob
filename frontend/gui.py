@@ -36,6 +36,8 @@ class JetJob:
                     "gmail":None,
                     "keywords": [],
                     "regions": [],
+                    "missing_regions":False,
+
                     "limit": 10,
                     "offset": 0,
 
@@ -93,7 +95,8 @@ class JetJob:
             try:
                 self.validate_search_values()
             except ValueError as e:
-                messagebox.showwarning(e)
+                self.show_large_warning(str(e), title="Error")
+                # messagebox.showwarning(e)
                 return
             # multi_search(
             #     keywords=self.config_values["keywords"],
@@ -111,15 +114,16 @@ class JetJob:
             print(self.config_path)
             refresh_file_list()
 
-        def refresh_file_list():
-            config_values, config_path = self.load_config_values()
+        def refresh_file_list():          
             # Clear previous widgets in right_frame
             for widget in right_frame.winfo_children():
                 widget.destroy()
             
             valid_path = os.path.join(self.ads_path,f"matched_email")
+            missing_region_path = os.path.join(valid_path,"region_missing")
             
-            for region_index, region in enumerate(config_values["regions"]):
+
+            for region_index, region in enumerate(self.config_values["regions"]):
                 region_path = os.path.join(valid_path, region)
 
                 # region frame
@@ -154,7 +158,22 @@ class JetJob:
                     delete_btn = tk.Button(region_frame, text="Delete", width=8,
                                         command=lambda f=full_path: delete_file(f))
                     delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
-           
+
+            for m_region_index, m_region in enumerate(os.listdir(missing_region_path)):
+                full_path = os.path.join(missing_region_path, m_region)
+                file_label = tk.Label(missing_region_frame, text=m_region, anchor="w")
+                file_label.grid(row=m_region_index, column=0, padx=5, pady=2, sticky="w")
+
+                # View button (right aligned)
+                view_btn = tk.Button(missing_region_frame, text="View", width=8,
+                                    command=lambda f=full_path: view_file(f))
+                view_btn.grid(row=m_region_index, column=1, padx=5, sticky="e")
+
+                # Delete button (right aligned)
+                delete_btn = tk.Button(missing_region_frame, text="Delete", width=8,
+                                    command=lambda f=full_path: delete_file(f))
+                delete_btn.grid(row=m_region_index, column=2, padx=5, sticky="e")
+
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -176,7 +195,8 @@ class JetJob:
 
         def on_personalize_click():
             try:
-                self.setup_personal_letter_payload()
+                # self.setup_personal_letter_payload()
+                print("enable setup_personal_letter_payload()")
 
             except ValueError as e:
                 messagebox.showwarning("Invalid Configuration", str(e))
@@ -189,9 +209,14 @@ class JetJob:
         left_frame = tk.LabelFrame(self.main_frame, text="Buttons")
         left_frame.grid(row=0, column=0, sticky="nsw")
 
-        right_frame = tk.LabelFrame(self.main_frame, text="Ads")
+        right_frame = tk.LabelFrame(self.main_frame, text="Ads with regions")
         right_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
         right_frame.columnconfigure(0, weight=1)
+
+        missing_region_frame = tk.LabelFrame(self.main_frame, text="Missing regions")
+        missing_region_frame.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
+        missing_region_frame.columnconfigure(0, weight=1)
+
 
         search_btn = tk.Button(left_frame, text="Search", command=on_search, width=10)
         search_btn.grid(row=0, column=0, padx=10, pady=10)
@@ -201,6 +226,23 @@ class JetJob:
 
         refresh_btn = tk.Button(left_frame, text="Refresh", command=refresh_file_list, width=10)
         refresh_btn.grid(row=2, column=0, padx=10, pady=10)
+
+
+        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  # default True
+
+        def on_missing_regions_toggle():
+            save_data = {"missing_regions":allow_missing_region_var.get()}
+            self.save_config_values(**save_data)
+            print("Switch is now", allow_missing_region_var.get())
+
+        allow_missing_region_check= tk.Checkbutton(left_frame, text="Allow missing regions",
+            variable=allow_missing_region_var,
+            command=on_missing_regions_toggle,
+            onvalue=True,
+            offvalue=False
+        )
+        allow_missing_region_check.grid(row=3, column=0, padx=10, pady=10)
+
 
         self.show_frame(self.main_frame)
         refresh_file_list()
@@ -924,14 +966,13 @@ class JetJob:
         return config_values ,config_path
 
     def setup_personal_letter_payload(self):
-        data, path = self.validate_config_values() 
-        folder_path = os.path.join(self.profiles_path, self.selected_profile,"responses","matched_email")
-        system_prompt_path = data["system_prompt_path"]
-        about_me_path = data["about_me_path"]
+        
+        folder_path = os.path.join(self.ads_path,"matched_email")
+        system_prompt_path = self.config_values["system_prompt_path"]
+        about_me_path = self.config_values["about_me_path"]
         text_prepend_ad_data = "Here is the ad:\n"
         text_prepend_about_me_data = "This is some data about me:\n"
 
-        data["processed_ids"] = []
         ai_caller = AICaller()
 
         with open(system_prompt_path, encoding="utf-8") as f:
@@ -941,7 +982,7 @@ class JetJob:
             about_me_data = f.read()
 
         
-        for region in data["regions"]:
+        for region in self.config_values["regions"]:
             region_path = os.path.join(folder_path, region)
             for ad in os.listdir(region_path):
                 
@@ -967,7 +1008,7 @@ class JetJob:
 
                 message_builder.reset_messages()
 
-                processed_letters_path = os.path.join(self.profiles_path, self.selected_profile,"responses","processed_letters")
+                processed_letters_path = os.path.join(self.profiles_path, self.selected_profile,"processed_letters")
                 os.makedirs(processed_letters_path,exist_ok=True)
                 filename = ad_headline+".md"
                 save_path = os.path.join(processed_letters_path,filename)
@@ -975,11 +1016,10 @@ class JetJob:
                 with open(save_path,'w',encoding="utf-8") as f:
                     f.write(response)
 
-                data["processed_ids"].append(ad_id)
-
-        with open(path,'w',encoding="utf-8") as f:
-            json.dump(data,f,indent=4,ensure_ascii=False)
+                self.config_values["processed_ids"].append(ad_id)
         
+        save_data = {"processed_ids":self.config_values["processed_ids"]}
+        self.save_config_values(**save_data)
         print(f"messages pre-processed and saved at {processed_letters_path}")
 
     def validate_config_values(self) -> tuple[dict,str]:
@@ -1000,18 +1040,37 @@ class JetJob:
         if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":
             raise ValueError(f"url is not valid: {self.config_values["url"]}")
         if not self.config_values["keywords"] or not self.config_values["regions"]:
-            raise ValueError(f"regions or keywords parameter is empty")
-        if self.config_values["limit"] < 0 or self.config_values["offset"] < 0:
-            raise ValueError(f"limit or offset negative value")
-        if not self.config_values["limit"] or not self.config_values["offset"]:
-            raise ValueError(f"invalid limit or offset value")
+            raise ValueError(f"regions or keywords parameter is empty")       
         if not self.ads_path:
             raise ValueError(f"save path missing {self.ads_path}") 
         
-
+    def check_used_ids(self,id_type):
+        pass
 
     def mass_send_email(self):
         pass
+
+    def show_large_warning(self, message, title="Warning"):
+        warning_win = tk.Toplevel(self.root)
+        warning_win.title(title)
+        warning_win.geometry("500x300")
+
+        frame = tk.Frame(warning_win)
+        frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        scrollbar = tk.Scrollbar(frame)
+        scrollbar.pack(side="right", fill="y")
+
+        text_area = tk.Text(frame, wrap="word", yscrollcommand=scrollbar.set, font=("Arial", 11))
+        text_area.insert("1.0", message)
+        text_area.config(state="disabled", bg="#fff6f6", fg="#a60000")
+        text_area.pack(fill="both", expand=True)
+
+        scrollbar.config(command=text_area.yview)
+
+        # Optional: Close button
+        close_btn = tk.Button(warning_win, text="Close", command=warning_win.destroy)
+        close_btn.pack(pady=6)
 
 
 if __name__ == '__main__':

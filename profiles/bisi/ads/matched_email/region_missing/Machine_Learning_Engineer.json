@@ -1,0 +1,127 @@
+{
+    "relevance": 0.5302700904481619,
+    "id": "29747573",
+    "external_id": null,
+    "original_id": null,
+    "label": "[]",
+    "webpage_url": "https://arbetsformedlingen.se/platsbanken/annonser/29747573",
+    "logo_url": null,
+    "headline": "Machine Learning Engineer",
+    "application_deadline": "2025-07-03T23:59:59",
+    "number_of_vacancies": 1,
+    "description": {
+        "text": "Role: Machine Learning Engineer\n Seniority Level: Senior\n Location: Stockholm, Sweden (100% Onsite)\n Remote: Not allowed (0%)\n Application Deadline: 27 June 2025\nAssignment Overview\nWe are looking for a skilled Machine Learning Engineer to join our client's AI/ML team. You will play a key role in designing and developing scalable ML systems and infrastructure, contributing to both research and production-ready ML products in a complex and data-rich environment.\nKey Responsibilities\nDesign, develop, test, and deploy AI/ML software products.\nExplore large datasets, perform feature engineering, and evaluate model outputs.\nScale ML solutions to meet the needs of a large, distributed business network.\nBuild and maintain large-scale data infrastructure for AI/ML projects.\nWrite clean, maintainable, and scalable code using software engineering best practices.\nDevelop shared ML components and frameworks (e.g., for feature reuse, A/B testing, traceability).\nCollaborate within cross-functional agile teams, including engineers, data scientists, and business stakeholders.\n\nRequired Qualifications & Experience\nBachelor’s or Master’s degree in Computer Science, Engineering, or related field (or equivalent practical experience).\nMinimum 4 years of experience as a Machine Learning Engineer or in a similar role.\nStrong programming skills with at least 3 years of experience in Python.\nProven experience building software products successfully deployed in production environments.\nSolid understanding of MLOps and experience in developing and deploying ML pipelines.\nHands-on experience with cloud platforms (preferably Google Cloud, especially Vertex AI).\nWorking knowledge of modern AI/ML techniques and frameworks.\nExperience with high-volume data handling, including batch and stream processing.\nStrong grasp of data structures, data storage technologies, and databases.\nComfortable working in agile teams with a focus on collaboration, experimentation, and data-driven development.\n\n\n\nCertification Requirement\nCloud certification in GCP, AWS, or Azure is required.\nConsultants not already certified must obtain a certificate within 1 month of the assignment start date.\n\n\n\nRequired Skills\nPython\nMachine Learning (ML)\nArtificial Intelligence (AI)\nGoogle Cloud Platform (GCP)\nVertex AI\nAWS or Azure (optional but certification required)\nMLOps & ML pipelines\nData engineering & infrastructure",
+        "text_formatted": "<p><strong>Role:</strong> Machine Learning Engineer</p><p> <strong>Seniority Level:</strong> Senior</p><p> <strong>Location:</strong> Stockholm, Sweden (100% Onsite)</p><p> <strong>Remote:</strong> Not allowed (0%)</p><p> <strong>Application Deadline:</strong> 27 June 2025</p><p><strong>Assignment Overview</strong></p><p>We are looking for a skilled <strong>Machine Learning Engineer</strong> to join our client's AI/ML team. You will play a key role in designing and developing scalable ML systems and infrastructure, contributing to both research and production-ready ML products in a complex and data-rich environment.</p><p><strong>Key Responsibilities</strong></p><ul><li>Design, develop, test, and deploy AI/ML software products.</li><li>Explore large datasets, perform feature engineering, and evaluate model outputs.</li><li>Scale ML solutions to meet the needs of a large, distributed business network.</li><li>Build and maintain large-scale data infrastructure for AI/ML projects.</li><li>Write clean, maintainable, and scalable code using software engineering best practices.</li><li>Develop shared ML components and frameworks (e.g., for feature reuse, A/B testing, traceability).</li><li>Collaborate within cross-functional agile teams, including engineers, data scientists, and business stakeholders.</li></ul><p><strong>Required Qualifications &amp; Experience</strong></p><ul><li>Bachelor’s or Master’s degree in Computer Science, Engineering, or related field (or equivalent practical experience).</li><li>Minimum 4 years of experience as a Machine Learning Engineer or in a similar role.</li><li>Strong programming skills with at least 3 years of experience in <strong>Python</strong>.</li><li>Proven experience building software products successfully deployed in production environments.</li><li>Solid understanding of <strong>MLOps</strong> and experience in developing and deploying ML pipelines.</li><li>Hands-on experience with <strong>cloud platforms</strong> (preferably <strong>Google Cloud</strong>, especially <strong>Vertex AI</strong>).</li><li>Working knowledge of modern AI/ML techniques and frameworks.</li><li>Experience with high-volume data handling, including batch and stream processing.</li><li>Strong grasp of data structures, data storage technologies, and databases.</li><li>Comfortable working in agile teams with a focus on collaboration, experimentation, and data-driven development.</li></ul><p><br></p><p><strong>Certification Requirement</strong></p><ul><li>Cloud certification in <strong>GCP, AWS, or Azure</strong> is required.</li><li>Consultants not already certified must obtain a certificate within <strong>1 month of the assignment start date</strong>.</li></ul><p><br></p><p><strong>Required Skills</strong></p><ul><li>Python</li><li>Machine Learning (ML)</li><li>Artificial Intelligence (AI)</li><li>Google Cloud Platform (GCP)</li><li>Vertex AI</li><li>AWS or Azure (optional but certification required)</li><li>MLOps &amp; ML pipelines</li><li>Data engineering &amp; infrastructure</li></ul><p><br></p>",
+        "company_information": null,
+        "needs": null,
+        "requirements": null,
+        "conditions": null
+    },
+    "employment_type": {
+        "concept_id": "PFZr_Syz_cUq",
+        "label": "Vanlig anställning",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_type": {
+        "concept_id": "oG8G_9cW_nRf",
+        "label": "Fast månads- vecko- eller timlön",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "salary_description": null,
+    "duration": {
+        "concept_id": "qQUd_4qe_NDT",
+        "label": "6 månader eller längre",
+        "legacy_ams_taxonomy_id": "2"
+    },
+    "working_hours_type": {
+        "concept_id": "6YE1_gAC_R2G",
+        "label": "Heltid",
+        "legacy_ams_taxonomy_id": "1"
+    },
+    "scope_of_work": {
+        "min": 100,
+        "max": 100
+    },
+    "access": null,
+    "employer": {
+        "phone_number": null,
+        "email": null,
+        "url": null,
+        "organization_number": "5591986913",
+        "name": "Semicon Service Nordic AB",
+        "workplace": "Stockholm, Sweden (100% Onsite)"
+    },
+    "application_details": {
+        "information": null,
+        "reference": null,
+        "email": "hr@semiconservicenordic.com",
+        "via_af": false,
+        "url": null,
+        "other": null
+    },
+    "experience_required": true,
+    "access_to_own_car": false,
+    "driving_license_required": false,
+    "driving_license": null,
+    "occupation": {
+        "concept_id": "iJwC_kdU_cu7",
+        "label": "Produktionsingenjör, maskin",
+        "legacy_ams_taxonomy_id": "6591"
+    },
+    "occupation_group": {
+        "concept_id": "K8yg_U4C_gkY",
+        "label": "Ingenjörer och tekniker inom maskinteknik",
+        "legacy_ams_taxonomy_id": "3114"
+    },
+    "occupation_field": {
+        "concept_id": "6Hq3_tKo_V57",
+        "label": "Yrken med teknisk inriktning",
+        "legacy_ams_taxonomy_id": "18"
+    },
+    "workplace_address": {
+        "municipality": null,
+        "municipality_code": null,
+        "municipality_concept_id": null,
+        "region": null,
+        "region_code": null,
+        "region_concept_id": null,
+        "country": "Sverige",
+        "country_code": "199",
+        "country_concept_id": "i46j_HmG_v64",
+        "street_address": null,
+        "postcode": null,
+        "city": null,
+        "coordinates": [
+            null,
+            null
+        ]
+    },
+    "must_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [
+            {
+                "weight": 10,
+                "concept_id": "iJwC_kdU_cu7",
+                "label": "Produktionsingenjör, maskin",
+                "legacy_ams_taxonomy_id": "6591"
+            }
+        ],
+        "education": [],
+        "education_level": []
+    },
+    "nice_to_have": {
+        "skills": [],
+        "languages": [],
+        "work_experiences": [],
+        "education": [],
+        "education_level": []
+    },
+    "application_contacts": [],
+    "publication_date": "2025-06-03T13:23:28",
+    "last_publication_date": "2025-07-03T23:59:59",
+    "removed": false,
+    "removed_date": null,
+    "source_type": "VIA_ANNONSERA",
+    "timestamp": 1748949808343
+}
