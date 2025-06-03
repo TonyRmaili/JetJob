@@ -1,14 +1,12 @@
 {
     "url": "https://jobsearch.api.jobtechdev.se/search",
-    "gmail": "bisi@gmai.com",
-    "keywords": [
-        "java"
-    ],
-    "regions": [
-        "Dalarnas Län"
-    ],
+    "gmail": null,
+    "keywords": [],
+    "regions": [],
     "limit": 10,
-    "offset": 66,
+    "offset": 0,
+    "model": "gpt-4o-mini",
+    "temperature": 0.2,
     "about_me_path": null,
     "system_prompt_path": null,
     "processed_ids": [],

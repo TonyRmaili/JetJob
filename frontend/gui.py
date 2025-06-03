@@ -32,12 +32,16 @@ class JetJob:
             self.selected_profile = None
             self.main_frame = None
             self.config_values = {
-                    "url": None,
+                    "url": "https://jobsearch.api.jobtechdev.se/search",
                     "gmail":None,
                     "keywords": [],
                     "regions": [],
-                    "limit": None,
-                    "offset": None,
+                    "limit": 10,
+                    "offset": 0,
+
+                    "model":"gpt-4.1",
+                    "temperature":0.7,
+                   
                     "about_me_path": None,
                     "system_prompt_path": None,
                     "processed_ids": [],
@@ -527,7 +531,6 @@ class JetJob:
         self.adjust_window()
         self.show_frame(self.config_search_param_frame)
 
-
     def init_data_files_frame(self):
         data_files_frame = tk.Frame(self.root)
         data_files_frame.grid(row=0, column=0, sticky="nsew")
@@ -599,9 +602,102 @@ class JetJob:
         self.adjust_window()
         self.show_frame(data_files_frame)
 
-
     def init_gpt_config_frame(self):
-        pass
+        gpt_config_frame = tk.Frame(self.root, bg="#f4f6f8")  # light background
+        gpt_config_frame.grid(row=0, column=0, sticky="nsew")
+        gpt_config_frame.columnconfigure(0, weight=1)
+
+        # OpenAI model frame
+        models_frame = tk.LabelFrame(
+            gpt_config_frame, text="OpenAI Models",
+            font=("Arial", 12, "bold"),
+            bg="#f4f6f8", fg="#2d4154", padx=16, pady=12, bd=2, relief="groove"
+        )
+        models_frame.grid(row=0, column=0, sticky="news", padx=18, pady=18)
+
+        # Scrollbar for the listbox
+        model_scrollbar = tk.Scrollbar(models_frame)
+        model_scrollbar.grid(row=0, column=1, sticky="nsw", padx=(8,0), pady=4)
+
+        # Listbox with padding, font, and yscroll
+        listbox = tk.Listbox(
+            models_frame, selectmode="single",
+            font=("Arial", 11),
+            height=min(8, len(self.models)),  # Show up to 8 lines, dynamic height
+            activestyle="dotbox", bd=2,
+            yscrollcommand=model_scrollbar.set
+        )
+        for item in self.models:
+            listbox.insert(tk.END, item)
+        
+        if self.config_values["model"] in self.models:
+            idx = self.models.index(self.config_values["model"])
+            listbox.selection_set(idx)
+            listbox.activate(idx)
+            listbox.see(idx)
+
+        listbox.grid(row=0, column=0, sticky="nsew", padx=(0, 8), pady=4)
+        model_scrollbar.config(command=listbox.yview)
+
+        # Button, larger and with some color
+        select_model_btn = tk.Button(
+            models_frame, text="Select",
+            command=lambda: on_select_model_click(),
+            font=("Arial", 11, "bold"),
+            bg="#0052cc", fg="#fff",
+            activebackground="#003d80", activeforeground="#fff",
+            bd=0, relief="ridge", padx=18, pady=6,
+            cursor="hand2"
+        )
+        select_model_btn.grid(row=1, column=0, columnspan=2, sticky="ew", padx=4, pady=(12, 4))
+
+        def on_select_model_click():
+            selected = listbox.curselection()
+            if selected:
+                index = selected[0]
+                model_str = listbox.get(index)   # This gets the string!
+                save_data = {"model": model_str}
+                self.save_config_values(**save_data)
+                print(self.config_values["model"])
+
+        models_frame.columnconfigure(0, weight=1)
+        models_frame.rowconfigure(0, weight=1)
+
+        # temperature 
+        def on_slider(val):
+            value_label.config(text=f"Value: {float(val):.1f}")
+            
+
+        temp_frame = tk.LabelFrame(gpt_config_frame, text="Temperature", font=("Arial", 12, "bold"),bg="#f4f6f8", fg="#2d4154", padx=16, pady=12, bd=2, relief="groove")
+        temp_frame.grid(row=1,column=0)
+           
+        slider = tk.Scale(
+            temp_frame,
+            from_=0.0,
+            to=2.0,    
+            resolution=0.1,
+            orient="horizontal",
+            length=300,
+            command=on_slider,
+            showvalue=False,
+            
+        )
+        slider.pack(fill="x", pady=(8, 2))
+        slider.set(self.config_values["temperature"])  # Default to 1.0
+
+        value_label = tk.Label(temp_frame, text="Value: 1.0", font=("Arial", 11))
+        value_label.pack(anchor="w", pady=(2, 0))
+
+        def on_done_click():
+            save_data = {"temperature":slider.get()}
+            self.save_config_values(**save_data)
+            self.show_frame(self.main_frame)
+         
+
+        done_btn = tk.Button(gpt_config_frame,text="Done",width=20 ,command=on_done_click)
+        done_btn.grid(row=2,column=0,pady=10)
+        
+        self.show_frame(gpt_config_frame)
 
     def create_text_click(self,save_dir,title):
         def save_prompt():
@@ -678,6 +774,43 @@ class JetJob:
 
         # gpt- config
         self.menubar.add_command(label="Gpt config",command=self.init_gpt_config_frame)
+
+        # help (ReadMe link)
+        self.menubar.add_command(label="Help",command=self.load_readme)
+
+    def load_readme(self):
+        readme_path = os.path.join(os.getcwd(), "readme.md")
+        if not os.path.isfile(readme_path):
+            messagebox.showinfo("Not Found", "No readme.md file found in the root directory.")
+            return
+
+        # Read the readme file
+        with open(readme_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # Create a popup window (Toplevel)
+        top = tk.Toplevel(self.root)
+        top.title("README.md")
+        top.geometry("800x600")  # Large window
+
+        # Scrollbar + Text widget setup
+        text_frame = tk.Frame(top)
+        text_frame.pack(fill="both", expand=True)
+
+        scrollbar = tk.Scrollbar(text_frame)
+        scrollbar.pack(side="right", fill="y")
+
+        text_area = tk.Text(
+            text_frame,
+            wrap="word",
+            yscrollcommand=scrollbar.set,
+            font=("Consolas", 12)
+        )
+        text_area.insert("1.0", content)
+        text_area.config(state="disabled")  # Read-only
+        text_area.pack(fill="both", expand=True)
+
+        scrollbar.config(command=text_area.yview)
 
     def show_frame(self, frame):
         frame.tkraise()
