@@ -7,7 +7,7 @@ from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
 from api.send_email import send_email
 from api.searcher import multi_search
-
+import shutil
 
 # start command 
 # py -m frontend.gui
@@ -47,7 +47,8 @@ class JetJob:
                     "about_me_path": None,
                     "system_prompt_path": None,
                     "processed_ids": [],
-                    "sent_ids":[]
+                    "sent_ids":[],
+                    "selected_ads":[]
                 }
             self.config_path = None
             self.init_create_profile_frame()
@@ -121,6 +122,11 @@ class JetJob:
             
             valid_path = os.path.join(self.ads_path,f"matched_email")
             missing_region_path = os.path.join(valid_path,"region_missing")
+
+            if not os.listdir(self.ads_path):
+                no_files_label = tk.Label(right_frame, text="No files found.", fg="gray")
+                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+                return
             
 
             for region_index, region in enumerate(self.config_values["regions"]):
@@ -159,20 +165,42 @@ class JetJob:
                                         command=lambda f=full_path: delete_file(f))
                     delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
 
-            for m_region_index, m_region in enumerate(os.listdir(missing_region_path)):
-                full_path = os.path.join(missing_region_path, m_region)
-                file_label = tk.Label(missing_region_frame, text=m_region, anchor="w")
-                file_label.grid(row=m_region_index, column=0, padx=5, pady=2, sticky="w")
+                    select_btn = tk.Button(region_frame, text="Select", width=8,
+                                        command=select_ad_click)
+                    select_btn.grid(row=idx, column=3, padx=5, sticky="e")
 
-                # View button (right aligned)
-                view_btn = tk.Button(missing_region_frame, text="View", width=8,
-                                    command=lambda f=full_path: view_file(f))
-                view_btn.grid(row=m_region_index, column=1, padx=5, sticky="e")
+            
+            missing_region_frame = tk.LabelFrame(right_frame, text="Missing Region")
+            missing_region_frame.grid(row=len(self.config_values["regions"]), column=0, sticky="news", padx=5, pady=5)
+            missing_region_frame.columnconfigure(0, weight=1)
 
-                # Delete button (right aligned)
-                delete_btn = tk.Button(missing_region_frame, text="Delete", width=8,
-                                    command=lambda f=full_path: delete_file(f))
-                delete_btn.grid(row=m_region_index, column=2, padx=5, sticky="e")
+            try:
+                m_region_files = [f for f in os.listdir(missing_region_path) if os.path.isfile(os.path.join(missing_region_path, f))]
+            except FileNotFoundError:
+                m_region_files = []  # If the folder doesn't exist, treat as empty
+
+            if not m_region_files:
+                no_files_label = tk.Label(missing_region_frame, text="No files found.", fg="gray")
+                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+            else:
+                for m_region_index, m_region in enumerate(m_region_files):
+                    full_path = os.path.join(missing_region_path, m_region)
+                    file_label = tk.Label(missing_region_frame, text=m_region, anchor="w")
+                    file_label.grid(row=m_region_index, column=0, padx=5, pady=2, sticky="w")
+
+                    # View button (right aligned)
+                    view_btn = tk.Button(missing_region_frame, text="View", width=8,
+                                        command=lambda f=full_path: view_file(f))
+                    view_btn.grid(row=m_region_index, column=1, padx=5, sticky="e")
+
+                    # Delete button (right aligned)
+                    delete_btn = tk.Button(missing_region_frame, text="Delete", width=8,
+                                        command=lambda f=full_path: delete_file(f))
+                    delete_btn.grid(row=m_region_index, column=2, padx=5, sticky="e")
+                    
+                    select_btn = tk.Button(missing_region_frame, text="Select", width=8,
+                                        command=select_ad_click)
+                    select_btn.grid(row=m_region_index, column=3, padx=5, sticky="e")
 
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
@@ -193,55 +221,87 @@ class JetJob:
                 os.remove(filepath)
                 refresh_file_list()
 
+        def select_ad_click():
+            pass
+
         def on_personalize_click():
             try:
                 # self.setup_personal_letter_payload()
-                print("enable setup_personal_letter_payload()")
+                # print("enable setup_personal_letter_payload()")
+                self.prepare_ad_object()
 
             except ValueError as e:
                 messagebox.showwarning("Invalid Configuration", str(e))
                 return
 
+        def on_sendmails_click():
+            self.mass_send_email()
+
+        def delete_all_click(folder_path):
+            confirm = messagebox.askyesno("Confirm Delete all ads?")
+            if confirm:
+                for filename in os.listdir(folder_path):
+                    file_path = os.path.join(folder_path, filename)
+                    try:
+                        if os.path.isfile(file_path) or os.path.islink(file_path):
+                            os.unlink(file_path)  # Remove file or link
+                        elif os.path.isdir(file_path):
+                            shutil.rmtree(file_path)  # Remove directory and all its contents
+                    except Exception as e:
+                        print(f'Failed to delete {file_path}. Reason: {e}')
+                refresh_file_list()
+
         # Main UI setup
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
 
-        left_frame = tk.LabelFrame(self.main_frame, text="Buttons")
-        left_frame.grid(row=0, column=0, sticky="nsw")
+        
+        button_frame = tk.LabelFrame(self.main_frame, text="Buttons")
+        button_frame.grid(row=0, column=0, sticky="nsw",padx=5,pady=10)
 
-        right_frame = tk.LabelFrame(self.main_frame, text="Ads with regions")
+        ads_frame = tk.Frame(self.main_frame)
+        ads_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+        ads_frame.columnconfigure(0, weight=1)
+
+        right_frame = tk.LabelFrame(ads_frame, text="Ads with regions")
         right_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
-        right_frame.columnconfigure(0, weight=1)
+        # right_frame.columnconfigure(0, weight=1)
 
-        missing_region_frame = tk.LabelFrame(self.main_frame, text="Missing regions")
+        missing_region_frame = tk.LabelFrame(ads_frame, text="Missing regions")
         missing_region_frame.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
-        missing_region_frame.columnconfigure(0, weight=1)
+        # missing_region_frame.columnconfigure(0, weight=1)
 
 
-        search_btn = tk.Button(left_frame, text="Search", command=on_search, width=10)
+        search_btn = tk.Button(button_frame, text="Search", command=on_search, width=10)
         search_btn.grid(row=0, column=0, padx=10, pady=10)
 
-        personalize_btn = tk.Button(left_frame, text="Personalize letters", command=on_personalize_click, width=15)
+        personalize_btn = tk.Button(button_frame, text="Personalize letters", command=on_personalize_click, width=15)
         personalize_btn.grid(row=1, column=0, padx=10, pady=10)
 
-        refresh_btn = tk.Button(left_frame, text="Refresh", command=refresh_file_list, width=10)
+        refresh_btn = tk.Button(button_frame, text="Refresh", command=refresh_file_list, width=10)
         refresh_btn.grid(row=2, column=0, padx=10, pady=10)
 
+        delete_all_btn = tk.Button(button_frame, text="Delete all ads",
+                            command=lambda:delete_all_click(self.ads_path), width=10)
+        delete_all_btn.grid(row=4, column=0, padx=10, pady=10)
 
-        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  # default True
+        sendmails_btn = tk.Button(button_frame, text="Send emails", command=on_sendmails_click, width=10)
+        sendmails_btn.grid(row=7, column=0, padx=10, pady=10)
+
+        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  
 
         def on_missing_regions_toggle():
             save_data = {"missing_regions":allow_missing_region_var.get()}
             self.save_config_values(**save_data)
             print("Switch is now", allow_missing_region_var.get())
 
-        allow_missing_region_check= tk.Checkbutton(left_frame, text="Allow missing regions",
+        allow_missing_region_check= tk.Checkbutton(button_frame, text="Allow missing regions",
             variable=allow_missing_region_var,
             command=on_missing_regions_toggle,
             onvalue=True,
             offvalue=False
         )
-        allow_missing_region_check.grid(row=3, column=0, padx=10, pady=10)
+        allow_missing_region_check.grid(row=5, column=0, padx=10, pady=10)
 
 
         self.show_frame(self.main_frame)
@@ -965,13 +1025,14 @@ class JetJob:
 
         return config_values ,config_path
 
-    def setup_personal_letter_payload(self):
-        
+    def setup_personal_letter_payload(self): 
+        # paths
         folder_path = os.path.join(self.ads_path,"matched_email")
         system_prompt_path = self.config_values["system_prompt_path"]
         about_me_path = self.config_values["about_me_path"]
+
         text_prepend_ad_data = "Here is the ad:\n"
-        text_prepend_about_me_data = "This is some data about me:\n"
+        text_prepend_about_me_data = "This is the data about me:\n"
 
         ai_caller = AICaller()
 
@@ -980,9 +1041,12 @@ class JetJob:
 
         with open(about_me_path, encoding="utf-8") as f:
             about_me_data = f.read()
-
         
-        for region in self.config_values["regions"]:
+        extended_regions = self.config_values["regions"].copy()
+        if self.config_values["missing_regions"]:
+            extended_regions.append("region_missing")
+          
+        for region in extended_regions:
             region_path = os.path.join(folder_path, region)
             for ad in os.listdir(region_path):
                 
@@ -1022,6 +1086,7 @@ class JetJob:
         self.save_config_values(**save_data)
         print(f"messages pre-processed and saved at {processed_letters_path}")
 
+    # not used
     def validate_config_values(self) -> tuple[dict,str]:
         data, path = self.load_config_values()
         for key, value in data.items():
@@ -1050,6 +1115,31 @@ class JetJob:
     def mass_send_email(self):
         pass
 
+    def prepare_ad_object(self):
+        '''
+        "id":None,
+            "processed":None,
+            "sent":None,
+            "text":None,
+            "path":None,
+            "application_deadline":None,
+            "head_line":None,
+            "filename":None,
+            "email":None,
+            "region":None,
+            '''
+        
+        matched_path = os.path.join(self.ads_path,"matched_email")
+        selected_ads = []
+        for region in os.listdir(matched_path):
+            region_path = os.path.join(matched_path,region)
+            for ad in os.listdir(region_path):
+                ad_path = os.path.join(region_path,ad)
+                selected_ads.append(ad_path)
+        save_data = {"selected_ads":selected_ads}
+        self.save_config_values(**save_data)
+                
+    
     def show_large_warning(self, message, title="Warning"):
         warning_win = tk.Toplevel(self.root)
         warning_win.title(title)
