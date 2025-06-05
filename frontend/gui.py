@@ -1224,7 +1224,7 @@ class JetJob:
     def mass_send_email(self):
         with open(self.config_values["final_email_string"]) as f:
             final_string = f.read()
-      
+        sent_ids = []
         if os.listdir(self.processed_letters_path):
             for letter in os.listdir(self.processed_letters_path):
                 full_path = os.path.join(self.processed_letters_path,letter)
@@ -1247,6 +1247,9 @@ class JetJob:
                     password=os.getenv("GMAIL_APP_PASSWORD"),
                     attachments=self.config_values["attachment_files"]
                 )
+                sent_ids.append(letter_data["id"])
+            save_data = {"sent_ids":sent_ids}
+            self.save_config_values(**save_data)
 
     def show_large_warning(self, message, title="Warning"):
         warning_win = tk.Toplevel(self.root)
