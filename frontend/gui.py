@@ -6,7 +6,7 @@ import json
 from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
 from api.send_email import send_email
-from api.searcher import multi_search, contains_keyword
+from api.searcher import multi_search
 import shutil
 from dotenv import load_dotenv
 
@@ -95,6 +95,7 @@ class JetJob:
         self.adjust_window()
 
     def init_main_frame(self):    
+        self.root.title(f"JetJob - Welcome {self.selected_profile}")
         def on_search():
             try:
                 self.validate_search_values()
@@ -220,8 +221,11 @@ class JetJob:
         def on_sendmails_click():
             try:
                 self.validate_send_email()
+                print("ok")
                 # self.mass_send_email()
             except ValueError as e:
+                self.show_large_warning(message=str(e),title="Error")
+            except FileNotFoundError as e:
                 self.show_large_warning(message=str(e),title="Error")
 
         def delete_all_click(folder_path):
@@ -333,8 +337,7 @@ class JetJob:
                 delete_btn = tk.Button(letters_frame, text="Delete", width=8,
                                     command=lambda f=full_path: delete_file(f))
                 delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
-
-            
+       
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -370,12 +373,26 @@ class JetJob:
                 os.remove(filepath)
                 show_files()
 
-
         def on_back_click():
             self.show_frame(self.main_frame)
 
+        def delete_all_click():
+            self.processed_letters_path
+            confirm = messagebox.askyesno("Confirm Delete all letters?")
+            if confirm:
+                for filename in os.listdir(self.processed_letters_path):
+                    file_path = os.path.join(self.processed_letters_path, filename)
+                    if os.path.isfile(file_path) or os.path.islink(file_path):
+                        os.unlink(file_path)  # remove file or symlink
+                    elif os.path.isdir(file_path):
+                        shutil.rmtree(file_path)  # remove subfolder and all its conten
+                self.show_frame(self.main_frame)
+
         back_btn = tk.Button(self.preview_letters_frame,text="Back",command=on_back_click)
         back_btn.grid(row=1,column=0)
+
+        deleta_all_btn = tk.Button(self.preview_letters_frame,text="Delete all",command=delete_all_click)
+        deleta_all_btn.grid(row=1,column=1)
 
         show_files()
         self.show_frame(self.preview_letters_frame)
@@ -392,7 +409,7 @@ class JetJob:
             
             if profile_folders and not self.selected_profile_var.get():
                 self.selected_profile_var.set(self.get_last_used_profile())
-
+                
             if not profile_folders:
                 empty_label = tk.Label(self.profile_list_frame, text="(No profiles found)", fg="gray")
                 empty_label.grid(row=0, column=0, padx=10, pady=5)
@@ -402,13 +419,34 @@ class JetJob:
                         self.profile_list_frame,
                         text=prof,
                         variable=self.selected_profile_var,
-                        value=prof
+                        value=prof,
+                        command=lambda:self.root.title(f"JetJob - Welcome {self.selected_profile_var.get()}")
                     )
                     rb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
+
+                    del_btn = tk.Button(
+                    self.profile_list_frame,
+                    text="Delete",
+                    fg="red",
+                    command=lambda p=prof: delete_profile(p)
+                            )
+                    del_btn.grid(row=i, column=1, sticky="w", padx=5, pady=2)
 
             if self.has_valid_profiles():
                 return_btn = tk.Button(left_frame, text="Go to main", width=20 ,command=on_return_click)
                 return_btn.grid(row=3, column=0, padx=5, pady=20, sticky="ne")
+
+        def delete_profile(profile_name):
+            folder_path = os.path.join(self.profiles_path, profile_name)
+            try:
+                confirm = messagebox.askyesno(title=f"Delete {profile_name}?")
+                if confirm:
+                    shutil.rmtree(folder_path)  # Remove folder and all its contents
+                    print(f"Deleted profile: {profile_name}")
+                    refresh_profile_list()
+            except Exception as e:
+                print(f"Error deleting {profile_name}: {e}")
+
 
         def on_add_click():
             name = name_var.get().strip()
@@ -450,6 +488,7 @@ class JetJob:
             self.create_env_file(profile_dir=profile_dir)
 
             print(f"✅ Created profile: {name}")
+            self.root.title(f"JetJob - Welcome {name}")
             self.set_last_used_profile(profile_name=name)
             self.selected_profile_var.set(name)
             name_var.set("")
@@ -1192,7 +1231,27 @@ class JetJob:
         print(f"ads pre-processed and saved at {processed_letters_path}")
 
     def validate_send_email(self):
-        pass
+        # check gmail
+        if not self.config_values["gmail"].strip().lower().endswith('@gmail.com'):
+            raise ValueError("email must be a gmail!")
+        
+        # check gmail app pass
+        env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
+        load_dotenv(dotenv_path=env_path, override=True)
+        if not os.getenv("GMAIL_APP_PASSWORD"):
+            raise ValueError("gmail app password is missing!")
+
+        if not os.listdir(self.processed_letters_path):
+            raise FileNotFoundError("no processed letters found")
+
+        if not self.config_values["final_email_string"]:
+            confirm = messagebox.askyesno("No final string added to letter/mail. Do you want to proceed?")
+            if confirm:
+                pass
+            else:
+                print("no")
+                return
+        
 
     def validate_search_values(self):
         if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":
