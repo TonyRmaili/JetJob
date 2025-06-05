@@ -13,7 +13,7 @@ def send_email(
     to_email,
     from_email,
     password,
-    smtp_server,
+    smtp_server="smtp.gmail.com",
     smtp_port=465,
     attachments=None  # List of file paths
 ):

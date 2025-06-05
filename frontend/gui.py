@@ -6,8 +6,9 @@ import json
 from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
 from api.send_email import send_email
-from api.searcher import multi_search
+from api.searcher import multi_search, contains_keyword
 import shutil
+from dotenv import load_dotenv
 
 # start command 
 # py -m frontend.gui
@@ -48,7 +49,7 @@ class JetJob:
                     "system_prompt_path": None,
                     "processed_ids": [],
                     "sent_ids":[],
-                    "selected_ads":[]
+                    
                 }
             self.config_path = None
             self.init_create_profile_frame()
@@ -165,11 +166,7 @@ class JetJob:
                                         command=lambda f=full_path: delete_file(f))
                     delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
 
-                    select_btn = tk.Button(region_frame, text="Select", width=8,
-                                        command=select_ad_click)
-                    select_btn.grid(row=idx, column=3, padx=5, sticky="e")
-
-            
+                 
             missing_region_frame = tk.LabelFrame(right_frame, text="Missing Region")
             missing_region_frame.grid(row=len(self.config_values["regions"]), column=0, sticky="news", padx=5, pady=5)
             missing_region_frame.columnconfigure(0, weight=1)
@@ -198,10 +195,7 @@ class JetJob:
                                         command=lambda f=full_path: delete_file(f))
                     delete_btn.grid(row=m_region_index, column=2, padx=5, sticky="e")
                     
-                    select_btn = tk.Button(missing_region_frame, text="Select", width=8,
-                                        command=select_ad_click)
-                    select_btn.grid(row=m_region_index, column=3, padx=5, sticky="e")
-
+                   
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -221,15 +215,11 @@ class JetJob:
                 os.remove(filepath)
                 refresh_file_list()
 
-        def select_ad_click():
-            pass
 
         def on_personalize_click():
             try:
-                # self.setup_personal_letter_payload()
-                # print("enable setup_personal_letter_payload()")
-                self.prepare_ad_object()
-
+                self.setup_personal_letter_payload()
+                 
             except ValueError as e:
                 messagebox.showwarning("Invalid Configuration", str(e))
                 return
@@ -271,6 +261,16 @@ class JetJob:
         missing_region_frame.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
         # missing_region_frame.columnconfigure(0, weight=1)
 
+        preview_frame = tk.Frame(self.main_frame)
+        preview_frame.grid(row=1,column=1,sticky="news",padx=10,pady=10)
+        if os.listdir(self.processed_letters_path):
+            preview_letters_btn = tk.Button(preview_frame,text="Preview Letters",command=self.init_preview_letters_frame)
+            preview_letters_btn.grid(row=0,column=0)   
+        else:
+            missing_letters_label = tk.Label(preview_frame,text="No processed letters found")
+            missing_letters_label.grid(row=0,column=0)
+
+
 
         search_btn = tk.Button(button_frame, text="Search", command=on_search, width=10)
         search_btn.grid(row=0, column=0, padx=10, pady=10)
@@ -306,7 +306,83 @@ class JetJob:
 
         self.show_frame(self.main_frame)
         refresh_file_list()
- 
+
+    def init_preview_letters_frame(self):
+        self.preview_letters_frame = tk.Frame(self.root)
+        self.preview_letters_frame.grid(row=0, column=0, sticky="nsew")
+
+        letters_frame = tk.Frame(self.preview_letters_frame)
+        letters_frame.grid(row=0,column=0,sticky="nsew")
+
+        
+        def show_files():          
+            # Clear previous widgets in right_frame
+            for widget in letters_frame.winfo_children():
+                widget.destroy()
+            
+            for idx, filename in enumerate(os.listdir(self.processed_letters_path)):
+                full_path = os.path.join(self.processed_letters_path, filename)
+                
+                # File label (left aligned, expandable)
+                file_label = tk.Label(letters_frame, text=filename, anchor="w")
+                file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="w")
+
+                # View button (right aligned)
+                view_btn = tk.Button(letters_frame, text="View", width=8,
+                                    command=lambda f=full_path: view_file(f))
+                view_btn.grid(row=idx, column=1, padx=5, sticky="e")
+
+                # Delete button (right aligned)
+                delete_btn = tk.Button(letters_frame, text="Delete", width=8,
+                                    command=lambda f=full_path: delete_file(f))
+                delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
+
+            
+        def view_file(filepath):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            content = data["text"]
+
+            popup = tk.Toplevel(self.root)
+            popup.title(f"Viewing: {os.path.basename(filepath)}")
+
+            text_area = tk.Text(popup, wrap="word")
+            text_area.insert("1.0", content)
+            text_area.pack(expand=True, fill="both")
+            text_area.config(state="disabled")
+
+            info_frame = tk.Frame(popup)
+            info_frame.pack()
+
+            for key,value in data.items():
+                if key != "text":
+                    label = tk.Label(info_frame,text=f"{key}: {value}")
+                    label.pack()
+
+        def delete_file(filepath):
+            confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
+            if confirm:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                ad_id = data["id"]
+                if ad_id in self.config_values["processed_ids"]:
+                    self.config_values["processed_ids"].remove(ad_id)
+                    self.save_config_values(**{"processed_ids":self.config_values["processed_ids"]})
+            
+                os.remove(filepath)
+                show_files()
+
+
+        def on_back_click():
+            self.show_frame(self.main_frame)
+
+        back_btn = tk.Button(self.preview_letters_frame,text="Back",command=on_back_click)
+        back_btn.grid(row=1,column=0)
+
+        show_files()
+        self.show_frame(self.preview_letters_frame)
+
     def init_create_profile_frame(self):
         def refresh_profile_list():
             for widget in self.profile_list_frame.winfo_children():
@@ -1049,7 +1125,7 @@ class JetJob:
         for region in extended_regions:
             region_path = os.path.join(folder_path, region)
             for ad in os.listdir(region_path):
-                
+                ad_meta_data = {}
                 message_builder = MessageBuilder()
                 message_builder.add_message(role="system",message=system_prompt)
                 message_builder.add_message(role="user",message=text_prepend_about_me_data+about_me_data)
@@ -1059,8 +1135,14 @@ class JetJob:
                     ad_data = json.load(f)
 
                 ad_id = ad_data["id"]
+                if ad_id in self.config_values["processed_ids"]:
+                    print("this ad already been processed by gpt")
+                    continue
+
                 ad_headline = ad_data["headline"]
                 description = ad_data["description"]["text"]
+                application_deadline = ad_data["application_deadline"]
+                email = self.find_relevant_email(ad=ad_data)
                 message_builder.add_message(role="user",message=text_prepend_ad_data+description)
 
                 response = ai_caller.chat_openai(
@@ -1074,32 +1156,25 @@ class JetJob:
 
                 processed_letters_path = os.path.join(self.profiles_path, self.selected_profile,"processed_letters")
                 os.makedirs(processed_letters_path,exist_ok=True)
-                filename = ad_headline+".md"
+                filename = ad_headline+".json"
                 save_path = os.path.join(processed_letters_path,filename)
+               
+                ad_meta_data["id"] = ad_id
+                ad_meta_data["text"] = response
+                ad_meta_data["email"] = email     
+                ad_meta_data["application_deadline"] = application_deadline
+                ad_meta_data["path"] = save_path
+                ad_meta_data["region"] = region
+                ad_meta_data["headline"] = ad_headline
 
                 with open(save_path,'w',encoding="utf-8") as f:
-                    f.write(response)
+                    json.dump(ad_meta_data,f,indent=4,ensure_ascii=False)
 
                 self.config_values["processed_ids"].append(ad_id)
         
         save_data = {"processed_ids":self.config_values["processed_ids"]}
         self.save_config_values(**save_data)
-        print(f"messages pre-processed and saved at {processed_letters_path}")
-
-    # not used
-    def validate_config_values(self) -> tuple[dict,str]:
-        data, path = self.load_config_values()
-        for key, value in data.items():
-            if value is None:
-                raise ValueError(f"Config value '{key}' is None.")
-            if isinstance(value, str) and not value.strip():
-                raise ValueError(f"Config value '{key}' is an empty string.")
-            if isinstance(value, list) and not value:
-                raise ValueError(f"Config value '{key}' is an empty list.")
-            
-
-        print("✅ All config values are valid.")
-        return data, path
+        print(f"ads pre-processed and saved at {processed_letters_path}")
 
     def validate_search_values(self):
         if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":
@@ -1109,37 +1184,52 @@ class JetJob:
         if not self.ads_path:
             raise ValueError(f"save path missing {self.ads_path}") 
         
-    def check_used_ids(self,id_type):
-        pass
+    def find_relevant_email(self, ad) -> str:
+        # Helper to extract email from dict or list of dicts
+        def extract_email(section):
+            if isinstance(section, dict):
+                return section.get("email")
+            elif isinstance(section, list):
+                for item in section:
+                    if isinstance(item, dict) and item.get("email"):
+                        return item["email"]
+            return None
+
+        # Try each section in order
+        for key in ["application_contacts", "application_details", "employer"]:
+            email = extract_email(ad.get(key))
+            if email:
+                return email
+
+        raise ValueError("No email found")
 
     def mass_send_email(self):
-        pass
-
-    def prepare_ad_object(self):
-        '''
-        "id":None,
-            "processed":None,
-            "sent":None,
-            "text":None,
-            "path":None,
-            "application_deadline":None,
-            "head_line":None,
-            "filename":None,
-            "email":None,
-            "region":None,
-            '''
-        
-        matched_path = os.path.join(self.ads_path,"matched_email")
-        selected_ads = []
-        for region in os.listdir(matched_path):
-            region_path = os.path.join(matched_path,region)
-            for ad in os.listdir(region_path):
-                ad_path = os.path.join(region_path,ad)
-                selected_ads.append(ad_path)
-        save_data = {"selected_ads":selected_ads}
-        self.save_config_values(**save_data)
+        with open(self.config_values["final_email_string"]) as f:
+            final_string = f.read()
+      
+        if os.listdir(self.processed_letters_path):
+            for letter in os.listdir(self.processed_letters_path):
+                full_path = os.path.join(self.processed_letters_path,letter)
+                with open(full_path,encoding="utf-8") as f:
+                    letter_data = json.load(f)
                 
-    
+                text = letter_data["text"]
+                text += text+f"\n{final_string}"
+                # letter_data["email"]
+
+                env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
+                
+                load_dotenv(dotenv_path=env_path, override=True)
+                
+                send_email(
+                    subject=letter_data["headline"],
+                    body=text,
+                    to_email="tony.rmaili@yh.nackademin.se",
+                    from_email=self.config_values["gmail"],
+                    password=os.getenv("GMAIL_APP_PASSWORD"),
+                    attachments=self.config_values["attachment_files"]
+                )
+
     def show_large_warning(self, message, title="Warning"):
         warning_win = tk.Toplevel(self.root)
         warning_win.title(title)

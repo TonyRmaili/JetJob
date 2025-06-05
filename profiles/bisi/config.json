@@ -1,31 +1,11 @@
 {
     "url": "https://jobsearch.api.jobtechdev.se/search",
-    "gmail": "",
+    "gmail": "tony.rmaili@gmail.com",
     "keywords": [
         "python"
     ],
     "regions": [
-        "Blekinge Län",
-        "Dalarnas Län",
-        "Gotlands Län",
-        "Gävleborgs Län",
-        "Hallands Län",
-        "Jämtlands Län",
-        "Jönköpings Län",
-        "Kalmar Län",
-        "Kronobergs Län",
-        "Norrbottens Län",
-        "Skåne Län",
-        "Stockholms Län",
-        "Södermanlands Län",
-        "Uppsala Län",
-        "Värmlands Län",
-        "Västerbottens Län",
-        "Västernorrlands Län",
-        "Västmanlands Län",
-        "Västra Götalands Län",
-        "Örebro Län",
-        "Östergötlands Län"
+        "Stockholms Län"
     ],
     "missing_regions": false,
     "limit": 11,
@@ -34,15 +14,13 @@
     "temperature": 0.6,
     "about_me_path": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/about_me/me_v1.txt",
     "system_prompt_path": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/prompts/system_prompt_v1.md",
-    "processed_ids": [],
+    "final_email_string": "C:/Users/Tony/OneDrive/Desktop/Python code/JetJob/profiles/bisi/about_me/final_string.txt",
+    "processed_ids": [
+        "29747203",
+        "29748075"
+    ],
     "sent_ids": [],
-    "selected_ads": [
-        "./profiles\\bisi\\ads\\matched_email\\region_missing\\Data_Engineer.json",
-        "./profiles\\bisi\\ads\\matched_email\\region_missing\\Machine_Learning_Engineer.json",
-        "./profiles\\bisi\\ads\\matched_email\\Stockholms län\\Data_engineer.json",
-        "./profiles\\bisi\\ads\\matched_email\\Stockholms län\\Data_Engineer_with_GCP_Certification.json",
-        "./profiles\\bisi\\ads\\matched_email\\Västerbottens län\\Systemutvecklare.json",
-        "./profiles\\bisi\\ads\\matched_email\\Östergötlands län\\Doktorand_inom_Kemi,_med_inriktning_mot_simulering_av_reaktiva_gasflöden.json",
-        "./profiles\\bisi\\ads\\matched_email\\Östergötlands län\\PhD_student_in_Chemistry,_focusing_on_simulation_of_reactive_gas_flows.json"
+    "attachment_files": [
+        "C:/Users/Tony/Downloads/tony_cv_2025.pdf"
     ]
 }
