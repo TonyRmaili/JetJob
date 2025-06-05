@@ -6,10 +6,10 @@ node_modules/
 
 .env copy
 
-**/*profiles
-outputs
-attachment_files
-saved_files
+profiles/
+outputs/
+attachment_files/
+saved_files/
 
 
 # Python

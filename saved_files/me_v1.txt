@@ -1,5 +1,0 @@
-I’m an AI software developer with a background in machine learning, Python programming, and automation. I’ve worked on projects involving large language models (LLMs), fine-tuning, and prompt engineering—particularly using OpenAI’s API and Azure OpenAI services. My focus has been on generating structured JSON outputs, building AI-powered task automation systems, and developing tools for training data production.
-
-Beyond backend development, I’ve also built GUIs using Tkinter and worked on integrating AI in game development using Pygame. I’m detail-oriented, comfortable with JSON processing, REST APIs, and handling multi-modal AI tasks including text, image, and audio. I enjoy building tools that are both functional and user-friendly, and I often explore ways to improve LLM reasoning through better system prompts and chain-of-thought logic.
-
-I’m continuously expanding my skills, and I’m looking for opportunities where I can contribute to innovative AI-driven solutions in a practical, hands-on way.
