@@ -64,7 +64,6 @@ class JetJob:
             self.init_main_frame()
             self.show_frame(self.main_frame)
            
-
         # gpt models
         self.models = ["gpt-4.1","gpt-4o", "gpt-4o-mini"]
 
@@ -91,11 +90,11 @@ class JetJob:
                         "Östergötlands Län"
                         ]
         
-        
         self.adjust_window()
 
     def init_main_frame(self):    
         self.root.title(f"JetJob - Welcome {self.selected_profile}")
+
         def on_search():
             try:
                 self.validate_search_values()
@@ -246,7 +245,6 @@ class JetJob:
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
 
-        
         button_frame = tk.LabelFrame(self.main_frame, text="Buttons")
         button_frame.grid(row=0, column=0, sticky="nsw",padx=5,pady=10)
 
@@ -270,8 +268,6 @@ class JetJob:
         else:
             missing_letters_label = tk.Label(preview_frame,text="No processed letters found")
             missing_letters_label.grid(row=0,column=0)
-
-
 
         search_btn = tk.Button(button_frame, text="Search", command=on_search, width=10)
         search_btn.grid(row=0, column=0, padx=10, pady=10)
@@ -315,7 +311,6 @@ class JetJob:
         letters_frame = tk.Frame(self.preview_letters_frame)
         letters_frame.grid(row=0,column=0,sticky="nsew")
 
-        
         def show_files():          
             # Clear previous widgets in right_frame
             for widget in letters_frame.winfo_children():
@@ -407,8 +402,16 @@ class JetJob:
                 if os.path.isdir(os.path.join(self.profiles_path, name))
             ]
             
-            if profile_folders and not self.selected_profile_var.get():
-                self.selected_profile_var.set(self.get_last_used_profile())
+            if profile_folders:
+                # If currently selected profile doesn't exist anymore, select first
+                current = self.selected_profile_var.get()
+                if current not in profile_folders:
+                    self.selected_profile_var.set(profile_folders[0])
+                    self.set_last_used_profile(profile_folders[0])
+            else:
+                # No profiles left: clear selection and last used
+                self.selected_profile_var.set("")
+                self.set_last_used_profile("")
                 
             if not profile_folders:
                 empty_label = tk.Label(self.profile_list_frame, text="(No profiles found)", fg="gray")
@@ -432,10 +435,15 @@ class JetJob:
                             )
                     del_btn.grid(row=i, column=1, sticky="w", padx=5, pady=2)
 
-            if self.has_valid_profiles():
-                return_btn = tk.Button(left_frame, text="Go to main", width=20 ,command=on_return_click)
-                return_btn.grid(row=3, column=0, padx=5, pady=20, sticky="ne")
 
+            # Only show "Go to main" if there are profiles
+            for widget in left_frame.grid_slaves():
+                if isinstance(widget, tk.Button) and widget["text"] == "Go to main":
+                    widget.destroy()
+            if profile_folders:
+                return_btn = tk.Button(left_frame, text="Go to main", width=20, command=on_return_click)
+                return_btn.grid(row=3, column=0, padx=5, pady=20, sticky="ne")
+      
         def delete_profile(profile_name):
             folder_path = os.path.join(self.profiles_path, profile_name)
             try:
@@ -1241,18 +1249,18 @@ class JetJob:
         if not os.getenv("GMAIL_APP_PASSWORD"):
             raise ValueError("gmail app password is missing!")
 
+        # check if there exists letters to send
         if not os.listdir(self.processed_letters_path):
             raise FileNotFoundError("no processed letters found")
 
+        # ask if user wants a final string appended to letter
         if not self.config_values["final_email_string"]:
             confirm = messagebox.askyesno("No final string added to letter/mail. Do you want to proceed?")
             if confirm:
                 pass
             else:
-                print("no")
                 return
         
-
     def validate_search_values(self):
         if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":
             raise ValueError(f"url is not valid: {self.config_values["url"]}")
