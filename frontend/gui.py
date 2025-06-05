@@ -47,6 +47,8 @@ class JetJob:
                    
                     "about_me_path": None,
                     "system_prompt_path": None,
+                    "final_email_string":None,
+
                     "processed_ids": [],
                     "sent_ids":[],
                     
@@ -98,22 +100,16 @@ class JetJob:
                 self.validate_search_values()
             except ValueError as e:
                 self.show_large_warning(str(e), title="Error")
-                # messagebox.showwarning(e)
                 return
-            # multi_search(
-            #     keywords=self.config_values["keywords"],
-            #     BASE_URL=self.config_values["url"],
-            #     limit=self.config_values["limit"],
-            #     offset=self.config_values["offset"],
-            #     filter_key="email",
-            #     output_path=self.ads_path          
-            # )
             
-
-            print(self.ads_path)
-            print(self.config_values["keywords"])
-            print(self.config_values["regions"])
-            print(self.config_path)
+            multi_search(
+                keywords=self.config_values["keywords"],
+                BASE_URL=self.config_values["url"],
+                limit=self.config_values["limit"],
+                offset=self.config_values["offset"],
+                filter_key="email",
+                output_path=self.ads_path          
+            )
             refresh_file_list()
 
         def refresh_file_list():          
@@ -123,13 +119,12 @@ class JetJob:
             
             valid_path = os.path.join(self.ads_path,f"matched_email")
             missing_region_path = os.path.join(valid_path,"region_missing")
-
+         
             if not os.listdir(self.ads_path):
                 no_files_label = tk.Label(right_frame, text="No files found.", fg="gray")
                 no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
                 return
             
-
             for region_index, region in enumerate(self.config_values["regions"]):
                 region_path = os.path.join(valid_path, region)
 
@@ -194,8 +189,7 @@ class JetJob:
                     delete_btn = tk.Button(missing_region_frame, text="Delete", width=8,
                                         command=lambda f=full_path: delete_file(f))
                     delete_btn.grid(row=m_region_index, column=2, padx=5, sticky="e")
-                    
-                   
+                                     
         def view_file(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -215,7 +209,6 @@ class JetJob:
                 os.remove(filepath)
                 refresh_file_list()
 
-
         def on_personalize_click():
             try:
                 self.setup_personal_letter_payload()
@@ -225,7 +218,11 @@ class JetJob:
                 return
 
         def on_sendmails_click():
-            self.mass_send_email()
+            try:
+                self.validate_send_email()
+                # self.mass_send_email()
+            except ValueError as e:
+                self.show_large_warning(message=str(e),title="Error")
 
         def delete_all_click(folder_path):
             confirm = messagebox.askyesno("Confirm Delete all ads?")
@@ -425,10 +422,27 @@ class JetJob:
                 return
 
             # config parameters
-            self.config_values["url"] = "https://jobsearch.api.jobtechdev.se/search"
-            self.config_values["limit"] = 10
-            self.config_values["offset"] = 0
-              
+            self.config_values = {
+                    "url": "https://jobsearch.api.jobtechdev.se/search",
+                    "gmail":None,
+                    "keywords": [],
+                    "regions": [],
+                    "missing_regions":False,
+
+                    "limit": 10,
+                    "offset": 0,
+
+                    "model":"gpt-4.1",
+                    "temperature":0.7,
+                   
+                    "about_me_path": None,
+                    "system_prompt_path": None,
+                    "final_email_string":None,
+
+                    "processed_ids": [],
+                    "sent_ids":[],
+                    
+                }
             
             os.makedirs(profile_dir)
             with open(os.path.join(profile_dir, "config.json"), "w") as f:
@@ -452,6 +466,7 @@ class JetJob:
 
             self.selected_profile = selected
             self.set_last_used_profile(selected)
+            self.create_profile_subfolders(selected)
             self.update_config()
             self.init_main_frame()
             self.show_frame(self.main_frame)
@@ -1175,6 +1190,9 @@ class JetJob:
         save_data = {"processed_ids":self.config_values["processed_ids"]}
         self.save_config_values(**save_data)
         print(f"ads pre-processed and saved at {processed_letters_path}")
+
+    def validate_send_email(self):
+        pass
 
     def validate_search_values(self):
         if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":

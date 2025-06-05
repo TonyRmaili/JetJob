@@ -3,6 +3,12 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import time
 
+'''
+Not used!
+'''
+
+
+
 # Setup Chrome headless
 options = Options()
 options.add_argument("--headless")
