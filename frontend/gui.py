@@ -112,10 +112,10 @@ class JetJob:
                 filter_key="email",
                 output_path=self.ads_path          
             )
-             
-                    
+                          
         def on_personalize_click():
             try:
+                self.validate_personal_letter()
                 self.setup_personal_letter_payload()
                  
             except ValueError as e:
@@ -181,7 +181,6 @@ class JetJob:
 
         self.show_frame(self.main_frame)
         
-
     def init_preview_letters_frame(self):
         self.preview_letters_frame = tk.Frame(self.root)
         self.preview_letters_frame.grid(row=0, column=0, sticky="nsew")
@@ -440,7 +439,6 @@ class JetJob:
         if confirm:
             os.remove(filepath)
             self.render_preview_files(frame,regions,folder_path)
-
 
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -1258,16 +1256,14 @@ class JetJob:
                 message_builder.add_message(role="user",message=text_prepend_ad_data+description)
 
                 response = ai_caller.chat_openai(
-                    model="gpt-4.1",
+                    model=self.config_values["model"],
                     messages=message_builder.messages,
-                    temperature=0.7,
+                    temperature=self.config_values["temperature"],
                     response_format=None
                 )
 
                 message_builder.reset_messages()
 
-                processed_letters_path = os.path.join(self.profiles_path, self.selected_profile,"processed_letters")
-                os.makedirs(processed_letters_path,exist_ok=True)
                 filename = ad_headline+".json"
                 save_path = os.path.join(processed_letters_path,filename)
                
@@ -1286,7 +1282,27 @@ class JetJob:
         
         save_data = {"processed_ids":self.config_values["processed_ids"]}
         self.save_config_values(**save_data)
-        print(f"ads pre-processed and saved at {processed_letters_path}")
+        print(f"ads pre-processed and saved at {self.processed_letters_path}")
+
+    def validate_personal_letter(self):
+        if not self.config_values["system_prompt_path"]:
+            raise ValueError("no system prompt detected")
+        if not self.config_values["about_me_path"]:
+            raise ValueError("no 'about me' file detected")  
+        
+
+        folder_path = os.path.join(self.ads_path,"matched_email")
+        if not os.path.isdir(folder_path):
+            raise ValueError("no matched ads folder exists, please make an ad search")
+            
+        json_files = []
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                if file.lower().endswith('.json'):
+                    json_files.append(os.path.join(root, file))
+        
+        if not json_files:
+            raise ValueError("no valid ads in json found, please make an ad search")
 
     def validate_send_email(self):
         # check gmail
