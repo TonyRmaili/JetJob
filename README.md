@@ -12,4 +12,3 @@ https://gitlab.com/arbetsformedlingen
 https://data.arbetsformedlingen.se/
 
 https://jobsearch.api.jobtechdev.se/
-

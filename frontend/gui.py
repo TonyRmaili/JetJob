@@ -9,6 +9,8 @@ from api.send_email import send_email
 from api.searcher import multi_search
 import shutil
 from dotenv import load_dotenv
+from tkinter import ttk
+
 
 # start command 
 # py -m frontend.gui
@@ -110,105 +112,8 @@ class JetJob:
                 filter_key="email",
                 output_path=self.ads_path          
             )
-            refresh_file_list()
-
-        def refresh_file_list():          
-            # Clear previous widgets in right_frame
-            for widget in right_frame.winfo_children():
-                widget.destroy()
-            
-            valid_path = os.path.join(self.ads_path,f"matched_email")
-            missing_region_path = os.path.join(valid_path,"region_missing")
-         
-            if not os.listdir(self.ads_path):
-                no_files_label = tk.Label(right_frame, text="No files found.", fg="gray")
-                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
-                return
-            
-            for region_index, region in enumerate(self.config_values["regions"]):
-                region_path = os.path.join(valid_path, region)
-
-                # region frame
-                region_frame = tk.LabelFrame(right_frame, text=region)
-                region_frame.grid(row=region_index, column=0, sticky="news", padx=5, pady=5)
-
-                # Allow filename column to expand
-                region_frame.columnconfigure(0, weight=1)
-                try:
-                    files = [f for f in os.listdir(region_path) if os.path.isfile(os.path.join(region_path, f))]
-                except FileNotFoundError as e:
-                    continue
-
-                if not files:
-                    no_files_label = tk.Label(region_frame, text="No files found.", fg="gray")
-                    no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
-                    continue
-
-                for idx, filename in enumerate(files):
-                    full_path = os.path.join(region_path, filename)
-
-                    # File label (left aligned, expandable)
-                    file_label = tk.Label(region_frame, text=filename, anchor="w")
-                    file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="w")
-
-                    # View button (right aligned)
-                    view_btn = tk.Button(region_frame, text="View", width=8,
-                                        command=lambda f=full_path: view_file(f))
-                    view_btn.grid(row=idx, column=1, padx=5, sticky="e")
-
-                    # Delete button (right aligned)
-                    delete_btn = tk.Button(region_frame, text="Delete", width=8,
-                                        command=lambda f=full_path: delete_file(f))
-                    delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
-
-                 
-            missing_region_frame = tk.LabelFrame(right_frame, text="Missing Region")
-            missing_region_frame.grid(row=len(self.config_values["regions"]), column=0, sticky="news", padx=5, pady=5)
-            missing_region_frame.columnconfigure(0, weight=1)
-
-            try:
-                m_region_files = [f for f in os.listdir(missing_region_path) if os.path.isfile(os.path.join(missing_region_path, f))]
-            except FileNotFoundError:
-                m_region_files = []  # If the folder doesn't exist, treat as empty
-
-            if not m_region_files:
-                no_files_label = tk.Label(missing_region_frame, text="No files found.", fg="gray")
-                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
-            else:
-                for m_region_index, m_region in enumerate(m_region_files):
-                    full_path = os.path.join(missing_region_path, m_region)
-                    file_label = tk.Label(missing_region_frame, text=m_region, anchor="w")
-                    file_label.grid(row=m_region_index, column=0, padx=5, pady=2, sticky="w")
-
-                    # View button (right aligned)
-                    view_btn = tk.Button(missing_region_frame, text="View", width=8,
-                                        command=lambda f=full_path: view_file(f))
-                    view_btn.grid(row=m_region_index, column=1, padx=5, sticky="e")
-
-                    # Delete button (right aligned)
-                    delete_btn = tk.Button(missing_region_frame, text="Delete", width=8,
-                                        command=lambda f=full_path: delete_file(f))
-                    delete_btn.grid(row=m_region_index, column=2, padx=5, sticky="e")
-                                     
-        def view_file(filepath):
-            with open(filepath, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-
-            content = data["description"]["text"]
-
-            popup = tk.Toplevel(self.root)
-            popup.title(f"Viewing: {os.path.basename(filepath)}")
-            text_area = tk.Text(popup, wrap="word")
-            text_area.insert("1.0", content)
-            text_area.pack(expand=True, fill="both")
-            text_area.config(state="disabled")
-
-        def delete_file(filepath):
-            confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
-            if confirm:
-                os.remove(filepath)
-                refresh_file_list()
-
+             
+                    
         def on_personalize_click():
             try:
                 self.setup_personal_letter_payload()
@@ -227,20 +132,7 @@ class JetJob:
             except FileNotFoundError as e:
                 self.show_large_warning(message=str(e),title="Error")
 
-        def delete_all_click(folder_path):
-            confirm = messagebox.askyesno("Confirm Delete all ads?")
-            if confirm:
-                for filename in os.listdir(folder_path):
-                    file_path = os.path.join(folder_path, filename)
-                    try:
-                        if os.path.isfile(file_path) or os.path.islink(file_path):
-                            os.unlink(file_path)  # Remove file or link
-                        elif os.path.isdir(file_path):
-                            shutil.rmtree(file_path)  # Remove directory and all its contents
-                    except Exception as e:
-                        print(f'Failed to delete {file_path}. Reason: {e}')
-                refresh_file_list()
-
+    
         # Main UI setup
         self.main_frame = tk.Frame(self.root)
         self.main_frame.grid(row=0, column=0, sticky="nsew")
@@ -262,47 +154,33 @@ class JetJob:
 
         preview_frame = tk.Frame(self.main_frame)
         preview_frame.grid(row=1,column=1,sticky="news",padx=10,pady=10)
+
+        if os.listdir(self.ads_path):
+            preview_ads_btn = tk.Button(preview_frame,text="Preview Ads",command=self.init_preview_ads_frame)
+            preview_ads_btn.grid(row=0,column=0)   
+        else:
+            missing_ads_label = tk.Label(preview_frame,text="No ads found")
+            missing_ads_label.grid(row=0,column=0)
+
         if os.listdir(self.processed_letters_path):
             preview_letters_btn = tk.Button(preview_frame,text="Preview Letters",command=self.init_preview_letters_frame)
-            preview_letters_btn.grid(row=0,column=0)   
+            preview_letters_btn.grid(row=0,column=1)   
         else:
             missing_letters_label = tk.Label(preview_frame,text="No processed letters found")
-            missing_letters_label.grid(row=0,column=0)
+            missing_letters_label.grid(row=0,column=1)
 
+        
         search_btn = tk.Button(button_frame, text="Search", command=on_search, width=10)
         search_btn.grid(row=0, column=0, padx=10, pady=10)
 
         personalize_btn = tk.Button(button_frame, text="Personalize letters", command=on_personalize_click, width=15)
         personalize_btn.grid(row=1, column=0, padx=10, pady=10)
 
-        refresh_btn = tk.Button(button_frame, text="Refresh", command=refresh_file_list, width=10)
-        refresh_btn.grid(row=2, column=0, padx=10, pady=10)
-
-        delete_all_btn = tk.Button(button_frame, text="Delete all ads",
-                            command=lambda:delete_all_click(self.ads_path), width=10)
-        delete_all_btn.grid(row=4, column=0, padx=10, pady=10)
-
         sendmails_btn = tk.Button(button_frame, text="Send emails", command=on_sendmails_click, width=10)
         sendmails_btn.grid(row=7, column=0, padx=10, pady=10)
 
-        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  
-
-        def on_missing_regions_toggle():
-            save_data = {"missing_regions":allow_missing_region_var.get()}
-            self.save_config_values(**save_data)
-            print("Switch is now", allow_missing_region_var.get())
-
-        allow_missing_region_check= tk.Checkbutton(button_frame, text="Allow missing regions",
-            variable=allow_missing_region_var,
-            command=on_missing_regions_toggle,
-            onvalue=True,
-            offvalue=False
-        )
-        allow_missing_region_check.grid(row=5, column=0, padx=10, pady=10)
-
-
         self.show_frame(self.main_frame)
-        refresh_file_list()
+        
 
     def init_preview_letters_frame(self):
         self.preview_letters_frame = tk.Frame(self.root)
@@ -368,8 +246,7 @@ class JetJob:
                 os.remove(filepath)
                 show_files()
 
-        def on_back_click():
-            self.show_frame(self.main_frame)
+       
 
         def delete_all_click():
             self.processed_letters_path
@@ -383,7 +260,7 @@ class JetJob:
                         shutil.rmtree(file_path)  # remove subfolder and all its conten
                 self.show_frame(self.main_frame)
 
-        back_btn = tk.Button(self.preview_letters_frame,text="Back",command=on_back_click)
+        back_btn = tk.Button(self.preview_letters_frame,text="Back",command=self.back_to_main_frame_click)
         back_btn.grid(row=1,column=0)
 
         deleta_all_btn = tk.Button(self.preview_letters_frame,text="Delete all",command=delete_all_click)
@@ -391,6 +268,179 @@ class JetJob:
 
         show_files()
         self.show_frame(self.preview_letters_frame)
+
+    def init_preview_ads_frame(self):
+        frame = tk.Frame(self.root)
+        frame.grid(row=0, column=0, sticky="nsew")
+        frame.columnconfigure(0, weight=0)  # Button frame
+        frame.columnconfigure(1, weight=1)  # Ads/content frame
+        frame.rowconfigure(0, weight=1)
+
+        # subframes
+        button_frame = tk.Frame(frame)
+        button_frame.grid(row=0, column=0, sticky="nsw", padx=(10, 20), pady=10)
+        button_frame.columnconfigure(0, weight=1)
+
+        ads_frame = tk.Frame(frame)
+        ads_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+        ads_frame.columnconfigure(0, weight=1)
+        ads_frame.rowconfigure(0, weight=1)
+
+        # button frame
+        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  
+
+        def on_missing_regions_toggle():
+            save_data = {"missing_regions":allow_missing_region_var.get()}
+            self.save_config_values(**save_data)
+            self.init_preview_ads_frame()
+            print("Switch is now", allow_missing_region_var.get())
+
+
+        allow_missing_region_check = tk.Checkbutton(
+            button_frame, text="Allow missing regions",
+            variable=allow_missing_region_var,
+            command=on_missing_regions_toggle,
+            onvalue=True, offvalue=False,
+            anchor="w", justify="left", width=20
+        )
+        allow_missing_region_check.grid(row=0, column=0, sticky="w", pady=(0, 5))
+
+        back_btn = tk.Button(
+            button_frame, text="Back",
+            command=self.back_to_main_frame_click,
+            width=20, anchor="w", justify="left"
+        )
+        back_btn.grid(row=1, column=0, sticky="w", pady=(0, 5))
+
+        # Add a stretchable empty row for spacing, optional:
+        button_frame.rowconfigure(2, weight=1)
+
+        # ads frame
+        extended_regions = self.config_values["regions"].copy()
+        if self.config_values["missing_regions"]:
+            extended_regions.append("region_missing")
+       
+        self.render_preview_files(ads_frame,extended_regions,self.ads_path)
+
+        self.show_frame(frame)
+
+    def render_preview_files(self, parent_frame, regions, folder_path):
+        # -- Remove any old children --
+        for widget in parent_frame.winfo_children():
+            widget.destroy()
+
+        # --- Scrollable frame setup ---
+        # Create canvas + vertical scrollbar in parent_frame
+        canvas = tk.Canvas(parent_frame, borderwidth=0, highlightthickness=0)
+        vscroll = ttk.Scrollbar(parent_frame, orient="vertical", command=canvas.yview)
+        canvas.configure(yscrollcommand=vscroll.set)
+
+        canvas.grid(row=0, column=0, sticky="nsew")
+        vscroll.grid(row=0, column=1, sticky="ns")
+        parent_frame.grid_rowconfigure(0, weight=1)
+        parent_frame.grid_columnconfigure(0, weight=1)
+
+        # The actual frame to put content in
+        scrollable_frame = tk.Frame(canvas)
+        # Put the frame in the canvas
+        window = canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+
+        # Make scrolling work with mousewheel
+        def _on_mousewheel(event):
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+        scrollable_frame.bind("<Enter>", lambda e: scrollable_frame.bind_all("<MouseWheel>", _on_mousewheel))
+        scrollable_frame.bind("<Leave>", lambda e: scrollable_frame.unbind_all("<MouseWheel>"))
+
+        # Keep the scroll region updated
+        def on_configure(event):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+        scrollable_frame.bind("<Configure>", on_configure)
+
+        # Your original logic, but target scrollable_frame instead of parent_frame
+        valid_path = os.path.join(folder_path, "matched_email")
+        if not os.listdir(self.ads_path):
+            no_files_label = tk.Label(scrollable_frame, text="No files found.", fg="gray")
+            no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+            self.adjust_window()
+            return
+
+        
+        file_type = "ad"
+        for region_index, region in enumerate(regions):
+            region_path = os.path.join(valid_path, region)
+
+            # region frame
+            region_frame = tk.LabelFrame(scrollable_frame, text=region)
+            region_frame.grid(row=region_index, column=0, sticky="ew", padx=5, pady=5)
+            
+
+            region_frame.columnconfigure(0, weight=1)
+            region_frame.columnconfigure(1, weight=0)
+            region_frame.columnconfigure(2, weight=0)
+            try:
+                files = [f for f in os.listdir(region_path) if os.path.isfile(os.path.join(region_path, f))]
+            except FileNotFoundError:
+                continue
+
+            if not files:
+                no_files_label = tk.Label(region_frame, text="No files found.", fg="gray")
+                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+                continue
+            
+            for idx, filename in enumerate(files):
+                full_path = os.path.join(region_path, filename)
+                file_label = tk.Label(region_frame, text=filename, anchor="w")
+                file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="ew")
+                
+                # Uncomment if you want the buttons
+                view_btn = tk.Button(region_frame, text="View", width=8,
+                                    command=lambda f=full_path: self.view_file(f,file_type))
+                view_btn.grid(row=idx, column=1, padx=5, sticky="e")
+
+                delete_btn = tk.Button(region_frame, text="Delete", width=8,
+                                    command=lambda f=full_path: self.delete_file(f,parent_frame, regions, folder_path))
+                delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
+
+        scrollable_frame.update_idletasks()
+        frame_width = scrollable_frame.winfo_reqwidth()
+        frame_height = scrollable_frame.winfo_reqheight()
+
+        # Set the canvas width to match frame's requested width (for horizontal fill)
+        canvas.config(width=frame_width)
+        # Optionally, set height if you want to auto-resize vertically (not recommended for many files)
+
+        # Set the root window's geometry to match the scrollable_frame's width, capped at max screen width
+        win_w = min(max(self.width, frame_width + 40), self.root.winfo_screenwidth())  # 40 px margin for scrollbar, etc
+        win_h = min(max(self.height, frame_height + 40), self.root.winfo_screenheight())
+        self.root.geometry(f"{win_w}x{win_h}")
+
+        self.adjust_window()
+
+    def view_file(self,filepath,filetype):
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        if filetype == "ad":
+            content = data["description"]["text"]
+        elif filetype == "letter":
+            content = data["text"]
+        else:
+            self.show_large_warning(message="no valid filetype")
+            return
+
+        popup = tk.Toplevel(self.root)
+        popup.title(f"Viewing: {os.path.basename(filepath)}")
+        text_area = tk.Text(popup, wrap="word")
+        text_area.insert("1.0", content)
+        text_area.pack(expand=True, fill="both")
+        text_area.config(state="disabled")
+
+    def delete_file(self,filepath,frame,regions,folder_path):
+        confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
+        if confirm:
+            os.remove(filepath)
+            self.render_preview_files(frame,regions,folder_path)
+
 
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -1339,6 +1389,9 @@ class JetJob:
         # Optional: Close button
         close_btn = tk.Button(warning_win, text="Close", command=warning_win.destroy)
         close_btn.pack(pady=6)
+
+    def back_to_main_frame_click(self):
+            self.show_frame(self.main_frame)
 
 
 if __name__ == '__main__':
