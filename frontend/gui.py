@@ -64,6 +64,8 @@ class JetJob:
                     "system_prompt_path": None,
                     "final_email_string":None,
 
+                    "attachment_files":[],
+
                     "processed_ids": [],
                     "sent_ids":[],
                     
@@ -151,8 +153,7 @@ class JetJob:
         def on_sendmails_click():
             try:
                 self.validate_send_email()
-                print("ok")
-                # self.mass_send_email()
+                self.mass_send_email()
             except ValueError as e:
                 self.show_large_warning(message=str(e),title="Error")
             except FileNotFoundError as e:
@@ -232,7 +233,7 @@ class JetJob:
         text_scrollbar.config(command=self.terminal_text.yview)
 
         # Optional: Insert a welcome message or style more
-        self.terminal_text.insert("end", "Welcome to your terminal!")
+        self.terminal_text.insert("end", "Welcome to your terminal!\n")
 
         self.terminal_text.config(state="disabled")
 
@@ -288,7 +289,6 @@ class JetJob:
 
         self.render_preview_files(letters_frame,extended_regions,self.processed_letters_path,"letter")
         self.show_frame(frame)
-
 
     def init_preview_ads_frame(self):
         frame = tk.Frame(self.root)
@@ -470,7 +470,6 @@ class JetJob:
         text_area.pack(expand=True, fill="both")
         text_area.config(state="disabled")
 
-        
     def delete_file(self,filepath,frame,regions,folder_path,file_type):
         confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
         if confirm:
@@ -1358,7 +1357,15 @@ class JetJob:
         # check if there exists letters to send
         if not os.listdir(self.processed_letters_path):
             raise FileNotFoundError("no processed letters found")
-
+        
+        # ask if user wants a to send some attachment files such as CV
+        if not self.config_values["attachment_files"]:
+            confirm = messagebox.askyesno("No attachment files added to letter/mail. Do you want to proceed?")
+            if confirm:
+                pass
+            else:
+                return
+    
         # ask if user wants a final string appended to letter
         if not self.config_values["final_email_string"]:
             confirm = messagebox.askyesno("No final string added to letter/mail. Do you want to proceed?")
@@ -1395,35 +1402,57 @@ class JetJob:
         raise ValueError("No email found")
 
     def mass_send_email(self):
-        with open(self.config_values["final_email_string"]) as f:
-            final_string = f.read()
+        if self.config_values["final_email_string"]:
+            with open(self.config_values["final_email_string"]) as f:
+                final_string = f.read()
+        else:
+            final_string =""
+
+        extended_regions = self.config_values["regions"].copy()
+        if self.config_values["missing_regions"]:
+            extended_regions.append("region_missing")
+
         sent_ids = []
         if os.listdir(self.processed_letters_path):
-            for letter in os.listdir(self.processed_letters_path):
-                full_path = os.path.join(self.processed_letters_path,letter)
-                with open(full_path,encoding="utf-8") as f:
-                    letter_data = json.load(f)
-                
-                text = letter_data["text"]
-                text += text+f"\n{final_string}"
-                # letter_data["email"]
+            for region in extended_regions:
+                region_path = os.path.join(self.processed_letters_path,region)
+                if os.listdir(region_path):
+                    for letter in os.listdir(region_path):
+                        full_path = os.path.join(region_path,letter)
+                        with open(full_path,encoding="utf-8") as f:
+                            letter_data = json.load(f)
+                        
+                        if letter_data["id"] in self.config_values["sent_ids"]:
+                            self.terminal_text.config(state="normal")
+                            self.terminal_text.insert("end", f"letter id {letter_data['id']} has ALREADY been sent, please clear id for new sending\n")
+                            self.terminal_text.config(state="disabled")
+                            continue
 
-                env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
-                
-                load_dotenv(dotenv_path=env_path, override=True)
-                
-                send_email(
-                    subject=letter_data["headline"],
-                    body=text,
-                    to_email="tony.rmaili@yh.nackademin.se",
-                    from_email=self.config_values["gmail"],
-                    password=os.getenv("GMAIL_APP_PASSWORD"),
-                    attachments=self.config_values["attachment_files"]
-                )
-                sent_ids.append(letter_data["id"])
-            save_data = {"sent_ids":sent_ids}
-            self.save_config_values(**save_data)
+                        text = letter_data["text"]
+                        text += text+f"\n{final_string}"
+                        # letter_data["email"]
 
+                        env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
+                        
+                        load_dotenv(dotenv_path=env_path, override=True)
+                        
+                        send_email(
+                            subject=letter_data["headline"],
+                            body=text,
+                            to_email="torm8078@gmail.com",
+                            from_email=self.config_values["gmail"],
+                            password=os.getenv("GMAIL_APP_PASSWORD"),
+                            attachments=self.config_values["attachment_files"]
+                        )
+                        sent_ids.append(letter_data["id"])
+
+                        self.terminal_text.config(state="normal")
+                        self.terminal_text.insert("end", f"letter {letter_data['headline']} has been sent to {letter_data['email']}\n")
+                        self.terminal_text.config(state="disabled")
+
+                save_data = {"sent_ids":sent_ids}
+                self.save_config_values(**save_data)
+            
     def show_large_warning(self, message, title="Warning"):
         warning_win = tk.Toplevel(self.root)
         warning_win.title(title)
