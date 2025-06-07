@@ -25,6 +25,19 @@ class JetJob:
         self.screen_width = screen_width
         self.screen_height = screen_height
 
+        self.style_values = {
+            "BG_COLOR": "#23272f",
+            "BTN_BG": "#334155",
+            "BTN_FG": "#f1f5f9",
+            "BTN_ACTIVE_BG": "#475569",
+            "BTN_ACTIVE_FG": "#ffffff",
+            "TEXT_BG": "#1e293b",
+            "TEXT_FG": "#f1f5f9",
+            "LABEL_FG": "#a3a3a3",
+            "FONT": ("Consolas", 12),
+            "BTN_FONT": ("Segoe UI", 11, "bold"),
+        }
+
         self.create_menu()
 
         # paths
@@ -91,11 +104,24 @@ class JetJob:
                         "Örebro Län", 
                         "Östergötlands Län"
                         ]
+
         
+
         self.adjust_window()
 
     def init_main_frame(self):    
         self.root.title(f"JetJob - Welcome {self.selected_profile}")
+
+        BG_COLOR = "#23272f"
+        BTN_BG = "#334155"
+        BTN_FG = "#f1f5f9"
+        BTN_ACTIVE_BG = "#475569"
+        BTN_ACTIVE_FG = "#ffffff"
+        TEXT_BG = "#1e293b"
+        TEXT_FG = "#f1f5f9"
+        LABEL_FG = "#a3a3a3"
+        FONT = ("Consolas", 12)
+        BTN_FONT = ("Segoe UI", 11, "bold")
 
         def on_search():
             try:
@@ -134,117 +160,107 @@ class JetJob:
 
     
         # Main UI setup
-        self.main_frame = tk.Frame(self.root)
+        self.main_frame = tk.Frame(self.root, bg=self.style_values["BG_COLOR"])
         self.main_frame.grid(row=0, column=0, sticky="nsew")
 
-        button_frame = tk.LabelFrame(self.main_frame, text="Buttons")
-        button_frame.grid(row=0, column=0, sticky="nsw",padx=5,pady=10)
+        button_frame = tk.Frame(self.main_frame, bg=self.style_values["BG_COLOR"])
+        button_frame.grid(row=0, column=0, sticky="nsw", padx=10, pady=15)
 
-        ads_frame = tk.Frame(self.main_frame)
-        ads_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
-        ads_frame.columnconfigure(0, weight=1)
-
-        right_frame = tk.LabelFrame(ads_frame, text="Ads with regions")
-        right_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
-        # right_frame.columnconfigure(0, weight=1)
-
-        missing_region_frame = tk.LabelFrame(ads_frame, text="Missing regions")
-        missing_region_frame.grid(row=1, column=1, sticky="nsew", padx=10, pady=10)
-        # missing_region_frame.columnconfigure(0, weight=1)
-
-        preview_frame = tk.Frame(self.main_frame)
-        preview_frame.grid(row=1,column=1,sticky="news",padx=10,pady=10)
-
+        def style_button(btn):
+            btn.configure(
+                bg=BTN_BG, fg=BTN_FG,
+                activebackground=BTN_ACTIVE_BG,
+                activeforeground=BTN_ACTIVE_FG,
+                font=BTN_FONT,
+                relief="raised", bd=2, cursor="hand2"
+            )
+       
         if os.listdir(self.ads_path):
-            preview_ads_btn = tk.Button(preview_frame,text="Preview Ads",command=self.init_preview_ads_frame)
-            preview_ads_btn.grid(row=0,column=0)   
+            preview_ads_btn = tk.Button(button_frame, text="Preview Ads", command=self.init_preview_ads_frame, width=14)
+            preview_ads_btn.grid(row=1, column=0, sticky="ew", padx=5, pady=8)
+            style_button(preview_ads_btn)
         else:
-            missing_ads_label = tk.Label(preview_frame,text="No ads found")
-            missing_ads_label.grid(row=0,column=0)
+            missing_ads_label = tk.Label(button_frame, text="No ads found", fg=LABEL_FG, bg=BG_COLOR, font=FONT)
+            missing_ads_label.grid(row=1, column=0, sticky="ew", padx=5, pady=8)
 
         if os.listdir(self.processed_letters_path):
-            preview_letters_btn = tk.Button(preview_frame,text="Preview Letters",command=self.init_preview_letters_frame)
-            preview_letters_btn.grid(row=0,column=1)   
+            preview_letters_btn = tk.Button(button_frame, text="Preview Letters", command=self.init_preview_letters_frame, width=18)
+            preview_letters_btn.grid(row=1, column=1, sticky="ew", padx=5, pady=8)
+            style_button(preview_letters_btn)
         else:
-            missing_letters_label = tk.Label(preview_frame,text="No processed letters found")
-            missing_letters_label.grid(row=0,column=1)
+            missing_letters_label = tk.Label(button_frame, text="No processed letters found", fg=LABEL_FG, bg=BG_COLOR, font=FONT)
+            missing_letters_label.grid(row=1, column=1, sticky="ew", padx=5, pady=8)
 
-        
+                
         search_btn = tk.Button(button_frame, text="Search", command=on_search, width=10)
-        search_btn.grid(row=0, column=0, padx=10, pady=10)
+        search_btn.grid(row=0, column=0, padx=8, pady=8)
+        style_button(search_btn)
 
-        personalize_btn = tk.Button(button_frame, text="Personalize letters", command=on_personalize_click, width=15)
-        personalize_btn.grid(row=1, column=0, padx=10, pady=10)
+        personalize_btn = tk.Button(button_frame, text="Personalize letters", command=on_personalize_click, width=16)
+        personalize_btn.grid(row=0, column=1, padx=8, pady=8)
+        style_button(personalize_btn)
 
-        sendmails_btn = tk.Button(button_frame, text="Send emails", command=on_sendmails_click, width=10)
-        sendmails_btn.grid(row=7, column=0, padx=10, pady=10)
+        sendmails_btn = tk.Button(button_frame, text="Send emails", command=on_sendmails_click, width=12)
+        sendmails_btn.grid(row=0, column=2, padx=8, pady=8)
+        style_button(sendmails_btn)
+
+        # Terminal frame with a nice border and background
+        terminal_frame = tk.Frame(self.main_frame, bg=BG_COLOR, bd=2, relief="groove")
+        terminal_frame.grid(row=1, column=0, sticky="nsew", padx=20, pady=18)
+
+        # Make the grid expand with window resize
+        self.main_frame.rowconfigure(1, weight=1)
+        self.main_frame.columnconfigure(0, weight=1)
+        terminal_frame.rowconfigure(0, weight=1)
+        terminal_frame.columnconfigure(0, weight=1)
+
+        # Create a styled, scrollable textarea in terminal_frame
+        text_scrollbar = ttk.Scrollbar(terminal_frame, orient="vertical")
+        text_scrollbar.grid(row=0, column=1, sticky="ns")
+
+        self.terminal_text = tk.Text(
+            terminal_frame, 
+            bg=TEXT_BG, fg=TEXT_FG, 
+            insertbackground=BTN_ACTIVE_FG,   # Makes the cursor visible
+            font=FONT, 
+            wrap="word", 
+            borderwidth=0, 
+            highlightthickness=0
+        )
+        self.terminal_text.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        self.terminal_text.config(yscrollcommand=text_scrollbar.set)
+        text_scrollbar.config(command=self.terminal_text.yview)
+
+        # Optional: Insert a welcome message or style more
+        self.terminal_text.insert("end", "Welcome to your terminal!")
+
+        self.terminal_text.config(state="disabled")
 
         self.show_frame(self.main_frame)
-        
+
+
+
     def init_preview_letters_frame(self):
-        self.preview_letters_frame = tk.Frame(self.root)
-        self.preview_letters_frame.grid(row=0, column=0, sticky="nsew")
+        frame = tk.Frame(self.root)
+        frame.grid(row=0, column=0, sticky="nsew")
+        frame.columnconfigure(0, weight=0)  # Button frame
+        frame.columnconfigure(1, weight=1)  # Ads/content frame
+        frame.rowconfigure(0, weight=1)
 
-        letters_frame = tk.Frame(self.preview_letters_frame)
-        letters_frame.grid(row=0,column=0,sticky="nsew")
 
-        def show_files():          
-            # Clear previous widgets in right_frame
-            for widget in letters_frame.winfo_children():
-                widget.destroy()
-            
-            for idx, filename in enumerate(os.listdir(self.processed_letters_path)):
-                full_path = os.path.join(self.processed_letters_path, filename)
-                
-                # File label (left aligned, expandable)
-                file_label = tk.Label(letters_frame, text=filename, anchor="w")
-                file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="w")
+        # subframes
+        button_frame = tk.Frame(frame)
+        button_frame.grid(row=0, column=0, sticky="nsw", padx=(10, 20), pady=10)
+        button_frame.columnconfigure(0, weight=1)
 
-                # View button (right aligned)
-                view_btn = tk.Button(letters_frame, text="View", width=8,
-                                    command=lambda f=full_path: view_file(f))
-                view_btn.grid(row=idx, column=1, padx=5, sticky="e")
+        letters_frame = tk.Frame(frame)
+        letters_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+        letters_frame.columnconfigure(0, weight=1)
+        letters_frame.rowconfigure(0, weight=1)
 
-                # Delete button (right aligned)
-                delete_btn = tk.Button(letters_frame, text="Delete", width=8,
-                                    command=lambda f=full_path: delete_file(f))
-                delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
-       
-        def view_file(filepath):
-            with open(filepath, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-
-            content = data["text"]
-
-            popup = tk.Toplevel(self.root)
-            popup.title(f"Viewing: {os.path.basename(filepath)}")
-
-            text_area = tk.Text(popup, wrap="word")
-            text_area.insert("1.0", content)
-            text_area.pack(expand=True, fill="both")
-            text_area.config(state="disabled")
-
-            info_frame = tk.Frame(popup)
-            info_frame.pack()
-
-            for key,value in data.items():
-                if key != "text":
-                    label = tk.Label(info_frame,text=f"{key}: {value}")
-                    label.pack()
-
-        def delete_file(filepath):
-            confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
-            if confirm:
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                ad_id = data["id"]
-                if ad_id in self.config_values["processed_ids"]:
-                    self.config_values["processed_ids"].remove(ad_id)
-                    self.save_config_values(**{"processed_ids":self.config_values["processed_ids"]})
-            
-                os.remove(filepath)
-                show_files()
-
+        extended_regions = self.config_values["regions"].copy()
+        if self.config_values["missing_regions"]:
+            extended_regions.append("region_missing")
        
 
         def delete_all_click():
@@ -259,14 +275,20 @@ class JetJob:
                         shutil.rmtree(file_path)  # remove subfolder and all its conten
                 self.show_frame(self.main_frame)
 
-        back_btn = tk.Button(self.preview_letters_frame,text="Back",command=self.back_to_main_frame_click)
-        back_btn.grid(row=1,column=0)
 
-        deleta_all_btn = tk.Button(self.preview_letters_frame,text="Delete all",command=delete_all_click)
-        deleta_all_btn.grid(row=1,column=1)
+        back_btn = tk.Button(button_frame,text="Back",width=20, anchor="w", justify="left",
+                             command=self.back_to_main_frame_click)
+        back_btn.grid(row=0,column=0,sticky="w", pady=(0, 5),padx=10)
 
-        show_files()
-        self.show_frame(self.preview_letters_frame)
+        deleta_all_btn = tk.Button(button_frame,text="Delete all",width=20, anchor="w", justify="left",
+                                   command=delete_all_click)
+        deleta_all_btn.grid(row=1,column=0,sticky="w", pady=(0, 5),padx=10)
+
+        button_frame.rowconfigure(2, weight=1)
+
+        self.render_preview_files(letters_frame,extended_regions,self.processed_letters_path,"letter")
+        self.show_frame(frame)
+
 
     def init_preview_ads_frame(self):
         frame = tk.Frame(self.root)
@@ -319,11 +341,11 @@ class JetJob:
         if self.config_values["missing_regions"]:
             extended_regions.append("region_missing")
        
-        self.render_preview_files(ads_frame,extended_regions,self.ads_path)
+        self.render_preview_files(ads_frame,extended_regions,self.ads_path,"ad")
 
         self.show_frame(frame)
 
-    def render_preview_files(self, parent_frame, regions, folder_path):
+    def render_preview_files(self, parent_frame, regions, folder_path,file_type):
         # -- Remove any old children --
         for widget in parent_frame.winfo_children():
             widget.destroy()
@@ -356,15 +378,18 @@ class JetJob:
         scrollable_frame.bind("<Configure>", on_configure)
 
         # Your original logic, but target scrollable_frame instead of parent_frame
-        valid_path = os.path.join(folder_path, "matched_email")
-        if not os.listdir(self.ads_path):
+
+        if file_type == "ad":
+            valid_path = os.path.join(folder_path, "matched_email")
+        elif file_type == "letter":
+            valid_path = folder_path
+
+        if not os.listdir(folder_path):
             no_files_label = tk.Label(scrollable_frame, text="No files found.", fg="gray")
             no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
             self.adjust_window()
             return
 
-        
-        file_type = "ad"
         for region_index, region in enumerate(regions):
             region_path = os.path.join(valid_path, region)
 
@@ -397,7 +422,7 @@ class JetJob:
                 view_btn.grid(row=idx, column=1, padx=5, sticky="e")
 
                 delete_btn = tk.Button(region_frame, text="Delete", width=8,
-                                    command=lambda f=full_path: self.delete_file(f,parent_frame, regions, folder_path))
+                                    command=lambda f=full_path: self.delete_file(f,parent_frame, regions, folder_path,file_type))
                 delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
 
         scrollable_frame.update_idletasks()
@@ -419,26 +444,38 @@ class JetJob:
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
+        popup = tk.Toplevel(self.root)
+        popup.title(f"Viewing: {os.path.basename(filepath)}")
+        text_area = tk.Text(popup, wrap="word")
+
+
         if filetype == "ad":
             content = data["description"]["text"]
+
         elif filetype == "letter":
             content = data["text"]
+            info_frame = tk.Frame(popup)
+            info_frame.pack()
+            for key,value in data.items():
+                if key != "text":
+                    label = tk.Label(info_frame,text=f"{key}: {value}")
+                    label.pack()
+
         else:
             self.show_large_warning(message="no valid filetype")
             return
 
-        popup = tk.Toplevel(self.root)
-        popup.title(f"Viewing: {os.path.basename(filepath)}")
-        text_area = tk.Text(popup, wrap="word")
+        
         text_area.insert("1.0", content)
         text_area.pack(expand=True, fill="both")
         text_area.config(state="disabled")
 
-    def delete_file(self,filepath,frame,regions,folder_path):
+        
+    def delete_file(self,filepath,frame,regions,folder_path,file_type):
         confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
         if confirm:
             os.remove(filepath)
-            self.render_preview_files(frame,regions,folder_path)
+            self.render_preview_files(frame,regions,folder_path,file_type)
 
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -1265,7 +1302,10 @@ class JetJob:
                 message_builder.reset_messages()
 
                 filename = ad_headline+".json"
-                save_path = os.path.join(processed_letters_path,filename)
+                save_region_path = os.path.join(self.processed_letters_path,region)
+                os.makedirs(save_region_path,exist_ok=True)
+
+                save_path = os.path.join(save_region_path,filename)
                
                 ad_meta_data["id"] = ad_id
                 ad_meta_data["text"] = response
@@ -1279,11 +1319,11 @@ class JetJob:
                     json.dump(ad_meta_data,f,indent=4,ensure_ascii=False)
 
                 self.config_values["processed_ids"].append(ad_id)
+                print(f"ads pre-processed and saved at {save_path}")
         
         save_data = {"processed_ids":self.config_values["processed_ids"]}
         self.save_config_values(**save_data)
-        print(f"ads pre-processed and saved at {self.processed_letters_path}")
-
+        
     def validate_personal_letter(self):
         if not self.config_values["system_prompt_path"]:
             raise ValueError("no system prompt detected")
