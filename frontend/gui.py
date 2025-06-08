@@ -62,7 +62,7 @@ class JetJob:
                    
                     "about_me_path": None,
                     "system_prompt_path": None,
-                    "final_email_string":None,
+                    "credential_string":None,
 
                     "attachment_files":[],
 
@@ -239,9 +239,8 @@ class JetJob:
 
         self.show_frame(self.main_frame)
 
-
-
     def init_preview_letters_frame(self):
+        filetype = "letters"
         frame = tk.Frame(self.root)
         frame.grid(row=0, column=0, sticky="nsew")
         frame.columnconfigure(0, weight=0)  # Button frame
@@ -264,33 +263,28 @@ class JetJob:
             extended_regions.append("region_missing")
        
 
-        def delete_all_click():
-            self.processed_letters_path
-            confirm = messagebox.askyesno("Confirm Delete all letters?")
-            if confirm:
-                for filename in os.listdir(self.processed_letters_path):
-                    file_path = os.path.join(self.processed_letters_path, filename)
-                    if os.path.isfile(file_path) or os.path.islink(file_path):
-                        os.unlink(file_path)  # remove file or symlink
-                    elif os.path.isdir(file_path):
-                        shutil.rmtree(file_path)  # remove subfolder and all its conten
-                self.show_frame(self.main_frame)
-
-
         back_btn = tk.Button(button_frame,text="Back",width=20, anchor="w", justify="left",
                              command=self.back_to_main_frame_click)
         back_btn.grid(row=0,column=0,sticky="w", pady=(0, 5),padx=10)
 
-        deleta_all_btn = tk.Button(button_frame,text="Delete all",width=20, anchor="w", justify="left",
-                                   command=delete_all_click)
-        deleta_all_btn.grid(row=1,column=0,sticky="w", pady=(0, 5),padx=10)
+
+        delete_all_btn = tk.Button(button_frame,text="Delete all",width=20, anchor="w", justify="left",
+                                   command=lambda: self.delete_all_ids(filetype,self.processed_letters_path))
+        delete_all_btn.grid(row=1,column=0,sticky="w", pady=(0, 5),padx=10)
+
+
+        clear_all_ids_btn = tk.Button(button_frame,text="Clear all sent ids",width=20, anchor="w", justify="left",
+                                   command=lambda: self.clear_all_ids(filetype))
+        clear_all_ids_btn.grid(row=2,column=0,sticky="w", pady=(0, 5),padx=10)
+
+
 
         button_frame.rowconfigure(2, weight=1)
-
-        self.render_preview_files(letters_frame,extended_regions,self.processed_letters_path,"letter")
+        self.render_preview_files(letters_frame,extended_regions,self.processed_letters_path,filetype)
         self.show_frame(frame)
 
     def init_preview_ads_frame(self):
+        filetype = "ads"
         frame = tk.Frame(self.root)
         frame.grid(row=0, column=0, sticky="nsew")
         frame.columnconfigure(0, weight=0)  # Button frame
@@ -326,12 +320,21 @@ class JetJob:
         )
         allow_missing_region_check.grid(row=0, column=0, sticky="w", pady=(0, 5))
 
+        delete_all_btn = tk.Button(button_frame,text="Delete all ads",
+                                command=lambda: self.delete_all_ids(filetype=filetype,folder_path=self.ads_path))
+        delete_all_btn.grid(row=1, column=0, sticky="w", pady=(0, 5))
+
+
+        clear_all_ids_btn = tk.Button(button_frame,text="Clear all processed ids",width=20, anchor="w", justify="left",
+                                   command=lambda: self.clear_all_ids(filetype))
+        clear_all_ids_btn.grid(row=2,column=0,sticky="w", pady=(0, 5),padx=10)
+
         back_btn = tk.Button(
             button_frame, text="Back",
             command=self.back_to_main_frame_click,
             width=20, anchor="w", justify="left"
         )
-        back_btn.grid(row=1, column=0, sticky="w", pady=(0, 5))
+        back_btn.grid(row=3, column=0, sticky="w", pady=(0, 5))
 
         # Add a stretchable empty row for spacing, optional:
         button_frame.rowconfigure(2, weight=1)
@@ -341,7 +344,7 @@ class JetJob:
         if self.config_values["missing_regions"]:
             extended_regions.append("region_missing")
        
-        self.render_preview_files(ads_frame,extended_regions,self.ads_path,"ad")
+        self.render_preview_files(ads_frame,extended_regions,self.ads_path,filetype)
 
         self.show_frame(frame)
 
@@ -379,11 +382,13 @@ class JetJob:
 
         # Your original logic, but target scrollable_frame instead of parent_frame
 
-        if file_type == "ad":
+        if file_type == "ads":
             valid_path = os.path.join(folder_path, "matched_email")
-        elif file_type == "letter":
+            ids = self.config_values["processed_ids"]
+        elif file_type == "letters":
             valid_path = folder_path
-
+            ids = self.config_values["sent_ids"]
+        
         if not os.listdir(folder_path):
             no_files_label = tk.Label(scrollable_frame, text="No files found.", fg="gray")
             no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
@@ -415,7 +420,11 @@ class JetJob:
                 full_path = os.path.join(region_path, filename)
                 file_label = tk.Label(region_frame, text=filename, anchor="w")
                 file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="ew")
-                
+
+                with open(full_path,encoding="utf-8") as file:
+                    data = json.load(file)
+
+                data_id = data.get("id")
                 # Uncomment if you want the buttons
                 view_btn = tk.Button(region_frame, text="View", width=8,
                                     command=lambda f=full_path: self.view_file(f,file_type))
@@ -424,6 +433,13 @@ class JetJob:
                 delete_btn = tk.Button(region_frame, text="Delete", width=8,
                                     command=lambda f=full_path: self.delete_file(f,parent_frame, regions, folder_path,file_type))
                 delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
+
+                if data_id in ids:
+                    check_label = tk.Label(region_frame, text="Used ID \u2705", font=("Segoe UI Emoji", 14))
+                else:
+                    check_label = tk.Label(region_frame, text="No used ID", font=("Segoe UI Emoji", 14))
+                check_label.grid(row=idx, column=3)
+
 
         scrollable_frame.update_idletasks()
         frame_width = scrollable_frame.winfo_reqwidth()
@@ -439,42 +455,6 @@ class JetJob:
         self.root.geometry(f"{win_w}x{win_h}")
 
         self.adjust_window()
-
-    def view_file(self,filepath,filetype):
-        with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-
-        popup = tk.Toplevel(self.root)
-        popup.title(f"Viewing: {os.path.basename(filepath)}")
-        text_area = tk.Text(popup, wrap="word")
-
-
-        if filetype == "ad":
-            content = data["description"]["text"]
-
-        elif filetype == "letter":
-            content = data["text"]
-            info_frame = tk.Frame(popup)
-            info_frame.pack()
-            for key,value in data.items():
-                if key != "text":
-                    label = tk.Label(info_frame,text=f"{key}: {value}")
-                    label.pack()
-
-        else:
-            self.show_large_warning(message="no valid filetype")
-            return
-
-        
-        text_area.insert("1.0", content)
-        text_area.pack(expand=True, fill="both")
-        text_area.config(state="disabled")
-
-    def delete_file(self,filepath,frame,regions,folder_path,file_type):
-        confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
-        if confirm:
-            os.remove(filepath)
-            self.render_preview_files(frame,regions,folder_path,file_type)
 
     def init_create_profile_frame(self):
         def refresh_profile_list():
@@ -567,7 +547,7 @@ class JetJob:
                    
                     "about_me_path": None,
                     "system_prompt_path": None,
-                    "final_email_string":None,
+                    "credential_string":None,
 
                     "processed_ids": [],
                     "sent_ids":[],
@@ -830,6 +810,23 @@ class JetJob:
         )
         offset_slider.grid(row=6, column=1, padx=10, pady=10, sticky="w")
 
+        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  
+
+        def on_missing_regions_toggle():
+            save_data = {"missing_regions":allow_missing_region_var.get()}
+            self.save_config_values(**save_data)   
+            print("Switch is now", allow_missing_region_var.get())
+
+
+        allow_missing_region_check = tk.Checkbutton(
+            self.config_search_param_frame, text="Allow missing regions",
+            variable=allow_missing_region_var,
+            command=on_missing_regions_toggle,
+            onvalue=True, offvalue=False,
+            anchor="w", justify="left", width=20
+        )
+        allow_missing_region_check.grid(row=7, column=0, pady=10, padx=10,sticky="we")
+
 
         def on_done_click():
             selected_indices = region_box.curselection()
@@ -850,27 +847,41 @@ class JetJob:
 
         # Save Button
         save_button = tk.Button(self.config_search_param_frame, text="Done", command=on_done_click)
-        save_button.grid(row=7,column=0,pady=10, padx=10,sticky="we")
+        save_button.grid(row=8,column=0,pady=10, padx=10,sticky="we")
  
         self.adjust_window()
         self.show_frame(self.config_search_param_frame)
 
     def init_data_files_frame(self):
-        data_files_frame = tk.Frame(self.root)
+        style = self.style_values  # for easy use
+
+        # Main frame
+        data_files_frame = tk.Frame(
+            self.root,
+            bg=style["BG_COLOR"]
+        )
         data_files_frame.grid(row=0, column=0, sticky="nsew")
         data_files_frame.columnconfigure(0, weight=1)
 
-        # Title Label
-        label = tk.Label(data_files_frame, text="Manage System Prompts, Attachment Files, and More!", font=("Arial", 14))
-        label.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
-        def select_file_click(title,keyword,initial_dir):
+        # Title label
+        label = tk.Label(
+            data_files_frame,
+            text="Manage System Prompts, Attachment Files, and More!",
+            font=(style["FONT"][0], 16, "bold"),
+            fg=style["LABEL_FG"],
+            bg=style["BG_COLOR"],
+            pady=14
+        )
+        label.grid(row=0, column=0, sticky="ew", padx=10, pady=(14, 6))
+
+        def select_file_click(title, keyword, initial_dir):
             selected_file = filedialog.askopenfilename(
                 title=title,
                 initialdir=initial_dir,
                 filetypes=[("Text or Markdown files", "*.txt *.md")]
             )
             if selected_file:
-                save_data = {keyword :selected_file}
+                save_data = {keyword: selected_file}
                 self.save_config_values(**save_data)
                 print("✅ Config saved")
 
@@ -879,52 +890,111 @@ class JetJob:
                 title="Select data files for mail attachment (CV, grades, etc)",
                 initialdir=self.attachement_files_path,
                 filetypes=[("All files", "*.*")]
-                )
+            )
             if selected_files:
-                save_data = {"attachment_files" :selected_files}
+                save_data = {"attachment_files": selected_files}
                 self.save_config_values(**save_data)
                 print("✅ Config saved")
-        
 
-        # System Prompt Frame
-        system_prompt_frame = tk.LabelFrame(data_files_frame, text="System Prompt")
-        system_prompt_frame.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
-        system_prompt_frame.columnconfigure(0, weight=1)
+        # Helper to style LabelFrame title color
+        def styled_labelframe(parent, text):
+            lf = tk.LabelFrame(
+                parent,
+                text=text,
+                bg=style["BG_COLOR"],
+                fg=style["LABEL_FG"],
+                font=(style["FONT"][0], 13, "bold"),
+                bd=2,
+                relief="ridge",
+                labelanchor="nw",
+                padx=12, pady=8
+            )
+            return lf
 
-        tk.Button(system_prompt_frame, text="Select Premade Prompt",
-                command=lambda: select_file_click("Select System Prompt", "system_prompt_path", self.prompts_path)
-                ).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
+        # Helper for styled button
+        def styled_button(parent, **kwargs):
+            return tk.Button(
+                parent,
+                font=style["BTN_FONT"],
+                bg=style["BTN_BG"],
+                fg=style["BTN_FG"],
+                activebackground=style["BTN_ACTIVE_BG"],
+                activeforeground=style["BTN_ACTIVE_FG"],
+                relief="flat",
+                cursor="hand2",
+                bd=0,
+                highlightthickness=0,
+                pady=6, padx=8,
+                **kwargs
+            )
 
-        tk.Button(system_prompt_frame, text="Create New Prompt",
-                command=lambda: self.create_text_click(self.prompts_path, "Create new System prompt")
-                ).grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+        # System Prompt frame
+        system_prompt_frame = styled_labelframe(data_files_frame, "System Prompt")
+        system_prompt_frame.grid(row=1, column=0, sticky="ew", padx=16, pady=(5, 0))
+        system_prompt_frame.columnconfigure((0, 1), weight=1)
+
+        styled_button(
+            system_prompt_frame,
+            text="Select Premade Prompt",
+            command=lambda: select_file_click("Select System Prompt", "system_prompt_path", self.prompts_path)
+        ).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
+
+        styled_button(
+            system_prompt_frame,
+            text="Create New Prompt",
+            command=lambda: self.create_text_click(self.prompts_path, "Create new System prompt")
+        ).grid(row=0, column=1, padx=6, pady=6, sticky="ew")
 
         # Attachment Files Frame
-        attachment_files_frame = tk.LabelFrame(data_files_frame, text="Attachment Files")
-        attachment_files_frame.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
-
-        tk.Button(attachment_files_frame, text="Add Files", command=add_files_click
-                ).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
+        attachment_files_frame = styled_labelframe(data_files_frame, "Attachment Files")
+        attachment_files_frame.grid(row=2, column=0, sticky="ew", padx=16, pady=(8, 0))
+        styled_button(
+            attachment_files_frame,
+            text="Add Attachment File(s)",
+            command=add_files_click
+        ).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
 
         # About Me Frame
-        about_me_frame = tk.LabelFrame(data_files_frame, text="About Me")
-        about_me_frame.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
-        about_me_frame.columnconfigure(0, weight=1)
+        about_me_frame = styled_labelframe(data_files_frame, "About Me")
+        about_me_frame.grid(row=3, column=0, sticky="ew", padx=16, pady=(8, 0))
+        about_me_frame.columnconfigure((0, 1), weight=1)
+        styled_button(
+            about_me_frame,
+            text="Select 'About Me' Text",
+            command=lambda: select_file_click("About me text", "about_me_path", self.about_me_path)
+        ).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
+        styled_button(
+            about_me_frame,
+            text="Add 'About Me' Text",
+            command=lambda: self.create_text_click(self.about_me_path, "About me text")
+        ).grid(row=0, column=1, padx=6, pady=6, sticky="ew")
 
-        tk.Button(about_me_frame, text="Select 'About Me' Text",
-                command=lambda: select_file_click("About me text", "about_me_path", self.about_me_path)
-                ).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
-
-        tk.Button(about_me_frame, text="Add 'About Me' Text",
-                command=lambda: self.create_text_click(self.about_me_path, "About me text")
-                ).grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+        # Credentials Frame
+        credentials_frame = styled_labelframe(data_files_frame, "Credentials")
+        credentials_frame.grid(row=4, column=0, sticky="ew", padx=16, pady=(8, 0))
+        credentials_frame.columnconfigure((0, 1), weight=1)
+        styled_button(
+            credentials_frame,
+            text="Create New Credential File",
+            command=lambda: self.create_text_click(self.credentials_path, "Credentials")
+        ).grid(row=0, column=0, padx=6, pady=6, sticky="ew")
+        styled_button(
+            credentials_frame,
+            text="Select a Credential File",
+            command=lambda: select_file_click("Credentials text", "credentials", self.credentials_path)
+        ).grid(row=0, column=1, padx=6, pady=6, sticky="ew")
 
         # Back Button
-        tk.Button(data_files_frame, text="Back", command=lambda: self.show_frame(self.main_frame)
-                ).grid(row=4, column=0, padx=10, pady=15, sticky="w")
+        styled_button(
+            data_files_frame,
+            text="⟵ Back",
+            command=lambda: self.show_frame(self.main_frame)
+        ).grid(row=5, column=0, padx=16, pady=(18, 16), sticky="w")
 
         self.adjust_window()
         self.show_frame(data_files_frame)
+
+
 
     def init_gpt_config_frame(self):
         gpt_config_frame = tk.Frame(self.root, bg="#f4f6f8")  # light background
@@ -1226,6 +1296,10 @@ class JetJob:
         self.about_me_path = os.path.join(self.profiles_path,name,"about_me")
         os.makedirs(self.about_me_path,exist_ok=True)
 
+        # credentials text
+        self.credentials_path = os.path.join(self.profiles_path,name,"credentials")
+        os.makedirs(self.credentials_path,exist_ok=True)
+
     def save_config_values(self,**kwargs):
         for key,value in kwargs.items():
             self.config_values[key] = value
@@ -1367,7 +1441,7 @@ class JetJob:
                 return
     
         # ask if user wants a final string appended to letter
-        if not self.config_values["final_email_string"]:
+        if not self.config_values["credential_string"]:
             confirm = messagebox.askyesno("No final string added to letter/mail. Do you want to proceed?")
             if confirm:
                 pass
@@ -1402,8 +1476,8 @@ class JetJob:
         raise ValueError("No email found")
 
     def mass_send_email(self):
-        if self.config_values["final_email_string"]:
-            with open(self.config_values["final_email_string"]) as f:
+        if self.config_values["credential_string"]:
+            with open(self.config_values["credential_string"]) as f:
                 final_string = f.read()
         else:
             final_string =""
@@ -1412,47 +1486,65 @@ class JetJob:
         if self.config_values["missing_regions"]:
             extended_regions.append("region_missing")
 
-        sent_ids = []
-        if os.listdir(self.processed_letters_path):
-            for region in extended_regions:
-                region_path = os.path.join(self.processed_letters_path,region)
-                if os.listdir(region_path):
-                    for letter in os.listdir(region_path):
-                        full_path = os.path.join(region_path,letter)
-                        with open(full_path,encoding="utf-8") as f:
-                            letter_data = json.load(f)
-                        
-                        if letter_data["id"] in self.config_values["sent_ids"]:
-                            self.terminal_text.config(state="normal")
-                            self.terminal_text.insert("end", f"letter id {letter_data['id']} has ALREADY been sent, please clear id for new sending\n")
-                            self.terminal_text.config(state="disabled")
-                            continue
+    
+        sent_ids = set(self.config_values.get("sent_ids", []))
+        found_any_letters = False
 
-                        text = letter_data["text"]
-                        text += text+f"\n{final_string}"
-                        # letter_data["email"]
+    
+        for region in extended_regions:
+            region_path = os.path.join(self.processed_letters_path,region)
 
-                        env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
-                        
-                        load_dotenv(dotenv_path=env_path, override=True)
-                        
-                        send_email(
-                            subject=letter_data["headline"],
-                            body=text,
-                            to_email="torm8078@gmail.com",
-                            from_email=self.config_values["gmail"],
-                            password=os.getenv("GMAIL_APP_PASSWORD"),
-                            attachments=self.config_values["attachment_files"]
-                        )
-                        sent_ids.append(letter_data["id"])
+            if not os.path.isdir(region_path):
+                continue  
 
-                        self.terminal_text.config(state="normal")
-                        self.terminal_text.insert("end", f"letter {letter_data['headline']} has been sent to {letter_data['email']}\n")
-                        self.terminal_text.config(state="disabled")
+            letter_files = os.listdir(region_path)
+            if not letter_files:
+                continue  # No letters in this region
 
-                save_data = {"sent_ids":sent_ids}
-                self.save_config_values(**save_data)
-            
+            for letter in letter_files:
+                found_any_letters = True
+                full_path = os.path.join(region_path,letter)
+                with open(full_path,encoding="utf-8") as f:
+                    letter_data = json.load(f)
+
+                letter_id = letter_data.get("id")
+
+                if letter_id in sent_ids:
+                    self.terminal_text.config(state="normal")
+                    self.terminal_text.insert("end", f"letter id {letter_data['id']} has ALREADY been sent, please clear id for new sending\n")
+                    self.terminal_text.config(state="disabled")
+                    continue
+
+                text = letter_data["text"] + f"\n{final_string}"
+
+                # letter_data["email"]
+
+                env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
+                
+                load_dotenv(dotenv_path=env_path, override=True)
+                
+                # send_email(
+                #     subject=letter_data["headline"],
+                #     body=text,
+                #     to_email="torm8078@gmail.com",
+                #     from_email=self.config_values["gmail"],
+                #     password=os.getenv("GMAIL_APP_PASSWORD"),
+                #     attachments=self.config_values["attachment_files"]
+                # )
+
+
+                sent_ids.add(letter_data["id"])
+
+                self.terminal_text.config(state="normal")
+                self.terminal_text.insert("end", f"letter {letter_data['headline']} has been sent to {letter_data['email']}\n")
+                self.terminal_text.config(state="disabled")
+
+        if not found_any_letters:
+            raise FileNotFoundError("No letters found in any region folder.")
+    
+        save_data = {"sent_ids": list(sent_ids)}
+        self.save_config_values(**save_data)
+    
     def show_large_warning(self, message, title="Warning"):
         warning_win = tk.Toplevel(self.root)
         warning_win.title(title)
@@ -1477,6 +1569,61 @@ class JetJob:
 
     def back_to_main_frame_click(self):
             self.show_frame(self.main_frame)
+
+    def delete_all_ids(self,filetype,folder_path):
+        confirm = messagebox.askyesno(f"Confirm Delete all {filetype}?")
+        if confirm:
+            for filename in os.listdir(folder_path):
+                file_path = os.path.join(folder_path, filename)
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)  # remove file or symlink
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)  # remove subfolder and all its conten
+            self.show_frame(self.main_frame)
+
+    def clear_all_ids(self,filetype):
+        if filetype == "ads":
+            self.save_config_values(**{"processed_ids":[]})
+            self.init_preview_ads_frame()
+        elif filetype == "letters":
+            self.save_config_values(**{"sent_ids":[]})
+            self.init_preview_letters_frame()
+
+    def view_file(self,filepath,filetype):
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        popup = tk.Toplevel(self.root)
+        popup.title(f"Viewing: {os.path.basename(filepath)}")
+        text_area = tk.Text(popup, wrap="word")
+
+
+        if filetype == "ad":
+            content = data["description"]["text"]
+
+        elif filetype == "letter":
+            content = data["text"]
+            info_frame = tk.Frame(popup)
+            info_frame.pack()
+            for key,value in data.items():
+                if key != "text":
+                    label = tk.Label(info_frame,text=f"{key}: {value}")
+                    label.pack()
+
+        else:
+            self.show_large_warning(message="no valid filetype")
+            return
+
+        
+        text_area.insert("1.0", content)
+        text_area.pack(expand=True, fill="both")
+        text_area.config(state="disabled")
+
+    def delete_file(self,filepath,frame,regions,folder_path,file_type):
+        confirm = messagebox.askyesno("Confirm Delete", f"Delete {os.path.basename(filepath)}?")
+        if confirm:
+            os.remove(filepath)
+            self.render_preview_files(frame,regions,folder_path,file_type)
 
 
 if __name__ == '__main__':
