@@ -11,6 +11,7 @@ outputs/
 attachment_files/
 saved_files/
 
+sent_ids.json
 
 # Python
 __pycache__/

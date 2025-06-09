@@ -10,7 +10,7 @@ from api.searcher import multi_search
 import shutil
 from dotenv import load_dotenv
 from tkinter import ttk
-
+from tkinter import scrolledtext
 
 # start command 
 # py -m frontend.gui
@@ -62,8 +62,8 @@ class JetJob:
                    
                     "about_me_path": None,
                     "system_prompt_path": None,
-                    "credential_string":None,
-
+                    "credentials":None,
+                    
                     "attachment_files":[],
 
                     "processed_ids": [],
@@ -107,8 +107,6 @@ class JetJob:
                         "Östergötlands Län"
                         ]
 
-        
-
         self.adjust_window()
 
     def init_main_frame(self):    
@@ -143,7 +141,7 @@ class JetJob:
                           
         def on_personalize_click():
             try:
-                self.validate_personal_letter()
+                self.validate_personal_letter(test=False)
                 self.setup_personal_letter_payload()
                  
             except ValueError as e:
@@ -205,6 +203,12 @@ class JetJob:
         sendmails_btn.grid(row=0, column=2, padx=8, pady=8)
         style_button(sendmails_btn)
 
+        test_prompt_btn = tk.Button(button_frame, text="Test prompt", command=self.test_prompt_click, width=12)
+        test_prompt_btn.grid(row=0, column=3, padx=8, pady=8)
+        style_button(test_prompt_btn)
+
+
+
         # Terminal frame with a nice border and background
         terminal_frame = tk.Frame(self.main_frame, bg=BG_COLOR, bd=2, relief="groove")
         terminal_frame.grid(row=1, column=0, sticky="nsew", padx=20, pady=18)
@@ -238,6 +242,92 @@ class JetJob:
         self.terminal_text.config(state="disabled")
 
         self.show_frame(self.main_frame)
+
+    def test_prompt_click(self):
+        try:
+            first_ad_path = self.validate_personal_letter(test=True)
+            self.setup_test_prompt(first_ad_path)
+        
+        except ValueError as e:
+            messagebox.showwarning("Invalid Configuration", str(e))
+            return
+
+    def setup_test_prompt(self,ad_path):
+        with open(ad_path,encoding="utf-8") as f:
+            ad_data = json.load(f)
+
+        ad_headline = ad_data["headline"]
+        ad_description = ad_data["description"]["text"]
+        
+        with open(self.config_values["system_prompt_path"],encoding="utf-8") as f:
+            system_prompt_text = f.read()
+
+        with open(self.config_values["about_me_path"],encoding="utf-8") as f:
+            about_me_text = f.read()
+
+        ai_caller = AICaller()
+
+        message_builder = MessageBuilder()
+        text_prepend_ad_data = "Here is the ad:\n"
+        text_prepend_about_me_data = "This is the data about me:\n"
+
+        message_builder.add_message(role="system",message=system_prompt_text)
+
+        user_message = text_prepend_ad_data + ad_description + text_prepend_about_me_data + about_me_text
+
+        message_builder.add_message(role="user",message=user_message)
+
+        try:
+            response = ai_caller.chat_openai(
+                model=self.config_values["model"],
+                messages=message_builder.messages,
+                response_format=None,
+                temperature=self.config_values["temperature"]
+            )
+
+            if self.config_values["credentials"]:
+                with open(self.config_values["credentials"]) as f:
+                    creds = f.read()
+                response += response + creds
+            
+            filename = ad_headline + ".md"
+            save_path = os.path.join(self.tests_path,filename)
+
+            with open(save_path,'w',encoding="utf-8") as f:
+                f.write(response)
+
+            self.compare_texts(response,ad_data)
+
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+                
+    def compare_texts(self, response, ad_data):
+        popup = tk.Toplevel(self.root)
+        popup.title("Compare Ad vs Response")
+        popup.geometry("900x500")
+
+        # Configure grid layout for equal size
+        popup.columnconfigure(0, weight=1, uniform="col")
+        popup.columnconfigure(1, weight=1, uniform="col")
+        popup.rowconfigure(1, weight=1)
+
+        # Labels
+        ad_label = tk.Label(popup, text="Job Ad", font=("Segoe UI", 12, "bold"))
+        ad_label.grid(row=0, column=0, padx=8, pady=(8, 0), sticky="w")
+        resp_label = tk.Label(popup, text="Response", font=("Segoe UI", 12, "bold"))
+        resp_label.grid(row=0, column=1, padx=8, pady=(8, 0), sticky="w")
+
+        # Ad Textarea (left)
+        ad_text = scrolledtext.ScrolledText(popup, wrap="word", font=("Consolas", 11), bg="#1e293b", fg="#f1f5f9", insertbackground="#f1f5f9")
+        ad_text.grid(row=1, column=0, sticky="nsew", padx=(8,4), pady=8)
+        ad_text.insert("1.0", ad_data["description"]["text"])
+        ad_text.config(state="disabled")  # Readonly
+
+        # Response Textarea (right)
+        resp_text = scrolledtext.ScrolledText(popup, wrap="word", font=("Consolas", 11), bg="#1e293b", fg="#f1f5f9", insertbackground="#f1f5f9")
+        resp_text.grid(row=1, column=1, sticky="nsew", padx=(4,8), pady=8)
+        resp_text.insert("1.0", response)
+        resp_text.config(state="disabled")  # Readonly
 
     def init_preview_letters_frame(self):
         filetype = "letters"
@@ -547,7 +637,7 @@ class JetJob:
                    
                     "about_me_path": None,
                     "system_prompt_path": None,
-                    "credential_string":None,
+                    "credentials":None,
 
                     "processed_ids": [],
                     "sent_ids":[],
@@ -994,8 +1084,6 @@ class JetJob:
         self.adjust_window()
         self.show_frame(data_files_frame)
 
-
-
     def init_gpt_config_frame(self):
         gpt_config_frame = tk.Frame(self.root, bg="#f4f6f8")  # light background
         gpt_config_frame.grid(row=0, column=0, sticky="nsew")
@@ -1300,6 +1388,10 @@ class JetJob:
         self.credentials_path = os.path.join(self.profiles_path,name,"credentials")
         os.makedirs(self.credentials_path,exist_ok=True)
 
+        # test folder
+        self.tests_path = os.path.join(self.profiles_path,name,"tests")
+        os.makedirs(self.tests_path,exist_ok=True)
+
     def save_config_values(self,**kwargs):
         for key,value in kwargs.items():
             self.config_values[key] = value
@@ -1321,6 +1413,7 @@ class JetJob:
 
         return config_values ,config_path
 
+    
     def setup_personal_letter_payload(self): 
         # paths
         folder_path = os.path.join(self.ads_path,"matched_email")
@@ -1397,26 +1490,48 @@ class JetJob:
         save_data = {"processed_ids":self.config_values["processed_ids"]}
         self.save_config_values(**save_data)
         
-    def validate_personal_letter(self):
+    def validate_personal_letter(self,test:bool) -> str:
+
         if not self.config_values["system_prompt_path"]:
             raise ValueError("no system prompt detected")
+        
         if not self.config_values["about_me_path"]:
             raise ValueError("no 'about me' file detected")  
         
-
-        folder_path = os.path.join(self.ads_path,"matched_email")
-        if not os.path.isdir(folder_path):
-            raise ValueError("no matched ads folder exists, please make an ad search")
-            
-        json_files = []
-        for root, dirs, files in os.walk(folder_path):
-            for file in files:
-                if file.lower().endswith('.json'):
-                    json_files.append(os.path.join(root, file))
+        # ask if user wants a final string appended to letter
+        if not self.config_values["credentials"]:
+            confirm = messagebox.askyesno("No final string added to letter/mail. Do you want to proceed?")
+            if confirm:
+                pass
+            else:
+                return
         
-        if not json_files:
-            raise ValueError("no valid ads in json found, please make an ad search")
-
+        if not test:
+            folder_path = os.path.join(self.ads_path,"matched_email")
+            if not os.path.isdir(folder_path):
+                raise ValueError("no matched ads folder exists, please make an ad search")
+                
+            json_files = []
+            for root, dirs, files in os.walk(folder_path):
+                for file in files:
+                    if file.lower().endswith('.json'):
+                        json_files.append(os.path.join(root, file))
+            
+            if not json_files:
+                raise ValueError("no valid json ads found, please make an ad search")
+            
+        else:
+            # any first ad for testing exists
+            json_files = []
+            for root, dirs, files in os.walk(self.ads_path):
+                for file in files:
+                    if file.lower().endswith('.json'):
+                        json_files.append(os.path.join(root, file))
+            
+            if not json_files:
+                raise ValueError("no valid json ads found, please make an ad search")
+            return json_files[0]
+        
     def validate_send_email(self):
         # check gmail
         if not self.config_values["gmail"].strip().lower().endswith('@gmail.com'):
@@ -1439,15 +1554,7 @@ class JetJob:
                 pass
             else:
                 return
-    
-        # ask if user wants a final string appended to letter
-        if not self.config_values["credential_string"]:
-            confirm = messagebox.askyesno("No final string added to letter/mail. Do you want to proceed?")
-            if confirm:
-                pass
-            else:
-                return
-        
+         
     def validate_search_values(self):
         if self.config_values["url"] != "https://jobsearch.api.jobtechdev.se/search":
             raise ValueError(f"url is not valid: {self.config_values["url"]}")
@@ -1476,8 +1583,8 @@ class JetJob:
         raise ValueError("No email found")
 
     def mass_send_email(self):
-        if self.config_values["credential_string"]:
-            with open(self.config_values["credential_string"]) as f:
+        if self.config_values["credentials"]:
+            with open(self.config_values["credentials"]) as f:
                 final_string = f.read()
         else:
             final_string =""
@@ -1515,22 +1622,20 @@ class JetJob:
                     self.terminal_text.config(state="disabled")
                     continue
 
-                text = letter_data["text"] + f"\n{final_string}"
-
-                # letter_data["email"]
+                text = letter_data["text"] + f"\n\n{final_string}"
 
                 env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
                 
                 load_dotenv(dotenv_path=env_path, override=True)
                 
-                # send_email(
-                #     subject=letter_data["headline"],
-                #     body=text,
-                #     to_email="torm8078@gmail.com",
-                #     from_email=self.config_values["gmail"],
-                #     password=os.getenv("GMAIL_APP_PASSWORD"),
-                #     attachments=self.config_values["attachment_files"]
-                # )
+                send_email(
+                    subject=letter_data["headline"],
+                    body=text,
+                    to_email=letter_data["email"],
+                    from_email=self.config_values["gmail"],
+                    password=os.getenv("GMAIL_APP_PASSWORD"),
+                    attachments=self.config_values["attachment_files"]
+                )
 
 
                 sent_ids.add(letter_data["id"])
@@ -1624,6 +1729,18 @@ class JetJob:
         if confirm:
             os.remove(filepath)
             self.render_preview_files(frame,regions,folder_path,file_type)
+
+    def select_file(self,title,filetypes:list[tuple[str]],keyword,initialdir):
+        selected_file = filedialog.askopenfilename(
+            title=title,
+            filetypes=filetypes,
+            initialdir=initialdir
+        )
+        if selected_file:
+            save_data = {keyword: selected_file}
+            self.save_config_values(**save_data)
+            print("✅ Config saved")
+
 
 
 if __name__ == '__main__':
