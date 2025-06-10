@@ -11,8 +11,10 @@ outputs/
 attachment_files/
 saved_files/
 
+processed_ads/
 sent_ids.json
-
+support_functions/
+notes.txt
 # Python
 __pycache__/
 *.py[cod]

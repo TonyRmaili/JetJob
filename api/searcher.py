@@ -1,7 +1,6 @@
 import requests
 import json
 import os
-from datetime import datetime
 import re
 
 
@@ -83,8 +82,19 @@ def split_by_keyword_full_objects(data, keyword):
 
     return with_keyword, without_keyword
 
+def get_unique_path(path):
+    """Generate a unique filename by appending a counter if needed."""
+    if not os.path.exists(path):
+        return path
+    base, ext = os.path.splitext(path)
+    i = 1
+    while True:
+        new_path = f"{base}_{i:02d}{ext}"
+        if not os.path.exists(new_path):
+            return new_path
+        i += 1
+
 def sort_by_region(path,obj):
-    
     for ad in obj:
         region = ad["workplace_address"]["region"]
         headline = ad["headline"]
@@ -92,14 +102,13 @@ def sort_by_region(path,obj):
         
         if region:
             folder_path = os.path.join(path,region)
-            os.makedirs(folder_path,exist_ok=True)
-            save_path = os.path.join(folder_path,headline+".json")
-            
         else:
             folder_path = os.path.join(path,"region_missing")
-            os.makedirs(folder_path,exist_ok=True)
-            save_path = os.path.join(folder_path,headline+".json")
 
+        os.makedirs(folder_path,exist_ok=True)
+
+        save_path = os.path.join(folder_path,headline+".json")
+        save_path = get_unique_path(save_path)
         save_json(obj=ad,path=save_path)
 
 

@@ -6,11 +6,13 @@ import json
 from backend.ai_caller import AICaller
 from backend.message_builder import MessageBuilder
 from api.send_email import send_email
-from api.searcher import multi_search
+from api.searcher import multi_search, sanitize_filename, get_unique_path
 import shutil
 from dotenv import load_dotenv
 from tkinter import ttk
 from tkinter import scrolledtext
+from datetime import datetime
+
 
 # start command 
 # py -m frontend.gui
@@ -1412,7 +1414,6 @@ class JetJob:
             config_values = {}
 
         return config_values ,config_path
-
     
     def setup_personal_letter_payload(self): 
         # paths
@@ -1453,6 +1454,10 @@ class JetJob:
                     continue
 
                 ad_headline = ad_data["headline"]
+                
+                # new
+                ad_headline = sanitize_filename(ad_headline)
+
                 description = ad_data["description"]["text"]
                 application_deadline = ad_data["application_deadline"]
                 email = self.find_relevant_email(ad=ad_data)
@@ -1467,11 +1472,15 @@ class JetJob:
 
                 message_builder.reset_messages()
 
+
                 filename = ad_headline+".json"
                 save_region_path = os.path.join(self.processed_letters_path,region)
                 os.makedirs(save_region_path,exist_ok=True)
 
                 save_path = os.path.join(save_region_path,filename)
+
+                # new 
+                save_path = get_unique_path(save_path)
                
                 ad_meta_data["id"] = ad_id
                 ad_meta_data["text"] = response
