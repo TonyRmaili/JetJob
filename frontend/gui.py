@@ -332,7 +332,7 @@ class JetJob:
         resp_text.config(state="disabled")  # Readonly
 
     def init_preview_letters_frame(self):
-        filetype = "letters"
+        filetype = "letter"
         frame = tk.Frame(self.root)
         frame.grid(row=0, column=0, sticky="nsew")
         frame.columnconfigure(0, weight=0)  # Button frame
@@ -376,7 +376,7 @@ class JetJob:
         self.show_frame(frame)
 
     def init_preview_ads_frame(self):
-        filetype = "ads"
+        filetype = "ad"
         frame = tk.Frame(self.root)
         frame.grid(row=0, column=0, sticky="nsew")
         frame.columnconfigure(0, weight=0)  # Button frame
@@ -474,10 +474,10 @@ class JetJob:
 
         # Your original logic, but target scrollable_frame instead of parent_frame
 
-        if file_type == "ads":
+        if file_type == "ad":
             valid_path = os.path.join(folder_path, "matched_email")
             ids = self.config_values["processed_ids"]
-        elif file_type == "letters":
+        elif file_type == "letter":
             valid_path = folder_path
             ids = self.config_values["sent_ids"]
         
