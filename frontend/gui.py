@@ -28,20 +28,8 @@ class JetJob:
         self.screen_width = screen_width
         self.screen_height = screen_height
 
-        self.style_values = {
-            "BG_COLOR": "#23272f",
-            "BTN_BG": "#334155",
-            "BTN_FG": "#f1f5f9",
-            "BTN_ACTIVE_BG": "#475569",
-            "BTN_ACTIVE_FG": "#ffffff",
-            "TEXT_BG": "#1e293b",
-            "TEXT_FG": "#f1f5f9",
-            "LABEL_FG": "#a3a3a3",
-            "FONT": ("Consolas", 12),
-            "BTN_FONT": ("Segoe UI", 11, "bold"),
-        }
-
         self.style = StyleGUI()
+        self.style_values = self.style.style_values
 
         self.create_menu()
 
@@ -117,17 +105,6 @@ class JetJob:
     def init_main_frame(self):    
         self.root.title(f"JetJob - Welcome {self.selected_profile}")
 
-        BG_COLOR = "#23272f"
-        BTN_BG = "#334155"
-        BTN_FG = "#f1f5f9"
-        BTN_ACTIVE_BG = "#475569"
-        BTN_ACTIVE_FG = "#ffffff"
-        TEXT_BG = "#1e293b"
-        TEXT_FG = "#f1f5f9"
-        LABEL_FG = "#a3a3a3"
-        FONT = ("Consolas", 12)
-        BTN_FONT = ("Segoe UI", 11, "bold")
-
         def on_search():
             try:
                 self.validate_search_values()
@@ -170,52 +147,41 @@ class JetJob:
         button_frame = tk.Frame(self.main_frame, bg=self.style_values["BG_COLOR"])
         button_frame.grid(row=0, column=0, sticky="nsw", padx=10, pady=15)
 
-        def style_button(btn):
-            btn.configure(
-                bg=BTN_BG, fg=BTN_FG,
-                activebackground=BTN_ACTIVE_BG,
-                activeforeground=BTN_ACTIVE_FG,
-                font=BTN_FONT,
-                relief="raised", bd=2, cursor="hand2"
-            )
        
         if os.listdir(self.ads_path):
-            preview_ads_btn = tk.Button(button_frame, text="Preview Ads", command=self.init_preview_ads_frame, width=14)
-            preview_ads_btn.grid(row=1, column=0, sticky="ew", padx=5, pady=8)
-            style_button(preview_ads_btn)
+            preview_ad_btn = self.style.button(
+                button_frame, text="Preview Ads", command=self.init_preview_ads_frame, width=14,
+            ).grid(row=1, column=0, sticky="ew", padx=5, pady=8)           
         else:
-            missing_ads_label = tk.Label(button_frame, text="No ads found", fg=LABEL_FG, bg=BG_COLOR, font=FONT)
-            missing_ads_label.grid(row=1, column=0, sticky="ew", padx=5, pady=8)
+            self.style.label(button_frame,text="No ads found").grid(row=1, column=0, sticky="ew", padx=5, pady=8)
 
         if os.listdir(self.processed_letters_path):
-            preview_letters_btn = tk.Button(button_frame, text="Preview Letters", command=self.init_preview_letters_frame, width=18)
-            preview_letters_btn.grid(row=1, column=1, sticky="ew", padx=5, pady=8)
-            style_button(preview_letters_btn)
+            preview_letter_btn = self.style.button(
+                button_frame, text="Preview Letters", command=self.init_preview_letters_frame, width=18,
+            ).grid(row=1, column=1, sticky="ew", padx=5, pady=8)
         else:
-            missing_letters_label = tk.Label(button_frame, text="No processed letters found", fg=LABEL_FG, bg=BG_COLOR, font=FONT)
-            missing_letters_label.grid(row=1, column=1, sticky="ew", padx=5, pady=8)
-
-                
-        search_btn = tk.Button(button_frame, text="Search", command=on_search, width=10)
-        search_btn.grid(row=0, column=0, padx=8, pady=8)
-        style_button(search_btn)
-
-        personalize_btn = tk.Button(button_frame, text="Personalize letters", command=on_personalize_click, width=16)
-        personalize_btn.grid(row=0, column=1, padx=8, pady=8)
-        style_button(personalize_btn)
-
-        sendmails_btn = tk.Button(button_frame, text="Send emails", command=on_sendmails_click, width=12)
-        sendmails_btn.grid(row=0, column=2, padx=8, pady=8)
-        style_button(sendmails_btn)
-
-        test_prompt_btn = tk.Button(button_frame, text="Test prompt", command=self.test_prompt_click, width=12)
-        test_prompt_btn.grid(row=0, column=3, padx=8, pady=8)
-        style_button(test_prompt_btn)
-
-
-
+            self.style.label(button_frame,text="No processed letters found").grid(row=1, column=1, sticky="ew", padx=5, pady=8)
+           
+  
+        search_btn = self.style.button(
+                button_frame, text="Search", command=on_search, width=10,
+            ).grid(row=0, column=0, padx=8, pady=8)
+        
+        personalize_btn = self.style.button(
+                button_frame, text="Personalize letters", command=on_personalize_click, width=16,
+            ).grid(row=0, column=1, padx=8, pady=8)
+        
+        sendmails_btn = self.style.button(
+                button_frame, text="Send emails", command=on_sendmails_click, width=12,
+            ).grid(row=0, column=2, padx=8, pady=8)
+        
+        test_prompt_btn = self.style.button(
+                button_frame, text="Test prompt", command=self.test_prompt_click, width=12,
+            ).grid(row=0, column=3, padx=8, pady=8)
+        
+    
         # Terminal frame with a nice border and background
-        terminal_frame = tk.Frame(self.main_frame, bg=BG_COLOR, bd=2, relief="groove")
+        terminal_frame = tk.Frame(self.main_frame, bg=self.style_values["BG_COLOR"], bd=2, relief="groove")
         terminal_frame.grid(row=1, column=0, sticky="nsew", padx=20, pady=18)
 
         # Make the grid expand with window resize
@@ -228,17 +194,11 @@ class JetJob:
         text_scrollbar = ttk.Scrollbar(terminal_frame, orient="vertical")
         text_scrollbar.grid(row=0, column=1, sticky="ns")
 
-        self.terminal_text = tk.Text(
-            terminal_frame, 
-            bg=TEXT_BG, fg=TEXT_FG, 
-            insertbackground=BTN_ACTIVE_FG,   # Makes the cursor visible
-            font=FONT, 
-            wrap="word", 
-            borderwidth=0, 
-            highlightthickness=0
-        )
+        
+        self.terminal_text = self.style.text(terminal_frame)
         self.terminal_text.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
         self.terminal_text.config(yscrollcommand=text_scrollbar.set)
+
         text_scrollbar.config(command=self.terminal_text.yview)
 
         # Optional: Insert a welcome message or style more
@@ -247,6 +207,8 @@ class JetJob:
         self.terminal_text.config(state="disabled")
 
         self.show_frame(self.main_frame)
+
+
 
     def test_prompt_click(self):
         try:
@@ -413,12 +375,12 @@ class JetJob:
             command=on_missing_regions_toggle,
             onvalue=True, offvalue=False,
             anchor="w", justify="left", width=20,
-            bg=self.style.style_values["BG_COLOR"],
-            fg=self.style.style_values["LABEL_FG"],
-            selectcolor=self.style.style_values["BTN_BG"],
-            font=self.style.style_values["FONT"],
-            activebackground=self.style.style_values["BTN_ACTIVE_BG"],
-            activeforeground=self.style.style_values["BTN_ACTIVE_FG"],
+            bg=self.style_values["BG_COLOR"],
+            fg=self.style_values["LABEL_FG"],
+            selectcolor=self.style_values["BTN_BG"],
+            font=self.style_values["FONT"],
+            activebackground=self.style_values["BTN_ACTIVE_BG"],
+            activeforeground=self.style_values["BTN_ACTIVE_FG"],
             highlightthickness=0
         )
         allow_missing_region_check.grid(row=0, column=0, sticky="w", pady=(0, 5))
@@ -459,7 +421,7 @@ class JetJob:
         # Scrollable frame setup (canvas + vertical scrollbar)
         canvas = tk.Canvas(
             parent_frame, borderwidth=0, highlightthickness=0,
-            bg=self.style.style_values["BG_COLOR"]
+            bg=self.style_values["BG_COLOR"]
         )
         vscroll = ttk.Scrollbar(parent_frame, orient="vertical", command=canvas.yview)
         canvas.configure(yscrollcommand=vscroll.set)
@@ -825,8 +787,8 @@ class JetJob:
 
         # Keyword Listbox
         keyword_listbox = tk.Listbox(self.config_search_param_frame, height=6, width=30, selectmode="multiple",
-                                    bg=self.style.style_values["TEXT_BG"], fg=self.style.style_values["TEXT_FG"],
-                                    font=self.style.style_values["FONT"], selectbackground=self.style.style_values["BTN_BG"])
+                                    bg=self.style_values["TEXT_BG"], fg=self.style_values["TEXT_FG"],
+                                    font=self.style_values["FONT"], selectbackground=self.style_values["BTN_BG"])
         keyword_listbox.grid(row=3, column=1, padx=10, pady=5, sticky="w")
         for kw in self.config_values.get("keywords", []):
             keyword_listbox.insert("end", kw)
@@ -838,8 +800,8 @@ class JetJob:
 
         # Listbox
         region_box = tk.Listbox(region_listbox_frame, selectmode="multiple", height=10, exportselection=False,
-                                bg=self.style.style_values["TEXT_BG"], fg=self.style.style_values["TEXT_FG"],
-                                font=self.style.style_values["FONT"], selectbackground=self.style.style_values["BTN_BG"])
+                                bg=self.style_values["TEXT_BG"], fg=self.style_values["TEXT_FG"],
+                                font=self.style_values["FONT"], selectbackground=self.style_values["BTN_BG"])
         region_box.grid(row=0, column=0, sticky="ns")
 
         # Scrollbar
@@ -881,9 +843,9 @@ class JetJob:
         limit_var = tk.IntVar(value=self.config_values.get("limit", 10))
         limit_slider = tk.Scale(self.config_search_param_frame, from_=1, to=100, orient="horizontal",
                                 variable=limit_var, resolution=1,
-                                bg=self.style.style_values["BG_COLOR"],
-                                fg=self.style.style_values["LABEL_FG"],
-                                troughcolor=self.style.style_values["BTN_BG"],
+                                bg=self.style_values["BG_COLOR"],
+                                fg=self.style_values["LABEL_FG"],
+                                troughcolor=self.style_values["BTN_BG"],
                                 highlightthickness=0)
         limit_slider.grid(row=5, column=1, padx=10, pady=10, sticky="w")
 
@@ -892,9 +854,9 @@ class JetJob:
         offset_var = tk.IntVar(value=self.config_values.get("offset", 0))
         offset_slider = tk.Scale(self.config_search_param_frame, from_=0, to=500, orient="horizontal",
                                 variable=offset_var, resolution=1,
-                                bg=self.style.style_values["BG_COLOR"],
-                                fg=self.style.style_values["LABEL_FG"],
-                                troughcolor=self.style.style_values["BTN_BG"],
+                                bg=self.style_values["BG_COLOR"],
+                                fg=self.style_values["LABEL_FG"],
+                                troughcolor=self.style_values["BTN_BG"],
                                 highlightthickness=0)
         offset_slider.grid(row=6, column=1, padx=10, pady=10, sticky="w")
 
@@ -912,12 +874,12 @@ class JetJob:
             command=on_missing_regions_toggle,
             onvalue=True, offvalue=False,
             anchor="w", justify="left", width=20,
-            bg=self.style.style_values["BG_COLOR"],
-            fg=self.style.style_values["LABEL_FG"],
-            selectcolor=self.style.style_values["BTN_BG"],
-            font=self.style.style_values["FONT"],
-            activebackground=self.style.style_values["BTN_ACTIVE_BG"],
-            activeforeground=self.style.style_values["BTN_ACTIVE_FG"],
+            bg=self.style_values["BG_COLOR"],
+            fg=self.style_values["LABEL_FG"],
+            selectcolor=self.style_values["BTN_BG"],
+            font=self.style_values["FONT"],
+            activebackground=self.style_values["BTN_ACTIVE_BG"],
+            activeforeground=self.style_values["BTN_ACTIVE_FG"],
             highlightthickness=0
         )
         allow_missing_region_check.grid(row=7, column=0, pady=10, padx=10, sticky="we")
@@ -1105,14 +1067,14 @@ class JetJob:
         listbox = tk.Listbox(
             models_frame,
             selectmode="single",
-            font=self.style.style_values["FONT"],
+            font=self.style_values["FONT"],
             height=min(8, len(self.models)),
             activestyle="dotbox",
             bd=2,
             yscrollcommand=model_scrollbar.set,
-            bg=self.style.style_values["TEXT_BG"],
-            fg=self.style.style_values["TEXT_FG"],
-            selectbackground=self.style.style_values["BTN_BG"],
+            bg=self.style_values["TEXT_BG"],
+            fg=self.style_values["TEXT_FG"],
+            selectbackground=self.style_values["BTN_BG"],
             highlightthickness=0,
             relief="solid"
         )
@@ -1160,9 +1122,9 @@ class JetJob:
             length=300,
             command=on_slider,
             showvalue=False,
-            bg=self.style.style_values["BG_COLOR"],
-            fg=self.style.style_values["LABEL_FG"],
-            troughcolor=self.style.style_values["BTN_BG"],
+            bg=self.style_values["BG_COLOR"],
+            fg=self.style_values["LABEL_FG"],
+            troughcolor=self.style_values["BTN_BG"],
             highlightthickness=0
         )
         slider.pack(fill="x", pady=(8, 2))

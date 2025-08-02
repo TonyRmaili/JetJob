@@ -80,7 +80,17 @@ class StyleGUI:
         kwargs.setdefault("selectcolor", style["BTN_BG"])
         kwargs.setdefault("highlightthickness", 0)
         return tk.Radiobutton(parent, **kwargs)
-
+    
+    def text(self,parent,**kwargs):
+        style = self.style_values
+        kwargs.setdefault("bg",style["TEXT_BG"])
+        kwargs.setdefault("fg",style["TEXT_FG"])
+        kwargs.setdefault("font",style["FONT"])
+        kwargs.setdefault("insertbackground",style["BTN_ACTIVE_FG"])
+        kwargs.setdefault("wrap","word")
+        kwargs.setdefault("borderwidth",0)
+        kwargs.setdefault("highlightthickness",0)
+        return tk.Text(parent,**kwargs)
 
 
 if __name__=="__main__":
