@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from tkinter import ttk
 from tkinter import scrolledtext
 from datetime import datetime
+from frontend.style_gui import StyleGUI
 
 
 # start command 
@@ -39,6 +40,8 @@ class JetJob:
             "FONT": ("Consolas", 12),
             "BTN_FONT": ("Segoe UI", 11, "bold"),
         }
+
+        self.style = StyleGUI()
 
         self.create_menu()
 
@@ -333,19 +336,20 @@ class JetJob:
 
     def init_preview_letters_frame(self):
         filetype = "letter"
-        frame = tk.Frame(self.root)
+
+        # Main frame, styled
+        frame = self.style.frame(self.root)
         frame.grid(row=0, column=0, sticky="nsew")
         frame.columnconfigure(0, weight=0)  # Button frame
-        frame.columnconfigure(1, weight=1)  # Ads/content frame
+        frame.columnconfigure(1, weight=1)  # Content frame
         frame.rowconfigure(0, weight=1)
 
-
-        # subframes
-        button_frame = tk.Frame(frame)
+        # Subframes
+        button_frame = self.style.frame(frame)
         button_frame.grid(row=0, column=0, sticky="nsw", padx=(10, 20), pady=10)
         button_frame.columnconfigure(0, weight=1)
 
-        letters_frame = tk.Frame(frame)
+        letters_frame = self.style.frame(frame)
         letters_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
         letters_frame.columnconfigure(0, weight=1)
         letters_frame.rowconfigure(0, weight=1)
@@ -353,115 +357,122 @@ class JetJob:
         extended_regions = self.config_values["regions"].copy()
         if self.config_values["missing_regions"]:
             extended_regions.append("region_missing")
-       
 
-        back_btn = tk.Button(button_frame,text="Back",width=20, anchor="w", justify="left",
-                             command=self.back_to_main_frame_click)
-        back_btn.grid(row=0,column=0,sticky="w", pady=(0, 5),padx=10)
+        # Styled buttons
+        self.style.button(
+            button_frame, text="Back", width=20, anchor="w", justify="left",
+            command=self.back_to_main_frame_click
+        ).grid(row=0, column=0, sticky="w", pady=(0, 5), padx=10)
 
+        self.style.button(
+            button_frame, text="Delete all", width=20, anchor="w", justify="left",
+            command=lambda: self.delete_all_ids(filetype, self.processed_letters_path)
+        ).grid(row=1, column=0, sticky="w", pady=(0, 5), padx=10)
 
-        delete_all_btn = tk.Button(button_frame,text="Delete all",width=20, anchor="w", justify="left",
-                                   command=lambda: self.delete_all_ids(filetype,self.processed_letters_path))
-        delete_all_btn.grid(row=1,column=0,sticky="w", pady=(0, 5),padx=10)
-
-
-        clear_all_ids_btn = tk.Button(button_frame,text="Clear all sent ids",width=20, anchor="w", justify="left",
-                                   command=lambda: self.clear_all_ids(filetype))
-        clear_all_ids_btn.grid(row=2,column=0,sticky="w", pady=(0, 5),padx=10)
-
-
+        self.style.button(
+            button_frame, text="Clear all sent ids", width=20, anchor="w", justify="left",
+            command=lambda: self.clear_all_ids(filetype)
+        ).grid(row=2, column=0, sticky="w", pady=(0, 5), padx=10)
 
         button_frame.rowconfigure(2, weight=1)
-        self.render_preview_files(letters_frame,extended_regions,self.processed_letters_path,filetype)
+
+        self.render_preview_files(letters_frame, extended_regions, self.processed_letters_path, filetype)
         self.show_frame(frame)
 
     def init_preview_ads_frame(self):
         filetype = "ad"
-        frame = tk.Frame(self.root)
+        # Main styled frame
+        frame = self.style.frame(self.root)
         frame.grid(row=0, column=0, sticky="nsew")
         frame.columnconfigure(0, weight=0)  # Button frame
-        frame.columnconfigure(1, weight=1)  # Ads/content frame
+        frame.columnconfigure(1, weight=1)  # Content frame
         frame.rowconfigure(0, weight=1)
 
-        # subframes
-        button_frame = tk.Frame(frame)
+        # Subframes
+        button_frame = self.style.frame(frame)
         button_frame.grid(row=0, column=0, sticky="nsw", padx=(10, 20), pady=10)
         button_frame.columnconfigure(0, weight=1)
 
-        ads_frame = tk.Frame(frame)
+        ads_frame = self.style.frame(frame)
         ads_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
         ads_frame.columnconfigure(0, weight=1)
         ads_frame.rowconfigure(0, weight=1)
 
-        # button frame
-        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  
+        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])
 
         def on_missing_regions_toggle():
-            save_data = {"missing_regions":allow_missing_region_var.get()}
+            save_data = {"missing_regions": allow_missing_region_var.get()}
             self.save_config_values(**save_data)
             self.init_preview_ads_frame()
             print("Switch is now", allow_missing_region_var.get())
 
-
+        # Styled Checkbutton
         allow_missing_region_check = tk.Checkbutton(
             button_frame, text="Allow missing regions",
             variable=allow_missing_region_var,
             command=on_missing_regions_toggle,
             onvalue=True, offvalue=False,
-            anchor="w", justify="left", width=20
+            anchor="w", justify="left", width=20,
+            bg=self.style.style_values["BG_COLOR"],
+            fg=self.style.style_values["LABEL_FG"],
+            selectcolor=self.style.style_values["BTN_BG"],
+            font=self.style.style_values["FONT"],
+            activebackground=self.style.style_values["BTN_ACTIVE_BG"],
+            activeforeground=self.style.style_values["BTN_ACTIVE_FG"],
+            highlightthickness=0
         )
         allow_missing_region_check.grid(row=0, column=0, sticky="w", pady=(0, 5))
 
-        delete_all_btn = tk.Button(button_frame,text="Delete all ads",
-                                command=lambda: self.delete_all_ids(filetype=filetype,folder_path=self.ads_path))
-        delete_all_btn.grid(row=1, column=0, sticky="w", pady=(0, 5))
+        self.style.button(
+            button_frame, text="Delete all ads", width=20,
+            anchor="w", justify="left",
+            command=lambda: self.delete_all_ids(filetype=filetype, folder_path=self.ads_path)
+        ).grid(row=1, column=0, sticky="w", pady=(0, 5), padx=10)
 
+        self.style.button(
+            button_frame, text="Clear all processed ids", width=20,
+            anchor="w", justify="left",
+            command=lambda: self.clear_all_ids(filetype)
+        ).grid(row=2, column=0, sticky="w", pady=(0, 5), padx=10)
 
-        clear_all_ids_btn = tk.Button(button_frame,text="Clear all processed ids",width=20, anchor="w", justify="left",
-                                   command=lambda: self.clear_all_ids(filetype))
-        clear_all_ids_btn.grid(row=2,column=0,sticky="w", pady=(0, 5),padx=10)
+        self.style.button(
+            button_frame, text="Back", width=20,
+            anchor="w", justify="left",
+            command=self.back_to_main_frame_click
+        ).grid(row=3, column=0, sticky="w", pady=(0, 5), padx=10)
 
-        back_btn = tk.Button(
-            button_frame, text="Back",
-            command=self.back_to_main_frame_click,
-            width=20, anchor="w", justify="left"
-        )
-        back_btn.grid(row=3, column=0, sticky="w", pady=(0, 5))
-
-        # Add a stretchable empty row for spacing, optional:
         button_frame.rowconfigure(2, weight=1)
 
-        # ads frame
+        # Content
         extended_regions = self.config_values["regions"].copy()
         if self.config_values["missing_regions"]:
             extended_regions.append("region_missing")
-       
-        self.render_preview_files(ads_frame,extended_regions,self.ads_path,filetype)
 
+        self.render_preview_files(ads_frame, extended_regions, self.ads_path, filetype)
         self.show_frame(frame)
 
-    def render_preview_files(self, parent_frame, regions, folder_path,file_type):
-        # -- Remove any old children --
+    def render_preview_files(self, parent_frame, regions, folder_path, file_type):
+        # Remove old children
         for widget in parent_frame.winfo_children():
             widget.destroy()
 
-        # --- Scrollable frame setup ---
-        # Create canvas + vertical scrollbar in parent_frame
-        canvas = tk.Canvas(parent_frame, borderwidth=0, highlightthickness=0)
+        # Scrollable frame setup (canvas + vertical scrollbar)
+        canvas = tk.Canvas(
+            parent_frame, borderwidth=0, highlightthickness=0,
+            bg=self.style.style_values["BG_COLOR"]
+        )
         vscroll = ttk.Scrollbar(parent_frame, orient="vertical", command=canvas.yview)
         canvas.configure(yscrollcommand=vscroll.set)
-
         canvas.grid(row=0, column=0, sticky="nsew")
         vscroll.grid(row=0, column=1, sticky="ns")
         parent_frame.grid_rowconfigure(0, weight=1)
         parent_frame.grid_columnconfigure(0, weight=1)
 
         # The actual frame to put content in
-        scrollable_frame = tk.Frame(canvas)
-        # Put the frame in the canvas
+        scrollable_frame = self.style.frame(canvas)
         window = canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 
-        # Make scrolling work with mousewheel
+        # Mousewheel scroll support
         def _on_mousewheel(event):
             canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
         scrollable_frame.bind("<Enter>", lambda e: scrollable_frame.bind_all("<MouseWheel>", _on_mousewheel))
@@ -472,66 +483,73 @@ class JetJob:
             canvas.configure(scrollregion=canvas.bbox("all"))
         scrollable_frame.bind("<Configure>", on_configure)
 
-        # Your original logic, but target scrollable_frame instead of parent_frame
-
+        # Determine file/ID set
         if file_type == "ad":
             valid_path = os.path.join(folder_path, "matched_email")
             ids = self.config_values["processed_ids"]
         elif file_type == "letter":
             valid_path = folder_path
             ids = self.config_values["sent_ids"]
-        
+
+        # No files found overall
         if not os.listdir(folder_path):
-            no_files_label = tk.Label(scrollable_frame, text="No files found.", fg="gray")
-            no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+            self.style.label(
+                scrollable_frame, text="No files found.", fg="gray"
+            ).grid(row=0, column=0, padx=5, pady=5, sticky="w")
             self.adjust_window()
             return
 
         for region_index, region in enumerate(regions):
             region_path = os.path.join(valid_path, region)
 
-            # region frame
-            region_frame = tk.LabelFrame(scrollable_frame, text=region)
+            # Themed region frame
+            region_frame = self.style.labelframe(scrollable_frame, region)
             region_frame.grid(row=region_index, column=0, sticky="ew", padx=5, pady=5)
-            
-
             region_frame.columnconfigure(0, weight=1)
             region_frame.columnconfigure(1, weight=0)
             region_frame.columnconfigure(2, weight=0)
+            region_frame.columnconfigure(3, weight=0)
+
             try:
                 files = [f for f in os.listdir(region_path) if os.path.isfile(os.path.join(region_path, f))]
             except FileNotFoundError:
                 continue
 
             if not files:
-                no_files_label = tk.Label(region_frame, text="No files found.", fg="gray")
-                no_files_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+                self.style.label(region_frame, text="No files found.", fg="gray").grid(row=0, column=0, padx=5, pady=5, sticky="w")
                 continue
-            
+
             for idx, filename in enumerate(files):
                 full_path = os.path.join(region_path, filename)
-                file_label = tk.Label(region_frame, text=filename, anchor="w")
+                file_label = self.style.label(region_frame, text=filename, anchor="w")
                 file_label.grid(row=idx, column=0, padx=5, pady=2, sticky="ew")
 
-                with open(full_path,encoding="utf-8") as file:
+                with open(full_path, encoding="utf-8") as file:
                     data = json.load(file)
-
                 data_id = data.get("id")
-                # Uncomment if you want the buttons
-                view_btn = tk.Button(region_frame, text="View", width=8,
-                                    command=lambda f=full_path: self.view_file(f,file_type))
+
+                view_btn = self.style.button(
+                    region_frame, text="View", width=8,
+                    command=lambda f=full_path: self.view_file(f, file_type)
+                )
                 view_btn.grid(row=idx, column=1, padx=5, sticky="e")
 
-                delete_btn = tk.Button(region_frame, text="Delete", width=8,
-                                    command=lambda f=full_path: self.delete_file(f,parent_frame, regions, folder_path,file_type))
+                delete_btn = self.style.button(
+                    region_frame, text="Delete", width=8,
+                    command=lambda f=full_path: self.delete_file(f, parent_frame, regions, folder_path, file_type)
+                )
                 delete_btn.grid(row=idx, column=2, padx=5, sticky="e")
 
+                # ID status label
                 if data_id in ids:
-                    check_label = tk.Label(region_frame, text="Used ID \u2705", font=("Segoe UI Emoji", 14))
+                    check_label = self.style.label(
+                        region_frame, text="Used ID \u2705", font=("Segoe UI Emoji", 14)
+                    )
                 else:
-                    check_label = tk.Label(region_frame, text="No used ID", font=("Segoe UI Emoji", 14))
+                    check_label = self.style.label(
+                        region_frame, text="No used ID", font=("Segoe UI Emoji", 14)
+                    )
                 check_label.grid(row=idx, column=3)
-
 
         scrollable_frame.update_idletasks()
         frame_width = scrollable_frame.winfo_reqwidth()
@@ -539,16 +557,16 @@ class JetJob:
 
         # Set the canvas width to match frame's requested width (for horizontal fill)
         canvas.config(width=frame_width)
-        # Optionally, set height if you want to auto-resize vertically (not recommended for many files)
 
         # Set the root window's geometry to match the scrollable_frame's width, capped at max screen width
-        win_w = min(max(self.width, frame_width + 40), self.root.winfo_screenwidth())  # 40 px margin for scrollbar, etc
+        win_w = min(max(self.width, frame_width + 40), self.root.winfo_screenwidth())
         win_h = min(max(self.height, frame_height + 40), self.root.winfo_screenheight())
         self.root.geometry(f"{win_w}x{win_h}")
 
         self.adjust_window()
 
     def init_create_profile_frame(self):
+    
         def refresh_profile_list():
             for widget in self.profile_list_frame.winfo_children():
                 widget.destroy()
@@ -557,60 +575,58 @@ class JetJob:
                 name for name in os.listdir(self.profiles_path)
                 if os.path.isdir(os.path.join(self.profiles_path, name))
             ]
-            
+
+            # Select or clear selection
             if profile_folders:
-                # If currently selected profile doesn't exist anymore, select first
                 current = self.selected_profile_var.get()
                 if current not in profile_folders:
                     self.selected_profile_var.set(profile_folders[0])
                     self.set_last_used_profile(profile_folders[0])
             else:
-                # No profiles left: clear selection and last used
                 self.selected_profile_var.set("")
                 self.set_last_used_profile("")
-                
+
             if not profile_folders:
-                empty_label = tk.Label(self.profile_list_frame, text="(No profiles found)", fg="gray")
+                empty_label = self.style.label(self.profile_list_frame, text="(No profiles found)", fg="gray")
                 empty_label.grid(row=0, column=0, padx=10, pady=5)
             else:
                 for i, prof in enumerate(profile_folders):
-                    rb = tk.Radiobutton(
+                    rb = self.style.radiobutton(
                         self.profile_list_frame,
                         text=prof,
                         variable=self.selected_profile_var,
                         value=prof,
-                        command=lambda:self.root.title(f"JetJob - Welcome {self.selected_profile_var.get()}")
+                        command=lambda: self.root.title(f"JetJob - Welcome {self.selected_profile_var.get()}")
                     )
-                    rb.grid(row=i, column=0, sticky="w", padx=10, pady=2)
+                    rb.grid(row=i, column=0, sticky="w", padx=(2, 7), pady=4)
+                  
+                    del_btn = self.style.button(
+                        self.profile_list_frame,
+                        text="🗑 Delete",
+                        fg="#ef4444",  # bright red for delete
+                        command=lambda p=prof: delete_profile(p)
+                    )
 
-                    del_btn = tk.Button(
-                    self.profile_list_frame,
-                    text="Delete",
-                    fg="red",
-                    command=lambda p=prof: delete_profile(p)
-                            )
-                    del_btn.grid(row=i, column=1, sticky="w", padx=5, pady=2)
+                    del_btn.grid(row=i, column=1, padx=(4, 0), pady=4)
 
-
-            # Only show "Go to main" if there are profiles
+            # Remove duplicate "Go to main" button if any
             for widget in left_frame.grid_slaves():
-                if isinstance(widget, tk.Button) and widget["text"] == "Go to main":
+                if isinstance(widget, tk.Button) and widget["text"].startswith("Go to main"):
                     widget.destroy()
             if profile_folders:
-                return_btn = tk.Button(left_frame, text="Go to main", width=20, command=on_return_click)
-                return_btn.grid(row=3, column=0, padx=5, pady=20, sticky="ne")
-      
+                return_btn = self.style.button(left_frame, text="Go to main", width=20, command=on_return_click)
+                return_btn.grid(row=3, column=0, columnspan=2, padx=5, pady=(24, 5), sticky="ew")
+
         def delete_profile(profile_name):
             folder_path = os.path.join(self.profiles_path, profile_name)
             try:
-                confirm = messagebox.askyesno(title=f"Delete {profile_name}?")
+                confirm = messagebox.askyesno(title=f"Delete {profile_name}?", message=f"Are you sure you want to delete '{profile_name}'?")
                 if confirm:
-                    shutil.rmtree(folder_path)  # Remove folder and all its contents
+                    shutil.rmtree(folder_path)
                     print(f"Deleted profile: {profile_name}")
                     refresh_profile_list()
             except Exception as e:
                 print(f"Error deleting {profile_name}: {e}")
-
 
         def on_add_click():
             name = name_var.get().strip()
@@ -623,29 +639,23 @@ class JetJob:
                 print("❌ Profile already exists")
                 return
 
-            # config parameters
             self.config_values = {
-                    "url": "https://jobsearch.api.jobtechdev.se/search",
-                    "gmail":None,
-                    "keywords": [],
-                    "regions": [],
-                    "missing_regions":False,
+                "url": "https://jobsearch.api.jobtechdev.se/search",
+                "gmail": None,
+                "keywords": [],
+                "regions": [],
+                "missing_regions": False,
+                "limit": 10,
+                "offset": 0,
+                "model": "gpt-4.1",
+                "temperature": 0.7,
+                "about_me_path": None,
+                "system_prompt_path": None,
+                "credentials": None,
+                "processed_ids": [],
+                "sent_ids": [],
+            }
 
-                    "limit": 10,
-                    "offset": 0,
-
-                    "model":"gpt-4.1",
-                    "temperature":0.7,
-                   
-                    "about_me_path": None,
-                    "system_prompt_path": None,
-                    "credentials":None,
-
-                    "processed_ids": [],
-                    "sent_ids":[],
-                    
-                }
-            
             os.makedirs(profile_dir)
             with open(os.path.join(profile_dir, "config.json"), "w") as f:
                 json.dump(self.config_values, f, indent=4)
@@ -656,9 +666,7 @@ class JetJob:
             self.set_last_used_profile(profile_name=name)
             self.selected_profile_var.set(name)
             name_var.set("")
-
             self.create_profile_subfolders(name)
-
             refresh_profile_list()
 
         def on_return_click():
@@ -666,7 +674,6 @@ class JetJob:
             if not selected:
                 messagebox.showwarning("No Selection", "Please select a profile before continuing.")
                 return
-
             self.selected_profile = selected
             self.set_last_used_profile(selected)
             self.create_profile_subfolders(selected)
@@ -674,49 +681,55 @@ class JetJob:
             self.init_main_frame()
             self.show_frame(self.main_frame)
 
-
         self.selected_profile_var = tk.StringVar()
 
-        self.create_profile_frame = tk.Frame(self.root)
+        # Main background frame
+        self.create_profile_frame = self.style.frame(self.root)
         self.create_profile_frame.grid(row=0, column=0, sticky="nsew")
+        self.create_profile_frame.columnconfigure((0, 1), weight=1)
 
-        # Left frame: Create profile
-        left_frame = tk.Frame(self.create_profile_frame)
-        left_frame.grid(row=1, column=0, padx=10, sticky="n")
+        # Left: Create profile
+        left_frame = self.style.frame(self.create_profile_frame)
+        left_frame.grid(row=1, column=0, padx=36, pady=12, sticky="n")
 
-        left_label = tk.Label(left_frame, text="Create a new profile", font=("Arial", 14))
-        left_label.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
+        # Use bold/large label for title
+        self.style.label(
+            left_frame, text="Create a new profile",
+            font=("Consolas", 15, "bold"), pady=10
+        ).grid(row=0, column=0, columnspan=2, pady=(0, 16), padx=6, sticky="ew")
 
         name_var = tk.StringVar()
-        name_label = tk.Label(left_frame, text="Name: ")
-        name_label.grid(row=1, column=0, padx=5, pady=20)
-        name_entry = tk.Entry(left_frame, textvariable=name_var)
-        name_entry.grid(row=1, column=1, padx=5, pady=20)
+        self.style.label(left_frame, text="Name: ").grid(row=1, column=0, padx=(4, 8), pady=10, sticky="e")
+        name_entry = self.style.entry(left_frame, textvariable=name_var, width=16)
+        name_entry.grid(row=1, column=1, padx=(0, 6), pady=10, sticky="w")
+        self.style.button(left_frame, text="Add profile", command=on_add_click).grid(
+            row=2, column=0, columnspan=2, padx=8, pady=(10, 4), sticky="ew"
+        )
 
-        add_btn = tk.Button(left_frame, text="Add profile", command=on_add_click)
-        add_btn.grid(row=2, column=1, padx=5, pady=20)
+        # Right: Select profile
+        right_frame = self.style.frame(self.create_profile_frame)
+        right_frame.grid(row=1, column=1, padx=36, pady=12, sticky="n")
+        self.style.label(
+            right_frame, text="Select Profile",
+            font=("Consolas", 15, "bold"), pady=10
+        ).grid(row=0, column=0, columnspan=2, pady=(0, 16), padx=6, sticky="ew")
 
-        # Right frame: Select profile
-        right_frame = tk.Frame(self.create_profile_frame)
-        right_frame.grid(row=1, column=1, padx=20, sticky="n")
-
-        right_label = tk.Label(right_frame, text="Select Profile", font=("Arial", 14))
-        right_label.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
-
-        self.profile_list_frame = tk.Frame(right_frame)
-        self.profile_list_frame.grid(row=1, column=0)
+        self.profile_list_frame = self.style.frame(right_frame)
+        self.profile_list_frame.grid(row=1, column=0, columnspan=2, sticky="ew")
 
         refresh_profile_list()
         self.show_frame(self.create_profile_frame)
 
     def init_config_env_frame(self):
-        self.config_env_frame = tk.Frame(self.root)
+        # Styled background frame
+        self.config_env_frame = self.style.frame(self.root)
         self.config_env_frame.grid(row=0, column=0, sticky="nsew")
+        self.config_env_frame.columnconfigure(0, weight=1)
 
         entries = {}
-        env_path = os.path.join(self.profiles_path,self.selected_profile,".env")
-        
-        # # Load existing .env values (if file exists)
+        env_path = os.path.join(self.profiles_path, self.selected_profile, ".env")
+
+        # Load existing .env values (if file exists)
         env_values = {}
         if os.path.exists(env_path):
             with open(env_path, "r") as f:
@@ -724,19 +737,19 @@ class JetJob:
                     if "=" in line:
                         key, value = line.strip().split("=", 1)
                         env_values[key] = value.strip('"')
-        
+
+        # Styled input with show/hide support
         def add_input(frame, label_text, var_name, masked=False):
-            container = tk.Frame(frame)
-            container.pack(fill="x", padx=5, pady=2)
+            container = self.style.frame(frame)
+            container.pack(fill="x", padx=6, pady=4)
 
-            label = tk.Label(container, text=label_text)
-            label.pack(side="left")
+            self.style.label(container, text=label_text).pack(side="left", padx=(2, 10))
 
-            var = tk.StringVar(value=env_values.get(var_name, ""))  # store value in StringVar
-            entry = tk.Entry(container, width=40, textvariable=var)
+            var = tk.StringVar(value=env_values.get(var_name, ""))
+            entry = self.style.entry(container, textvariable=var, width=32)
             if masked:
                 entry.config(show="*")
-            entry.pack(side="left", padx=5)
+            entry.pack(side="left", padx=(0, 10), fill="x", expand=True)
 
             def toggle_visibility():
                 if entry.cget("show") == "":
@@ -747,23 +760,24 @@ class JetJob:
                     toggle_button.config(text="Hide")
 
             if masked:
-                toggle_button = tk.Button(container, text="Show", command=toggle_visibility, width=5)
-                toggle_button.pack(side="left")
+                toggle_button = self.style.button(
+                    container, text="Show", width=6, command=toggle_visibility
+                )
+                toggle_button.pack(side="left", padx=(0, 2))
 
             entries[var_name] = entry
 
-       
-        # OpenAI
-        openai_frame = tk.LabelFrame(self.config_env_frame, text="OpenAI")
-        openai_frame.grid(row=0, column=0, sticky="news", padx=10, pady=5)
+        # Section: OpenAI
+        openai_frame = self.style.labelframe(self.config_env_frame, "OpenAI")
+        openai_frame.grid(row=0, column=0, sticky="ew", padx=18, pady=(16, 4))
         add_input(openai_frame, "API Key:", "OPENAI_API_KEY", masked=True)
 
-        # gmail
-        gmail_app_pass_frame = tk.LabelFrame(self.config_env_frame, text="Gmail")
-        gmail_app_pass_frame.grid(row=1,column=0,sticky="news",padx=10,pady=5)
-        add_input(gmail_app_pass_frame,"App Password:" ,"GMAIL_APP_PASSWORD",masked=True)
+        # Section: Gmail
+        gmail_app_pass_frame = self.style.labelframe(self.config_env_frame, "Gmail")
+        gmail_app_pass_frame.grid(row=1, column=0, sticky="ew", padx=18, pady=4)
+        add_input(gmail_app_pass_frame, "App Password:", "GMAIL_APP_PASSWORD", masked=True)
 
-
+        # Save/Done button
         def on_done_click():
             lines = []
             for key, entry in entries.items():
@@ -772,67 +786,60 @@ class JetJob:
                     val = f'"{val}"'
                 lines.append(f"{key}={val}")
 
-            
             with open(env_path, "w") as f:
                 f.write("\n".join(lines))
 
-            # self.init_create_profile_frame()
             self.show_frame(self.main_frame)
 
-        
-        # Save Button
-        save_button = tk.Button(self.config_env_frame, text="Done", command=on_done_click,width=20)
-        save_button.grid(row=4, column=0, pady=10, padx=10,sticky="ns")
+        self.style.button(
+            self.config_env_frame,
+            text="Done",
+            width=24,
+            command=on_done_click
+        ).grid(row=4, column=0, pady=18, padx=18, sticky="ew")
 
         self.show_frame(self.config_env_frame)
 
     def init_config_search_param_frame(self):
-        self.config_search_param_frame = tk.Frame(self.root)
+        # Use your styled frame
+        self.config_search_param_frame = self.style.frame(self.root)
         self.config_search_param_frame.grid(row=0, column=0, sticky="nsew")
+        self.config_search_param_frame.columnconfigure(1, weight=1)
 
         self.update_config()
 
         # URL row
-        url_label = tk.Label(self.config_search_param_frame, text="URL")
-        url_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
-
+        self.style.label(self.config_search_param_frame, text="URL").grid(row=0, column=0, padx=10, pady=10, sticky="w")
         url_var = tk.StringVar(value=self.config_values.get("url", ""))
-        url_entry = tk.Entry(self.config_search_param_frame, textvariable=url_var, width=40)
-        url_entry.grid(row=0, column=1, padx=10, pady=10, sticky="w")
+        self.style.entry(self.config_search_param_frame, textvariable=url_var, width=40).grid(row=0, column=1, padx=10, pady=10, sticky="we")
 
-        # gmail row
-        gmail_label = tk.Label(self.config_search_param_frame, text="Gmail")
-        gmail_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
-
+        # Gmail row
+        self.style.label(self.config_search_param_frame, text="Gmail").grid(row=1, column=0, padx=10, pady=10, sticky="w")
         gmail_var = tk.StringVar(value=self.config_values.get("gmail", ""))
-        gmail_entry = tk.Entry(self.config_search_param_frame, textvariable=gmail_var, width=40)
-        gmail_entry.grid(row=1, column=1, padx=10, pady=10, sticky="w")
+        self.style.entry(self.config_search_param_frame, textvariable=gmail_var, width=40).grid(row=1, column=1, padx=10, pady=10, sticky="we")
 
-        # Keyword entry
-        keywords_label = tk.Label(self.config_search_param_frame, text="Keywords")
-        keywords_label.grid(row=2, column=0, padx=10, pady=5, sticky="nw")
-
+        # Keywords
+        self.style.label(self.config_search_param_frame, text="Keywords").grid(row=2, column=0, padx=10, pady=5, sticky="nw")
         keyword_var = tk.StringVar()
-        keyword_entry = tk.Entry(self.config_search_param_frame, textvariable=keyword_var, width=30)
-        keyword_entry.grid(row=2, column=1, padx=10, pady=(5, 0), sticky="w")
+        self.style.entry(self.config_search_param_frame, textvariable=keyword_var, width=30).grid(row=2, column=1, padx=10, pady=(5, 0), sticky="w")
 
         # Keyword Listbox
-        keyword_listbox = tk.Listbox(self.config_search_param_frame, height=6, width=30, selectmode="multiple")
+        keyword_listbox = tk.Listbox(self.config_search_param_frame, height=6, width=30, selectmode="multiple",
+                                    bg=self.style.style_values["TEXT_BG"], fg=self.style.style_values["TEXT_FG"],
+                                    font=self.style.style_values["FONT"], selectbackground=self.style.style_values["BTN_BG"])
         keyword_listbox.grid(row=3, column=1, padx=10, pady=5, sticky="w")
         for kw in self.config_values.get("keywords", []):
             keyword_listbox.insert("end", kw)
 
- 
         # --- Regions Section ---
-        region_label = tk.Label(self.config_search_param_frame, text="Regions")
-        region_label.grid(row=4, column=0, padx=10, pady=5, sticky="nw")
-
-        # Frame to hold listbox and scrollbar
-        region_listbox_frame = tk.Frame(self.config_search_param_frame)
+        self.style.label(self.config_search_param_frame, text="Regions").grid(row=4, column=0, padx=10, pady=5, sticky="nw")
+        region_listbox_frame = self.style.frame(self.config_search_param_frame)
         region_listbox_frame.grid(row=4, column=1, padx=10, pady=5, sticky="w")
 
         # Listbox
-        region_box = tk.Listbox(region_listbox_frame, selectmode="multiple", height=10, exportselection=False)
+        region_box = tk.Listbox(region_listbox_frame, selectmode="multiple", height=10, exportselection=False,
+                                bg=self.style.style_values["TEXT_BG"], fg=self.style.style_values["TEXT_FG"],
+                                font=self.style.style_values["FONT"], selectbackground=self.style.style_values["BTN_BG"])
         region_box.grid(row=0, column=0, sticky="ns")
 
         # Scrollbar
@@ -840,29 +847,22 @@ class JetJob:
         region_scrollbar.grid(row=0, column=1, sticky="ns")
         region_box.config(yscrollcommand=region_scrollbar.set)
 
-        # Populate listbox
         for region in self.regions:
             region_box.insert(tk.END, region)
-
-        # Pre-select saved regions
         selected_regions = self.config_values.get("regions", [])
         for idx, region in enumerate(self.regions):
             if region in selected_regions:
                 region_box.selection_set(idx)
 
-        # Frame to contain both buttons vertically
-        region_button_frame = tk.Frame(self.config_search_param_frame)
+        # Region select/clear all buttons
+        region_button_frame = self.style.frame(self.config_search_param_frame)
         region_button_frame.grid(row=4, column=2, padx=10, pady=5, sticky="n")
+        self.style.button(region_button_frame, text="Select All",
+                        command=lambda: region_box.select_set(0, tk.END)).grid(row=0, column=0, pady=(0, 10), sticky="ew")
+        self.style.button(region_button_frame, text="Clear All",
+                        command=lambda: region_box.selection_clear(0, tk.END)).grid(row=1, column=0, sticky="ew")
 
-        # "Select All" button in row 0
-        select_all_btn = tk.Button(region_button_frame, text="Select All", command=lambda: region_box.select_set(0, tk.END))
-        select_all_btn.grid(row=0, column=0, pady=(0, 10), sticky="ew")
-
-        # "Clear All" button in row 1
-        clear_all_btn = tk.Button(region_button_frame, text="Clear All", command=lambda: region_box.selection_clear(0, tk.END))
-        clear_all_btn.grid(row=1, column=0, sticky="ew")
-            
-         # Add + Delete keyword buttons
+        # Add + Delete keyword buttons
         def add_keyword():
             word = keyword_var.get().strip()
             if word and word not in keyword_listbox.get(0, "end"):
@@ -873,52 +873,54 @@ class JetJob:
             for i in reversed(keyword_listbox.curselection()):
                 keyword_listbox.delete(i)
 
-        
-        add_btn = tk.Button(self.config_search_param_frame, text="Add", command=add_keyword)
-        add_btn.grid(row=2, column=2, padx=5, pady=(5, 0))
-
-        del_btn = tk.Button(self.config_search_param_frame, text="Delete", command=delete_selected)
-        del_btn.grid(row=3, column=2, padx=5, pady=5)
+        self.style.button(self.config_search_param_frame, text="Add", command=add_keyword).grid(row=2, column=2, padx=5, pady=(5, 0))
+        self.style.button(self.config_search_param_frame, text="Delete", command=delete_selected).grid(row=3, column=2, padx=5, pady=5)
 
         # LIMIT Slider (1–100)
-        limit_label = tk.Label(self.config_search_param_frame, text="Limit")
-        limit_label.grid(row=5, column=0, padx=10, pady=10, sticky="w")
-
-        limit_var = tk.IntVar(value=self.config_values.get("limit", 10))  # default = 10
-        limit_slider = tk.Scale(
-            self.config_search_param_frame, from_=1, to=100,
-            orient="horizontal", variable=limit_var, resolution=1
-        )
+        self.style.label(self.config_search_param_frame, text="Limit").grid(row=5, column=0, padx=10, pady=10, sticky="w")
+        limit_var = tk.IntVar(value=self.config_values.get("limit", 10))
+        limit_slider = tk.Scale(self.config_search_param_frame, from_=1, to=100, orient="horizontal",
+                                variable=limit_var, resolution=1,
+                                bg=self.style.style_values["BG_COLOR"],
+                                fg=self.style.style_values["LABEL_FG"],
+                                troughcolor=self.style.style_values["BTN_BG"],
+                                highlightthickness=0)
         limit_slider.grid(row=5, column=1, padx=10, pady=10, sticky="w")
 
         # OFFSET Slider (0–500 default range)
-        offset_label = tk.Label(self.config_search_param_frame, text="Offset")
-        offset_label.grid(row=6, column=0, padx=10, pady=10, sticky="w")
-
-        offset_var = tk.IntVar(value=self.config_values.get("offset", 0))  # default = 0
-        offset_slider = tk.Scale(
-            self.config_search_param_frame, from_=0, to=500,
-            orient="horizontal", variable=offset_var, resolution=1
-        )
+        self.style.label(self.config_search_param_frame, text="Offset").grid(row=6, column=0, padx=10, pady=10, sticky="w")
+        offset_var = tk.IntVar(value=self.config_values.get("offset", 0))
+        offset_slider = tk.Scale(self.config_search_param_frame, from_=0, to=500, orient="horizontal",
+                                variable=offset_var, resolution=1,
+                                bg=self.style.style_values["BG_COLOR"],
+                                fg=self.style.style_values["LABEL_FG"],
+                                troughcolor=self.style.style_values["BTN_BG"],
+                                highlightthickness=0)
         offset_slider.grid(row=6, column=1, padx=10, pady=10, sticky="w")
 
-        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])  
+        allow_missing_region_var = tk.BooleanVar(value=self.config_values["missing_regions"])
 
         def on_missing_regions_toggle():
-            save_data = {"missing_regions":allow_missing_region_var.get()}
-            self.save_config_values(**save_data)   
+            save_data = {"missing_regions": allow_missing_region_var.get()}
+            self.save_config_values(**save_data)
             print("Switch is now", allow_missing_region_var.get())
 
-
+        # Styled checkbutton (needs manual styling for bg/fg in tkinter)
         allow_missing_region_check = tk.Checkbutton(
             self.config_search_param_frame, text="Allow missing regions",
             variable=allow_missing_region_var,
             command=on_missing_regions_toggle,
             onvalue=True, offvalue=False,
-            anchor="w", justify="left", width=20
+            anchor="w", justify="left", width=20,
+            bg=self.style.style_values["BG_COLOR"],
+            fg=self.style.style_values["LABEL_FG"],
+            selectcolor=self.style.style_values["BTN_BG"],
+            font=self.style.style_values["FONT"],
+            activebackground=self.style.style_values["BTN_ACTIVE_BG"],
+            activeforeground=self.style.style_values["BTN_ACTIVE_FG"],
+            highlightthickness=0
         )
-        allow_missing_region_check.grid(row=7, column=0, pady=10, padx=10,sticky="we")
-
+        allow_missing_region_check.grid(row=7, column=0, pady=10, padx=10, sticky="we")
 
         def on_done_click():
             selected_indices = region_box.curselection()
@@ -926,21 +928,21 @@ class JetJob:
 
             # update config values
             save_data = {
-                "url":url_var.get(),
-                "gmail":gmail_var.get(),
-                "keywords":keyword_listbox.get(0, "end"),
-                "regions":selected_regions,
-                "limit":limit_var.get(),
-                "offset":offset_var.get(),
+                "url": url_var.get(),
+                "gmail": gmail_var.get(),
+                "keywords": keyword_listbox.get(0, "end"),
+                "regions": selected_regions,
+                "limit": limit_var.get(),
+                "offset": offset_var.get(),
             }
-            
             self.save_config_values(**save_data)
             self.show_frame(self.main_frame)
 
         # Save Button
-        save_button = tk.Button(self.config_search_param_frame, text="Done", command=on_done_click)
-        save_button.grid(row=8,column=0,pady=10, padx=10,sticky="we")
- 
+        self.style.button(self.config_search_param_frame, text="Done", command=on_done_click).grid(
+            row=8, column=0, pady=10, padx=10, sticky="we"
+        )
+
         self.adjust_window()
         self.show_frame(self.config_search_param_frame)
 
@@ -1087,100 +1089,102 @@ class JetJob:
         self.show_frame(data_files_frame)
 
     def init_gpt_config_frame(self):
-        gpt_config_frame = tk.Frame(self.root, bg="#f4f6f8")  # light background
+        gpt_config_frame = self.style.frame(self.root)
         gpt_config_frame.grid(row=0, column=0, sticky="nsew")
         gpt_config_frame.columnconfigure(0, weight=1)
 
-        # OpenAI model frame
-        models_frame = tk.LabelFrame(
-            gpt_config_frame, text="OpenAI Models",
-            font=("Arial", 12, "bold"),
-            bg="#f4f6f8", fg="#2d4154", padx=16, pady=12, bd=2, relief="groove"
-        )
+        # --- OpenAI Model Frame ---
+        models_frame = self.style.labelframe(gpt_config_frame, "OpenAI Models")
         models_frame.grid(row=0, column=0, sticky="news", padx=18, pady=18)
 
         # Scrollbar for the listbox
         model_scrollbar = tk.Scrollbar(models_frame)
-        model_scrollbar.grid(row=0, column=1, sticky="nsw", padx=(8,0), pady=4)
+        model_scrollbar.grid(row=0, column=1, sticky="nsw", padx=(8, 0), pady=4)
 
-        # Listbox with padding, font, and yscroll
+        # Listbox (styled)
         listbox = tk.Listbox(
-            models_frame, selectmode="single",
-            font=("Arial", 11),
-            height=min(8, len(self.models)),  # Show up to 8 lines, dynamic height
-            activestyle="dotbox", bd=2,
-            yscrollcommand=model_scrollbar.set
+            models_frame,
+            selectmode="single",
+            font=self.style.style_values["FONT"],
+            height=min(8, len(self.models)),
+            activestyle="dotbox",
+            bd=2,
+            yscrollcommand=model_scrollbar.set,
+            bg=self.style.style_values["TEXT_BG"],
+            fg=self.style.style_values["TEXT_FG"],
+            selectbackground=self.style.style_values["BTN_BG"],
+            highlightthickness=0,
+            relief="solid"
         )
         for item in self.models:
             listbox.insert(tk.END, item)
-        
         if self.config_values["model"] in self.models:
             idx = self.models.index(self.config_values["model"])
             listbox.selection_set(idx)
             listbox.activate(idx)
             listbox.see(idx)
-
         listbox.grid(row=0, column=0, sticky="nsew", padx=(0, 8), pady=4)
         model_scrollbar.config(command=listbox.yview)
+        models_frame.columnconfigure(0, weight=1)
+        models_frame.rowconfigure(0, weight=1)
 
-        # Button, larger and with some color
-        select_model_btn = tk.Button(
-            models_frame, text="Select",
-            command=lambda: on_select_model_click(),
-            font=("Arial", 11, "bold"),
-            bg="#0052cc", fg="#fff",
-            activebackground="#003d80", activeforeground="#fff",
-            bd=0, relief="ridge", padx=18, pady=6,
-            cursor="hand2"
-        )
-        select_model_btn.grid(row=1, column=0, columnspan=2, sticky="ew", padx=4, pady=(12, 4))
-
+        # --- Select Button ---
         def on_select_model_click():
             selected = listbox.curselection()
             if selected:
                 index = selected[0]
-                model_str = listbox.get(index)   # This gets the string!
+                model_str = listbox.get(index)
                 save_data = {"model": model_str}
                 self.save_config_values(**save_data)
                 print(self.config_values["model"])
 
-        models_frame.columnconfigure(0, weight=1)
-        models_frame.rowconfigure(0, weight=1)
+        self.style.button(
+            models_frame,
+            text="Select",
+            command=on_select_model_click
+        ).grid(row=1, column=0, columnspan=2, sticky="ew", padx=4, pady=(12, 4))
 
-        # temperature 
+        # --- Temperature Slider ---
+        temp_frame = self.style.labelframe(gpt_config_frame, "Temperature")
+        temp_frame.grid(row=1, column=0, pady=4, padx=18, sticky="ew")
+
         def on_slider(val):
             value_label.config(text=f"Value: {float(val):.1f}")
-            
 
-        temp_frame = tk.LabelFrame(gpt_config_frame, text="Temperature", font=("Arial", 12, "bold"),bg="#f4f6f8", fg="#2d4154", padx=16, pady=12, bd=2, relief="groove")
-        temp_frame.grid(row=1,column=0)
-           
         slider = tk.Scale(
             temp_frame,
             from_=0.0,
-            to=2.0,    
+            to=2.0,
             resolution=0.1,
             orient="horizontal",
             length=300,
             command=on_slider,
             showvalue=False,
-            
+            bg=self.style.style_values["BG_COLOR"],
+            fg=self.style.style_values["LABEL_FG"],
+            troughcolor=self.style.style_values["BTN_BG"],
+            highlightthickness=0
         )
         slider.pack(fill="x", pady=(8, 2))
-        slider.set(self.config_values["temperature"])  # Default to 1.0
+        slider.set(self.config_values["temperature"])
 
-        value_label = tk.Label(temp_frame, text="Value: 1.0", font=("Arial", 11))
+        value_label = self.style.label(
+            temp_frame, text=f"Value: {self.config_values['temperature']:.1f}"
+        )
         value_label.pack(anchor="w", pady=(2, 0))
 
+        # --- Done Button ---
         def on_done_click():
-            save_data = {"temperature":slider.get()}
+            save_data = {
+                "temperature": slider.get()
+            }
             self.save_config_values(**save_data)
             self.show_frame(self.main_frame)
-         
 
-        done_btn = tk.Button(gpt_config_frame,text="Done",width=20 ,command=on_done_click)
-        done_btn.grid(row=2,column=0,pady=10)
-        
+        self.style.button(
+            gpt_config_frame, text="Done", width=20, command=on_done_click
+        ).grid(row=2, column=0, pady=18, padx=10, sticky="ew")
+
         self.show_frame(gpt_config_frame)
 
     def create_text_click(self,save_dir,title):
